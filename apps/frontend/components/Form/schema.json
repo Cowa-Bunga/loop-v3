@@ -1,0 +1,30 @@
+{
+  "schema": {
+    "type": "object",
+    "required": ["firstName", "lastName"],
+    "properties": {
+      "region": {
+        "type": "string",
+        "title": "Select Region/Hub",
+        "enum": ["Western Cape", "Limpopo"]
+      },
+      "hub": {
+        "type": "string",
+        "title": "Select Branch",
+        "enum": ["JHB", "CPT"]
+      }
+    }
+  },
+  "ui": {
+    "region": {
+      "ui:autofocus": true,
+      "ui:emptyValue": "",
+      "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
+      "ui:autocomplete": "family-name"
+    },
+    "hub": {
+      "ui:emptyValue": "",
+      "ui:autocomplete": "given-name"
+    }
+  }
+}
