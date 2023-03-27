@@ -20,7 +20,6 @@ function LoopApp({
         <CssBaseline />
         <main className="app">
           <SessionProvider session={session}>
-            <NavBar />
             <Component {...pageProps} />
           </SessionProvider>
         </main>

@@ -1,20 +1,18 @@
-import { MenuList, MenuItem, Box, Drawer } from '@mui/material';
-import { useSession, signOut } from 'next-auth/react';
-import HomeIcon from '@mui/icons-material/Home';
-import { useRouter } from 'next/router';
-import { menuBottomModel, menuModel } from './model';
-import ui from './style';
+import { MenuList, MenuItem, Box, Drawer } from '@mui/material'
+import HomeIcon from '@mui/icons-material/Home'
+import { useRouter } from 'next/router'
+import { menuBottomModel, menuModel } from './model'
+import ui from './style'
 
-export default function NavBar() {
-  const { data: session } = useSession();
-  const router = useRouter();
+export default function Menu({ open }) {
+  const router = useRouter()
 
   const goto = (url: string) => {
-    router.push(url);
-  };
+    router.push(url)
+  }
 
   return (
-    <Drawer variant="permanent" anchor="left">
+    <Drawer variant="temporary" anchor="left" hideBackdrop open={open}>
       <Box sx={ui.container}>
         <MenuList sx={ui.menuList}>
           {menuModel.map((item) => (
@@ -30,18 +28,10 @@ export default function NavBar() {
                 {item.title}
               </MenuItem>
             ))}
-            <div
-              style={{
-                fontSize: '8px',
-                textAlign: 'center',
-                margin: '40px 0 10px 0',
-              }}
-            >
-              version: 3.1.0
-            </div>
+            <Box sx={ui.version}>version: 3.1.0</Box>
           </div>
         </MenuList>
       </Box>
     </Drawer>
-  );
+  )
 }

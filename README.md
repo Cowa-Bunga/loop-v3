@@ -9,13 +9,7 @@
 - create a new postgres database called 'loop'
 - configure `apps/backend/app/app.module`
 
-> term 1
-- `nx serve frontend`
-
-> term 2
-- `nx serve backend`
-
-> alternatively can be run via nx cli together
+> `npm start`
 
 
 ## Understand this workspace

@@ -19,12 +19,13 @@
     "region": {
       "ui:autofocus": true,
       "ui:emptyValue": "",
-      "ui:placeholder": "ui:emptyValue causes this field to always be valid despite being required",
+      "ui:placeholder": "region",
       "ui:autocomplete": "family-name"
     },
     "hub": {
       "ui:emptyValue": "",
-      "ui:autocomplete": "given-name"
+      "ui:autocomplete": "given-name",
+      "ui:placeholder": "hub"
     }
   }
 }

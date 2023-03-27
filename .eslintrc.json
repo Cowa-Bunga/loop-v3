@@ -18,13 +18,18 @@
               }
             ]
           }
-        ]
+        ],
+        "semi": 0,
+        "trailing-comma": 0,
+        "comma-dangle": "never"
+
       }
     },
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "rules": {
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

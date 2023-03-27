@@ -4,10 +4,21 @@ export default {
     height: '100vh',
     pt: '80px',
     background: '#063863',
+    backgroundImage:
+      'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
+    backgroundSize: 'cover',
+    backgroundPosition: '0 0',
     color: 'white',
   },
+
   menuList: {
     width: '100%',
     height: '100%',
-  }
-};
+  },
+
+  version: {
+    fontSize: '8px',
+    textAlign: 'center',
+    margin: '40px 0 10px 0',
+  },
+}
