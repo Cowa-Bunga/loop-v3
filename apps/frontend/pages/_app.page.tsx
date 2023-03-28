@@ -9,7 +9,7 @@ const darkTheme = createTheme({ palette: { mode: 'light' } })
 
 function LoopApp({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps: { session, ...pageProps }
 }: AppProps) {
   return (
     <>
@@ -25,7 +25,7 @@ function LoopApp({
         </main>
       </ThemeProvider>
     </>
-  );
+  )
 }
 
 export default LoopApp

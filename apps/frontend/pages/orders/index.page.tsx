@@ -11,7 +11,6 @@ export default function Orders() {
   })
 
   const tabClick = (index) => {
-    console.warn(index)
     setState({ ...state, tab: index })
   }
 

@@ -1,4 +1,4 @@
-export default {
+const ui = {
   container: {
     width: '300px',
     height: '100vh',
@@ -8,17 +8,27 @@ export default {
       'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
     backgroundSize: 'cover',
     backgroundPosition: '0 0',
-    color: 'white',
+    color: 'white'
   },
 
   menuList: {
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
 
   version: {
     fontSize: '8px',
     textAlign: 'center',
-    margin: '40px 0 10px 0',
+    margin: '40px 0 10px 0'
   },
+
+  menuItem: {
+    height: '50px'
+  },
+
+  homeIcon: {
+    mx: 1
+  }
 }
+
+export default ui

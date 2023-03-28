@@ -1,4 +1,4 @@
-export default {
+const ui = {
   container: {
     textAlign: 'center',
     width: '370px',
@@ -9,12 +9,15 @@ export default {
 
   select: {
     height: '40px',
-    my: 1,
+    my: 1
   },
 
   search: {
-    height: '50px', my: 1 
+    height: '50px',
+    my: 1
   },
 
-  
+  searchBox: { my: 1 }
 }
+
+export default ui

@@ -1,4 +1,4 @@
-export { default as NavBar } from './AppBar'
+export { default as NavBar } from './NavBar'
 export { default as LayoutBase } from './Layout/Base'
 export { default as LayoutSite } from './Layout/Site'
 export { default as Map } from './Map'

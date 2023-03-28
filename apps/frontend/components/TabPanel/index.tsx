@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box } from '@mui/material'
 
 export default function TabPanel({ children, value, index, ...other }) {
   return (
@@ -9,11 +9,7 @@ export default function TabPanel({ children, value, index, ...other }) {
       aria-labelledby={`tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ py: 3 }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
     </Box>
-  );
+  )
 }

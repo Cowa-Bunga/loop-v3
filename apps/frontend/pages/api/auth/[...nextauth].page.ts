@@ -7,7 +7,7 @@ export const authOptions = {
 
   pages: {
     signIn: '/auth/signin',
-    error: '/auth/signin',
+    error: '/auth/signin'
   },
 
   // session: {
@@ -19,7 +19,7 @@ export const authOptions = {
       name: 'loop-auth',
       credentials: {
         email: { label: 'Email', type: 'text' },
-        password: { label: 'Password', type: 'password' },
+        password: { label: 'Password', type: 'password' }
       },
 
       async authorize(credentials) {
@@ -30,8 +30,8 @@ export const authOptions = {
           method: 'post',
           data: {
             email: credentials.email,
-            password: credentials.password,
-          },
+            password: credentials.password
+          }
         })
 
         if (user) {
@@ -39,8 +39,8 @@ export const authOptions = {
         }
 
         return null
-      },
-    }),
+      }
+    })
   ],
 
   secret: process.env.NEXTAUTH_SECRET,
@@ -70,10 +70,10 @@ export const authOptions = {
   theme: {
     colorScheme: 'light',
     brandColor: '#FFF',
-    logo: 'https://www.loop.co.za/wp-content/uploads/2021/12/Logo.svg',
+    logo: 'https://www.loop.co.za/wp-content/uploads/2021/12/Logo.svg'
   },
 
-  debug: process.env.NODE_ENV === 'development',
+  debug: process.env.NODE_ENV === 'development'
 }
 
 export default NextAuth(authOptions)

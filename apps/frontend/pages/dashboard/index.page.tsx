@@ -2,7 +2,7 @@ import { Map, LayoutBase } from '../../components'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 
-export default () => {
+const Dashboard = () => {
   return (
     <LayoutBase>
       <Filter />
@@ -11,3 +11,5 @@ export default () => {
     </LayoutBase>
   )
 }
+
+export default Dashboard

@@ -1,14 +1,14 @@
 export const menuModel = [
-  { icon: '', title: 'Dashboard', link: '/' },
-  { icon: '', title: 'All Orders', link: '/orders' },
-  { icon: '', title: 'Driver Details', link: '/' },
-  { icon: '', title: 'Import Orders', link: '/' },
-  { icon: '', title: 'Training Centre', link: '/' },
-  { icon: '', title: 'Support', link: '/' },
-];
+  { id: 1, icon: '', title: 'Dashboard', link: '/' },
+  { id: 2, icon: '', title: 'All Orders', link: '/orders' },
+  { id: 3, icon: '', title: 'Driver Details', link: '/' },
+  { id: 4, icon: '', title: 'Import Orders', link: '/' },
+  { id: 5, icon: '', title: 'Training Centre', link: '/' },
+  { id: 6, icon: '', title: 'Support', link: '/' }
+]
 
 export const menuBottomModel = [
-  { icon: '', title: 'Client Admin', link: '/' },
-  { icon: '', title: 'Fleet Management', link: '/' },
-  { icon: '', title: 'Log Out', action: () => 'signOut' },
-];
+  { id: 7, icon: '', title: 'Client Admin', link: '/' },
+  { id: 8, icon: '', title: 'Fleet Management', link: '/' },
+  { id: 9, icon: '', title: 'Log Out', action: () => 'signOut' }
+]

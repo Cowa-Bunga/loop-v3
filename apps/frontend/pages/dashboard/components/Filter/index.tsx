@@ -1,4 +1,5 @@
 import { TabPanel } from '../../../../components'
+import Actions from './actions'
 import {
   Select,
   MenuItem,
@@ -8,40 +9,24 @@ import {
   Box,
   Drawer,
   Button,
-  Divider,
+  Divider
 } from '@mui/material'
 import { useState } from 'react'
+import ui from './style'
 
-export default function DashboardFilter() {
+
+const DashboardFilter = () => {
   const [state, setState] = useState({
     tab: 0,
     region: '',
-    hub: '',
+    hub: ''
   })
 
-  const tabChange = (index) => {
-    setState({ ...state, tab: index })
-  }
-
-  const regionChange = (e) => {
-    setState({ ...state, region: e.target.value })
-  }
-
-  const hubChange = (e) => {
-    setState({ ...state, hub: e.target.value })
-  }
+  const { tabChange, regionChange, hubChange } = Actions(state, setState)
 
   return (
     <Drawer anchor="left" variant="permanent">
-      <Box
-        sx={{
-          textAlign: 'center',
-          width: '370px',
-          height: '100vh',
-          pt: '80px',
-          px: 2,
-        }}
-      >
+      <Box sx={ui.container}>
         <Box>
           <Select
             variant="standard"
@@ -50,7 +35,7 @@ export default function DashboardFilter() {
             label="region"
             placeholder="region"
             onChange={regionChange}
-            sx={{ height: '40px', my: 1 }}
+            sx={ui.select}
           >
             <MenuItem value={10}>Western Cape</MenuItem>
             <MenuItem value={20}>Limpopo</MenuItem>
@@ -62,16 +47,16 @@ export default function DashboardFilter() {
             value={state.hub}
             label="hub"
             onChange={hubChange}
-            sx={{ height: '40px', my: 1 }}
+            sx={ui.select}
           >
             <MenuItem value={10}>HUB 234</MenuItem>
             <MenuItem value={20}>HUB 456</MenuItem>
           </Select>
         </Box>
 
-        <Box sx={{ my: 1 }}>
+        <Box sx={ui.searchBox}>
           <TextField
-            sx={{ height: '50px', my: 1 }}
+            sx={ui.search}
             variant="outlined"
             fullWidth
             type="search"
@@ -98,3 +83,6 @@ export default function DashboardFilter() {
     </Drawer>
   )
 }
+
+
+export default DashboardFilter

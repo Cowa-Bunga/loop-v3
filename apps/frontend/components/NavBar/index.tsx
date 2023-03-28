@@ -1,21 +1,13 @@
-import {
-  IconButton,
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Button,
-} from '@mui/material';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { useState } from 'react';
-import { Menu, LockOpen, Lock } from '@mui/icons-material';
-import MenuDrawer from '../Menu';
-
+import { IconButton, AppBar, Box, Toolbar, Typography } from '@mui/material'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { useState } from 'react'
+import { Menu, LockOpen, Lock } from '@mui/icons-material'
+import MenuDrawer from '../Menu'
 
 export default function NavBar() {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
   const [state, setState] = useState({
-    open: false
+    open: false,
   })
 
   return (
@@ -26,9 +18,14 @@ export default function NavBar() {
       >
         <Toolbar>
           {session && (
-            <IconButton size="large" edge="start" color="inherit" onClick={() => setState({ open: !state.open })}>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              onClick={() => setState({ open: !state.open })}
+            >
               <Menu />
-              <MenuDrawer open={state.open}/>
+              <MenuDrawer open={state.open} />
             </IconButton>
           )}
 
@@ -52,5 +49,5 @@ export default function NavBar() {
         </Toolbar>
       </AppBar>
     </Box>
-  );
+  )
 }

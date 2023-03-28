@@ -1,4 +1,4 @@
-
-
 // TODO:
-export default () => 'loading...'
+const Loader =  () => <>todo loading...</>
+
+export default Loader

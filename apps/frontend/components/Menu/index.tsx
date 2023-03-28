@@ -16,14 +16,23 @@ export default function Menu({ open }) {
       <Box sx={ui.container}>
         <MenuList sx={ui.menuList}>
           {menuModel.map((item) => (
-            <MenuItem sx={{ height: '50px' }} onClick={() => goto(item.link)}>
-              <HomeIcon sx={{ mx: 1 }} />
+            <MenuItem
+              key={item.id}
+              sx={ui.menuItem}
+              onClick={() => goto(item.link)}
+            >
+              <HomeIcon sx={ui.homeIcon} />
               {item.title}
             </MenuItem>
           ))}
+          
           <div style={{ position: 'fixed', bottom: 0, width: 300 }}>
             {menuBottomModel.map((item) => (
-              <MenuItem sx={{ height: '50px' }} onClick={() => goto(item.link)}>
+              <MenuItem
+                key={item.id}
+                sx={ui.menuItem}
+                onClick={() => goto(item.link)}
+              >
                 <HomeIcon sx={{ mx: 1 }} />
                 {item.title}
               </MenuItem>

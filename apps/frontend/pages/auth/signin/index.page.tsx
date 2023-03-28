@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { LayoutSite } from '../../../components'
-import { useSession, signIn } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-
+import Actions from './actions'
+import ui from './style'
 import {
   Card,
   Button,
@@ -12,36 +13,24 @@ import {
   Typography,
   Container,
   Divider,
-  Alert,
+  Alert
 } from '@mui/material'
 
-export default function SignIn() {
+const SignIn = () => {
   const router = useRouter()
   const { status } = useSession()
   const [state, setState] = useState({
     email: '',
-    password: '',
+    password: ''
   })
 
   useEffect(() => {
     if (status === 'authenticated') {
       router.push('/')
     }
-  }, [status])
+  }, [router, status])
 
-  const change = (e, key) => {
-    setState({ ...state, [key]: e.target.value })
-  }
-
-  const submit = (e) => {
-    e.preventDefault()
-    signIn('credentials', {
-      callbackUrl: `${window.location.origin}/dashboard`,
-      redirect: false,
-      email: state.email,
-      password: state.password,
-    }).then(console.warn)
-  }
+  const { change, submit } = Actions(state, setState)
 
   return (
     <LayoutSite>
@@ -49,34 +38,22 @@ export default function SignIn() {
         <Alert>Could not login. Please check your e-mail or password.</Alert>
       )}
 
-      <div
-        style={{
-          height: 'calc(100vh - 100px)',
-          backgroundImage:
-            'url(https://storage.googleapis.com/cb-dev-public-images/dos-icons/login_background.png)',
-          backgroundSize: 'cover',
-        }}
-      >
+      <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
           <Card
-            sx={{
-              mt: 20,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              p: 4,
-            }}
+            sx={ui.card}
           >
             <img
+              alt="logo"
               src="https://cb-dos-f5dovyimaq-ew.a.run.app/images/d611b99e56af790000810c1a1f4c5eaf.png"
-              style={{ height: '120px' }}
+              style={ui.img}
             />
 
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
 
-            <Box component="form" onSubmit={(e) => submit(e)} sx={{ mt: 3 }}>
+            <Box component="form" onSubmit={(e) => submit(e)} sx={ui.form}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
@@ -111,7 +88,7 @@ export default function SignIn() {
                 fullWidth
                 size="large"
                 variant="outlined"
-                sx={{ mt: 3, mb: 2, p: 1 }}
+                sx={ui.btn}
               >
                 Sign In
               </Button>
@@ -122,3 +99,5 @@ export default function SignIn() {
     </LayoutSite>
   )
 }
+
+export default SignIn

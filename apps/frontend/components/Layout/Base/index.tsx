@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
-import NavBar from '../../AppBar'
+import NavBar from '../../NavBar'
 
-export default function LayoutBase({ children }) {
+ const LayoutBase = ({ children }) => {
   return (
     <Box>
       <NavBar />
@@ -9,3 +9,5 @@ export default function LayoutBase({ children }) {
     </Box>
   )
 }
+
+export default LayoutBase

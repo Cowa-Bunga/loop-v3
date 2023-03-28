@@ -21,7 +21,7 @@
         ],
         "semi": 0,
         "trailing-comma": 0,
-        "comma-dangle": "never"
+        "comma-dangle": 0
 
       }
     },

@@ -21,6 +21,7 @@ const Register = () => {
         <Container component="main" maxWidth="xs">
           <Card sx={ui.card}>
             <img
+              alt="logo"
               src="https://cb-dos-f5dovyimaq-ew.a.run.app/images/d611b99e56af790000810c1a1f4c5eaf.png"
               style={{ height: '120px' }}
             />
