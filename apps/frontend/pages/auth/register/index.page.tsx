@@ -1,5 +1,3 @@
-import axios from 'axios'
-import { signIn } from 'next-auth/react'
 import { LayoutSite } from '../../../components'
 import {
   Card,

@@ -3,8 +3,8 @@ import Head from 'next/head'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { SessionProvider } from 'next-auth/react'
-import NavBar from '../components/AppBar'
 
+// light / dark
 const darkTheme = createTheme({ palette: { mode: 'light' } })
 
 function LoopApp({
