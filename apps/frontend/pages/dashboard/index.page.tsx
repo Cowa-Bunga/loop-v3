@@ -1,15 +1,21 @@
-import { Map, LayoutBase } from '../../components'
+import { Map, LayoutBase } from '@components'
+import { Stack } from '@mui/material'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 
-const Dashboard = () => {
-  return (
-    <LayoutBase>
+const Dashboard = () => (
+  <LayoutBase>
+    <Stack
+      direction="row"
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+    >
       <Filter />
       <Map />
       <Drivers />
-    </LayoutBase>
-  )
-}
+    </Stack>
+  </LayoutBase>
+)
 
 export default Dashboard
