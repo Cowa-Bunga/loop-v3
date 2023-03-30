@@ -1,17 +1,17 @@
 import { DataGrid } from '@mui/x-data-grid'
-import { useState } from 'react'
+import { useMergeState } from '@hooks'
 import { LayoutBase, TabPanel } from '../../components'
 import { Tabs, Tab, Divider, Box, Typography } from '@mui/material'
 //TODO:
 import { rows, columns } from './mock'
 
-export default function Orders() {
-  const [state, setState] = useState({
-    tab: 0,
+const Orders = () => {
+  const [state, setState] = useMergeState({
+    tab: 0
   })
 
-  const tabClick = (index) => {
-    setState({ ...state, tab: index })
+  const tabClick = (index: number) => {
+    setState({ tab: index })
   }
 
   return (
@@ -63,3 +63,5 @@ export default function Orders() {
     </LayoutBase>
   )
 }
+
+export default Orders

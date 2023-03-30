@@ -3,7 +3,7 @@ const ui = {
     width: '300px',
     height: '100vh',
     pt: '80px',
-    background: '#063863',
+    backgroundColor: 'primary.main',
     backgroundImage:
       'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
     backgroundSize: 'cover',
@@ -27,6 +27,16 @@ const ui = {
   },
 
   homeIcon: {
+    mx: 1
+  },
+
+  menuBottom: {
+    position: 'fixed',
+    bottom: 0,
+    width: 300
+  },
+
+  icon: {
     mx: 1
   }
 }

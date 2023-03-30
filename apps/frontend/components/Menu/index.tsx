@@ -26,19 +26,19 @@ export default function Menu({ open }) {
             </MenuItem>
           ))}
           
-          <div style={{ position: 'fixed', bottom: 0, width: 300 }}>
+          <Box sx={ui.menuBottom}>
             {menuBottomModel.map((item) => (
               <MenuItem
                 key={item.id}
                 sx={ui.menuItem}
                 onClick={() => goto(item.link)}
               >
-                <HomeIcon sx={{ mx: 1 }} />
+                <HomeIcon sx={ui.icon} />
                 {item.title}
               </MenuItem>
             ))}
             <Box sx={ui.version}>version: 3.1.0</Box>
-          </div>
+          </Box>
         </MenuList>
       </Box>
     </Drawer>

@@ -14,12 +14,12 @@
     "incremental": true,
     "types": ["jest", "node"],
     "paths": {
-      "@components/*": ["components/*"],
-      "@hooks": ["util/hooks"],
-      "@util/*": ["util/*"]
+      "@components": ["apps/frontend/components"],
+      "@hooks": ["apps/frontend/util/hooks"],
+      "@util/*": ["apps/frontend/util/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts", "*.yml"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts", "*.d.ts", "*.yml"],
   "exclude": [
     "node_modules",
     "jest.config.ts",

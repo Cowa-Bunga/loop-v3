@@ -4,20 +4,27 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { SessionProvider } from 'next-auth/react';
 import '../../../libs/i18n/config';
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { SessionProvider } from 'next-auth/react'
+import { useMergeState, useContext } from '@hooks'
+import { theme } from '@util/lib/mui5'
 
 // light / dark
 const darkTheme = createTheme({ palette: { mode: 'light' } });
 
-function LoopApp({
+const LoopApp = ({
   Component,
   pageProps: { session, ...pageProps }
-}: AppProps) {
+}: AppProps) => {
   return (
     <>
       <Head>
         <title>Loop</title>
       </Head>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <main className="app">
           <SessionProvider session={session}>

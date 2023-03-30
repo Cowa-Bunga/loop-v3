@@ -25,7 +25,7 @@ const DashboardFilter = () => {
   const { tabChange, regionChange, hubChange } = Actions(state, setState)
 
   return (
-    <Drawer anchor="left" variant="permanent">
+    <Drawer anchor="left" variant="persistent" open={true}>
       <Box sx={ui.container}>
         <Box>
           <Select

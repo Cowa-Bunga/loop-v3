@@ -7,15 +7,12 @@ import MenuDrawer from '../Menu'
 export default function NavBar() {
   const { data: session } = useSession()
   const [state, setState] = useState({
-    open: false,
+    open: false
   })
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: 10000, backgroundColor: '#063863' }}
-      >
+      <AppBar position="fixed" sx={{ zIndex: 10000 }}>
         <Toolbar>
           {session && (
             <IconButton

@@ -1,5 +1,12 @@
 import { memo, useCallback, useState } from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+import {
+  GoogleMap,
+  useJsApiLoader,
+  StreetViewPanorama,
+  DrawingManager
+} from '@react-google-maps/api'
+
+// @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
 
 const center = {
   lat: -3.745,
@@ -9,6 +16,7 @@ const center = {
 function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
+    // 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME'
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'NOT_A_KEY'
   })
 
@@ -21,6 +29,14 @@ function Map() {
     setMap(map)
   }, [])
 
+  const onLoadDrawing = (drawingManager) => {
+    console.log(drawingManager)
+  }
+
+  const onPolygonComplete = (polygon) => {
+    console.log(polygon)
+  }
+
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
   }, [])
@@ -32,7 +48,13 @@ function Map() {
       zoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
-    />
+    >
+      {/* <DrawingManager
+        onLoad={onLoadDrawing}
+        onPolygonComplete={onPolygonComplete}
+      />
+      <StreetViewPanorama /> */}
+    </GoogleMap>
   ) : null
 }
 
