@@ -1,11 +1,12 @@
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import { SessionProvider } from 'next-auth/react'
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { SessionProvider } from 'next-auth/react';
+import '../../../libs/i18n/config';
 
 // light / dark
-const darkTheme = createTheme({ palette: { mode: 'light' } })
+const darkTheme = createTheme({ palette: { mode: 'light' } });
 
 function LoopApp({
   Component,
@@ -25,7 +26,7 @@ function LoopApp({
         </main>
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default LoopApp
+export default LoopApp;
