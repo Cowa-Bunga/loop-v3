@@ -1,13 +1,10 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { SessionProvider } from 'next-auth/react';
 import '../../../libs/i18n/config';
-// import { theme } from '@util/lib/mui5';
-
-// light / dark
-const theme = createTheme({ palette: { mode: 'light' } });
+import { theme } from '@util/lib/mui5';
 
 const LoopApp = ({
   Component,
