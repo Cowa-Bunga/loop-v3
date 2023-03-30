@@ -7,7 +7,7 @@ const firebaseConfigDev = {
   appId: '1:997363095290:web:ac9608e141fa8ad93ddb43',
   measurementId: 'G-3P6K67GJB2',
   experimentalForceLongPolling: true
-}
+};
 
 const firebaseConfigProd = {
   apiKey: 'AIzaSyAw1rb33HQJAgqCt_rYRL6C_6kJNVBSGIc',
@@ -18,7 +18,7 @@ const firebaseConfigProd = {
   appId: '1:136986454700:web:e43ad1edeba6da3cd1cd09',
   measurementId: 'G-03ZPMNVXTZ',
   experimentalForceLongPolling: true
-}
+};
 
 export const firebaseAppConfig =
-  process.env.NODE_ENV === 'production' ? firebaseConfigProd : firebaseConfigDev
+  process.env.NODE_ENV === 'production' ? firebaseConfigProd : firebaseConfigDev;

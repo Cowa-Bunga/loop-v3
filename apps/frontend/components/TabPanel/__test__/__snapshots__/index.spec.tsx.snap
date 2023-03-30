@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabPanel should render successfully 1`] = `
+<body>
+  <div>
+    <div
+      aria-labelledby="tab-1"
+      class="MuiBox-root css-0"
+      id="tabpanel-1"
+      role="tabpanel"
+    >
+      <div
+        class="MuiBox-root css-1phy807"
+      >
+        panel
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -10,6 +10,6 @@ const ui = {
     mt: 4,
     width: '100%'
   }
-}
+};
 
-export default ui
+export default ui;

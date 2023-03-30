@@ -1,5 +1,5 @@
 // @see: usehooks-ts.com
-export * from 'usehooks-ts'
+export * from 'usehooks-ts';
 
 // @see: react.dev
 export {
@@ -17,12 +17,12 @@ export {
   useReducer,
   useSyncExternalStore,
   useTransition
-} from 'react'
+} from 'react';
 
 // @see: nextjs.org
-export { useRouter } from 'next/router'
+export { useRouter } from 'next/router';
 export { useSearchParams } from 'next/navigation';
 
 // custom hooks
-export { useMergeState } from './useMergeState'
-export { useAppContext } from './useAppContext'
+export { useMergeState } from './useMergeState';
+export { useAppContext } from './useAppContext';

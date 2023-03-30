@@ -41,7 +41,7 @@ export const menuModel: IMenu[] = [
     link: '/',
     permissions: []
   }
-]
+];
 
 export const menuBottomModel: IMenu[] = [
   {
@@ -65,4 +65,4 @@ export const menuBottomModel: IMenu[] = [
     action: () => 'signOut',
     permissions: []
   }
-]
+];

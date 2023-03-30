@@ -27,6 +27,6 @@ const ui = {
     mb: 2,
     p: 1
   }
-}
+};
 
-export default ui
+export default ui;

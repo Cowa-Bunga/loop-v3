@@ -1,10 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Index from '../pages/index.page';
+import Map from '../index';
 
-describe('Index', () => {
+describe('Map', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />);
+    const { baseElement } = render(<Map />);
     expect(baseElement).toBeTruthy();
+    expect(baseElement).toMatchSnapshot();
   });
 });

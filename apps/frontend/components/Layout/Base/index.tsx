@@ -1,5 +1,5 @@
-import { Box } from '@mui/material'
-import NavBar from '../../NavBar'
+import { Box } from '@mui/material';
+import NavBar from '../../NavBar';
 
  const LayoutBase = ({ children }) => {
   return (
@@ -7,7 +7,7 @@ import NavBar from '../../NavBar'
       <NavBar />
       <Box sx={{ pt: '60px' }}>{children}</Box>
     </Box>
-  )
-}
+  );
+};
 
-export default LayoutBase
+export default LayoutBase;

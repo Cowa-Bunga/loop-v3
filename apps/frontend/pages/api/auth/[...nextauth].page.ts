@@ -1,6 +1,6 @@
-import NextAuth, { NextAuthOptions } from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
-import axios from 'axios'
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import axios from 'axios';
 
 export const authOptions = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
@@ -22,21 +22,38 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' }
       },
 
-      async authorize(credentials) {
-        const user = await axios({
-          url: 'http://localhost:3333/api/auth/login',
-          method: 'post',
-          data: {
-            email: credentials.email,
-            password: credentials.password
+      async authorize({ email, password }, req) {
+        if (process.env.NX_MODE === 'duo') {
+          const user = await axios({
+            url: 'http://localhost:3333/api/auth/login',
+            method: 'post',
+            data: {
+              email,
+              password
+            }
+          });
+          if (user) {
+            return Promise.resolve(user?.data);
           }
-        })
-
-        if (user) {
-          return Promise.resolve(user?.data)
+          return null;
+        } else {
+          // TODO: remove this - DEV ONLY
+          return {
+            id: 'sadfg-sfdgg-sdfgg-sdfgg',
+            firstName: 'John',
+            lastName: 'Doe',
+            email: 'john@doe.co',
+            settings: {
+              theme: 'light'
+            },
+            _auth: {
+              email,
+              password,
+              token: 'sadfg-sfdgg-sdfgg-sdfgg',
+              permissions: []
+            }
+          };
         }
-
-        return null
       }
     })
   ],
@@ -56,15 +73,16 @@ export const authOptions = {
   //     return token;
   //   },
 
-  //   async session({ session, token }) {
-  //     session.user.accessToken = token.accessToken;
-  //     session.user.refreshToken = token.refreshToken;
-  //     session.user.accessTokenExpires = token.accessTokenExpires;
+  async session({ session, token }) {
+    console.warn('next-auth: session cb', session, token);
+    session.user.accessToken = token.accessToken;
+    session.user.refreshToken = token.refreshToken;
+    session.user.accessTokenExpires = token.accessTokenExpires;
 
-  //     return session;
-  //   },
-  // },
+    return session;
+  },
 
+  // signin page theming
   theme: {
     colorScheme: 'light',
     brandColor: '#FFF',
@@ -72,6 +90,6 @@ export const authOptions = {
   },
 
   debug: process.env.NODE_ENV === 'development'
-}
+};
 
-export default NextAuth(authOptions as NextAuthOptions)
+export default NextAuth(authOptions as NextAuthOptions);

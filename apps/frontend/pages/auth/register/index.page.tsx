@@ -1,4 +1,4 @@
-import { LayoutSite } from '../../../components'
+import { LayoutSite } from '../../../components';
 import {
   Card,
   Button,
@@ -8,12 +8,12 @@ import {
   Typography,
   Container,
   Divider,
-} from '@mui/material'
-import Actions from './actions'
-import ui from './style'
+} from '@mui/material';
+import Actions from './actions';
+import ui from './style';
 
 const Register = () => {
-  const { submit } = Actions()
+  const { submit } = Actions();
 
   return (
     <LayoutSite>
@@ -91,7 +91,7 @@ const Register = () => {
         </Container>
       </div>
     </LayoutSite>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

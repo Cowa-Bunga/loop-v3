@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many --parallel --target=serve --projects=frontend",
-    "test": "jest"
+    "start": "NX_MODE=frontend nx serve frontend",
+    "duo": "NX_MODE=duo nx run-many --parallel --target=serve --projects=frontend,backend",
+    "test": "nx test",
+    "build": "nx build",
+    "lint": "nx lint",
+    "e2e": "nx e2e frontend-e2e"
   },
   "private": true,
   "devDependencies": {
@@ -26,6 +30,7 @@
     "@nrwl/webpack": "15.8.6",
     "@nrwl/workspace": "15.8.6",
     "@testing-library/react": "14.0.0",
+    "@tomfreudenberg/next-auth-mock": "^0.5.6",
     "@types/jest": "^29.4.0",
     "@types/node": "18.14.2",
     "@types/passport-jwt": "^3.0.8",
@@ -70,9 +75,6 @@
     "@nestjs/typeorm": "^9.0.1",
     "@next-auth/firebase-adapter": "^0.0.2-canary.207",
     "@react-google-maps/api": "^2.18.1",
-    "@rjsf/core": "^5.3.1",
-    "@rjsf/utils": "^5.3.1",
-    "@rjsf/validator-ajv6": "^5.3.1",
     "axios": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.14.0",

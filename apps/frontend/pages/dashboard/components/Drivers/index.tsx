@@ -1,5 +1,5 @@
-import { Stack, Alert, Box, Drawer, TextField } from '@mui/material'
-import ui from './style'
+import { Stack, Alert, Box, Drawer, TextField } from '@mui/material';
+import ui from './style';
 
 const Drivers = () => (
   <Drawer anchor="right" variant="permanent">
@@ -18,6 +18,6 @@ const Drivers = () => (
       </Box>
     </Box>
   </Drawer>
-)
+);
 
-export default Drivers
+export default Drivers;
