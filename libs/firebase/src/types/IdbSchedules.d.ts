@@ -1,6 +1,5 @@
-
 // <root>
-interface IdbSchedules {
+export interface IdbSchedules {
   uuid: string
 
   clients: string[]

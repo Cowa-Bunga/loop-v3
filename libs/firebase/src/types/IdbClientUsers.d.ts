@@ -1,5 +1,4 @@
-
-interface IdbClientUsersClients {
+export interface IdbClientUsersClients {
   uuid: string
   permissions: IdbPermissions
   user_client_ref: string
@@ -7,7 +6,7 @@ interface IdbClientUsersClients {
 }
 
 // <root>
-interface IdbClientUsers {
+export interface IdbClientUsers {
   uuid: string
   clients: IdbClientUsersClients[]
   created_at: string

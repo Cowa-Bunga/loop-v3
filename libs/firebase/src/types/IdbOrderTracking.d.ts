@@ -1,6 +1,5 @@
-
 // <root>
-interface IdbOrderTracking {
+export interface IdbOrderTracking {
   uuid: string
 
   client_id: string

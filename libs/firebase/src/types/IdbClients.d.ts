@@ -1,45 +1,50 @@
-// Firestore Data model types/interfaces
+import {
+  EnumDbRatings,
+  EnumDbAbandonmentReasons,
+  EnumDbVehicleTypes,
+  EnumDbPermissionsScopes
+} from './IdbEnums'
 
-interface IdbApi {
+export interface IdbApi {
   key: string
 }
 
-interface IdbRecipientName {
+export interface IdbRecipientName {
   enabled: boolean
   selected: string[]
 }
 
-interface IdbClusterLock {
+export interface IdbClusterLock {
   collection_time_range: number
   strategy: string
   time: number
 }
 
-interface IdbCluster {
+export interface IdbCluster {
   distance: number
   enabled: boolean
   lock: IdbClusterLock
   size: number
 }
 
-interface IdbPooling {
+export interface IdbPooling {
   algorithm: string
   enabled: boolean
 }
 
-interface IdbTracking {
+export interface IdbTracking {
   logo_enabled: boolean
   ratings_enabled: boolean
 }
 
-interface IdbWebhooksDriverEvents {
+export interface IdbWebhooksDriverEvents {
   endlunch: boolean
   offline: boolean
   online: boolean
-  lunch : boolean
+  lunch: boolean
 }
 
-interface IdbOrderEvents {
+export interface IdbOrderEvents {
   abandoned: boolean
   arrived: boolean
   cancelled: boolean
@@ -49,14 +54,14 @@ interface IdbOrderEvents {
   returned: boolean
 }
 
-interface IdbWebhooks {
+export interface IdbWebhooks {
   driver_events: IdbWebhooksDriverEvents
   order_events: IdbOrderEvents
   general: string
   location: string
 }
 
-interface IdbTaskEvents {
+export interface IdbTaskEvents {
   abandoned: boolean
   arrived: boolean
   cancelled: boolean
@@ -65,7 +70,7 @@ interface IdbTaskEvents {
   started: boolean
 }
 
-interface IdbTripEvents {
+export interface IdbTripEvents {
   accepted: boolean
   arrived: boolean
   auto_assigned: boolean
@@ -76,7 +81,7 @@ interface IdbTripEvents {
   started: boolean
 }
 
-interface IdbSettings {
+export interface IdbSettings {
   cluster: IdbCluster
   pooling: IdbPooling
   scan: boolean
@@ -92,7 +97,7 @@ interface IdbSettings {
   trip_events: IdbTripEvents
 }
 
-interface IdbUsers {
+export interface IdbUsers {
   created_at: boolean
   created_by: boolean
   email: string
@@ -103,14 +108,14 @@ interface IdbUsers {
   permissions: IdbPermissions
 }
 
-interface IdbPermissions {
+export interface IdbPermissions {
   administrator: false
   fleet: boolean
   scopes: EnumDbPermissionsScopes
 }
 
 // <root>
-interface IdbClients {
+export interface IdbClients {
   uuid: string
 
   user: IdbUser[]

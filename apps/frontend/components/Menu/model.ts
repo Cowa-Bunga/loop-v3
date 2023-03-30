@@ -1,59 +1,68 @@
-export const menuModel = [
+export const menuModel: IMenu[] = [
   {
-    id: 1,
+    id: 'dashboard',
     icon: '',
     title: 'Dashboard',
-    link: '/'
+    link: '/',
+    permissions: []
   },
   {
-    id: 2,
+    id: 'orders',
     icon: '',
     title: 'All Orders',
-    link: '/orders'
+    link: '/orders',
+    permissions: []
   },
   {
-    id: 3,
+    id: 'drivers',
     icon: '',
     title: 'Driver Details',
-    link: '/'
+    link: '/',
+    permissions: []
   },
   {
-    id: 4,
+    id: 'import',
     icon: '',
     title: 'Import Orders',
-    link: '/'
+    link: '/',
+    permissions: []
   },
   {
-    id: 5,
+    id: 'training',
     icon: '',
     title: 'Training Centre',
-    link: '/'
+    link: '/',
+    permissions: []
   },
   {
-    id: 6,
+    id: 'support',
     icon: '',
     title: 'Support',
-    link: '/'
+    link: '/',
+    permissions: []
   }
 ]
 
-export const menuBottomModel = [
+export const menuBottomModel: IMenu[] = [
   {
-    id: 7,
+    id: 'admin',
     icon: '',
     title: 'Client Admin',
-    link: '/'
+    link: '/',
+    permissions: []
   },
   {
-    id: 8,
+    id: 'fleet',
     icon: '',
     title: 'Fleet Management',
-    link: '/'
+    link: '/',
+    permissions: []
   },
   {
-    id: 9,
+    id: 'signout',
     icon: '',
     title: 'Log Out',
-    action: () => 'signOut'
+    action: () => 'signOut',
+    permissions: []
   }
 ]

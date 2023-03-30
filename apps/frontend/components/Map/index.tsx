@@ -1,9 +1,9 @@
 import { memo, useCallback, useState } from 'react'
 import {
   GoogleMap,
-  useJsApiLoader,
-  StreetViewPanorama,
-  DrawingManager
+  useJsApiLoader
+  // StreetViewPanorama,
+  // DrawingManager
 } from '@react-google-maps/api'
 
 // @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
@@ -29,13 +29,13 @@ function Map() {
     setMap(map)
   }, [])
 
-  const onLoadDrawing = (drawingManager) => {
-    console.log(drawingManager)
-  }
+  // const onLoadDrawing = (drawingManager) => {
+  //   console.log(drawingManager)
+  // }
 
-  const onPolygonComplete = (polygon) => {
-    console.log(polygon)
-  }
+  // const onPolygonComplete = (polygon) => {
+  //   console.log(polygon)
+  // }
 
   const onUnmount = useCallback(function callback(map) {
     setMap(null)

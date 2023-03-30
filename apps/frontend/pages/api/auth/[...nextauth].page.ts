@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import axios from 'axios'
 
@@ -23,8 +23,6 @@ export const authOptions = {
       },
 
       async authorize(credentials) {
-        console.warn('authorize', credentials)
-
         const user = await axios({
           url: 'http://localhost:3333/api/auth/login',
           method: 'post',
@@ -76,4 +74,4 @@ export const authOptions = {
   debug: process.env.NODE_ENV === 'development'
 }
 
-export default NextAuth(authOptions)
+export default NextAuth(authOptions as NextAuthOptions)

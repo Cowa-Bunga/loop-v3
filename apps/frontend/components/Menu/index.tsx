@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { menuBottomModel, menuModel } from './model'
 import ui from './style'
 
-export default function Menu({ open }) {
+export default function Menu({ open }: { open: boolean }) {
   const router = useRouter()
 
   const goto = (url: string) => {
@@ -25,7 +25,7 @@ export default function Menu({ open }) {
               {item.title}
             </MenuItem>
           ))}
-          
+
           <Box sx={ui.menuBottom}>
             {menuBottomModel.map((item) => (
               <MenuItem

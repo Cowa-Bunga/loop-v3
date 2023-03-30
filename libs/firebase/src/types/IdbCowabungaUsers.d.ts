@@ -1,6 +1,4 @@
-
-
-interface IdbCowabungaUsersClients {
+export interface IdbCowabungaUsersClients {
   uuid: string
 
   created_at: string
@@ -10,11 +8,10 @@ interface IdbCowabungaUsersClients {
   password: string
 }
 
-
 // <root>
-interface IdbCowabungaUsers {
+export interface IdbCowabungaUsers {
   uuid: string
-  
+
   clients: IdbCowabungaUsersClients[]
   created_at: string
   promisee: string

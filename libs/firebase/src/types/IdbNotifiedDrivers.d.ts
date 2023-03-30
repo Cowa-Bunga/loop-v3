@@ -1,6 +1,5 @@
-
 // <root>
-interface IdbNotifiedDrivers {
+export interface IdbNotifiedDrivers {
   uuid: string
 
   client_id: string

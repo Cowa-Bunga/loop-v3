@@ -1,11 +1,9 @@
-
-
-interface IdbDeliveryPermissions {
+export interface IdbDeliveryPermissions {
   hub_id: string
   promisor_id: string
 }
 
-interface IdbLocation {
+export interface IdbLocation {
   accuracy: string
   altitude: string
   bearing: string
@@ -18,7 +16,7 @@ interface IdbLocation {
 }
 
 // <root>
-interface IdbDrivers {
+export interface IdbDrivers {
   uuid: string
 
   available: boolean

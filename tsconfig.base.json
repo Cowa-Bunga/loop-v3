@@ -16,7 +16,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@loop/firebase": ["libs/firebase/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

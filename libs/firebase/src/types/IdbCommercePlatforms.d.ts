@@ -1,12 +1,10 @@
-
-
-interface IdbIntegrationType {
+export interface IdbIntegrationType {
   loop_webhook: boolean
   polling_api: string
 }
 
 // <root>
-interface IdbEcommercePlatforms {
+export interface IdbEcommercePlatforms {
   uuid: string
 
   api_base_url: string

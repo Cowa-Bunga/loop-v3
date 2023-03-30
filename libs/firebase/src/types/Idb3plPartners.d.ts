@@ -1,10 +1,9 @@
-
-interface Idb3plPartnersHooks {
+export interface Idb3plPartnersHooks {
   created: string
 }
 
 // <root>
-interface Idb3plPartners {
+export interface Idb3plPartners {
   uuid: string
 
   name: string

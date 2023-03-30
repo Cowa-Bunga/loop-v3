@@ -1,10 +1,9 @@
-
-interface IdbUserClientsPermissions {
+export interface IdbUserClientsPermissions {
   administrator: boolean
   fleet: false
 }
 
-interface IdbUserClient {
+export interface IdbUserClient {
   client_ref: string
   logo: string
   name: string
@@ -13,7 +12,7 @@ interface IdbUserClient {
 }
 
 // <root>
-interface IdbUserClients {
+export interface IdbUserClients {
   uuid: string
 
   clients: IdbUserClient[]
