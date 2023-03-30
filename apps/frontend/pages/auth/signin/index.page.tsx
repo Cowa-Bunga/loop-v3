@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { LayoutSite } from '../../../components'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
-import Actions from './actions'
-import ui from './style'
+import { useEffect, useState } from 'react';
+import { LayoutSite } from '../../../components';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import Actions from './actions';
+import ui from './style';
 import {
   Card,
   Button,
@@ -14,35 +14,36 @@ import {
   Container,
   Divider,
   Alert
-} from '@mui/material'
+} from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import {authLocalePathBuilder} from "../../../../../libs/i18n/locale-utils";
 
 const SignIn = () => {
-  const router = useRouter()
-  const { status } = useSession()
+  const router = useRouter();
+  const { t } = useTranslation();
+  const { status } = useSession();
   const [state, setState] = useState({
     email: '',
     password: ''
-  })
+  });
 
   useEffect(() => {
     if (status === 'authenticated') {
-      router.push('/')
+      router.push('/');
     }
-  }, [router, status])
+  }, [router, status]);
 
-  const { change, submit } = Actions(state, setState)
+  const { change, submit } = Actions(state, setState);
 
   return (
     <LayoutSite>
       {router.query.error && (
-        <Alert>Could not login. Please check your e-mail or password.</Alert>
+        <Alert>{t(authLocalePathBuilder("error"))}</Alert>
       )}
 
       <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
-          <Card
-            sx={ui.card}
-          >
+          <Card sx={ui.card}>
             <img
               alt="logo"
               src="https://cb-dos-f5dovyimaq-ew.a.run.app/images/d611b99e56af790000810c1a1f4c5eaf.png"
@@ -50,7 +51,7 @@ const SignIn = () => {
             />
 
             <Typography component="h1" variant="h5">
-              Sign in
+              {t(authLocalePathBuilder("signIn"))}
             </Typography>
 
             <Box component="form" onSubmit={(e) => submit(e)} sx={ui.form}>
@@ -60,7 +61,7 @@ const SignIn = () => {
                     required
                     fullWidth
                     id="email"
-                    label="Email Address"
+                    label={t(authLocalePathBuilder("email"))}
                     name="email"
                     autoComplete="email"
                     value={state.email}
@@ -72,7 +73,7 @@ const SignIn = () => {
                     required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label={t(authLocalePathBuilder("password"))}
                     type="password"
                     id="password"
                     autoComplete="new-password"
@@ -90,14 +91,14 @@ const SignIn = () => {
                 variant="outlined"
                 sx={ui.btn}
               >
-                Sign In
+                {t(authLocalePathBuilder("signIn"))}
               </Button>
             </Box>
           </Card>
         </Container>
       </div>
     </LayoutSite>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

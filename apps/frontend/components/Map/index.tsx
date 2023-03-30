@@ -1,45 +1,51 @@
-import { memo, useCallback, useState } from 'react'
+// @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
+import { memo, useCallback, useEffect, useState } from 'react';
 import {
   GoogleMap,
   useJsApiLoader
   // StreetViewPanorama,
   // DrawingManager
-} from '@react-google-maps/api'
-
-// @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
+} from '@react-google-maps/api';
 
 const center = {
   lat: -3.745,
   lng: -38.523
-}
+};
 
 function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     // 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME'
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'NOT_A_KEY'
-  })
+  });
 
-  const height = window.innerHeight - 60
-  const [, setMap] = useState(null)
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    setHeight(window.innerHeight - 60);
+  }, []);
+
+  const [, setMap] = useState(null);
 
   const onLoad = useCallback((map) => {
-    const bounds = new window.google.maps.LatLngBounds(center)
-    map.fitBounds(bounds)
-    setMap(map)
-  }, [])
+    if (typeof window !== 'undefined') {
+      const bounds = new window.google.maps.LatLngBounds(center);
+      map.fitBounds(bounds);
+      setMap(map);
+    }
+  }, []);
 
   // const onLoadDrawing = (drawingManager) => {
-  //   console.log(drawingManager)
-  // }
+  //   console.log(drawingManager);
+  // };
 
   // const onPolygonComplete = (polygon) => {
-  //   console.log(polygon)
-  // }
+  //   console.log(polygon);
+  // };
 
   const onUnmount = useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+    setMap(null);
+  }, []);
 
   return isLoaded ? (
     <GoogleMap
@@ -55,7 +61,7 @@ function Map() {
       />
       <StreetViewPanorama /> */}
     </GoogleMap>
-  ) : null
+  ) : null;
 }
 
-export default memo(Map)
+export default memo(Map);

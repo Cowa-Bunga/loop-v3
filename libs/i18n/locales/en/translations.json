@@ -1,0 +1,8 @@
+{
+  "auth": {
+    "signIn": "Sign In",
+    "error": "Could not login. Please check your e-mail or password.",
+    "email" : "Email Address",
+    "password" : "Password"
+  }
+}

@@ -1,9 +1,10 @@
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import { SessionProvider } from 'next-auth/react'
-import { theme } from '@util/lib/mui5'
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { SessionProvider } from 'next-auth/react';
+import '../../../libs/i18n/config';
+import { theme } from '@util/lib/mui5';
 
 const LoopApp = ({
   Component,
@@ -23,7 +24,7 @@ const LoopApp = ({
         </main>
       </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default LoopApp
+export default LoopApp;

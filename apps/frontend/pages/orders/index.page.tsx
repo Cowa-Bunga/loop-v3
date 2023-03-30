@@ -1,18 +1,17 @@
-import { DataGrid } from '@mui/x-data-grid'
-import { useMergeState } from '@hooks'
-import { LayoutBase, TabPanel } from '../../components'
-import { Tabs, Tab, Divider, Box, Typography } from '@mui/material'
-//TODO:
-import { rows, columns } from './mock'
+import { DataGrid } from '@mui/x-data-grid';
+import { useMergeState } from '@hooks';
+import { LayoutBase, TabPanel } from '../../components';
+import { Tabs, Tab, Divider, Box, Typography } from '@mui/material';
+import { rows, columns } from './mock';
 
 const Orders = () => {
   const [state, setState] = useMergeState({
     tab: 0
-  })
+  });
 
   const tabClick = (index: number) => {
-    setState({ tab: index })
-  }
+    setState({ tab: index });
+  };
 
   return (
     <LayoutBase>
@@ -23,7 +22,7 @@ const Orders = () => {
         <br />
         <Divider />
         <br />
-        <Tabs value={state.tab} onChange={(i) => tabClick(i)}>
+        <Tabs value={state.tab} onChange={(e, v) => tabClick(v)}>
           <Tab label="Incomplete" />
           <Tab label="Completed" />
           <Tab label="Abandoned" />
@@ -61,7 +60,7 @@ const Orders = () => {
         </TabPanel>
       </Box>
     </LayoutBase>
-  )
-}
+  );
+};
 
-export default Orders
+export default Orders;
