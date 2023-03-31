@@ -16,7 +16,7 @@ import {
   Alert
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import {authLocalePathBuilder} from "../../../../../libs/i18n/locale-utils";
+import { authLocalePathBuilder } from '../../../../../libs/i18n/locale-utils';
 
 const SignIn = () => {
   const router = useRouter();
@@ -28,6 +28,8 @@ const SignIn = () => {
   });
 
   useEffect(() => {
+    // form session we will determine users client count
+    // if greater than 1 navigate to select client page
     if (status === 'authenticated') {
       router.push('/');
     }
@@ -37,9 +39,7 @@ const SignIn = () => {
 
   return (
     <LayoutSite>
-      {router.query.error && (
-        <Alert>{t(authLocalePathBuilder("error"))}</Alert>
-      )}
+      {router.query.error && <Alert>{t(authLocalePathBuilder('error'))}</Alert>}
 
       <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
@@ -51,7 +51,7 @@ const SignIn = () => {
             />
 
             <Typography component="h1" variant="h5">
-              {t(authLocalePathBuilder("signIn"))}
+              {t(authLocalePathBuilder('signIn'))}
             </Typography>
 
             <Box component="form" onSubmit={(e) => submit(e)} sx={ui.form}>
@@ -61,7 +61,7 @@ const SignIn = () => {
                     required
                     fullWidth
                     id="email"
-                    label={t(authLocalePathBuilder("email"))}
+                    label={t(authLocalePathBuilder('email'))}
                     name="email"
                     autoComplete="email"
                     value={state.email}
@@ -73,7 +73,7 @@ const SignIn = () => {
                     required
                     fullWidth
                     name="password"
-                    label={t(authLocalePathBuilder("password"))}
+                    label={t(authLocalePathBuilder('password'))}
                     type="password"
                     id="password"
                     autoComplete="new-password"
@@ -91,7 +91,7 @@ const SignIn = () => {
                 variant="outlined"
                 sx={ui.btn}
               >
-                {t(authLocalePathBuilder("signIn"))}
+                {t(authLocalePathBuilder('signIn'))}
               </Button>
             </Box>
           </Card>

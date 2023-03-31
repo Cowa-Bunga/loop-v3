@@ -5,6 +5,24 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { SessionProvider } from 'next-auth/react';
 import '../../../libs/i18n/config';
 import { theme } from '@util/lib/mui5';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+
+const firebaseConfigDev = {
+  apiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME',
+  authDomain: 'cb-dev-298308.firebaseapp.com',
+  projectId: 'cb-dev-298308',
+  storageBucket: 'cb-dev-298308.appspot.com',
+  messagingSenderId: '997363095290',
+  appId: '1:997363095290:web:ac9608e141fa8ad93ddb43',
+  measurementId: 'G-3P6K67GJB2',
+  experimentalForceLongPolling: true
+};
+
+export const firebaseApp = initializeApp(firebaseConfigDev);
+export const db = getFirestore(firebaseApp);
+export const firebaseAuth = getAuth(firebaseApp);
 
 const LoopApp = ({
   Component,
@@ -19,7 +37,7 @@ const LoopApp = ({
         <CssBaseline />
         <main className="app">
           <SessionProvider session={session}>
-            <Component {...pageProps} />
+            <Component db={db} {...pageProps} />
           </SessionProvider>
         </main>
       </ThemeProvider>

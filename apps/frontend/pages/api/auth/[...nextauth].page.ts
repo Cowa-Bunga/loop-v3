@@ -1,9 +1,14 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { IClientLogin } from '../../../../../libs/auth/IclientLogin';
+import { signInWithCustomToken } from 'firebase/auth';
+import { firebaseAuth } from '../../_app.page';
+import { IGenerateTokenResponse } from './auth.interface';
 
 export const authOptions = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  API_AUTH_URL: process.env.DOS_AUTH_URL,
 
   pages: {
     signIn: '/auth/signin',
@@ -25,7 +30,7 @@ export const authOptions = {
       async authorize({ email, password }, req) {
         if (process.env.NX_MODE === 'duo') {
           const user = await axios({
-            url: 'http://localhost:3333/api/auth/login',
+            url: `${authOptions.API_AUTH_URL}/client/fetch`,
             method: 'post',
             data: {
               email,
@@ -37,22 +42,39 @@ export const authOptions = {
           }
           return null;
         } else {
-          // TODO: remove this - DEV ONLY
-          return {
-            id: 'sadfg-sfdgg-sdfgg-sdfgg',
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john@doe.co',
-            settings: {
-              theme: 'light'
-            },
-            _auth: {
+          const res: AxiosResponse<IClientLogin> = await axios({
+            url: `${authOptions.API_AUTH_URL}/client/fetch`,
+            method: 'post',
+            data: {
               email,
-              password,
-              token: 'sadfg-sfdgg-sdfgg-sdfgg',
-              permissions: []
+              password
             }
-          };
+          });
+          if (res && res.data.success) {
+            const key = Object.keys(res.data.body.clients)[0];
+            const client = res.data.body.clients[key];
+
+            const token: AxiosResponse<IGenerateTokenResponse> = await axios({
+              url: `${authOptions.API_AUTH_URL}/client/generate-auth-token`,
+              method: 'post',
+              data: {
+                client_id: client.client_id,
+                user_id: client.user_id,
+                password
+              }
+            });
+
+            await signInWithCustomToken(
+              firebaseAuth,
+              token.data.firebase_token
+            );
+            return Promise.resolve({
+              ...res?.data,
+              ...token,
+              client_id: client.client_id
+            });
+          }
+          return null;
         }
       }
     })
@@ -60,27 +82,26 @@ export const authOptions = {
 
   secret: process.env.NEXTAUTH_SECRET,
 
-  // callbacks: {
-  //   async jwt({ token, user, account }) {
-  //     if (account && user) {
-  //       return {
-  //         ...token,
-  //         accessToken: user.token,
-  //         refreshToken: user.refreshToken,
-  //       };
-  //     }
-
-  //     return token;
-  //   },
-
-  async session({ session, token }) {
-    console.warn('next-auth: session cb', session, token);
-    session.user.accessToken = token.accessToken;
-    session.user.refreshToken = token.refreshToken;
-    session.user.accessTokenExpires = token.accessTokenExpires;
-
-    return session;
+  callbacks: {
+    //   async jwt({ token, user, account }) {
+    //     if (account && user) {
+    //       return {
+    //         ...token,
+    //         accessToken: user.token,
+    //         refreshToken: user.refreshToken,
+    //       };
+    //     }
+    //     return token;
   },
+
+  // async session({ session, token }) {
+  //   console.warn('next-auth: session cb', session, token);
+  //   session.user.accessToken = token.accessToken;
+  //   session.user.refreshToken = token.refreshToken;
+  //   session.user.accessTokenExpires = token.accessTokenExpires;
+  //
+  //   return session;
+  // },
 
   // signin page theming
   theme: {
@@ -92,4 +113,7 @@ export const authOptions = {
   debug: process.env.NODE_ENV === 'development'
 };
 
+// async generateTokenAndSignPayload: async (payload): Promise<IGenerateTokenResponse> => {
+//
+// }
 export default NextAuth(authOptions as NextAuthOptions);
