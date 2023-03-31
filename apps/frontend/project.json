@@ -44,6 +44,23 @@
         "buildTarget": "frontend:build:production"
       }
     },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "nx build frontend --prod"
+          },
+          {
+            "command": "nx export frontend"
+          },
+          {
+            "command": "npx firebase deploy --only hosting"
+          }
+        ],
+        "parallel": false
+      }
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

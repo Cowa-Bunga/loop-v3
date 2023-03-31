@@ -7,7 +7,7 @@ const { withNx } = require('@nrwl/next/plugins/with-nx');
  **/
 const nextConfig = {
   nx: {
-    svgr: false,
+    svgr: false
   },
   pageExtensions: ['page.tsx', 'page.ts']
 };
