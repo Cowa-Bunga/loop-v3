@@ -18,24 +18,15 @@ import { Auth } from 'firebase/auth';
 
 const Dashboard = () => {
   const db = useFirestore();
-  const firebaseAuth = getAuth(useFirebaseApp());
-  const { data, status } = useSession();
-
-  const session: ISessionUser = {
-    ...data.user
-  } as ISessionUser;
+  const { data } = useSession();
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      authFirebase(firebaseAuth, session.firebase_token)
-        .then(() => {
-          return getData(db, session.client_id);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [session, db]);
+    const session: ISessionUser = {
+      ...data.user
+    } as ISessionUser;
+
+    getData(db, session.client_id);
+  }, []);
 
   return (
     <LayoutBase>
@@ -52,10 +43,6 @@ const Dashboard = () => {
     </LayoutBase>
   );
 };
-
-async function authFirebase(firebaseAuth: Auth, token: string) {
-  return signInWithCustomToken(firebaseAuth, token);
-}
 
 async function getData(db: Firestore, clientId: string) {
   const ordersRef = collection(db, 'clients', clientId, 'orders');

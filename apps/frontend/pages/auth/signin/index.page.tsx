@@ -16,12 +16,16 @@ import {
   Alert
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { authLocalePathBuilder } from '../../../../../libs/i18n/locale-utils';
+import { authLocalePathBuilder } from '@locale/locale-utils';
+import { Auth, getAuth, signInWithCustomToken } from 'firebase/auth';
+import { ISessionUser } from '../../api/auth/auth.interface';
+import { useFirebaseApp } from 'reactfire';
 
 const SignIn = () => {
   const router = useRouter();
   const { t } = useTranslation();
-  const { status } = useSession();
+  const { data, status } = useSession();
+  const firebaseAuth = getAuth(useFirebaseApp());
   const [state, setState] = useState({
     email: '',
     password: ''
@@ -31,7 +35,13 @@ const SignIn = () => {
     // form session we will determine users client count
     // if greater than 1 navigate to select client page
     if (status === 'authenticated') {
-      router.push('/');
+      const session: ISessionUser = {
+        ...data.user
+      } as ISessionUser;
+
+      authFirebase(firebaseAuth, session.firebase_token).then(() =>
+        router.push('/')
+      );
     }
   }, [router, status]);
 
@@ -100,5 +110,9 @@ const SignIn = () => {
     </LayoutSite>
   );
 };
+
+async function authFirebase(firebaseAuth: Auth, token: string) {
+  return signInWithCustomToken(firebaseAuth, token);
+}
 
 export default SignIn;
