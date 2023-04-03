@@ -16,10 +16,19 @@
     "paths": {
       "@components": ["apps/frontend/components"],
       "@hooks": ["apps/frontend/util/hooks"],
-      "@util/*": ["apps/frontend/util/*"]
+      "@util/*": ["apps/frontend/util/*"],
+      "@locale/*": ["libs/i18n/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts", "*.d.ts", "*.yml"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "next-env.d.ts",
+    "*.d.ts",
+    "*.yml"
+  ],
   "exclude": [
     "node_modules",
     "jest.config.ts",

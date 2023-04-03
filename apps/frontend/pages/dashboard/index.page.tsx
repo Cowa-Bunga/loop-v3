@@ -3,13 +3,22 @@ import { Stack } from '@mui/material';
 import Filter from './components/Filter';
 import Drivers from './components/Drivers';
 import { useEffect } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  Firestore
+} from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
-import { db, firebaseAuth } from '../_app.page';
-import { signInWithCustomToken } from 'firebase/auth';
+import { getAuth, signInWithCustomToken } from 'firebase/auth';
 import { ISessionUser } from '../api/auth/auth.interface';
+import { useFirebaseApp, useFirestore } from 'reactfire';
+import { Auth } from 'firebase/auth';
 
 const Dashboard = () => {
+  const db = useFirestore();
+  const firebaseAuth = getAuth(useFirebaseApp());
   const { data, status } = useSession();
 
   const session: ISessionUser = {
@@ -18,9 +27,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (status === 'authenticated') {
-      authFirebase(session.firebase_token)
+      authFirebase(firebaseAuth, session.firebase_token)
         .then(() => {
-          return getData(session.client_id);
+          return getData(db, session.client_id);
         })
         .catch((error) => {
           console.log(error);
@@ -44,11 +53,11 @@ const Dashboard = () => {
   );
 };
 
-async function authFirebase(token: string) {
+async function authFirebase(firebaseAuth: Auth, token: string) {
   return signInWithCustomToken(firebaseAuth, token);
 }
 
-async function getData(clientId: string) {
+async function getData(db: Firestore, clientId: string) {
   const ordersRef = collection(db, 'clients', clientId, 'orders');
   const ordersQuery = query(ordersRef, where('status', '==', 'pending'));
   const getOrders = await getDocs(ordersQuery);

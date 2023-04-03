@@ -3,11 +3,9 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { SessionProvider } from 'next-auth/react';
-import '../../../libs/i18n/config';
+import '@locale/config';
 import { theme } from '@util/lib/mui5';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { FirebaseAppProvider } from 'reactfire';
 
 const firebaseConfigDev = {
   apiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME',
@@ -19,17 +17,12 @@ const firebaseConfigDev = {
   measurementId: 'G-3P6K67GJB2',
   experimentalForceLongPolling: true
 };
-
-export const firebaseApp = initializeApp(firebaseConfigDev);
-export const db = getFirestore(firebaseApp);
-export const firebaseAuth = getAuth(firebaseApp);
-
 const LoopApp = ({
   Component,
   pageProps: { session, ...pageProps }
 }: AppProps) => {
   return (
-    <>
+    <FirebaseAppProvider firebaseConfig={firebaseConfigDev}>
       <Head>
         <title>Loop</title>
       </Head>
@@ -37,11 +30,11 @@ const LoopApp = ({
         <CssBaseline />
         <main className="app">
           <SessionProvider session={session}>
-            <Component db={db} {...pageProps} />
+            <Component {...pageProps} />
           </SessionProvider>
         </main>
       </ThemeProvider>
-    </>
+    </FirebaseAppProvider>
   );
 };
 
