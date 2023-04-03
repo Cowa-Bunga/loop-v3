@@ -3,24 +3,28 @@ import { Stack } from '@mui/material';
 import Filter from './components/Filter';
 import Drivers from './components/Drivers';
 import { useEffect } from 'react';
-import {
-  collection,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-  Firestore
-} from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
-import { db } from '../_app.page';
+import { db, firebaseAuth } from '../_app.page';
+import { signInWithCustomToken } from 'firebase/auth';
+import { ISessionUser } from '../api/auth/auth.interface';
 
 const Dashboard = () => {
-  const { data: session, status } = useSession();
+  const { data, status } = useSession();
+
+  const session: ISessionUser = {
+    ...data.user
+  } as ISessionUser;
 
   useEffect(() => {
     if (status === 'authenticated') {
-      // getData(session.user.client_id);
+      authFirebase(session.firebase_token)
+        .then(() => {
+          return getData(session.client_id);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [session, db]);
 
@@ -40,9 +44,12 @@ const Dashboard = () => {
   );
 };
 
+async function authFirebase(token: string) {
+  return signInWithCustomToken(firebaseAuth, token);
+}
+
 async function getData(clientId: string) {
-  console.log(typeof db);
-  const ordersRef = collection(db, 'clients', 'ayce3l5n0QSA7FO7CDtr', 'orders');
+  const ordersRef = collection(db, 'clients', clientId, 'orders');
   const ordersQuery = query(ordersRef, where('status', '==', 'pending'));
   const getOrders = await getDocs(ordersQuery);
 

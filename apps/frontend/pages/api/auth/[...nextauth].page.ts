@@ -64,11 +64,6 @@ export const authOptions = {
               }
             });
 
-            await signInWithCustomToken(
-              firebaseAuth,
-              token.data.firebase_token
-            );
-
             return {
               ...res?.data,
               ...token.data,
