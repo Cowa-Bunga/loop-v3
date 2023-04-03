@@ -2,8 +2,6 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios, { AxiosResponse } from 'axios';
 import { IClientLogin } from '../../../../../libs/auth/IclientLogin';
-import { signInWithCustomToken } from 'firebase/auth';
-import { firebaseAuth } from '../../_app.page';
 import { IGenerateTokenResponse } from './auth.interface';
 
 export const authOptions = {
