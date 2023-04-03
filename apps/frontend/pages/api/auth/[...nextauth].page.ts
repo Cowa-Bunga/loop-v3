@@ -15,9 +15,9 @@ export const authOptions = {
     error: '/auth/signin'
   },
 
-  // session: {
-  //   strategy: 'jwt'
-  // },
+  session: {
+    strategy: 'jwt'
+  },
 
   providers: [
     CredentialsProvider({
@@ -68,11 +68,12 @@ export const authOptions = {
               firebaseAuth,
               token.data.firebase_token
             );
-            return Promise.resolve({
+
+            return {
               ...res?.data,
-              ...token,
+              ...token.data,
               client_id: client.client_id
-            });
+            };
           }
           return null;
         }
@@ -83,25 +84,21 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 
   callbacks: {
-    //   async jwt({ token, user, account }) {
-    //     if (account && user) {
-    //       return {
-    //         ...token,
-    //         accessToken: user.token,
-    //         refreshToken: user.refreshToken,
-    //       };
-    //     }
-    //     return token;
+    async jwt({ token, user }) {
+      if (user) {
+        return {
+          ...user.body,
+          auth_token: user.token,
+          firebase_token: user.firebase_token,
+          client_id: user.client_id
+        };
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      return { ...session, user: token };
+    }
   },
-
-  // async session({ session, token }) {
-  //   console.warn('next-auth: session cb', session, token);
-  //   session.user.accessToken = token.accessToken;
-  //   session.user.refreshToken = token.refreshToken;
-  //   session.user.accessTokenExpires = token.accessTokenExpires;
-  //
-  //   return session;
-  // },
 
   // signin page theming
   theme: {
@@ -112,8 +109,4 @@ export const authOptions = {
 
   debug: process.env.NODE_ENV === 'development'
 };
-
-// async generateTokenAndSignPayload: async (payload): Promise<IGenerateTokenResponse> => {
-//
-// }
 export default NextAuth(authOptions as NextAuthOptions);

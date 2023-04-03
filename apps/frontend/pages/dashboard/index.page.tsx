@@ -16,13 +16,11 @@ import { useSession } from 'next-auth/react';
 import { db } from '../_app.page';
 
 const Dashboard = () => {
-  const session = useSession();
+  const { data: session, status } = useSession();
+
   useEffect(() => {
-    console.log('I should be getting data');
-    console.log(session.data);
-    if (session.data) {
-      console.log('I am getting data');
-      getData(session.data.client_id);
+    if (status === 'authenticated') {
+      // getData(session.user.client_id);
     }
   }, [session, db]);
 
@@ -44,7 +42,7 @@ const Dashboard = () => {
 
 async function getData(clientId: string) {
   console.log(typeof db);
-  const ordersRef = collection(db, 'clients', '51GgLzzTLXz37UGDoaj9', 'orders');
+  const ordersRef = collection(db, 'clients', 'ayce3l5n0QSA7FO7CDtr', 'orders');
   const ordersQuery = query(ordersRef, where('status', '==', 'pending'));
   const getOrders = await getDocs(ordersQuery);
 
