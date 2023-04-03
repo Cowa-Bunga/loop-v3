@@ -83,5 +83,6 @@
       }
     }
   },
-  "tags": []
+  "tags": ["frontend"],
+  "assets": ["apps/frontend/Dockerfile", "apps/frontend/app.json"]
 }

@@ -3,6 +3,8 @@ import { useSession } from 'next-auth/react';
 import SignIn from './auth/signin/index.page';
 import { FirestoreProvider, useFirebaseApp } from 'reactfire';
 import { getFirestore } from 'firebase/firestore';
+import path from 'path';
+path.resolve('./next.config.js');
 
 export function LoopFrontend() {
   const { data: session } = useSession();
