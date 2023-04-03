@@ -11,17 +11,15 @@ import {
   Firestore
 } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
-import { getAuth, signInWithCustomToken } from 'firebase/auth';
 import { ISessionUser } from '../api/auth/auth.interface';
-import { useFirebaseApp, useFirestore } from 'reactfire';
-import { Auth } from 'firebase/auth';
+import { useFirestore } from 'reactfire';
 
 const Dashboard = () => {
   const db = useFirestore();
   const { data } = useSession();
 
   useEffect(() => {
-    const session: ISessionUser = {
+    const session = {
       ...data.user
     } as ISessionUser;
 

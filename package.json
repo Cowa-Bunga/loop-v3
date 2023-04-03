@@ -11,6 +11,10 @@
     "e2e": "nx e2e frontend-e2e"
   },
   "private": true,
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "@commitlint/cli": "^17.5.1",

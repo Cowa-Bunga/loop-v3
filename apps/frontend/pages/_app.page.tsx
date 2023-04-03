@@ -6,6 +6,7 @@ import { SessionProvider } from 'next-auth/react';
 import '@locale/config';
 import { theme } from '@util/lib/mui5';
 import { FirebaseAppProvider } from 'reactfire';
+import { NoSsr } from '@mui/material';
 
 const firebaseConfigDev = {
   apiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME',
@@ -17,25 +18,32 @@ const firebaseConfigDev = {
   measurementId: 'G-3P6K67GJB2',
   experimentalForceLongPolling: true
 };
+
 const LoopApp = ({
   Component,
   pageProps: { session, ...pageProps }
 }: AppProps) => {
   return (
-    <FirebaseAppProvider firebaseConfig={firebaseConfigDev}>
-      <Head>
-        <title>Loop</title>
-      </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <main className="app">
-          <SessionProvider session={session}>
-            <Component {...pageProps} />
-          </SessionProvider>
-        </main>
-      </ThemeProvider>
-    </FirebaseAppProvider>
+    <NoSsr>
+      <FirebaseAppProvider firebaseConfig={firebaseConfigDev}>
+        <Head>
+          <title>Loop</title>
+        </Head>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <main className="app">
+            <SessionProvider session={session}>
+              <Component {...pageProps} />
+            </SessionProvider>
+          </main>
+        </ThemeProvider>
+      </FirebaseAppProvider>
+    </NoSsr>
   );
 };
 
 export default LoopApp;
+
+export const getServerSideProps = async () => {
+  return null;
+};

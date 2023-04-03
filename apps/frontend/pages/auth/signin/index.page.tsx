@@ -35,7 +35,7 @@ const SignIn = () => {
     // form session we will determine users client count
     // if greater than 1 navigate to select client page
     if (status === 'authenticated') {
-      const session: ISessionUser = {
+      const session = {
         ...data.user
       } as ISessionUser;
 
