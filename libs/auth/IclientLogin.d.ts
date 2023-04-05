@@ -14,10 +14,10 @@ export interface IClient {
   client_id: string;
   logo: string;
   name: string;
-  permissions: IClientPermissions;
+  permissions: IUserPermissions;
 }
 
-export interface IClientPermissions {
+export interface IUserPermissions {
   fleet: boolean;
   administrator: boolean;
   scopes: string[];
