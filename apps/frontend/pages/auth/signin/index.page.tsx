@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { LayoutSite } from '../../../components';
-import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Actions from './actions';
 import ui from './style';
@@ -17,14 +16,19 @@ import {
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { authLocalePathBuilder } from '@locale/locale-utils';
-import { Auth, getAuth, signInWithCustomToken } from 'firebase/auth';
+import FirebaseHOC from '../../../components/hoc/firebase.hoc';
 import { ISessionUser } from '../../api/auth/auth.interface';
+import { authFirebase } from '@util/lib/firebase';
+import { useSession } from 'next-auth/react';
+import { useUserContext } from '../../../context/user_context';
+import { getAuth } from 'firebase/auth';
 import { useFirebaseApp } from 'reactfire';
 
 const SignIn = () => {
   const router = useRouter();
-  const { t } = useTranslation();
   const { data, status } = useSession();
+  const { t } = useTranslation();
+  const user = useUserContext();
   const firebaseAuth = getAuth(useFirebaseApp());
   const [state, setState] = useState({
     email: '',
@@ -32,18 +36,23 @@ const SignIn = () => {
   });
 
   useEffect(() => {
-    // form session we will determine users client count
-    // if greater than 1 navigate to select client page
     if (status === 'authenticated') {
       const session = {
         ...data.user
       } as ISessionUser;
 
-      authFirebase(firebaseAuth, session.firebase_token).then(() =>
-        router.push('/')
-      );
+      user.firebase_token = session.firebase_token;
+
+      if (session.clients.length == 1) {
+        user.client = session.clients[0];
+      } else {
+        // navigate to client select page
+        router.push('/auth/client_select');
+      }
+
+      authFirebase(firebaseAuth, session.firebase_token).then(() => null);
     }
-  }, [router, status]);
+  }, [status]);
 
   const { change, submit } = Actions(state, setState);
 
@@ -111,8 +120,4 @@ const SignIn = () => {
   );
 };
 
-async function authFirebase(firebaseAuth: Auth, token: string) {
-  return signInWithCustomToken(firebaseAuth, token);
-}
-
-export default SignIn;
+export default FirebaseHOC(SignIn);
