@@ -2,7 +2,9 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios, { AxiosResponse } from 'axios';
 import { IClientLogin } from '../../../../../libs/auth/IclientLogin';
-import { IGenerateTokenResponse } from './auth.interface';
+import { IGenerateTokenResponse, ISessionUser } from './auth.interface';
+import { modelClientList } from '@util/models/client.model';
+import { Auth, signInWithCustomToken } from 'firebase/auth';
 
 export const authOptions = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
@@ -65,7 +67,7 @@ export const authOptions = {
             return {
               ...res?.data,
               ...token.data,
-              client_id: client.client_id
+              ...client
             };
           }
           return null;
@@ -80,11 +82,21 @@ export const authOptions = {
     async jwt({ token, user }) {
       if (user) {
         return {
-          ...user.body,
-          auth_token: user.token,
+          user_id: user.body.id,
+          client_id: user.client_id,
+          logoUrl: user.logo,
+          email: user.email,
+          token: user.token,
           firebase_token: user.firebase_token,
-          client_id: user.client_id
-        };
+          permissions: {
+            fleet: user.permissions.fleet,
+            administrator: user.permissions.administrator,
+            scopes: user.permissions.scopes
+          },
+          tokenType: user.token_type,
+          maxAge: user.expires_in,
+          clients: modelClientList(user.body.clients)
+        } satisfies ISessionUser;
       }
       return token;
     },
@@ -102,4 +114,5 @@ export const authOptions = {
 
   debug: process.env.NODE_ENV === 'development'
 };
+
 export default NextAuth(authOptions as NextAuthOptions);
