@@ -1,9 +1,17 @@
-import { useEffect, useState } from 'react';
-import { LayoutSite } from '../../../components';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { LayoutSite } from '@components';
+import { authLocalePathBuilder } from '@locale/locale-utils';
+import { Auth, getAuth, signInWithCustomToken } from 'firebase/auth';
+import { ISessionUser } from '../../api/auth/auth.interface';
 import Actions from './actions';
 import ui from './style';
+import {
+  useFirebaseApp,
+  useSession,
+  useRouter,
+  useEffect,
+  useState,
+  useTranslation
+} from '@hooks';
 import {
   Card,
   Button,
@@ -15,11 +23,6 @@ import {
   Divider,
   Alert
 } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { authLocalePathBuilder } from '@locale/locale-utils';
-import { Auth, getAuth, signInWithCustomToken } from 'firebase/auth';
-import { ISessionUser } from '../../api/auth/auth.interface';
-import { useFirebaseApp } from 'reactfire';
 
 const SignIn = () => {
   const router = useRouter();
@@ -32,20 +35,15 @@ const SignIn = () => {
   });
 
   useEffect(() => {
-    // form session we will determine users client count
-    // if greater than 1 navigate to select client page
     if (status === 'authenticated') {
-      const session = {
-        ...data.user
-      } as ISessionUser;
-
+      const session = { ...data.user } as ISessionUser;
       authFirebase(firebaseAuth, session.firebase_token).then(() =>
         router.push('/')
       );
     }
-  }, [router, status]);
+  }, [data.user, firebaseAuth, router, status]);
 
-  const { change, submit } = Actions(state, setState);
+  const { change, submit } = Actions(state, setState, router);
 
   return (
     <LayoutSite>

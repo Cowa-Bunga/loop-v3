@@ -1,13 +1,14 @@
 import { signIn } from 'next-auth/react';
 
-const Actions = (state, setState) => ({
+const Actions = (state, setState, router) => ({
   change: (e, key: string) => {
     setState({ ...state, [key]: e.target.value });
   },
 
   submit: (e) => {
-    e.preventDefault();
+    router.e.preventDefault();
     signIn('credentials', {
+      // TODO: router version
       callbackUrl: `${window.location.origin}/dashboard`,
       redirect: false,
       email: state.email,

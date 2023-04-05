@@ -12,7 +12,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "types": ["jest", "node"],
     "paths": {
       "@components": ["apps/frontend/components"],
       "@hooks": ["apps/frontend/util/hooks"],

@@ -1,23 +1,33 @@
-FROM node:16-alpine AS dependencies
+# Build the docker image with `nx docker-build frontend`.
+# Run the container with `docker run -p 3000:3000 -t frontend`.
+# Tip: Modify "docker-build" options in project.json to change docker build args.
+FROM docker.io/node:lts-alpine
 RUN apk add --no-cache libc6-compat
-WORKDIR /home/app
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm i
-FROM node:16-alpine AS builder
-WORKDIR /home/app
-COPY --from=dependencies /home/app/node_modules ./node_modules
-COPY . .
-ENV NEXT_TELEMETRY_DISABLED 1
-ARG NODE_ENV
-ENV NODE_ENV=”${NODE_ENV}”
-RUN npm run build
-FROM mhart/alpine-node:slim-16 AS runner
-WORKDIR /home/app
-ENV NEXT_TELEMETRY_DISABLED 1
-COPY --from=builder /home/app/.next/standalone ./standalone
-COPY --from=builder /home/app/public /home/app/standalone/public
-COPY --from=builder /home/app/.next/static /home/app/standalone/.next/static
+RUN apk add --no-cache python3 g++ make
+
+ENV HOST=0.0.0.0
+ENV PORT=3000
+ENV NODE_ENV=production
+ENV NEXTAUTH_URL=http://localhost:3000
+ENV PUBLIC_NEXTAUTH_URL=http://localhost:3000
+ENV NEXTAUTH_SECRET=this-is-a-secret-that-isnt-really-much-of-a-secret-right-now
+
+WORKDIR /app
+
+RUN addgroup --system frontend && \
+  adduser --system -G frontend frontend
+
+COPY dist/apps/frontend frontend
+COPY apps/frontend/app.json frontend
+COPY package.json frontend
+
+RUN chown -R frontend:frontend .
+
+WORKDIR /app/frontend
+
+RUN npm --omit=dev -f install
+RUN npm i -g next@13.1.1 nx
+
 EXPOSE 3000
-ENV PORT 3000
-CMD [“node”, “./standalone/server.js”]
+
+CMD [ "next", "start" ]
