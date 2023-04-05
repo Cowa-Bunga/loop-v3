@@ -1,14 +1,33 @@
-FROM node:18-alpine AS runner
+# Build the docker image with `nx docker-build frontend`.
+# Run the container with `docker run -p 3000:3000 -t frontend`.
+# Tip: Modify "docker-build" options in project.json to change docker build args.
+FROM docker.io/node:lts-alpine
+RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache python3 g++ make
+
+ENV HOST=0.0.0.0
+ENV PORT=3000
+ENV NODE_ENV=production
+ENV NEXTAUTH_URL=http://localhost:3000
+ENV PUBLIC_NEXTAUTH_URL=http://localhost:3000
+ENV NEXTAUTH_SECRET=this-is-a-secret-that-isnt-really-much-of-a-secret-right-now
+
 WORKDIR /app
 
-ENV NODE_ENV production
+RUN addgroup --system frontend && \
+  adduser --system -G frontend frontend
 
-WORKDIR /app
-COPY .next ./.next
-COPY package.json ./package.json
-RUN npm i
-RUN npm start -p $PORT
-USER nextjs
+COPY dist/apps/frontend frontend
+COPY apps/frontend/app.json frontend
+COPY package.json frontend
+
+RUN chown -R frontend:frontend .
+
+WORKDIR /app/frontend
+
+RUN npm --omit=dev -f install
+RUN npm i -g next@13.1.1 nx
+
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD [ "next", "start" ]

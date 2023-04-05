@@ -47,6 +47,6 @@ const LoopApp = ({
 
 export default LoopApp;
 
-export const getServerSideProps = async () => {
-  return null;
-};
+export function getInitialProps() {
+  return {};
+}
