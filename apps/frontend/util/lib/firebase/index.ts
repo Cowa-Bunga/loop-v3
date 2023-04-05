@@ -1,3 +1,5 @@
+import { Auth, signInWithCustomToken } from 'firebase/auth';
+
 const firebaseConfigDev = {
   apiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME',
   authDomain: 'cb-dev-298308.firebaseapp.com',
@@ -21,4 +23,10 @@ const firebaseConfigProd = {
 };
 
 export const firebaseAppConfig =
-  process.env.NODE_ENV === 'production' ? firebaseConfigProd : firebaseConfigDev;
+  process.env.NODE_ENV === 'production'
+    ? firebaseConfigProd
+    : firebaseConfigDev;
+
+export async function authFirebase(firebaseAuth: Auth, token: string) {
+  return signInWithCustomToken(firebaseAuth, token);
+}
