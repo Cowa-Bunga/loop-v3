@@ -7,6 +7,8 @@ steps:
         'build',
         '--build-arg',
         'SOURCE=cb-dev-298308',
+        '-f',
+        'apps/frontend/Dockerfile',
         '-t',
         'gcr.io/cb-dev-298308/loop-v3/frontend',
         '.'
