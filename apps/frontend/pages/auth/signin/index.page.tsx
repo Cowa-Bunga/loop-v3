@@ -1,9 +1,5 @@
-import { LayoutSite, FirebaseHOC } from '@components'
+import { LayoutSite } from '@components'
 import { authLocalePathBuilder } from '@locale/locale-utils'
-import { ISessionUser } from '../../api/auth/auth.interface'
-import { authFirebase } from '@util/lib/firebase'
-import { useUserContext } from '@context/user_context'
-import { getAuth } from 'firebase/auth'
 import Actions from './actions'
 import ui from './style'
 import {
@@ -11,8 +7,7 @@ import {
   useEffect,
   useMergeState,
   useSession,
-  useTranslation,
-  useFirebaseApp
+  useTranslation
 } from '@hooks'
 import {
   Card,
@@ -28,39 +23,26 @@ import {
 
 const SignIn = () => {
   const router = useRouter()
-  const { data, status } = useSession()
+  const { status } = useSession()
   const { t } = useTranslation()
-  const user = useUserContext()
-  const firebaseAuth = getAuth(useFirebaseApp())
+  const _t = (v: string) => t(authLocalePathBuilder(v))
 
   const [state, setState] = useMergeState({
     email: '',
     password: ''
   })
 
+  const { change, submit } = Actions(state, setState)
+
   useEffect(() => {
     if (status === 'authenticated') {
-      const session = { ...data.user } as ISessionUser
-      user.firebase_token = session.firebase_token
-
-      if (session.clients.length == 1) {
-        user.client = session.clients[0]
-      } else {
-        router.push('/auth/client_select')
-      }
-
-      authFirebase(firebaseAuth, session.firebase_token)
-        .then(console.info)
-        .then(() => router.push('/dashboard'))
-        .catch(console.warn)
+      router.push('/dashboard')
     }
-  }, [data, firebaseAuth, router, status, user])
-
-  const { change, submit } = Actions(state, setState)
+  }, [router, status])
 
   return (
     <LayoutSite>
-      {router.query.error && <Alert>{t(authLocalePathBuilder('error'))}</Alert>}
+      {router.query.error && <Alert>{_t('error')}</Alert>}
 
       <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
@@ -72,7 +54,7 @@ const SignIn = () => {
             />
 
             <Typography component="h1" variant="h5">
-              {t(authLocalePathBuilder('signIn'))}
+              {_t('signIn')}
             </Typography>
 
             <Box component="form" onSubmit={(e) => submit(e)} sx={ui.form}>
@@ -84,10 +66,10 @@ const SignIn = () => {
                     id="email"
                     name="email"
                     type="email"
-                    label={t(authLocalePathBuilder('email'))}
+                    label={_t('email')}
                     autoComplete="email"
                     value={state.email}
-                    onChange={(e) => change(e.target.value, 'email')}
+                    onChange={(e) => change('email', e.target.value)}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -95,12 +77,12 @@ const SignIn = () => {
                     required
                     fullWidth
                     name="password"
-                    label={t(authLocalePathBuilder('password'))}
+                    label={_t('password')}
                     type="password"
                     id="password"
                     autoComplete="new-password"
                     value={state.password}
-                    onChange={(e) => change(e.target.value, 'password')}
+                    onChange={(e) => change('password', e.target.value)}
                   />
                 </Grid>
               </Grid>
@@ -113,7 +95,7 @@ const SignIn = () => {
                 variant="outlined"
                 sx={ui.btn}
               >
-                {t(authLocalePathBuilder('signIn'))}
+                {_t('signIn')}
               </Button>
             </Box>
           </Card>
@@ -123,4 +105,4 @@ const SignIn = () => {
   )
 }
 
-export default FirebaseHOC(SignIn)
+export default SignIn

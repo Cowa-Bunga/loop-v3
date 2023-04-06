@@ -2,7 +2,6 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import axios, { AxiosResponse } from 'axios'
 import { IClientLogin } from '../../../../../libs/auth/IclientLogin'
-import { IGenerateTokenResponse, ISessionUser } from './auth.interface'
 import { modelClientList } from '@util/models/client.model'
 
 export const authOptions = {

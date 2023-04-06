@@ -3,5 +3,6 @@ export const localePathBuilder = (path: string[]): string =>
 
 export const authLocalePathBuilder = (key: string): string =>
   `${localePathBuilder(['auth'])}.${key}`
+
 export const clientSelectLocalePathBuilder = (key: string): string =>
   `${localePathBuilder(['client_select'])}.${key}`

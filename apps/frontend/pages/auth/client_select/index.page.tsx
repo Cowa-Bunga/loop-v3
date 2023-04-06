@@ -4,7 +4,6 @@ import ui from './style'
 import { clientSelectLocalePathBuilder } from '@locale/locale-utils'
 import { Select } from '@mui/material'
 import { useUserContext } from '@context/user_context'
-import { ISessionUser } from '../../api/auth/auth.interface'
 import {
   useEffect,
   useState,

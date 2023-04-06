@@ -7,19 +7,19 @@ import { theme } from '@util/lib/mui5'
 import { FirebaseAppProvider } from 'reactfire'
 import { NoSsr } from '@mui/material'
 import { UserWrapper } from '../util/context/user_context'
-import '@locale/config'
 import { firebaseConfigDev } from '@util/lib/firebase'
+import '@locale/config'
 
 const LoopApp = ({
   Component,
   pageProps: { session, ...pageProps }
-}: AppProps) => {
-  return (
+}: AppProps) => (
+  <>
+    <Head>
+      <title>Loop</title>
+    </Head>
     <NoSsr>
       <FirebaseAppProvider firebaseConfig={firebaseConfigDev}>
-        <Head>
-          <title>Loop</title>
-        </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <main className="app">
@@ -32,11 +32,11 @@ const LoopApp = ({
         </ThemeProvider>
       </FirebaseAppProvider>
     </NoSsr>
-  )
-}
-
-export default LoopApp
+  </>
+)
 
 export function getInitialProps() {
   return {}
 }
+
+export default LoopApp

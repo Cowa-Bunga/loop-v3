@@ -1,4 +1,4 @@
-import defaultsDeep from 'lodash/defaultsDeep'
+import { defaultsDeep } from 'lodash'
 
 export const modelClientList = (
   data: { [s: string]: unknown } | ArrayLike<unknown>
@@ -9,7 +9,7 @@ export const modelClientList = (
     .sort((a: IClient, b: IClient) => a.name.localeCompare(b.name))
 }
 
-export const modelClientData = (data): IClient => {
+export const modelClientData = (data: unknown): IClient => {
   return defaultsDeep(data, emptyClientModel)
 }
 export const emptyClientModel: IClient = {

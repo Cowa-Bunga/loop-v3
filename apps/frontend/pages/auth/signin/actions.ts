@@ -1,7 +1,7 @@
 import { signIn } from 'next-auth/react'
 
 const Actions = (state, setState) => ({
-  change: (value: string, key: string) => {
+  change: (key: string, value: string) => {
     setState({ [key]: value })
   },
 

@@ -29,7 +29,7 @@ const Orders = () => {
           <Tab label="Unassignable" />
         </Tabs>
 
-        <TabPanel value={state.tab} index={0}>
+        <TabPanel value={state.tab} index={state.tab}>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -39,7 +39,7 @@ const Orders = () => {
           />
         </TabPanel>
 
-        <TabPanel value={state.tab} index={1}>
+        <TabPanel value={state.tab} index={state.tab}>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -49,7 +49,7 @@ const Orders = () => {
           />
         </TabPanel>
 
-        <TabPanel value={state.tab} index={2}>
+        <TabPanel value={state.tab} index={state.tab}>
           <DataGrid
             rows={rows}
             columns={columns}

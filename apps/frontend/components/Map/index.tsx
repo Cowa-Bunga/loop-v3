@@ -15,8 +15,8 @@ const center = {
 function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME'
-    // googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'NOT_A_KEY'
+    // googleMapsApiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME'
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || 'NOT_A_KEY'
   })
 
   const [height, setHeight] = useState(0)
