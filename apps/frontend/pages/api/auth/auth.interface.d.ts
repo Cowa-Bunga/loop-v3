@@ -1,7 +1,7 @@
 import {
   IClient,
   IUserPermissions
-} from '../../../../../libs/auth/IclientLogin';
+} from '../../../../../libs/auth/IclientLogin'
 
 export interface IGenerateTokenResponse {
   token: string;

@@ -1,8 +1,19 @@
-import { useEffect, useState } from 'react';
-import { LayoutSite } from '../../../components';
-import { useRouter } from 'next/router';
-import Actions from './actions';
-import ui from './style';
+import { LayoutSite, FirebaseHOC } from '@components'
+import { authLocalePathBuilder } from '@locale/locale-utils'
+import { ISessionUser } from '../../api/auth/auth.interface'
+import { authFirebase } from '@util/lib/firebase'
+import { useUserContext } from '@context/user_context'
+import { getAuth } from 'firebase/auth'
+import Actions from './actions'
+import ui from './style'
+import {
+  useRouter,
+  useEffect,
+  useMergeState,
+  useSession,
+  useTranslation,
+  useFirebaseApp
+} from '@hooks'
 import {
   Card,
   Button,
@@ -13,49 +24,39 @@ import {
   Container,
   Divider,
   Alert
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { authLocalePathBuilder } from '@locale/locale-utils';
-import FirebaseHOC from '../../../components/hoc/firebase.hoc';
-import { ISessionUser } from '../../api/auth/auth.interface';
-import { authFirebase } from '@util/lib/firebase';
-import { useSession } from 'next-auth/react';
-import { useUserContext } from '../../../context/user_context';
-import { getAuth } from 'firebase/auth';
-import { useFirebaseApp } from 'reactfire';
+} from '@mui/material'
 
 const SignIn = () => {
-  const router = useRouter();
-  const { data, status } = useSession();
-  const { t } = useTranslation();
-  const user = useUserContext();
-  const firebaseAuth = getAuth(useFirebaseApp());
-  const [state, setState] = useState({
+  const router = useRouter()
+  const { data, status } = useSession()
+  const { t } = useTranslation()
+  const user = useUserContext()
+  const firebaseAuth = getAuth(useFirebaseApp())
+
+  const [state, setState] = useMergeState({
     email: '',
     password: ''
-  });
+  })
 
   useEffect(() => {
-    console.warn('status', status, data);
-    if (data && data?.user && status === 'authenticated') {
-      const session = {
-        ...data.user
-      } as ISessionUser;
-
-      user.firebase_token = session.firebase_token;
+    if (status === 'authenticated') {
+      const session = { ...data.user } as ISessionUser
+      user.firebase_token = session.firebase_token
 
       if (session.clients.length == 1) {
-        user.client = session.clients[0];
+        user.client = session.clients[0]
       } else {
-        // navigate to client select page
-        router.push('/auth/client_select');
+        router.push('/auth/client_select')
       }
 
-      authFirebase(firebaseAuth, session.firebase_token).then(() => null);
+      authFirebase(firebaseAuth, session.firebase_token)
+        .then(console.info)
+        .then(() => router.push('/dashboard'))
+        .catch(console.warn)
     }
-  }, [data, firebaseAuth, router, status, user]);
+  }, [data, firebaseAuth, router, status, user])
 
-  const { change, submit } = Actions(state, setState);
+  const { change, submit } = Actions(state, setState)
 
   return (
     <LayoutSite>
@@ -81,11 +82,12 @@ const SignIn = () => {
                     required
                     fullWidth
                     id="email"
-                    label={t(authLocalePathBuilder('email'))}
                     name="email"
+                    type="email"
+                    label={t(authLocalePathBuilder('email'))}
                     autoComplete="email"
                     value={state.email}
-                    onChange={(e) => change(e, 'email')}
+                    onChange={(e) => change(e.target.value, 'email')}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -98,7 +100,7 @@ const SignIn = () => {
                     id="password"
                     autoComplete="new-password"
                     value={state.password}
-                    onChange={(e) => change(e, 'password')}
+                    onChange={(e) => change(e.target.value, 'password')}
                   />
                 </Grid>
               </Grid>
@@ -118,7 +120,7 @@ const SignIn = () => {
         </Container>
       </div>
     </LayoutSite>
-  );
-};
+  )
+}
 
-export default FirebaseHOC(SignIn);
+export default FirebaseHOC(SignIn)

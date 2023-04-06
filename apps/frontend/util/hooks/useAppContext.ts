@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react'
 // import { useMergeState } from './useMergeState'
 
-const AppContext = createContext({});
+const AppContext = createContext({})
 
 // export function AppContextWrapper({ children }) {
 //   const [state, setContext] = useMergeState({})
@@ -11,5 +11,5 @@ const AppContext = createContext({});
 // }
 
 export function useAppContext() {
-  return useContext(AppContext);
+  return useContext(AppContext)
 }

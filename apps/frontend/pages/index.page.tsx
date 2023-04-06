@@ -1,7 +1,7 @@
-import Dashboard from './dashboard/index.page';
+import Dashboard from './dashboard/index.page'
 
 export function LoopFrontend() {
-  return <Dashboard />;
+  return <Dashboard />
 }
 
-export default LoopFrontend;
+export default LoopFrontend
