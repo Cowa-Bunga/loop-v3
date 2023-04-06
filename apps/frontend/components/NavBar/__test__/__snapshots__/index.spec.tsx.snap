@@ -16,6 +16,7 @@ exports[`NavBar should render successfully 1`] = `
             class="MuiTypography-root MuiTypography-h6 css-1qvppxn-MuiTypography-root"
           >
             <img
+              alt="logo"
               src="https://www.loop.co.za/wp-content/uploads/2021/12/Logo.svg"
               style="margin-top: 5px; height: 20px;"
             />

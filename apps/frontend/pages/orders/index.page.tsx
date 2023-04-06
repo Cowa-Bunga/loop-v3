@@ -1,17 +1,17 @@
-import { DataGrid } from '@mui/x-data-grid';
-import { useMergeState } from '@hooks';
-import { LayoutBase, TabPanel } from '../../components';
-import { Tabs, Tab, Divider, Box, Typography } from '@mui/material';
-import { rows, columns } from './__test__/mock';
+import { DataGrid } from '@mui/x-data-grid'
+import { useMergeState } from '@hooks'
+import { LayoutBase, TabPanel } from '../../components'
+import { Tabs, Tab, Divider, Box, Typography } from '@mui/material'
+import { rows, columns } from './__test__/mock'
 
 const Orders = () => {
   const [state, setState] = useMergeState({
     tab: 0
-  });
+  })
 
   const tabClick = (index: number) => {
-    setState({ tab: index });
-  };
+    setState({ tab: index })
+  }
 
   return (
     <LayoutBase>
@@ -29,7 +29,7 @@ const Orders = () => {
           <Tab label="Unassignable" />
         </Tabs>
 
-        <TabPanel value={state.tab} index={0}>
+        <TabPanel value={state.tab} index={state.tab}>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -39,7 +39,7 @@ const Orders = () => {
           />
         </TabPanel>
 
-        <TabPanel value={state.tab} index={1}>
+        <TabPanel value={state.tab} index={state.tab}>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -49,7 +49,7 @@ const Orders = () => {
           />
         </TabPanel>
 
-        <TabPanel value={state.tab} index={2}>
+        <TabPanel value={state.tab} index={state.tab}>
           <DataGrid
             rows={rows}
             columns={columns}
@@ -60,7 +60,7 @@ const Orders = () => {
         </TabPanel>
       </Box>
     </LayoutBase>
-  );
-};
+  )
+}
 
-export default Orders;
+export default Orders

@@ -1,27 +1,48 @@
-import { Box } from '@mui/material';
-import NavBar from '../../NavBar';
-import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
-import FirebaseHOC from '../../hoc/firebase.hoc';
+import { Box } from '@mui/material'
+import { NavBar } from '@components'
+import { useRouter, useSession, useLayoutEffect, useTranslation } from '@hooks'
+import { FirestoreProvider, useFirebaseApp } from 'reactfire'
+import { getFirestore } from 'firebase/firestore'
+import { ui } from './style'
+import { authFirebase } from '@util/lib/firebase'
+import { useUserContext } from '@context/user_context'
+import { getAuth } from 'firebase/auth'
 
 const LayoutBase = ({ children }) => {
-  const router = useRouter();
-  const { status } = useSession();
+  const router = useRouter()
+  const { data, status } = useSession()
+  const firestoreInstance = getFirestore(useFirebaseApp())
+  const { t } = useTranslation()
+  const user = useUserContext()
+  const firebaseAuth = getAuth(useFirebaseApp())
 
-  useEffect(() => {
-    console.warn('status', status);
-    if (status !== 'authenticated') {
-      router.push('/auth/signin');
+  useLayoutEffect(() => {
+    if (status === 'authenticated') {
+      const session = { ...data.user } as ISessionUser
+      user.firebase_token = session.firebase_token
+      console.warn(session, user)
+
+      if (session.clients.length == 1) {
+        user.client = session.clients[0]
+      } else {
+        router.push('/auth/client_select')
+      }
+
+      authFirebase(firebaseAuth, session.firebase_token)
+        .then(() => router.push('/dashboard'))
+        .catch(console.warn)
+    } else {
+      router.push('/auth/signin')
     }
-  }, [router, status]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <Box>
+    <FirestoreProvider sdk={firestoreInstance}>
       <NavBar />
-      <Box sx={{ pt: '60px' }}>{children}</Box>
-    </Box>
-  );
-};
+      <Box sx={ui.box}>{children}</Box>
+    </FirestoreProvider>
+  )
+}
 
-export default FirebaseHOC(LayoutBase);
+export default LayoutBase

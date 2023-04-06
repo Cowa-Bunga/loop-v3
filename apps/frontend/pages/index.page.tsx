@@ -1,7 +1,17 @@
-import Dashboard from './dashboard/index.page';
+import Dashboard from './dashboard/index.page'
+import { useEffect, useRouter, useSession } from '@hooks'
 
 export function LoopFrontend() {
-  return <Dashboard />;
+  const { data: session } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!session) {
+      router.push('/auth/signin')
+    }
+  }, [router, session])
+
+  return <Dashboard />
 }
 
-export default LoopFrontend;
+export default LoopFrontend

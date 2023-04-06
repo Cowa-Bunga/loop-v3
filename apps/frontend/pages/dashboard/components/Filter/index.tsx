@@ -1,5 +1,5 @@
-import { TabPanel } from '../../../../components';
-import Actions from './actions';
+import { TabPanel } from '../../../../components'
+import Actions from './actions'
 import {
   Select,
   MenuItem,
@@ -10,9 +10,9 @@ import {
   Drawer,
   Button,
   Divider
-} from '@mui/material';
-import { useState } from 'react';
-import ui from './style';
+} from '@mui/material'
+import { useState } from 'react'
+import ui from './style'
 
 
 const DashboardFilter = () => {
@@ -20,9 +20,9 @@ const DashboardFilter = () => {
     tab: 0,
     region: '',
     hub: ''
-  });
+  })
 
-  const { tabChange, regionChange, hubChange } = Actions(state, setState);
+  const { tabChange, regionChange, hubChange } = Actions(state, setState)
 
   return (
     <Drawer anchor="left" variant="persistent" open={true}>
@@ -81,8 +81,8 @@ const DashboardFilter = () => {
         </TabPanel>
       </Box>
     </Drawer>
-  );
-};
+  )
+}
 
 
-export default DashboardFilter;
+export default DashboardFilter

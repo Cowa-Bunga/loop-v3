@@ -1,9 +1,8 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import axios, { AxiosResponse } from 'axios';
-import { IClientLogin } from '../../../../../libs/auth/IclientLogin';
-import { IGenerateTokenResponse, ISessionUser } from './auth.interface';
-import { modelClientList } from '@util/models/client.model';
+import NextAuth, { NextAuthOptions } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import axios, { AxiosResponse } from 'axios'
+import { IClientLogin } from '../../../../../libs/auth/IclientLogin'
+import { modelClientList } from '@util/models/client.model'
 
 export const authOptions = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,
@@ -35,11 +34,11 @@ export const authOptions = {
               email,
               password
             }
-          });
+          })
           if (user) {
-            return Promise.resolve(user?.data);
+            return Promise.resolve(user?.data)
           }
-          return null;
+          return null
         } else {
           const res: AxiosResponse<IClientLogin> = await axios({
             url: `${authOptions.API_AUTH_URL}/client/fetch`,
@@ -48,10 +47,10 @@ export const authOptions = {
               email,
               password
             }
-          });
+          })
           if (res && res.data.success) {
-            const key = Object.keys(res.data.body.clients)[0];
-            const client = res.data.body.clients[key];
+            const key = Object.keys(res.data.body.clients)[0]
+            const client = res.data.body.clients[key]
 
             const token: AxiosResponse<IGenerateTokenResponse> = await axios({
               url: `${authOptions.API_AUTH_URL}/client/generate-auth-token`,
@@ -61,15 +60,14 @@ export const authOptions = {
                 user_id: client.user_id,
                 password
               }
-            });
+            })
 
             return {
               ...res?.data,
               ...token.data,
               ...client
-            };
+            }
           }
-          // return null;
         }
       }
     })
@@ -95,12 +93,12 @@ export const authOptions = {
           tokenType: user.token_type,
           maxAge: user.expires_in,
           clients: modelClientList(user.body.clients)
-        } satisfies ISessionUser;
+        } satisfies ISessionUser
       }
-      return token;
+      return token
     },
     async session({ session, token }) {
-      return { ...session, user: token };
+      return { ...session, user: token }
     }
   },
 
@@ -112,6 +110,6 @@ export const authOptions = {
   },
 
   debug: process.env.NODE_ENV === 'development'
-};
+}
 
-export default NextAuth(authOptions as NextAuthOptions);
+export default NextAuth(authOptions as NextAuthOptions)
