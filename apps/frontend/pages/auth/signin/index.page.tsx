@@ -36,7 +36,8 @@ const SignIn = () => {
   });
 
   useEffect(() => {
-    if (status === 'authenticated') {
+    console.warn('status', status, data);
+    if (data && data?.user && status === 'authenticated') {
       const session = {
         ...data.user
       } as ISessionUser;
@@ -52,7 +53,7 @@ const SignIn = () => {
 
       authFirebase(firebaseAuth, session.firebase_token).then(() => null);
     }
-  }, [status]);
+  }, [data, firebaseAuth, router, status, user]);
 
   const { change, submit } = Actions(state, setState);
 

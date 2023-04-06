@@ -69,7 +69,7 @@ export const authOptions = {
               ...client
             };
           }
-          return null;
+          // return null;
         }
       }
     })
