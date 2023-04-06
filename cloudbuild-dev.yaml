@@ -2,9 +2,9 @@ steps:
   - name: "node"
     entrypoint: "npm"
     args: [ 'install' ]
-  - name: "node"
-    entrypoint: "npm"
-    args: [ 'npx', 'nx', 'build', 'frontend', '--prod' ]
+  - name: "npm"
+    entrypoint: "npx"
+    args: [ 'nx', 'build', 'frontend', '--prod' ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
