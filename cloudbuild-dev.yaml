@@ -1,6 +1,10 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
+  - name: "install packages"
+    entrypoint: "npm"
+    args: [ 'install' ]
+  - name: "build frontend"
+    entrypoint: "npm"
+    args: [ 'nx' 'build' 'frontend' '--prod' ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
@@ -14,7 +18,7 @@ steps:
         '.'
       ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/cb-dev-298308/loop-v3/frontend']
+    args: [ 'push', 'gcr.io/cb-dev-298308/loop-v3/frontend' ]
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
