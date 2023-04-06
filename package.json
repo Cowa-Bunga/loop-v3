@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "NX_MODE=frontend nx serve frontend",
-    "duo": "NX_MODE=duo nx run-many --parallel --target=serve --projects=frontend,backend",
-    "test": "nx test",
-    "build": "nx build",
-    "lint": "nx lint",
-    "e2e": "nx e2e frontend-e2e"
+    "start": "NX_MODE=frontend npx nx serve frontend --port 8080",
+    "duo": "NX_MODE=duo npx nx run-many --parallel --target=serve --projects=frontend,backend",
+    "test": "npx nx test",
+    "build": "npx nx build",
+    "lint": "npx nx lint",
+    "e2e": "npx nx e2e frontend-e2e"
   },
   "private": true,
   "devDependencies": {

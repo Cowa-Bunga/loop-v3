@@ -52,10 +52,16 @@
             "command": "nx build frontend --prod"
           },
           {
-            "command": "nx export frontend"
+            "command": "nx docker-build frontend"
           },
           {
-            "command": "npx firebase deploy --only hosting"
+            "command": "docker tag frontend gcr.io/cb-dev-298308/frontend"
+          },
+          {
+            "command": "docker push gcr.io/cb-dev-298308/frontend"
+          },
+          {
+            "command": "gcloud run deploy loop-v3 --project=cb-dev-298308 --platform=managed --region=europe-west1 --image=gcr.io/cb-dev-298308/loop-v3 --allow-unauthenticated"
           }
         ],
         "parallel": false
