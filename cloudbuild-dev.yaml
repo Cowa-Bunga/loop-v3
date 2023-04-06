@@ -1,8 +1,8 @@
 steps:
-  - name: "install packages"
+  - name: "node"
     entrypoint: "npm"
     args: [ 'install' ]
-  - name: "build frontend"
+  - name: "node"
     entrypoint: "npm"
     args: [ 'nx', 'build', 'frontend', '--prod' ]
   - name: 'gcr.io/cloud-builders/docker'
