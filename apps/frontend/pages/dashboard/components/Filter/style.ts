@@ -18,6 +18,6 @@ const ui = {
   },
 
   searchBox: { my: 1 }
-};
+}
 
-export default ui;
+export default ui

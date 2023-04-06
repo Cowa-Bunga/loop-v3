@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const REQ = (options ={}) => {
- return axios(options);
-};
+ return axios(options)
+}

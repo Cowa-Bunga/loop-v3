@@ -39,6 +39,6 @@ const ui = {
   icon: {
     mx: 1
   }
-};
+}
 
-export default ui;
+export default ui

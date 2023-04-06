@@ -28,7 +28,7 @@
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nrwl/nx/typescript", "prettier"],
       "rules": {
-        "semi": ["error", "always"]
+        "semi": ["error", "never"]
       }
     },
     {

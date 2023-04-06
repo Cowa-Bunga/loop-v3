@@ -1,15 +1,15 @@
-import { MenuList, MenuItem, Box, Drawer } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import { useRouter } from 'next/router';
-import { menuBottomModel, menuModel } from './model';
-import ui from './style';
+import { MenuList, MenuItem, Box, Drawer } from '@mui/material'
+import HomeIcon from '@mui/icons-material/Home'
+import { useRouter } from 'next/router'
+import { menuBottomModel, menuModel } from './model'
+import ui from './style'
 
 export default function Menu({ open }: { open: boolean }) {
-  const router = useRouter();
+  const router = useRouter()
 
   const goto = (url: string) => {
-    router.push(url);
-  };
+    router.push(url)
+  }
 
   return (
     <Drawer variant="temporary" anchor="left" hideBackdrop open={open}>
@@ -42,5 +42,5 @@ export default function Menu({ open }: { open: boolean }) {
         </MenuList>
       </Box>
     </Drawer>
-  );
+  )
 }
