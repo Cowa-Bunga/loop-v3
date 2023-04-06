@@ -17,33 +17,30 @@ export const menuModel: IMenu[] = [
     id: 'drivers',
     icon: '',
     title: 'Driver Details',
-    link: '/',
+    link: '/drivers/profile',
     permissions: []
   },
   {
     id: 'import',
     icon: '',
     title: 'Import Orders',
-    link: '/',
+    link: '/orders/import',
     permissions: []
   },
   {
     id: 'training',
     icon: '',
     title: 'Training Centre',
-    link: '/',
+    link: '/training',
     permissions: []
   },
   {
     id: 'support',
     icon: '',
     title: 'Support',
-    link: '/',
+    link: '/support',
     permissions: []
-  }
-]
-
-export const menuBottomModel: IMenu[] = [
+  },
   {
     id: 'admin',
     icon: '',

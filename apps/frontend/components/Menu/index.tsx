@@ -1,7 +1,7 @@
 import { MenuList, MenuItem, Box, Drawer } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
 import { useRouter } from 'next/router'
-import { menuBottomModel, menuModel } from './model'
+import { menuModel } from './model'
 import ui from './style'
 
 export default function Menu({ open }: { open: boolean }) {
@@ -27,17 +27,7 @@ export default function Menu({ open }: { open: boolean }) {
           ))}
 
           <Box sx={ui.menuBottom}>
-            {menuBottomModel.map((item) => (
-              <MenuItem
-                key={item.id}
-                sx={ui.menuItem}
-                onClick={() => goto(item.link)}
-              >
-                <HomeIcon sx={ui.icon} />
-                {item.title}
-              </MenuItem>
-            ))}
-            <Box sx={ui.version}>version: 3.1.0</Box>
+            <Box sx={ui.version}>version: 0.1</Box>
           </Box>
         </MenuList>
       </Box>

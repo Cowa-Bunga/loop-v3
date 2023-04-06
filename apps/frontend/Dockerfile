@@ -5,11 +5,10 @@ FROM docker.io/node:lts-alpine
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache python3 g++ make
 
-ENV HOST=0.0.0.0
 ENV PORT=3000
 ENV NODE_ENV=production
 ENV NEXTAUTH_URL=https://loop-v3-ukxjb66ceq-ew.a.run.app
-ENV NEXTAUTH_URL_INTERNAL=0:0:0:0:3000
+# ENV NEXTAUTH_URL_INTERNAL=0:0:0:0:3000
 ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
 ENV NEXTAUTH_SECRET=this-is-a-secret-that-isnt-really-much-of-a-secret-right-now
 
