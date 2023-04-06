@@ -4,7 +4,6 @@ import axios, { AxiosResponse } from 'axios';
 import { IClientLogin } from '../../../../../libs/auth/IclientLogin';
 import { IGenerateTokenResponse, ISessionUser } from './auth.interface';
 import { modelClientList } from '@util/models/client.model';
-import { Auth, signInWithCustomToken } from 'firebase/auth';
 
 export const authOptions = {
   NEXTAUTH_URL: process.env.NEXTAUTH_URL,

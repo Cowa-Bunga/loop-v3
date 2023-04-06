@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "NX_MODE=frontend npx nx serve frontend --port 8080",
+    "start": "NX_MODE=frontend npx nx serve frontend",
     "duo": "NX_MODE=duo npx nx run-many --parallel --target=serve --projects=frontend,backend",
     "test": "npx nx test",
     "build": "npx nx build",

@@ -1,4 +1,3 @@
-import React from 'react';
 import { getFirestore } from 'firebase/firestore';
 import { FirestoreProvider, useFirebaseApp } from 'reactfire';
 
