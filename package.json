@@ -93,7 +93,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.2.0",
-    "react-jsonschema-form-material-ui": "^3.0.0-rc.10",
     "reactfire": "^4.2.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
