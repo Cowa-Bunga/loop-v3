@@ -39,7 +39,14 @@ export default function NavBar() {
 
           <IconButton
             color="inherit"
-            onClick={() => (!session ? signIn() : signOut())}
+            onClick={() =>
+              !session
+                ? signIn()
+                : signOut({
+                    callbackUrl: '/auth/signin',
+                    redirect: true
+                  })
+            }
           >
             {!session ? <Lock /> : <LockOpen />}
           </IconButton>

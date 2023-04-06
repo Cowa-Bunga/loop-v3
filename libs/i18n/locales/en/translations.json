@@ -2,7 +2,13 @@
   "auth": {
     "signIn": "Sign In",
     "error": "Could not login. Please check your e-mail or password.",
-    "email" : "Email Address",
-    "password" : "Password"
+    "email": "Email Address",
+    "password": "Password"
+  },
+  "client_select": {
+    "title": "Select Client",
+    "submit": "Select Client",
+    "choose_client": "Choose a client",
+    "error": "Could not load clients. Please try again later."
   }
 }

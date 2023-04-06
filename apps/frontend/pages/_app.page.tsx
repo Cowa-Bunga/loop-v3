@@ -7,6 +7,7 @@ import '@locale/config';
 import { theme } from '@util/lib/mui5';
 import { FirebaseAppProvider } from 'reactfire';
 import { NoSsr } from '@mui/material';
+import { UserWrapper } from '../context/user_context';
 
 const firebaseConfigDev = {
   apiKey: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME',
@@ -33,7 +34,9 @@ const LoopApp = ({
           <CssBaseline />
           <main className="app">
             <SessionProvider session={session}>
-              <Component {...pageProps} />
+              <UserWrapper>
+                <Component {...pageProps} />
+              </UserWrapper>
             </SessionProvider>
           </main>
         </ThemeProvider>
