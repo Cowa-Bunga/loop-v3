@@ -6,8 +6,8 @@ import { SessionProvider } from 'next-auth/react'
 import { theme } from '@util/lib/mui5'
 import { FirebaseAppProvider } from 'reactfire'
 import { NoSsr } from '@mui/material'
-import { UserWrapper } from '../util/context/user_context'
-import { firebaseConfigDev } from '@util/lib/firebase'
+import { UserWrapper } from '@context/user'
+import { firebaseConfig } from '@util/lib/firebase'
 import '@locale/config'
 
 const LoopApp = ({
@@ -16,10 +16,10 @@ const LoopApp = ({
 }: AppProps) => (
   <>
     <Head>
-      <title>Loop</title>
+      <title>Loop Logistics</title>
     </Head>
     <NoSsr>
-      <FirebaseAppProvider firebaseConfig={firebaseConfigDev}>
+      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <main className="app">

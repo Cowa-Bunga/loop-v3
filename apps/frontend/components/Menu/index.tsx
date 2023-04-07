@@ -1,7 +1,7 @@
 import { MenuList, MenuItem, Box, Drawer } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
-import { useRouter } from 'next/router'
-import { menuModel } from './model'
+import { useRouter } from '@hooks'
+import { MODEL_MENU } from './model'
 import ui from './style'
 
 export default function Menu({ open }: { open: boolean }) {
@@ -15,7 +15,7 @@ export default function Menu({ open }: { open: boolean }) {
     <Drawer variant="temporary" anchor="left" hideBackdrop open={open}>
       <Box sx={ui.container}>
         <MenuList sx={ui.menuList}>
-          {menuModel.map((item) => (
+          {MODEL_MENU({ client_id: 'todo-id' }).map((item) => (
             <MenuItem
               key={item.id}
               sx={ui.menuItem}

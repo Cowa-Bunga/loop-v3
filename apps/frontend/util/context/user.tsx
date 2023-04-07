@@ -4,7 +4,6 @@ const UserContext = createContext({} as IUserContext)
 
 export function UserWrapper({ children }) {
   const sharedState = {} as IUserContext
-
   return (
     <UserContext.Provider value={sharedState}>{children}</UserContext.Provider>
   )
