@@ -1,5 +1,7 @@
-import { TabPanel } from '../../../../components'
+import { TabPanel } from '@components'
 import Actions from './actions'
+import { useMergeState } from '@hooks'
+import ui from './style'
 import {
   Select,
   MenuItem,
@@ -11,12 +13,9 @@ import {
   Button,
   Divider
 } from '@mui/material'
-import { useState } from 'react'
-import ui from './style'
-
 
 const DashboardFilter = () => {
-  const [state, setState] = useState({
+  const [state, setState] = useMergeState({
     tab: 0,
     region: '',
     hub: ''
@@ -83,6 +82,5 @@ const DashboardFilter = () => {
     </Drawer>
   )
 }
-
 
 export default DashboardFilter

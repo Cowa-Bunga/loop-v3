@@ -3,7 +3,7 @@ import Actions from './actions'
 import ui from './style'
 import { clientSelectLocalePathBuilder } from '@locale/locale-utils'
 import { Select } from '@mui/material'
-import { useUserContext } from '@context/user_context'
+import { useUserContext } from '@util/context/UserContext'
 import {
   useEffect,
   useState,
@@ -28,6 +28,7 @@ import {
 const SignIn = () => {
   const router = useRouter()
   const { t } = useTranslation()
+  const _t = (path: string) => t(clientSelectLocalePathBuilder(path))
 
   const [state, setState] = useState({
     client_id: '',
@@ -50,14 +51,13 @@ const SignIn = () => {
       )
       router.push('/dashboard')
     }
-  }, [data, state])
+  }, [data, router, session?.clients, state, user])
+
   const { change, submit } = Actions(state, setState)
 
   return (
     <LayoutSite>
-      {router.query.error && (
-        <Alert>{t(clientSelectLocalePathBuilder('error'))}</Alert>
-      )}
+      {router.query.error && <Alert>{_t('error')}</Alert>}
 
       <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
@@ -69,7 +69,7 @@ const SignIn = () => {
             />
 
             <Typography component="h1" variant="h5">
-              {t(clientSelectLocalePathBuilder('title'))}
+              {_t('title')}
             </Typography>
 
             <Box component="form" onSubmit={(e) => submit(e)} sx={ui.form}>
@@ -105,7 +105,7 @@ const SignIn = () => {
                 variant="outlined"
                 sx={ui.btn}
               >
-                {t(clientSelectLocalePathBuilder('submit'))}
+                {_t('submit')}
               </Button>
             </Box>
           </Card>

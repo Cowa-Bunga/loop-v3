@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid'
 import { useMergeState } from '@hooks'
-import { LayoutBase, TabPanel } from '../../components'
+import { LayoutBase, TabPanel } from '@components'
 import { Tabs, Tab, Divider, Box, Typography } from '@mui/material'
 import { rows, columns } from './__test__/mock'
 

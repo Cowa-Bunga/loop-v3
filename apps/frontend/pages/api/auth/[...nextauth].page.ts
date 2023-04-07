@@ -1,12 +1,14 @@
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import axios, { AxiosResponse } from 'axios'
-import { IClientLogin } from '../../../../../libs/auth/IclientLogin'
-import { modelClientList } from '@util/models/client.model'
+import { modelClientList } from '@util/models/client/helpers'
+
+const API_AUTH_URL = process.env.API_AUTH_URL
+const NEXTAUTH_URL = process.env.NEXTAUTH_URL
 
 export const authOptions = {
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-  API_AUTH_URL: process.env.DOS_AUTH_URL,
+  NEXTAUTH_URL,
+  API_AUTH_URL,
 
   pages: {
     signIn: '/auth/signin',
@@ -25,49 +27,34 @@ export const authOptions = {
         password: { label: 'Password', type: 'password' }
       },
 
-      async authorize({ email, password }, req) {
-        if (process.env.NX_MODE === 'duo') {
-          const user = await axios({
-            url: `${authOptions.API_AUTH_URL}/client/fetch`,
+      async authorize({ email, password }) {
+        const loginResponse: AxiosResponse<IClientLogin> = await axios({
+          url: `${API_AUTH_URL}/client/fetch`,
+          method: 'post',
+          data: { email, password }
+        })
+
+        if (loginResponse?.data?.success) {
+          const key = Object.keys(loginResponse.data.body.clients)[0]
+          const client = loginResponse.data.body.clients[key]
+
+          const token: AxiosResponse<IGenerateTokenResponse> = await axios({
+            url: `${API_AUTH_URL}/client/generate-auth-token`,
             method: 'post',
             data: {
-              email,
+              client_id: client.client_id,
+              user_id: client.user_id,
               password
             }
           })
-          if (user) {
-            return Promise.resolve(user?.data)
+
+          return {
+            ...loginResponse?.data,
+            ...token.data,
+            ...client
           }
-          return null
         } else {
-          const res: AxiosResponse<IClientLogin> = await axios({
-            url: `${authOptions.API_AUTH_URL}/client/fetch`,
-            method: 'post',
-            data: {
-              email,
-              password
-            }
-          })
-          if (res && res.data.success) {
-            const key = Object.keys(res.data.body.clients)[0]
-            const client = res.data.body.clients[key]
-
-            const token: AxiosResponse<IGenerateTokenResponse> = await axios({
-              url: `${authOptions.API_AUTH_URL}/client/generate-auth-token`,
-              method: 'post',
-              data: {
-                client_id: client.client_id,
-                user_id: client.user_id,
-                password
-              }
-            })
-
-            return {
-              ...res?.data,
-              ...token.data,
-              ...client
-            }
-          }
+          return false
         }
       }
     })
@@ -102,14 +89,13 @@ export const authOptions = {
     }
   },
 
-  // signin page theming
   theme: {
     colorScheme: 'light',
     brandColor: '#FFF',
     logo: 'https://www.loop.co.za/wp-content/uploads/2021/12/Logo.svg'
   },
 
-  debug: process.env.NODE_ENV === 'development'
+  debug: process.env.NODE_ENV !== 'production'
 }
 
 export default NextAuth(authOptions as NextAuthOptions)

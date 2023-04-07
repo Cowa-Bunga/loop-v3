@@ -1,4 +1,5 @@
 import { defaultsDeep } from 'lodash'
+import { MODEL_CLIENT_EMPTY } from './model'
 
 export const modelClientList = (
   data: { [s: string]: unknown } | ArrayLike<unknown>
@@ -10,17 +11,5 @@ export const modelClientList = (
 }
 
 export const modelClientData = (data: unknown): IClient => {
-  return defaultsDeep(data, emptyClientModel)
-}
-export const emptyClientModel: IClient = {
-  client_id: '',
-  name: '',
-  user_id: '',
-  permissions_id: '',
-  logo: '',
-  permissions: {
-    scopes: [],
-    fleet: false,
-    administrator: false
-  }
+  return defaultsDeep(data, MODEL_CLIENT_EMPTY)
 }
