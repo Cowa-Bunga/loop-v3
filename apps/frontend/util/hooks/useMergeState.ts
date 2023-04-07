@@ -11,19 +11,26 @@ import { deepmerge } from '@mui/utils'
  *  // state = { foo: 'bar', baz: 'qux' }
  */
 export const useMergeState = <T>(
-  object: T = {} as T
-): [T, (newState: T) => void] => {
-  const [state, setState] = useState(object)
+  initState: T = {} as T
+): [T, (initState: T) => void] => {
+  const [state, origSetState] = useState(initState)
 
-  const mergeState = (newState: T) => {
-    const mergedState = deepmerge(state, object)
-    console.warn('%c setState:\n', 'color: teal; font-weight: bold;', {
-      mutation: newState,
-      old: state,
-      new: mergedState
-    })
-    setState(mergedState)
+  const setState = (mutation: T, cb) => {
+    const mergedState = deepmerge(state, mutation)
+    origSetState(mergedState)
+
+    if (process.env.NODE_ENV === 'development') {
+      console.info('%c setState:\n', 'color: aquamarine; font-weight: bold;', {
+        mutation,
+        old: state,
+        new: mergedState
+      })
+    }
+
+    if (cb) {
+      cb(mergedState)
+    }
   }
 
-  return [state as T, mergeState as (newState: T) => void]
+  return [state as T, setState as (mutation: T) => void]
 }

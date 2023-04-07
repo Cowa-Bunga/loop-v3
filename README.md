@@ -1,15 +1,10 @@
-# Loop Application
+# Loop Pro
 
 ### Getting Started
 
 > add nx
 
 - `npm i -g nx` or use npx
-
-> database
-
-- create a new postgres database called 'loop'
-- configure `apps/backend/app/app.module`
 
 > `npm start`
 

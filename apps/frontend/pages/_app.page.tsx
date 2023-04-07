@@ -1,39 +1,43 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useEffect } from '@hooks'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { SessionProvider } from 'next-auth/react'
 import { theme } from '@util/lib/mui5'
 import { FirebaseAppProvider } from 'reactfire'
 import { NoSsr } from '@mui/material'
-import { UserWrapper } from '@context/user'
 import { firebaseConfig } from '@util/lib/firebase'
 import '@locale/config'
 
 const LoopApp = ({
   Component,
   pageProps: { session, ...pageProps }
-}: AppProps) => (
-  <>
-    <Head>
-      <title>Loop Logistics</title>
-    </Head>
-    <NoSsr>
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <main className="app">
-            <SessionProvider session={session}>
-              <UserWrapper>
+}: AppProps) => {
+  useEffect(() => {
+    console.info('app init:', { init: new Date(), session })
+  }, [session])
+
+  return (
+    <>
+      <Head>
+        <title>Loop Logistics</title>
+      </Head>
+      <NoSsr>
+        <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <main className="app">
+              <SessionProvider session={session}>
                 <Component {...pageProps} />
-              </UserWrapper>
-            </SessionProvider>
-          </main>
-        </ThemeProvider>
-      </FirebaseAppProvider>
-    </NoSsr>
-  </>
-)
+              </SessionProvider>
+            </main>
+          </ThemeProvider>
+        </FirebaseAppProvider>
+      </NoSsr>
+    </>
+  )
+}
 
 export function getInitialProps() {
   return {}
