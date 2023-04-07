@@ -1,5 +1,6 @@
 // @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
 import { memo, useCallback, useEffect, useState } from 'react'
+import { Box } from '@mui/material'
 import {
   GoogleMap,
   useJsApiLoader
@@ -47,19 +48,21 @@ function Map() {
   }, [])
 
   return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={{ width: '100%', height }}
-      center={center}
-      zoom={10}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-    >
-      {/* <DrawingManager
+    <Box>
+      <GoogleMap
+        mapContainerStyle={{ width: '100%', height }}
+        center={center}
+        zoom={8}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        {/* <DrawingManager
         onLoad={onLoadDrawing}
         onPolygonComplete={onPolygonComplete}
       />
       <StreetViewPanorama /> */}
-    </GoogleMap>
+      </GoogleMap>
+    </Box>
   ) : null
 }
 
