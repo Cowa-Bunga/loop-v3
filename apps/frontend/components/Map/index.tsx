@@ -48,21 +48,19 @@ function Map() {
   }, [])
 
   return isLoaded ? (
-    <Box>
-      <GoogleMap
-        mapContainerStyle={{ width: '100%', height }}
-        center={center}
-        zoom={8}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        {/* <DrawingManager
+    <GoogleMap
+      mapContainerStyle={{ width: '100%', height }}
+      center={center}
+      zoom={10}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+    >
+      {/* <DrawingManager
         onLoad={onLoadDrawing}
         onPolygonComplete={onPolygonComplete}
       />
       <StreetViewPanorama /> */}
-      </GoogleMap>
-    </Box>
+    </GoogleMap>
   ) : null
 }
 
