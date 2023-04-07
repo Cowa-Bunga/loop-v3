@@ -3,7 +3,7 @@ import Actions from './actions'
 import ui from './style'
 import { clientSelectLocalePathBuilder } from '@locale/locale-utils'
 import { Select } from '@mui/material'
-import { useUserContext } from '@util/context/UserContext'
+import { useUserContext } from '@context/user'
 import {
   useEffect,
   useState,
