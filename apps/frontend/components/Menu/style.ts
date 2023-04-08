@@ -1,3 +1,4 @@
+import HomeIcon from '@mui/icons-material/Home'
 const ui = {
   container: {
     width: '300px',
@@ -27,7 +28,18 @@ const ui = {
   },
 
   homeIcon: {
-    mx: 1
+    mr: 1,
+    color: 'white'
+  },
+
+  homeIconDropdown: {
+    mr: 1,
+    color: 'white',
+    ml: -3
+  },
+
+  homeIconInner: {
+    ml: -2
   },
 
   menuBottom: {
@@ -38,6 +50,22 @@ const ui = {
 
   icon: {
     mx: 1
+  },
+
+  accordion: {
+    background: 'transparent !important',
+    color: 'white',
+    width: '100%',
+    m: 0,
+    border: 0,
+    boxShadow: 0,
+    p: '0 0 0 8px',
+    '& *': {
+      m: 0,
+      border: 0,
+      boxShadow: 0,
+      p: 0
+    }
   }
 }
 

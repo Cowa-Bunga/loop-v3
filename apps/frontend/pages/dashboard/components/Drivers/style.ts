@@ -1,7 +1,7 @@
 const ui = {
   container: {
     textAlign: 'center',
-    width: '340px',
+    width: '360px',
     height: '100vh',
     pt: '80px'
   },

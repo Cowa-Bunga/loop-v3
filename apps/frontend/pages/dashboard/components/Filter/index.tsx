@@ -24,7 +24,7 @@ const DashboardFilter = () => {
   const { tabChange, regionChange, hubChange } = Actions(state, setState)
 
   return (
-    <Drawer anchor="left" variant="persistent" open={true}>
+    <Drawer anchor="left" variant="permanent" open={true}>
       <Box sx={ui.container}>
         <Box>
           <Select
@@ -63,7 +63,7 @@ const DashboardFilter = () => {
           />
         </Box>
 
-        <Tabs value={state.tab} onChange={(i) => tabChange(i)}>
+        <Tabs value={state.tab} onChange={(e, i) => tabChange(i)}>
           <Tab label="Orders" />
           <Tab label="Open Clusters" />
           <Tab label="Trips" />

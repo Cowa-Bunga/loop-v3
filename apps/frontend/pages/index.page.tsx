@@ -1,17 +1,10 @@
 import Dashboard from './dashboard/index.page'
-import { useEffect, useRouter, useSession } from '@hooks'
+import Signin from './auth/signin/index.page'
+import { useSession } from '@hooks'
 
 export function LoopFrontend() {
-  const { data: session } = useSession()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (!session) {
-      router.push('/auth/signin')
-    }
-  }, [router, session])
-
-  return <Dashboard />
+  const { status } = useSession()
+  return status === 'authenticated' ? <Dashboard /> : <Signin />
 }
 
 export default LoopFrontend
