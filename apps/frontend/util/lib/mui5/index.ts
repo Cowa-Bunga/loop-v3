@@ -8,7 +8,7 @@ import { purple } from '@mui/material/colors'
  */
 export const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
     primary: {
       main: '#063863'
     },

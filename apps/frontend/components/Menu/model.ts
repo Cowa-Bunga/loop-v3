@@ -1,5 +1,4 @@
 import DashboardIcon from '@mui/icons-material/Dashboard'
-import CommuteIcon from '@mui/icons-material/Commute'
 import BusinessIcon from '@mui/icons-material/Business'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping'
 import SendTimeExtensionIcon from '@mui/icons-material/SendTimeExtension'
@@ -100,7 +99,6 @@ export const MODEL_MENU = ({ client_id }) =>
       id: 'settings',
       icon: AppSettingsAltIcon,
       title: 'Settings',
-      link: '/organisation/todo-id/settings',
       permissions: [],
       children: [
         {
@@ -176,4 +174,4 @@ export const MODEL_MENU = ({ client_id }) =>
       action: () => 'signOut',
       permissions: []
     }
-  ] as IMenu[]
+  ] as unknown as IMenu[]

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Box, Card } from '@mui/material'
 import { LayoutBase } from '@components'
 import { useSession } from '@hooks'
@@ -12,13 +11,7 @@ const Reports = () => {
     <LayoutBase>
       <Box>Reports - see google reports for additional embeds</Box>
       <Box>
-        <Card>
-          <img
-            alt="logo"
-            style={{ height: '100px' }}
-            src={session?.user?.logoUrl}
-          />
-        </Card>
+        <Card>Reports</Card>
       </Box>
     </LayoutBase>
   )

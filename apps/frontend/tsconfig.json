@@ -27,7 +27,7 @@
     "**/*.js",
     "**/*.jsx",
     "next-env.d.ts",
-    "*.d.ts",
+    "**/*.d.ts",
     "*.yml",
     "@types/*"
   ],

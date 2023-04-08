@@ -1,15 +1,14 @@
-import { ReactComponent } from '../../index'
 interface IMenu {
   id?: string
   title: string
   link?: string
   action?: () => void
-  icon?: () => ReactComponent
+  icon?: Component
   permissions?: EnumDbPermissionsScopes[]
   children?: IMenu[]
 }
 
 interface IMenuProps {
-  open: boolean
-  setOpen: (open: boolean) => void
+  open?: boolean
+  setOpen?: (open: boolean) => void
 }
