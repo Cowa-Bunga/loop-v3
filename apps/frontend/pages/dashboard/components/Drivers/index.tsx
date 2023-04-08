@@ -2,7 +2,7 @@ import { Stack, Alert, Box, Drawer, TextField } from '@mui/material'
 import ui from './style'
 
 const Drivers = () => (
-  <Drawer anchor="right" variant="permanent">
+  <Drawer anchor="right" variant="permanent" open={true}>
     <Box sx={ui.container}>
       <h4>Driver Activity</h4>
       <Box>

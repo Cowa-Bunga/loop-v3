@@ -1,18 +1,15 @@
 import { Map, LayoutBase } from '@components'
-import { Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 
 const Dashboard = () => (
   <LayoutBase>
-    <Stack
-      direction="row"
-      spacing={2}
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Stack direction="column">
       <Filter />
-      <Map />
+      <Box sx={{ mx: '360px' }}>
+        <Map />
+      </Box>
       <Drivers />
     </Stack>
   </LayoutBase>

@@ -1,14 +1,14 @@
-const Actions = (state, setState) => ({
+const Actions = (_state, setState) => ({
   tabChange: (index) => {
-    setState({ ...state, tab: index })
+    setState({ tab: index })
   },
 
   regionChange: (e) => {
-    setState({ ...state, region: e.target.value })
+    setState({ region: e.target.value })
   },
 
   hubChange: (e) => {
-    setState({ ...state, hub: e.target.value })
+    setState({ hub: e.target.value })
   }
 })
 

@@ -10,6 +10,11 @@ import { NoSsr } from '@mui/material'
 import { firebaseConfig } from '@util/lib/firebase'
 import '@locale/config'
 
+// hide debugs in prod
+if (process.env.NODE_ENV === 'production') {
+  console.info = console.log = console.warn = console.error = () => ''
+}
+
 const LoopApp = ({
   Component,
   pageProps: { session, ...pageProps }
@@ -21,13 +26,13 @@ const LoopApp = ({
   return (
     <>
       <Head>
-        <title>Loop Logistics</title>
+        <title>Loop logistics</title>
       </Head>
       <NoSsr>
         <FirebaseAppProvider firebaseConfig={firebaseConfig}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <main className="app">
+            <main id="loop-frontend">
               <SessionProvider session={session}>
                 <Component {...pageProps} />
               </SessionProvider>

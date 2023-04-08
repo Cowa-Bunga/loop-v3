@@ -34,8 +34,6 @@ export default function FirebaseWrapper({ children }) {
       }
 
       authFirebase(firebaseAuth, userSession.firebase_token)
-    } else {
-      router.push('/auth/signin')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

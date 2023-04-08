@@ -1,10 +1,10 @@
 const ui = {
   container: {
     textAlign: 'center',
-    width: '370px',
+    width: '360px',
     height: '100vh',
     pt: '80px',
-    px: 2,
+    px: 2
   },
 
   select: {

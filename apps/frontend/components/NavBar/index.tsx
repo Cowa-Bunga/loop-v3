@@ -1,29 +1,32 @@
 import { IconButton, AppBar, Box, Toolbar, Typography } from '@mui/material'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { useState } from '@hooks'
+import { useMergeState } from '@hooks'
 import { Menu, LockOpen, Lock } from '@mui/icons-material'
-import { Menu as MenuDrawer } from '@components'
 
-export default function NavBar() {
+export default function NavBar({ open, setOpen }) {
   const { data: session } = useSession()
-  const [state, setState] = useState({
-    open: false
-  })
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" sx={{ zIndex: 10000 }}>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: 'primary.main',
+          zIndex: 10000
+        }}
+      >
         <Toolbar>
           {session && (
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              onClick={() => setState({ open: !state.open })}
-            >
-              <Menu />
-              <MenuDrawer open={state.open} />
-            </IconButton>
+            <>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                onClick={() => setOpen({ open: !open })}
+              >
+                <Menu />
+              </IconButton>
+            </>
           )}
 
           <Typography
@@ -43,10 +46,7 @@ export default function NavBar() {
             onClick={() =>
               !session
                 ? signIn()
-                : signOut({
-                    callbackUrl: '/auth/signin',
-                    redirect: true
-                  })
+                : signOut({ callbackUrl: '/auth/signin', redirect: true })
             }
           >
             {!session ? <Lock /> : <LockOpen />}
