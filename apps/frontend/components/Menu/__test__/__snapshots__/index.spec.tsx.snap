@@ -32,39 +32,825 @@ exports[`Menu should render successfully 1`] = `
             role="menuitem"
             tabindex="0"
           >
-            <svg
+            <span
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
+              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-kc5ij2-MuiIcon-root"
             >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="DashboardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"
+                />
+              </svg>
+            </span>
             Dashboard
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
           </li>
           <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
             role="menuitem"
             tabindex="-1"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
+            <div
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1o6edaz-MuiPaper-root-MuiAccordion-root"
             >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            All Orders
+              <div
+                aria-expanded="false"
+                class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1tddh15-MuiIcon-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="LocalShippingIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9 1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                      />
+                    </svg>
+                  </span>
+                  Fleet
+                </div>
+                <div
+                  class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1d159sf-MuiSvgIcon-root"
+                    data-testid="ExpandMoreIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+                style="min-height: 0px;"
+              >
+                <div
+                  class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+                >
+                  <div
+                    class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+                  >
+                    <div
+                      class="MuiAccordion-region"
+                      role="region"
+                    >
+                      <div
+                        class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+                      >
+                        <ul
+                          class="MuiList-root MuiList-padding css-17osibc-MuiList-root"
+                          role="menu"
+                          tabindex="-1"
+                        >
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="0"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="AdminPanelSettingsIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M17 11c.34 0 .67.04 1 .09V6.27L10.5 3 3 6.27v4.91c0 4.54 3.2 8.79 7.5 9.82.55-.13 1.08-.32 1.6-.55-.69-.98-1.1-2.17-1.1-3.45 0-3.31 2.69-6 6-6z"
+                                />
+                                <path
+                                  d="M17 13c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 1.38c.62 0 1.12.51 1.12 1.12s-.51 1.12-1.12 1.12-1.12-.51-1.12-1.12.5-1.12 1.12-1.12zm0 5.37c-.93 0-1.74-.46-2.24-1.17.05-.72 1.51-1.08 2.24-1.08s2.19.36 2.24 1.08c-.5.71-1.31 1.17-2.24 1.17z"
+                                />
+                              </svg>
+                            </span>
+                            Admin
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="SensorOccupiedIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 1c-1.84 0-3.56.5-5.03 1.37-.61.35-.97 1.02-.97 1.72V17h12v-1.91c0-.7-.36-1.36-.97-1.72C15.56 12.5 13.84 12 12 12zm9.23-3.85 1.85-.77c-1.22-2.91-3.55-5.25-6.46-6.46l-.77 1.85c2.42 1.02 4.36 2.96 5.38 5.38zM8.15 2.77 7.38.92C4.47 2.14 2.14 4.47.92 7.38l1.85.77c1.02-2.42 2.96-4.36 5.38-5.38zM2.77 15.85l-1.85.77c1.22 2.91 3.55 5.25 6.46 6.46l.77-1.85c-2.42-1.02-4.36-2.96-5.38-5.38zm13.08 5.38.77 1.85c2.91-1.22 5.25-3.55 6.46-6.46l-1.85-.77c-1.02 2.42-2.96 4.36-5.38 5.38z"
+                                />
+                              </svg>
+                            </span>
+                            Drivers
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="ElectricCarIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M18.92 2.01C18.72 1.42 18.16 1 17.5 1h-11c-.66 0-1.21.42-1.42 1.01L3 8v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V8l-2.08-5.99zM6.5 12c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm11 0c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 7l1.5-4.5h11L19 7H5zm2 13h4v-2l6 3h-4v2z"
+                                />
+                              </svg>
+                            </span>
+                            Vehicles
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </li>
+          <li
+            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <div
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1o6edaz-MuiPaper-root-MuiAccordion-root"
+            >
+              <div
+                aria-expanded="false"
+                class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1tddh15-MuiIcon-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="LoopIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"
+                      />
+                    </svg>
+                  </span>
+                  Orders
+                </div>
+                <div
+                  class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1d159sf-MuiSvgIcon-root"
+                    data-testid="ExpandMoreIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+                style="min-height: 0px;"
+              >
+                <div
+                  class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+                >
+                  <div
+                    class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+                  >
+                    <div
+                      class="MuiAccordion-region"
+                      role="region"
+                    >
+                      <div
+                        class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+                      >
+                        <ul
+                          class="MuiList-root MuiList-padding css-17osibc-MuiList-root"
+                          role="menu"
+                          tabindex="-1"
+                        >
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="0"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="SendTimeExtensionIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M20 6c0-1.1-.9-2-2-2h-4c0-1.38-1.12-2.5-2.5-2.5S9 2.62 9 4H5.01c-1.1 0-2 .9-2 2v3.8C5.7 9.8 6 11.96 6 12.5s-.29 2.7-3 2.7V19c0 1.1.9 2 2 2h3.8c0-2.16 1.37-2.78 2.2-2.94v-9.3l9 4.5V6z"
+                                />
+                                <path
+                                  d="M13 12v4l4 1-4 1v4l10-5z"
+                                />
+                              </svg>
+                            </span>
+                            Create Order
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="GradingIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M4 7h16v2H4V7zm0 6h16v-2H4v2zm0 4h7v-2H4v2zm0 4h7v-2H4v2zm11.41-2.83L14 16.75l-1.41 1.41L15.41 21 20 16.42 18.58 15l-3.17 3.17zM4 3v2h16V3H4z"
+                                />
+                              </svg>
+                            </span>
+                            All Orders
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="ImportExportIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M9 3 5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"
+                                />
+                              </svg>
+                            </span>
+                            Import Orders
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </li>
+          <li
+            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <div
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1o6edaz-MuiPaper-root-MuiAccordion-root"
+            >
+              <div
+                aria-expanded="false"
+                class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1tddh15-MuiIcon-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="AssessmentIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"
+                      />
+                    </svg>
+                  </span>
+                  Reports
+                </div>
+                <div
+                  class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1d159sf-MuiSvgIcon-root"
+                    data-testid="ExpandMoreIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+                style="min-height: 0px;"
+              >
+                <div
+                  class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+                >
+                  <div
+                    class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+                  >
+                    <div
+                      class="MuiAccordion-region"
+                      role="region"
+                    >
+                      <div
+                        class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+                      >
+                        <ul
+                          class="MuiList-root MuiList-padding css-17osibc-MuiList-root"
+                          role="menu"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </li>
+          <li
+            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <div
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1o6edaz-MuiPaper-root-MuiAccordion-root"
+            >
+              <div
+                aria-expanded="false"
+                class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1tddh15-MuiIcon-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="AppSettingsAltIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="m21.81 12.74-.82-.63v-.22l.8-.63c.16-.12.2-.34.1-.51l-.85-1.48c-.07-.13-.21-.2-.35-.2-.05 0-.1.01-.15.03l-.95.38c-.08-.05-.11-.07-.19-.11l-.15-1.01c-.03-.21-.2-.36-.4-.36h-1.71c-.2 0-.37.15-.4.34l-.14 1.01c-.03.02-.07.03-.1.05l-.09.06-.95-.38c-.05-.02-.1-.03-.15-.03-.14 0-.27.07-.35.2l-.85 1.48c-.1.17-.06.39.1.51l.8.63v.23l-.8.63c-.16.12-.2.34-.1.51l.85 1.48c.07.13.21.2.35.2.05 0 .1-.01.15-.03l.95-.37c.08.05.12.07.2.11l.15 1.01c.03.2.2.34.4.34h1.71c.2 0 .37-.15.4-.34l.15-1.01c.03-.02.07-.03.1-.05l.09-.06.95.38c.05.02.1.03.15.03.14 0 .27-.07.35-.2l.85-1.48c.1-.17.06-.39-.1-.51zM18 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 17h2v4c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v4h-2V6H7v12h10v-1z"
+                      />
+                    </svg>
+                  </span>
+                  Settings
+                </div>
+                <div
+                  class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1d159sf-MuiSvgIcon-root"
+                    data-testid="ExpandMoreIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+                style="min-height: 0px;"
+              >
+                <div
+                  class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+                >
+                  <div
+                    class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+                  >
+                    <div
+                      class="MuiAccordion-region"
+                      role="region"
+                    >
+                      <div
+                        class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+                      >
+                        <ul
+                          class="MuiList-root MuiList-padding css-17osibc-MuiList-root"
+                          role="menu"
+                          tabindex="-1"
+                        >
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="0"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="BusinessIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"
+                                />
+                              </svg>
+                            </span>
+                            Organisation
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="PersonPinIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 2c-4.97 0-9 4.03-9 9 0 4.17 2.84 7.67 6.69 8.69L12 22l2.31-2.31C18.16 18.67 21 15.17 21 11c0-4.97-4.03-9-9-9zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.3c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                                />
+                              </svg>
+                            </span>
+                            Clients
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="GroupsIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 12.75c1.63 0 3.07.39 4.24.9 1.08.48 1.76 1.56 1.76 2.73V18H6v-1.61c0-1.18.68-2.26 1.76-2.73 1.17-.52 2.61-.91 4.24-.91zM4 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1.13 1.1c-.37-.06-.74-.1-1.13-.1-.99 0-1.93.21-2.78.58C.48 14.9 0 15.62 0 16.43V18h4.5v-1.61c0-.83.23-1.61.63-2.29zM20 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 3.43c0-.81-.48-1.53-1.22-1.85-.85-.37-1.79-.58-2.78-.58-.39 0-.76.04-1.13.1.4.68.63 1.46.63 2.29V18H24v-1.57zM12 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"
+                                />
+                              </svg>
+                            </span>
+                            Users
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="IntegrationInstructionsIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64-.1.23-.16.49-.16.77v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 11.17-1.41 1.42L6 12l3.59-3.59L11 9.83 8.83 12 11 14.17zm1-9.92c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75zm2.41 11.34L13 14.17 15.17 12 13 9.83l1.41-1.42L18 12l-3.59 3.59z"
+                                />
+                              </svg>
+                            </span>
+                            Optimisations
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="ApiIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="m14 12-2 2-2-2 2-2 2 2zm-2-6 2.12 2.12 2.5-2.5L12 1 7.38 5.62l2.5 2.5L12 6zm-6 6 2.12-2.12-2.5-2.5L1 12l4.62 4.62 2.5-2.5L6 12zm12 0-2.12 2.12 2.5 2.5L23 12l-4.62-4.62-2.5 2.5L18 12zm-6 6-2.12-2.12-2.5 2.5L12 23l4.62-4.62-2.5-2.5L12 18z"
+                                />
+                              </svg>
+                            </span>
+                            Integrations
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="AppSettingsAltIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="m21.81 12.74-.82-.63v-.22l.8-.63c.16-.12.2-.34.1-.51l-.85-1.48c-.07-.13-.21-.2-.35-.2-.05 0-.1.01-.15.03l-.95.38c-.08-.05-.11-.07-.19-.11l-.15-1.01c-.03-.21-.2-.36-.4-.36h-1.71c-.2 0-.37.15-.4.34l-.14 1.01c-.03.02-.07.03-.1.05l-.09.06-.95-.38c-.05-.02-.1-.03-.15-.03-.14 0-.27.07-.35.2l-.85 1.48c-.1.17-.06.39.1.51l.8.63v.23l-.8.63c-.16.12-.2.34-.1.51l.85 1.48c.07.13.21.2.35.2.05 0 .1-.01.15-.03l.95-.37c.08.05.12.07.2.11l.15 1.01c.03.2.2.34.4.34h1.71c.2 0 .37-.15.4-.34l.15-1.01c.03-.02.07-.03.1-.05l.09-.06.95.38c.05.02.1.03.15.03.14 0 .27-.07.35-.2l.85-1.48c.1-.17.06-.39-.1-.51zM18 13.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 17h2v4c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v4h-2V6H7v12h10v-1z"
+                                />
+                              </svg>
+                            </span>
+                            Account Billing
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </li>
+          <li
+            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root"
+            role="menuitem"
+            tabindex="-1"
+          >
+            <div
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1o6edaz-MuiPaper-root-MuiAccordion-root"
+            >
+              <div
+                aria-expanded="false"
+                class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1tddh15-MuiIcon-root"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="SupportAgentIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M21 12.22C21 6.73 16.74 3 12 3c-4.69 0-9 3.65-9 9.28-.6.34-1 .98-1 1.72v2c0 1.1.9 2 2 2h1v-6.1c0-3.87 3.13-7 7-7s7 3.13 7 7V19h-8v2h8c1.1 0 2-.9 2-2v-1.22c.59-.31 1-.92 1-1.64v-2.3c0-.7-.41-1.31-1-1.62z"
+                      />
+                      <circle
+                        cx="9"
+                        cy="13"
+                        r="1"
+                      />
+                      <circle
+                        cx="15"
+                        cy="13"
+                        r="1"
+                      />
+                      <path
+                        d="M18 11.03C17.52 8.18 15.04 6 12.05 6c-3.03 0-6.29 2.51-6.03 6.45 2.47-1.01 4.33-3.21 4.86-5.89 1.31 2.63 4 4.44 7.12 4.47z"
+                      />
+                    </svg>
+                  </span>
+                  Support
+                </div>
+                <div
+                  class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1d159sf-MuiSvgIcon-root"
+                    data-testid="ExpandMoreIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+                style="min-height: 0px;"
+              >
+                <div
+                  class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+                >
+                  <div
+                    class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+                  >
+                    <div
+                      class="MuiAccordion-region"
+                      role="region"
+                    >
+                      <div
+                        class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+                      >
+                        <ul
+                          class="MuiList-root MuiList-padding css-17osibc-MuiList-root"
+                          role="menu"
+                          tabindex="-1"
+                        >
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="0"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="LiveHelpIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M19 2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h4l3 3 3-3h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 16h-2v-2h2v2zm2.07-7.75-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                                />
+                              </svg>
+                            </span>
+                            Documentation
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                          <li
+                            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
+                            role="menuitem"
+                            tabindex="-1"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-1sea34s-MuiIcon-root"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                                data-testid="ModelTrainingIcon"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M15.5 13.5c0 2-2.5 3.5-2.5 5h-2c0-1.5-2.5-3-2.5-5 0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5zm-2.5 6h-2V21h2v-1.5zm6-6.5c0 1.68-.59 3.21-1.58 4.42l1.42 1.42C20.18 17.27 21 15.23 21 13c0-2.74-1.23-5.19-3.16-6.84l-1.42 1.42C17.99 8.86 19 10.82 19 13zm-3-8-4-4v3c-4.97 0-9 4.03-9 9 0 2.23.82 4.27 2.16 5.84l1.42-1.42C5.59 16.21 5 14.68 5 13c0-3.86 3.14-7 7-7v3l4-4z"
+                                />
+                              </svg>
+                            </span>
+                            Training Centre
+                            <span
+                              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                            />
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
@@ -74,144 +860,23 @@ exports[`Menu should render successfully 1`] = `
             role="menuitem"
             tabindex="-1"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Driver Details
             <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
+              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-kc5ij2-MuiIcon-root"
             >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Import Orders
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Training Centre
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Support
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Reports
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Fleet
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1eayuh3-MuiSvgIcon-root"
-              data-testid="HomeIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"
-              />
-            </svg>
-            Log Out
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="PowerSettingsNewIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M13 3h-2v10h2V3zm4.83 2.17-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"
+                />
+              </svg>
+            </span>
+            Sign out
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />
@@ -222,7 +887,7 @@ exports[`Menu should render successfully 1`] = `
             <div
               class="MuiBox-root css-pz1d1y"
             >
-              version: 0.1
+              © loop-pro: v1.0
             </div>
           </div>
         </ul>
