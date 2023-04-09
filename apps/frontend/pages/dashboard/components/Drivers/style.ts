@@ -3,12 +3,25 @@ const ui = {
     textAlign: 'center',
     width: '360px',
     height: '100vh',
-    pt: '80px'
+    pt: '80px',
+    backgroundColor: 'primary.main',
+    backgroundImage:
+      'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
+    backgroundSize: 'cover',
+    backgroundPosition: '0 0',
+    '& *': {
+      color: 'white'
+    }
   },
 
   stack: {
     mt: 4,
-    width: '100%'
+    width: '100%',
+    p: 2,
+    '& *': {
+      color: 'black',
+      fontWeight: 'bold'
+    }
   }
 }
 

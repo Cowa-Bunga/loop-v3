@@ -9,6 +9,8 @@ import { FirebaseAppProvider } from 'reactfire'
 import { NoSsr } from '@mui/material'
 import { firebaseConfig } from '@util/lib/firebase'
 import '@locale/config'
+import '../public/cesium/Widgets/widgets.css'
+import '../public/app.css'
 
 // hide debugs in prod
 if (process.env.NODE_ENV === 'production') {

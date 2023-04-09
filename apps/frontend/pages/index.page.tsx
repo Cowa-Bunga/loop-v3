@@ -1,4 +1,4 @@
-import Dashboard from './dashboard/index.page'
+import Dashboard from './map/index.page'
 import Signin from './auth/signin/index.page'
 import { useSession } from '@hooks'
 
