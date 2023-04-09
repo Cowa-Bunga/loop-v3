@@ -17,8 +17,8 @@ import {
 const DashboardFilter = () => {
   const [state, setState] = useMergeState({
     tab: 0,
-    region: '',
-    hub: ''
+    region: 'Western Cape',
+    hub: 'Hub 234'
   })
 
   const { tabChange, regionChange, hubChange } = Actions(state, setState)
@@ -31,8 +31,8 @@ const DashboardFilter = () => {
             variant="standard"
             fullWidth
             value={state.region}
+            defaultValue={state.region}
             label="region"
-            placeholder="region"
             onChange={regionChange}
             sx={ui.select}
           >
@@ -44,6 +44,7 @@ const DashboardFilter = () => {
             variant="standard"
             fullWidth
             value={state.hub}
+            defaultValue={state.hub}
             label="hub"
             onChange={hubChange}
             sx={ui.select}

@@ -38,7 +38,7 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'fleet-admin',
           icon: AdminPanelSettingsIcon,
           title: 'Admin',
-          link: `/organisation/todo-id/admin`,
+          link: `/map`,
           permissions: []
         },
         {

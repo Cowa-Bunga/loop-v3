@@ -4,7 +4,15 @@ const ui = {
     width: '360px',
     height: '100vh',
     pt: '80px',
-    px: 2
+    px: 2,
+    backgroundColor: 'primary.main',
+    backgroundImage:
+      'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
+    backgroundSize: 'cover',
+    backgroundPosition: '0 0',
+    '& *': {
+      color: 'white !important'
+    }
   },
 
   select: {

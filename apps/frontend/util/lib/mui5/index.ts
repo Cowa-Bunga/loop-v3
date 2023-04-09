@@ -8,12 +8,17 @@ import { purple } from '@mui/material/colors'
  */
 export const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
       main: '#063863'
     },
     secondary: {
       main: purple[200]
+    }
+  },
+  typography: {
+    allVariants: {
+      fontFamily: 'Verdana'
     }
   }
 })
