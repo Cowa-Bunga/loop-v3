@@ -1,14 +1,14 @@
-import HomeIcon from '@mui/icons-material/Home'
 const ui = {
   container: {
-    width: '300px',
-    height: '100vh',
+    width: '320px',
+    minHeight: '100vh',
     pt: '80px',
     backgroundColor: 'primary.main',
     backgroundImage:
       'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
     backgroundSize: 'cover',
     backgroundPosition: '0 0',
+    backgroundAttachment: 'fixed',
     color: 'white'
   },
 
