@@ -27,7 +27,7 @@ export default function Menu({ open }: IMenuProps) {
           {MODEL_MENU({ client_id: 'todo-id' }).map((item: IMenu) =>
             item.children ? (
               <MenuItem key={item.title}>
-                <Accordion sx={ui.accordion}>
+                <Accordion sx={ui.accordion} disableGutters square>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon sx={{ color: 'white' }} />}
                   >

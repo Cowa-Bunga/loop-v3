@@ -27,7 +27,7 @@ export default function CesiumMap() {
             centered
           >
             <Tab label="Filters" />
-            <Tab label="Routes" />
+            <Tab label="Drivers" />
           </Tabs>
           <Divider />
           <TabPanel value={state.tab} index={0}>

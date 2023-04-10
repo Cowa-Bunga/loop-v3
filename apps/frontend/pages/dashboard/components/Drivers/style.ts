@@ -2,7 +2,7 @@ const ui = {
   container: {
     textAlign: 'center',
     width: '360px',
-    height: '100vh',
+    minHeight: '100vh',
     pt: '80px',
     backgroundColor: 'primary.main',
     backgroundImage:

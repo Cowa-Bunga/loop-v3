@@ -2,7 +2,7 @@ const ui = {
   container: {
     textAlign: 'center',
     width: '320px',
-    height: '100vh'
+    minHeight: '100vh'
   },
 
   searchDriver: {
