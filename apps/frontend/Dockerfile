@@ -25,6 +25,7 @@ RUN addgroup --system frontend && \
 
 COPY dist/apps/frontend frontend
 COPY apps/frontend/app.json frontend
+COPY apps/frontend/public frontend
 
 # TODO: minimise deps
 COPY package.json frontend
