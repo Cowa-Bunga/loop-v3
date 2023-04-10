@@ -36,7 +36,7 @@ WORKDIR /apps/frontend
 RUN npm i -g next@13.1.1 nx
 RUN npm --omit=dev -f install
 
-COPY node_modules/cesium/Build/Cesium public/cesium
+# RUN npm run docker-postinstall
 
 
 EXPOSE 3000
