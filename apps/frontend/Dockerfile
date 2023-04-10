@@ -25,7 +25,6 @@ RUN addgroup --system frontend && \
 
 COPY dist/apps/frontend frontend
 COPY apps/frontend/app.json frontend
-COPY apps/frontend/public frontend
 
 # TODO: minimise deps
 COPY package.json frontend
@@ -34,8 +33,11 @@ RUN chown -R frontend:frontend .
 
 WORKDIR /apps/frontend
 
-RUN npm --omit=dev -f install
 RUN npm i -g next@13.1.1 nx
+RUN npm --omit=dev -f install
+
+COPY node_modules/cesium/Build/Cesium public/cesium
+
 
 EXPOSE 3000
 
