@@ -9,7 +9,7 @@
     "build": "npx nx build",
     "lint": "npx nx lint",
     "e2e": "npx nx e2e frontend-e2e",
-    "run_on_cesium_upgrade_postinstall": "symlink-dir node_modules/cesium/Build/Cesium apps/frontend/public/cesium"
+    "postinstall": "symlink-dir node_modules/cesium/Build/Cesium apps/frontend/public/cesium"
   },
   "private": true,
   "devDependencies": {
