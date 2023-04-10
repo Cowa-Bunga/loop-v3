@@ -11,8 +11,8 @@ import {
 import { Paper } from '@mui/material'
 
 const center = {
-  lat: 18.4233,
-  lng: -33.918861
+  lat: -33.918861,
+  lng: 18.4233
 }
 
 function Map() {
@@ -54,7 +54,7 @@ function Map() {
       <GoogleMap
         mapContainerStyle={{ width: '100%', height }}
         center={center}
-        zoom={12}
+        zoom={8}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
