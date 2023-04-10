@@ -1,6 +1,5 @@
 # Build the docker image with `nx docker-build frontend`.
 # Run the container with `docker run -p 3000:3000 -t frontend`.
-
 # Tip: Modify "docker-build" options in project.json to change docker build args.
 
 FROM docker.io/node:lts-alpine
@@ -18,18 +17,21 @@ ENV NEXT_PUBLIC_NEXTAUTH_URL=https://loop-v3-ukxjb66ceq-ew.a.run.app
 
 ENV NEXTAUTH_SECRET=Fv7wzu/V1HLsYwOX/Ujf7g2x4V6mGG/twvCN5rOGxcaYjYr4wxcAMyR/oqf2GSwDm2RtdQhWHKuPqHHD2efEb314DYwb4f7puMIn1WdI1BE6yvVFsDvy3z0z+S/SO3b8Iau3GjgEfChB4uSpt/ucOEfjpwBvgISMF2g/qAHxJ6U=
 ENV NEXT_PUBLIC_GOOGLE_MAPS_KEY=AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME
-WORKDIR /app
+
+WORKDIR /apps
 
 RUN addgroup --system frontend && \
   adduser --system -G frontend frontend
 
 COPY dist/apps/frontend frontend
 COPY apps/frontend/app.json frontend
+
+# TODO: minimise deps
 COPY package.json frontend
 
 RUN chown -R frontend:frontend .
 
-WORKDIR /app/frontend
+WORKDIR /apps/frontend
 
 RUN npm --omit=dev -f install
 RUN npm i -g next@13.1.1 nx
