@@ -27,10 +27,9 @@ const DashboardFilter = () => {
     <Box sx={ui.container}>
       <Box>
         <Select
-          variant="standard"
+          variant="outlined"
           fullWidth
           value={state.region}
-          defaultValue={state.region}
           label="region"
           onChange={regionChange}
           sx={ui.select}
@@ -40,7 +39,7 @@ const DashboardFilter = () => {
         </Select>
 
         <Select
-          variant="standard"
+          variant="outlined"
           fullWidth
           value={state.hub}
           defaultValue={state.hub}
@@ -65,7 +64,7 @@ const DashboardFilter = () => {
 
       <Tabs value={state.tab} onChange={(e, i) => tabChange(i)}>
         <Tab label="Orders" />
-        <Tab label="Open Clusters" />
+        <Tab label="Clusters" />
         <Tab label="Trips" />
       </Tabs>
       <Divider />

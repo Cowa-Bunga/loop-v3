@@ -21,7 +21,7 @@ export default function Menu({ open }: IMenuProps) {
   }
 
   return (
-    <Drawer variant="temporary" anchor="left" hideBackdrop open={open}>
+    <Drawer variant="temporary" anchor="left" open={open}>
       <Box sx={ui.container}>
         <MenuList sx={ui.menuList}>
           {MODEL_MENU({ client_id: 'todo-id' }).map((item: IMenu) =>
