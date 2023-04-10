@@ -102,9 +102,9 @@ export const MODEL_MENU = ({ client_id }) =>
       permissions: [],
       children: [
         {
-          id: 'settings-org',
-          icon: BusinessIcon,
-          title: 'Organisation',
+          id: 'settings-billing',
+          icon: AppSettingsAltIcon,
+          title: 'Account Billing',
           link: '/organisation/todo-id/settings',
           permissions: []
         },
@@ -116,9 +116,9 @@ export const MODEL_MENU = ({ client_id }) =>
           permissions: []
         },
         {
-          id: 'settings-users',
-          icon: GroupsIcon,
-          title: 'Users',
+          id: 'settings-integration',
+          icon: ApiIcon,
+          title: 'Integrations',
           link: '/organisation/todo-id/settings',
           permissions: []
         },
@@ -130,16 +130,17 @@ export const MODEL_MENU = ({ client_id }) =>
           permissions: []
         },
         {
-          id: 'settings-integration',
-          icon: ApiIcon,
-          title: 'Integrations',
+          id: 'settings-org',
+          icon: BusinessIcon,
+          title: 'Organisation',
           link: '/organisation/todo-id/settings',
           permissions: []
         },
+
         {
-          id: 'settings-billing',
-          icon: AppSettingsAltIcon,
-          title: 'Account Billing',
+          id: 'settings-users',
+          icon: GroupsIcon,
+          title: 'Users',
           link: '/organisation/todo-id/settings',
           permissions: []
         }

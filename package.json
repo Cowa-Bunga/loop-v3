@@ -9,7 +9,8 @@
     "build": "npx nx build",
     "lint": "npx nx lint",
     "e2e": "npx nx e2e frontend-e2e",
-    "run-once-postinstall-for-local-dev": "symlink-dir node_modules/cesium/Build/Cesium apps/frontend/public/cesium"
+    "trial-postinstall": "symlink-dir node_modules/cesium/Build/Cesium apps/frontend/public/cesium",
+    "docker-postinstall": "symlink-dir node_modules/cesium/Build/Cesium public/cesium"
   },
   "private": true,
   "devDependencies": {
