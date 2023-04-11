@@ -1,11 +1,23 @@
 import { createContext, useContext } from 'react'
+import { useMergeState } from '@hooks'
+import { IUserContext } from '@util/types/IappContext'
 
-const UserContext = createContext({} as IUserContext)
+const UserContext = createContext({
+  state: {} as IUserContext,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  update: (updated: object) => {}
+})
 
 export function UserWrapper({ children }) {
-  const sharedState = {} as IUserContext
+  const [state, updateState] = useMergeState({} as IUserContext)
+
+  const update = (updated: object) => {
+    updateState(updated as IUserContext)
+  }
   return (
-    <UserContext.Provider value={sharedState}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ state, update }}>
+      {children}
+    </UserContext.Provider>
   )
 }
 
