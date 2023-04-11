@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "noImplicitAny": false,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
     "allowJs": true,
@@ -16,7 +17,8 @@
       "@components": ["apps/frontend/components"],
       "@hooks": ["apps/frontend/util/hooks"],
       "@util/*": ["apps/frontend/util/*"],
-      "@locale/*": ["libs/i18n/*"]
+      "@locale/*": ["libs/i18n/*"],
+      "@context/*": ["apps/frontend/util/context/*"]
     }
   },
   "include": [
@@ -25,8 +27,9 @@
     "**/*.js",
     "**/*.jsx",
     "next-env.d.ts",
-    "*.d.ts",
-    "*.yml"
+    "**/*.d.ts",
+    "*.yml",
+    "@types/*"
   ],
   "exclude": [
     "node_modules",

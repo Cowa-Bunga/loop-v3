@@ -1,7 +1,10 @@
-import Dashboard from './dashboard/index.page';
+import Dashboard from './map/index.page'
+import Signin from './auth/signin/index.page'
+import { useSession } from '@hooks'
 
 export function LoopFrontend() {
-  return <Dashboard />;
+  const { status } = useSession()
+  return status === 'authenticated' ? <Dashboard /> : <Signin />
 }
 
-export default LoopFrontend;
+export default LoopFrontend

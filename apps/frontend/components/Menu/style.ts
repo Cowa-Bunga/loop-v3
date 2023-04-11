@@ -1,13 +1,14 @@
 const ui = {
   container: {
-    width: '300px',
-    height: '100vh',
+    width: '320px',
+    minHeight: '100vh',
     pt: '80px',
     backgroundColor: 'primary.main',
     backgroundImage:
       'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
     backgroundSize: 'cover',
     backgroundPosition: '0 0',
+    backgroundAttachment: 'fixed',
     color: 'white'
   },
 
@@ -27,7 +28,18 @@ const ui = {
   },
 
   homeIcon: {
-    mx: 1
+    mr: 1,
+    color: 'white'
+  },
+
+  homeIconDropdown: {
+    mr: 1,
+    color: 'white',
+    ml: -3
+  },
+
+  homeIconInner: {
+    ml: -2
   },
 
   menuBottom: {
@@ -38,7 +50,23 @@ const ui = {
 
   icon: {
     mx: 1
-  }
-};
+  },
 
-export default ui;
+  accordion: {
+    background: 'transparent !important',
+    color: 'white',
+    width: '100%',
+    m: 0,
+    border: 0,
+    boxShadow: 0,
+    p: '0 0 0 8px',
+    '& *': {
+      m: 0,
+      border: 0,
+      boxShadow: 0,
+      p: 0
+    }
+  }
+}
+
+export default ui

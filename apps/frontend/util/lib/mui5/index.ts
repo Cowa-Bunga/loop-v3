@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material/styles';
-// import { blue, purple } from '@mui/material/colors'
+import { createTheme } from '@mui/material/styles'
+import { purple } from '@mui/material/colors'
 
 /** 
   @see: mui.org
@@ -11,12 +11,16 @@ export const theme = createTheme({
     mode: 'light',
     primary: {
       main: '#063863'
+    },
+    secondary: {
+      main: purple[200]
     }
-    //   },
-    //   secondary: {
-    //     main: blue[500],
-    //   },
+  },
+  typography: {
+    allVariants: {
+      fontFamily: 'Verdana'
+    }
   }
-});
+})
 
-export default theme;
+export default theme
