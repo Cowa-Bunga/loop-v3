@@ -10,7 +10,7 @@ exports[`TabPanel should render successfully 1`] = `
       role="tabpanel"
     >
       <div
-        class="MuiBox-root css-1phy807"
+        class="MuiBox-root css-0"
       >
         panel
       </div>
