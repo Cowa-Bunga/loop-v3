@@ -18,7 +18,8 @@
       "@hooks": ["apps/frontend/util/hooks"],
       "@util/*": ["apps/frontend/util/*"],
       "@locale/*": ["libs/i18n/*"],
-      "@context/*": ["apps/frontend/util/context/*"]
+      "@context/*": ["apps/frontend/util/context/*"],
+      "@pages/*": ["apps/frontend/pages/*"]
     }
   },
   "include": [
