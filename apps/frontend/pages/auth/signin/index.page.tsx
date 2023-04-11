@@ -58,14 +58,12 @@ const SignIn = () => {
 
       if (userSession.clients.length == 1) {
         userContext.client = userSession.clients[0]
-        router.push('/map').then((r) => console.log(r))
+        router.push('/map')
       } else {
         router.push('/auth/client_select')
       }
 
-      authFirebase(firebaseAuth, userSession.firebase_token).then((r) =>
-        console.log(r)
-      )
+      authFirebase(firebaseAuth, userSession.firebase_token)
     }
   }, [router, status])
 
