@@ -35,9 +35,11 @@ const LoopApp = ({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <main id="loop-frontend">
-              <SessionProvider session={session}>
-                <Component {...pageProps} />
-              </SessionProvider>
+              <UserWrapper>
+                <SessionProvider session={session}>
+                  <Component {...pageProps} />
+                </SessionProvider>
+              </UserWrapper>
             </main>
           </ThemeProvider>
         </FirebaseAppProvider>
