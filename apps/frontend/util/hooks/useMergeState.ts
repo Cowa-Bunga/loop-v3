@@ -1,14 +1,36 @@
-import { useState } from 'react';
-import { deepmerge } from '@mui/utils';
+import { useState } from 'react'
+import { deepmerge } from '@mui/utils'
 
 /**
+ * @function useMergeState
  * @desc deep merge state objects augmentor
  * @prop {object} object - initial state object
+ * @example
+ * const [state, setState] = useMergeState({ foo: 'bar' })
+ * setState({ baz: 'qux' })
+ *  // state = { foo: 'bar', baz: 'qux' }
  */
 export const useMergeState = <T>(
-  object: T = {} as T
-): [T, (newState: T) => void] => {
-  const [state, setState] = useState(object);
-  const mergeState = (newState: T) => setState(deepmerge(state, newState));
-  return [state as T, mergeState as (newState: T) => void];
-};
+  initState: T = {} as T
+): [T, (initState: T) => void] => {
+  const [state, origSetState] = useState(initState)
+
+  const setState = (mutation: T, cb) => {
+    const mergedState = deepmerge(state, mutation)
+    origSetState(mergedState)
+
+    if (process.env.NODE_ENV === 'development') {
+      console.info('%c setState:\n', 'color: aquamarine; font-weight: bold;', {
+        mutation,
+        old: state,
+        new: mergedState
+      })
+    }
+
+    if (cb) {
+      cb(mergedState)
+    }
+  }
+
+  return [state as T, setState as (mutation: T) => void]
+}

@@ -1,23 +1,22 @@
-import { Map, LayoutBase } from '@components';
-import { Stack } from '@mui/material';
-import Filter from './components/Filter';
-import Drivers from './components/Drivers';
+import { Map, LayoutBase } from '@components'
+import { Box, Drawer, Stack } from '@mui/material'
+import Filter from './components/Filter'
+import Drivers from './components/Drivers'
 
-const Dashboard = () => {
-  return (
-    <LayoutBase>
-      <Stack
-        direction="row"
-        spacing={2}
-        justifyContent="center"
-        alignItems="center"
-      >
+const Dashboard = () => (
+  <LayoutBase>
+    <Stack direction="column">
+      <Drawer anchor="left" variant="permanent" open={true}>
         <Filter />
+      </Drawer>
+      <Box sx={{ mx: '360px' }}>
         <Map />
+      </Box>
+      <Drawer anchor="right" variant="permanent" open={true}>
         <Drivers />
-      </Stack>
-    </LayoutBase>
-  );
-};
+      </Drawer>
+    </Stack>
+  </LayoutBase>
+)
 
-export default Dashboard;
+export default Dashboard

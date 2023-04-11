@@ -3,7 +3,12 @@ interface IMenu {
   title: string
   link?: string
   action?: () => void
-  icon?: string
+  icon?: Component
   permissions?: EnumDbPermissionsScopes[]
   children?: IMenu[]
+}
+
+interface IMenuProps {
+  open?: boolean
+  setOpen?: (open: boolean) => void
 }

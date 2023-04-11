@@ -1,12 +1,19 @@
-import { useEffect, useState } from 'react';
-import { LayoutSite } from '../../../components';
-import { useRouter } from 'next/router';
-import Actions from './actions';
-import ui from './style';
+import { LayoutSite } from '@components'
+import Actions from './actions'
+import ui from './style'
+import { clientSelectLocalePathBuilder } from '@locale/locale-utils'
+import { Select } from '@mui/material'
+import { useUserContext } from '@context/user'
+import {
+  useEffect,
+  useState,
+  useRouter,
+  useTranslation,
+  useSession
+} from '@hooks'
 import {
   Card,
   Button,
-  TextField,
   Grid,
   Box,
   Typography,
@@ -16,46 +23,41 @@ import {
   MenuItem,
   FormControl,
   InputLabel
-} from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { clientSelectLocalePathBuilder } from '@locale/locale-utils';
-import { Select } from '@mui/material';
-import { useSession } from 'next-auth/react';
-import { ISessionUser } from '../../api/auth/auth.interface';
-import { useUserContext } from '../../../context/user_context';
+} from '@mui/material'
 
 const SignIn = () => {
-  const router = useRouter();
-  const { t } = useTranslation();
+  const router = useRouter()
+  const { t } = useTranslation()
+  const _t = (path: string) => t(clientSelectLocalePathBuilder(path))
+
   const [state, setState] = useState({
     client_id: '',
     clientSelected: false
-  });
-  const { data } = useSession();
-  const [session, setSession] = useState({ clients: [] } as ISessionUser);
-  const user = useUserContext();
+  })
+  const { data } = useSession()
+  const [session, setSession] = useState({ clients: [] } as ISessionUser)
+  const user = useUserContext()
 
   useEffect(() => {
     if (data) {
       setSession({
         ...data.user
-      } as ISessionUser);
+      } as ISessionUser)
     }
 
     if (state.clientSelected) {
       user.client = session.clients.find(
         (client) => client.client_id === state.client_id
-      );
-      router.push('/dashboard');
+      )
+      router.push('/dashboard')
     }
-  }, [data, state]);
-  const { change, submit } = Actions(state, setState);
+  }, [data, router, session?.clients, state, user])
+
+  const { change, submit } = Actions(state, setState)
 
   return (
     <LayoutSite>
-      {router.query.error && (
-        <Alert>{t(clientSelectLocalePathBuilder('error'))}</Alert>
-      )}
+      {router.query.error && <Alert>{_t('error')}</Alert>}
 
       <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
@@ -67,7 +69,7 @@ const SignIn = () => {
             />
 
             <Typography component="h1" variant="h5">
-              {t(clientSelectLocalePathBuilder('title'))}
+              {_t('title')}
             </Typography>
 
             <Box component="form" onSubmit={(e) => submit(e)} sx={ui.form}>
@@ -103,14 +105,14 @@ const SignIn = () => {
                 variant="outlined"
                 sx={ui.btn}
               >
-                {t(clientSelectLocalePathBuilder('submit'))}
+                {_t('submit')}
               </Button>
             </Box>
           </Card>
         </Container>
       </div>
     </LayoutSite>
-  );
-};
+  )
+}
 
-export default SignIn;
+export default SignIn

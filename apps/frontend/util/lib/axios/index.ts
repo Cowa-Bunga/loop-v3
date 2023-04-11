@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const REQ = (options ={}) => {
- return axios(options);
-};
+export const REQ = (options = {}) => {
+  // TODO: customise
+  return axios(options)
+}

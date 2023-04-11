@@ -1,0 +1,695 @@
+{
+  "info": {
+    "_postman_id": "8821efb9-1ff5-4f37-b8ac-65a01383e828",
+    "name": "cb-dos-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26448833"
+  },
+  "item": [
+    {
+      "name": "get loggedin user info",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/me",
+          "host": ["{{base_url}}"],
+          "path": ["me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get drivers - servicing hub",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{prod_url}}/drivers/hub/IWKb2xsLtnAgR2UqqmuN",
+          "host": ["{{prod_url}}"],
+          "path": ["drivers", "hub", "IWKb2xsLtnAgR2UqqmuN"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get drivers - servicing region",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/drivers/region/xSxl3SeETEQXZRyCjzOU",
+          "host": ["{{dev_url}}"],
+          "path": ["drivers", "region", "xSxl3SeETEQXZRyCjzOU"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get driver",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{prod_url}}/drivers/oLpggkccIMOw2Cm7LKwI",
+          "host": ["{{prod_url}}"],
+          "path": ["drivers", "oLpggkccIMOw2Cm7LKwI"],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "acknowledge driver sos",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/drivers/HfU5uxdyrlifalIamJNW/acknowledge-sos",
+          "host": ["{{base_url}}"],
+          "path": ["drivers", "HfU5uxdyrlifalIamJNW", "acknowledge-sos"],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "cancel order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/U7bGd1ValUgCnk9UaS2C/cancel",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "U7bGd1ValUgCnk9UaS2C", "cancel"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "reset order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"trip_id\": \"w0fElhy0e6Eu8em7EbaU\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/w0fElhy0e6Eu8em7EbaU/reset",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "w0fElhy0e6Eu8em7EbaU", "reset"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "driver returned order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"trip_id\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/y6WFlBd8keZ9YEEyHcsD/returned",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "y6WFlBd8keZ9YEEyHcsD", "returned"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "cancel order in a trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"trip_id\": \"NJoSUjaNG7wYAwhAGfR6\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/L233jwHGtRzRlh64AYqx/cancel/in/trip",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "L233jwHGtRzRlh64AYqx", "cancel", "in", "trip"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"branch_id\": \"U5swtfJIMC6FOoe2WpYS\",\n    \"order\": {\n        \"order_no\": \"0023238\",\n        \"alcohol\": true,\n        \"assignable\": true,\n        \"customer\": {\n            \"name\": \"Tsitsi Marote\",\n            \"mobile_no\": \"+27838935461\"\n        },\n        \"address\": \"21 Junction Ave, Parktown, Johannesburg, 2183\",\n        \"location\": {\n            \"latitude\": -26.042088,\n            \"longitude\": 28.016763\n        },\n        \"collection_time\": \"2019-09-03T14:20:00+02:00\",\n        \"delivery_time\": \"2019-09-03T15:20:00+02:00\",\n        \"instructions\": \"Call when you have arrived for delivery\",\n        \"parcels\": [\n            {\n                \"qr_code\": \"ESTIMATE1\",\n                \"size\": \"Small\"\n            }\n        ]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/create",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create order - without parcels",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"branch_id\": \"U5swtfJIMC6FOoe2WpYS\",\n    \"order\": {\n        \"order_no\": \"0023238\",\n        \"alcohol\": true,\n        \"assignable\": true,\n        \"customer\": {\n            \"name\": \"Tsitsi Marote\",\n            \"mobile_no\": \"+27838935461\"\n        },\n        \"address\": \"21 Junction Ave, Parktown, Johannesburg, 2183\",\n        \"location\": {\n            \"latitude\": -26.042088,\n            \"longitude\": 28.016763\n        },\n        \"collection_time\": \"2019-09-03T14:20:00+02:00\",\n        \"delivery_time\": \"2019-09-03T15:20:00+02:00\",\n        \"instructions\": \"Call when you have arrived for delivery\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/orders/create",
+          "host": ["{{dev_url}}"],
+          "path": ["orders", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "set order assignable",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/9THPpCvIfzOOfrzP0RbR/set-order-asignable",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "9THPpCvIfzOOfrzP0RbR", "set-order-asignable"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get order",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/EF2TrA5Smo8jmr6MhSRS",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "EF2TrA5Smo8jmr6MhSRS"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get orders",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{prod_url}}/orders/branch/0sBcNNQzHoRDciNv4wqg",
+          "host": ["{{prod_url}}"],
+          "path": ["orders", "branch", "0sBcNNQzHoRDciNv4wqg"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get active orders",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/orders/active",
+          "host": ["{{base_url}}"],
+          "path": ["orders", "active"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get abandoned orders",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/orders/abandoned",
+          "host": ["{{dev_url}}"],
+          "path": ["orders", "abandoned"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "mark order as returned",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"trip_id\": \"HBKTboKJVxX5aFea2v9u\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/orders/y13Peqf1iRJ5qOKURitn/returned",
+          "host": ["{{dev_url}}"],
+          "path": ["orders", "y13Peqf1iRJ5qOKURitn", "returned"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get trips",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{prod_url}}/trips",
+          "host": ["{{prod_url}}"],
+          "path": ["trips"],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create trip (fail safe)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"branch_id\": \"0sBcNNQzHoRDciNv4wqg\",\n    \"order_ids\": [\"NvHTtYRtI8BrjrUizkvw\"]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{prod_url}}/trips/create",
+          "host": ["{{prod_url}}"],
+          "path": ["trips", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create trip manual (fail safe)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"branch_id\": \"7uiS9J3Fi2eJQlVcMmnV\",\n    \"order_ids\": [\"kgeIEvFEf2edfCAQgG6m\"],\n    \"compute_route\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trips/create-manual",
+          "host": ["{{base_url}}"],
+          "path": ["trips", "create-manual"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get trip",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trips/lOz50EBqEkgYNxUsMhVi",
+          "host": ["{{base_url}}"],
+          "path": ["trips", "lOz50EBqEkgYNxUsMhVi"],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "assign driver to trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"driver_id\": \"oLpggkccIMOw2Cm7LKwI\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trips/zpjbRYHHfescHI3zHrs1/assign-driver",
+          "host": ["{{base_url}}"],
+          "path": ["trips", "zpjbRYHHfescHI3zHrs1", "assign-driver"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "remove driver from trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"driver_id\": \"oLpggkccIMOw2Cm7LKwI\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trips/zpjbRYHHfescHI3zHrs1/remove-driver",
+          "host": ["{{base_url}}"],
+          "path": ["trips", "zpjbRYHHfescHI3zHrs1", "remove-driver"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get active clusters",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/clusters/branch/1g9ckRkuzBl8B6Kmvf4J",
+          "host": ["{{base_url}}"],
+          "path": ["clusters", "branch", "1g9ckRkuzBl8B6Kmvf4J"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get cluster",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/clusters/fZC9UOnBKkQd9I0zLvhP",
+          "host": ["{{base_url}}"],
+          "path": ["clusters", "fZC9UOnBKkQd9I0zLvhP"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "lock cluster prematurely",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/clusters/fZC9UOnBKkQd9I0zLvhP/lock-cluster",
+          "host": ["{{base_url}}"],
+          "path": ["clusters", "fZC9UOnBKkQd9I0zLvhP", "lock-cluster"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOnsiaWQiOiJheWNlM2w1bjBRU0E3Rk83Q0R0ciJ9LCJ1c2VyIjp7ImlkIjoiV1dENlhBVXMyYWd4emJaVXNkVEQifSwiaWF0IjoxNjQ1NzAwMjI4LCJleHAiOjE2NDgyOTIyMjh9.wYlnz7c-LLhnjej9Ecw94yOrkAdlKWaCxd6tCOk5rf4",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "dev_url",
+      "value": "https://cb-dos-api-ukxjb66ceq-ew.a.run.app"
+    },
+    {
+      "key": "prod_url",
+      "value": "https://cb-dos-api-f5dovyimaq-ew.a.run.app"
+    }
+  ]
+}
