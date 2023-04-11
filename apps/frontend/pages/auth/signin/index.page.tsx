@@ -7,7 +7,8 @@ import {
   useEffect,
   useMergeState,
   useSession,
-  useTranslation
+  useTranslation,
+  useState
 } from '@hooks'
 import {
   Card,
@@ -20,11 +21,19 @@ import {
   Divider,
   Alert
 } from '@mui/material'
+import { authFirebase } from '@util/lib/firebase'
+import { useUserContext } from '@context/user'
+import { getAuth } from 'firebase/auth'
+import { useFirebaseApp } from 'reactfire'
 
 const SignIn = () => {
+  const [hasInitialised, setHasInitialised] = useState(false)
+
   const router = useRouter()
-  const { status } = useSession()
   const { t } = useTranslation()
+  const userContext = useUserContext()
+  const { data, status } = useSession()
+  const firebaseAuth = getAuth(useFirebaseApp())
   const _t = (v: string) => t(authLocalePathBuilder(v))
 
   const [state, setState] = useMergeState({
@@ -35,8 +44,28 @@ const SignIn = () => {
   const { change, submit } = Actions(state, setState)
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      router.push('/dashboard')
+    if (status === 'authenticated' && !hasInitialised) {
+      setHasInitialised(true)
+      console.warn('firebase init', {
+        status,
+        hasInitialised,
+        userContext,
+        data
+      })
+
+      const userSession = { ...data.user } as ISessionUser
+      userContext.firebase_token = userSession.firebase_token
+
+      if (userSession.clients.length == 1) {
+        userContext.client = userSession.clients[0]
+        router.push('/map').then((r) => console.log(r))
+      } else {
+        router.push('/auth/client_select')
+      }
+
+      authFirebase(firebaseAuth, userSession.firebase_token).then((r) =>
+        console.log(r)
+      )
     }
   }, [router, status])
 
