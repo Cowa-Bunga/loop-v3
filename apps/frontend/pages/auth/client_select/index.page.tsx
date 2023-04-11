@@ -49,7 +49,7 @@ const SignIn = () => {
       user.client = session.clients.find(
         (client) => client.client_id === state.client_id
       )
-      router.push('/dashboard')
+      router.push('/map')
     }
   }, [data, router, session?.clients, state, user])
 

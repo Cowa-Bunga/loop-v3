@@ -4,39 +4,17 @@ import { getFirestore } from 'firebase/firestore'
 import { authFirebase } from '@util/lib/firebase'
 import { useUserContext } from '@context/user'
 import { getAuth } from 'firebase/auth'
+import { router } from 'next/client'
 
 export default function FirebaseWrapper({ children }) {
-  const [hasInitialised, setHasInitialised] = useState(false)
-  const router = useRouter()
-  const { data, status } = useSession()
   const firestoreInstance = getFirestore(useFirebaseApp())
-  const userContext = useUserContext()
-  const firebaseAuth = getAuth(useFirebaseApp())
+  const { status } = useSession()
 
   useEffect(() => {
-    if (status === 'authenticated' && !hasInitialised) {
-      setHasInitialised(true)
-      console.warn('firebase init', {
-        status,
-        hasInitialised,
-        firestoreInstance,
-        userContext,
-        data
-      })
-
-      const userSession = { ...data.user } as ISessionUser
-      userContext.firebase_token = userSession.firebase_token
-
-      if (userSession.clients.length == 1) {
-        userContext.client = userSession.clients[0]
-      } else {
-        router.push('/auth/client_select')
-      }
-
-      authFirebase(firebaseAuth, userSession.firebase_token)
+    if (status !== 'authenticated') {
+      router.push('/').then((r) => console.log(r))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [status])
 
   return (
     <FirestoreProvider sdk={firestoreInstance}>{children}</FirestoreProvider>
