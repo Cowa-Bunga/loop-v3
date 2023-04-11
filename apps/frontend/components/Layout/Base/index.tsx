@@ -3,25 +3,28 @@ import NavBar from '../../NavBar';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
-import FirebaseHOC from '../../hoc/firebase.hoc';
+import { getFirestore } from 'firebase/firestore';
+import { FirestoreProvider, useFirebaseApp } from 'reactfire';
 
 const LayoutBase = ({ children }) => {
   const router = useRouter();
   const { status } = useSession();
+  const firestoreInstance = getFirestore(useFirebaseApp());
 
   useEffect(() => {
-    console.warn('status', status);
     if (status !== 'authenticated') {
       router.push('/auth/signin');
     }
   }, [router, status]);
 
   return (
-    <Box>
-      <NavBar />
-      <Box sx={{ pt: '60px' }}>{children}</Box>
-    </Box>
+    <FirestoreProvider sdk={firestoreInstance}>
+      <Box>
+        <NavBar />
+        <Box sx={{ pt: '60px' }}>{children}</Box>
+      </Box>
+    </FirestoreProvider>
   );
 };
 
-export default FirebaseHOC(LayoutBase);
+export default LayoutBase;
