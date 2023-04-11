@@ -13,13 +13,11 @@ const LayoutBase = ({ children }) => {
   })
 
   return (
-    <UserWrapper>
-      <FirebaseWrapper>
-        <NavBar open={state.open} setOpen={setState} />
-        <MenuDrawer open={state.open} />
-        <Box sx={{ ...ui.box }}>{children}</Box>
-      </FirebaseWrapper>
-    </UserWrapper>
+    <FirebaseWrapper>
+      <NavBar open={state.open} setOpen={setState} />
+      <MenuDrawer open={state.open} />
+      <Box sx={{ ...ui.box }}>{children}</Box>
+    </FirebaseWrapper>
   )
 }
 
