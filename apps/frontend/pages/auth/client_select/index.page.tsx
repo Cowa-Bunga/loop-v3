@@ -36,7 +36,7 @@ const SignIn = () => {
   })
   const { data } = useSession()
   const [session, setSession] = useState({ clients: [] } as ISessionUser)
-  const user = useUserContext()
+  const { state: user, update: updateUserContext } = useUserContext()
 
   useEffect(() => {
     if (data) {
@@ -46,9 +46,11 @@ const SignIn = () => {
     }
 
     if (state.clientSelected) {
-      user.client = session.clients.find(
-        (client) => client.client_id === state.client_id
-      )
+      updateUserContext({
+        client: session.clients.find(
+          (client) => client.client_id === state.client_id
+        )
+      })
       router.push('/map')
     }
   }, [data, router, session?.clients, state, user])

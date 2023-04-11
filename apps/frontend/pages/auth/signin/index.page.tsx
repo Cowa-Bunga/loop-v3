@@ -31,7 +31,7 @@ const SignIn = () => {
 
   const router = useRouter()
   const { t } = useTranslation()
-  const userContext = useUserContext()
+  const { state: userContext, update: updateUserContext } = useUserContext()
   const { data, status } = useSession()
   const firebaseAuth = getAuth(useFirebaseApp())
   const _t = (v: string) => t(authLocalePathBuilder(v))
@@ -41,12 +41,12 @@ const SignIn = () => {
     password: ''
   })
 
-  const { change, submit } = Actions(state, setState)
+  const { getUser, change, submit } = Actions(state, setState)
 
   useEffect(() => {
     if (status === 'authenticated' && !hasInitialised) {
       setHasInitialised(true)
-      console.warn('firebase init', {
+      console.log('firebase init', {
         status,
         hasInitialised,
         userContext,
@@ -54,19 +54,25 @@ const SignIn = () => {
       })
 
       const userSession = { ...data.user } as ISessionUser
-      userContext.firebase_token = userSession.firebase_token
+
+      updateUserContext({ firebase_token: userSession.firebase_token })
+
+      authFirebase(firebaseAuth, userSession.firebase_token)
+      getUserData()
 
       if (userSession.clients.length == 1) {
-        userContext.client = userSession.clients[0]
+        updateUserContext({ client: userSession.clients[0] })
         router.push('/map')
       } else {
         router.push('/auth/client_select')
       }
-
-      authFirebase(firebaseAuth, userSession.firebase_token)
     }
   }, [router, status])
 
+  const getUserData = async () => {
+    const user = await getUser()
+    updateUserContext(user)
+  }
   return (
     <LayoutSite>
       {router.query.error && <Alert>{_t('error')}</Alert>}
