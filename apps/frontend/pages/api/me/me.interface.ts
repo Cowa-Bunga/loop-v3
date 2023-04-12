@@ -4,7 +4,7 @@ export interface IMeInterface {
   user: IMeUser
   regions: IRegion[]
   hubs: IHub[]
-  organization: IMeOrganization
+  organization: IOrganization
 }
 
 interface IMeUser {
@@ -26,16 +26,16 @@ export interface IRegion {
 export interface IHub {
   id: string
   name: string
-  branches: IMeBranch[]
+  branches: IBranch[]
 }
 
-export interface IMeOrganization {
+export interface IOrganization {
   id: string
   name: string
   logo: string
 }
 
-interface IMeBranch {
+interface IBranch {
   id: string
   address: string
   dashboard_url: string
