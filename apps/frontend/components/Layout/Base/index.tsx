@@ -1,5 +1,4 @@
 import FirebaseWrapper from '../../Firebase'
-import { UserWrapper } from '@context/user'
 import { Box } from '@mui/material'
 import { NavBar, Menu as MenuDrawer } from '@components'
 import { useMergeState } from '@hooks'
