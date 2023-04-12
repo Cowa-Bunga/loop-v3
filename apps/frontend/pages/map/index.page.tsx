@@ -5,6 +5,8 @@ import Drivers from './components/Drivers'
 import { Box, Divider, Drawer, Tab, Tabs } from '@mui/material'
 import { useMergeState } from '../../util/hooks/useMergeState'
 import ui from './style'
+import { useUserContext } from '@context/user'
+import Actions from './actions'
 
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 const Cesium = dynamic(() => import('apps/frontend/components/Cesium'), {
@@ -12,9 +14,12 @@ const Cesium = dynamic(() => import('apps/frontend/components/Cesium'), {
 })
 
 export default function CesiumMap() {
+  const { state: userContext } = useUserContext()
   const [state, setState] = useMergeState({
     tab: 0
   })
+  const { hubs = [], regions = [] } = userContext
+  const { regionChange } = Actions(state, setState)
 
   return (
     <LayoutBase>
@@ -31,7 +36,7 @@ export default function CesiumMap() {
           </Tabs>
           <Divider />
           <TabPanel value={state.tab} index={0}>
-            <Filter />
+            <Filter hubs={hubs} regions={regions} onChange={regionChange} />
           </TabPanel>
           <TabPanel value={state.tab} index={1}>
             <Drivers />
