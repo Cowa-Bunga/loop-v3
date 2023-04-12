@@ -17,7 +17,6 @@ import { IHub, IRegion } from '@pages/api/me/me.interface'
 
 interface IState {
   tab: number
-  regionHub: string
   hub: string
 }
 
@@ -25,12 +24,12 @@ interface IProps {
   regions: IRegion[]
   hubs: IHub[]
   onChange: (e: SelectChangeEvent<string>) => void
+  regionHub: string
 }
 
-const DashboardFilter = ({ regions, hubs, onChange }: IProps) => {
+const DashboardFilter = ({ regions, hubs, regionHub, onChange }: IProps) => {
   const [state, setState] = useMergeState<IState>({
     tab: 0,
-    regionHub: '',
     hub: ''
   })
 
@@ -42,21 +41,21 @@ const DashboardFilter = ({ regions, hubs, onChange }: IProps) => {
         <Select
           variant="outlined"
           fullWidth
-          value={state.regionHub}
-          defaultValue={state.regionHub}
+          value={regionHub}
+          defaultValue={regionHub}
           label="region-hub"
           onChange={onChange}
           sx={ui.select}
         >
           <MenuItem disabled>Hubs</MenuItem>
           {hubs.map((hub) => (
-            <MenuItem key={hub.id} value={hub.id}>
+            <MenuItem key={hub.id} value={`h-${hub.id}`}>
               {hub.name}
             </MenuItem>
           ))}
           <MenuItem disabled>Regions</MenuItem>
           {regions.map((region) => (
-            <MenuItem key={region.id} value={region.id}>
+            <MenuItem key={region.id} value={`r-${region.id}`}>
               {region.name}
             </MenuItem>
           ))}
