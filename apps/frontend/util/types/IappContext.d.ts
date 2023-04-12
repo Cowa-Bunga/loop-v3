@@ -1,9 +1,4 @@
-import {
-  IHub,
-  IOrganization,
-  IOrganization,
-  IRegion
-} from '@pages/api/me/me.interface'
+import { IHub, IOrganization, IRegion } from '@pages/api/me/me.interface'
 
 interface IUserContext {
   id: string
@@ -15,5 +10,4 @@ interface IUserContext {
   regions: IRegion[]
   hubs: IHub[]
   client: IClient
-  firebase_token: string
 }
