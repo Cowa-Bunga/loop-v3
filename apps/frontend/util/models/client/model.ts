@@ -10,3 +10,21 @@ export const MODEL_CLIENT_EMPTY: IClient = {
     administrator: false
   }
 }
+
+export const emptyDriver: IDriver = {
+  id: '',
+  name: '',
+  email: '',
+  mobile_no: '',
+  vehicle_type: EnumDbVehicleTypes.Bike,
+  employee_code: '',
+  location: {
+    latitude: 0,
+    longitude: 0
+  },
+  lunch: false,
+  available: false,
+  on_active_trip: false,
+  idle_since: '',
+  created_at: ''
+}
