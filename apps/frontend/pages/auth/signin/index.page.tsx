@@ -46,7 +46,7 @@ const SignIn = () => {
   useEffect(() => {
     if (status === 'authenticated' && !hasInitialised) {
       setHasInitialised(true)
-      console.log('firebase init', {
+      console.info('firebase init', {
         status,
         hasInitialised,
         userContext,
@@ -55,13 +55,10 @@ const SignIn = () => {
 
       const userSession = { ...data.user } as ISessionUser
 
-      updateUserContext({ firebase_token: userSession.firebase_token })
-
       authFirebase(firebaseAuth, userSession.firebase_token)
-      getUserData()
+      getUser(userSession.clients[0], updateUserContext)
 
       if (userSession.clients.length == 1) {
-        updateUserContext({ client: userSession.clients[0] })
         router.push('/map')
       } else {
         router.push('/auth/client_select')
@@ -69,10 +66,6 @@ const SignIn = () => {
     }
   }, [router, status])
 
-  const getUserData = async () => {
-    const user = await getUser()
-    updateUserContext(user)
-  }
   return (
     <LayoutSite>
       {router.query.error && <Alert>{_t('error')}</Alert>}
