@@ -16,12 +16,13 @@ const Actions = (state, setState) => ({
     }).then(console.warn)
   },
 
-  async getUser(): Promise<object> {
+  async getUser(client: IClient, cb: (updated: object) => void): Promise<void> {
     const res = await fetch('/api/me')
     const data: IMeInterface = await res.json()
 
-    return {
+    cb({
       id: data.user.id,
+      client: client,
       firstName: data.user.firstname,
       lastName: data.user.lastname,
       mobileNo: data.user.mobile_no,
@@ -30,7 +31,7 @@ const Actions = (state, setState) => ({
       regions: removeEmptyHubs(data.hubs, data.regions).filter(
         (region) => region.hub_ids?.length > 0
       )
-    }
+    })
   }
 })
 
