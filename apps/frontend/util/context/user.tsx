@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 import { useMergeState } from '@hooks'
 import { IUserContext } from '@util/types/IappContext'
 
@@ -9,11 +9,32 @@ const UserContext = createContext({
 })
 
 export function UserWrapper({ children }) {
-  const [state, updateState] = useMergeState({} as IUserContext)
+  const initialState = {
+    hubs: [],
+    regions: []
+  } as IUserContext
+  const [state, updateState] = useMergeState(initialState)
 
   const update = (updated: object) => {
     updateState(updated as IUserContext)
   }
+
+  useEffect(() => {
+    // temp caching method for user context to persist beyond browser reload...
+    // need to find a better way to do this as this data will become stale
+    if (JSON.stringify(initialState) !== JSON.stringify(state)) {
+      localStorage.setItem('userContext', JSON.stringify(state))
+    }
+  }, [state])
+
+  useEffect(() => {
+    const userContext = localStorage.getItem('userContext')
+    console.log('fetching user context', userContext)
+    if (userContext) {
+      updateState(JSON.parse(userContext))
+    }
+  }, [])
+
   return (
     <UserContext.Provider value={{ state, update }}>
       {children}
