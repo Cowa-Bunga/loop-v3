@@ -46,7 +46,10 @@ export default function NavBar({ open, setOpen }) {
             onClick={() =>
               !session
                 ? signIn()
-                : signOut({ callbackUrl: '/auth/signin', redirect: true })
+                : signOut({
+                    callbackUrl: '/auth/signin',
+                    redirect: true
+                  }).then(() => localStorage.clear())
             }
           >
             {!session ? <Lock /> : <LockOpen />}
