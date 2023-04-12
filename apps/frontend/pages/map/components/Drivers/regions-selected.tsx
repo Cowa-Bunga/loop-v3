@@ -12,7 +12,9 @@ import {
   Stack
 } from '@mui/material'
 import ui from '@pages/map/components/Drivers/style'
-import { IdbDrivers } from '../../../../../../libs/@types/loop/src'
+import { useMergeState } from '@hooks'
+import { useEffect } from 'react'
+import Actions from './actions'
 
 function stringToColor(string: string) {
   let hash = 0
@@ -50,20 +52,37 @@ interface IProps {
   regionHubId: string
 }
 
+interface IState {
+  availableDrivers: IDriver[]
+  busyDrivers: IDriver[]
+}
+
 const RegionSelected = ({ regionHubId }: IProps) => {
   const { state: userContext } = useUserContext()
-
-  console.log('regionHubId', userContext.client)
-  const burritoRef = collection(useFirestore(), 'drivers')
-  const constraints = where('delivery_permissions', 'array-contains', {
-    promisor_id: 'ayce3l5n0QSA7FO7CDtr',
-    hub_id: '03gHB1rr1HlbxF9XbPEo'
+  const [state, setState] = useMergeState<IState>({
+    availableDrivers: [],
+    busyDrivers: []
   })
-  const q = query(burritoRef, constraints)
+  const { modelDrivers } = Actions(state, setState)
+  console.log('regionHubId', regionHubId, userContext.client.client_id)
+  const driversRef = collection(useFirestore(), 'drivers')
+  const constraints = where('delivery_permissions', 'array-contains', {
+    promisor_id: userContext.client.client_id,
+    hub_id: regionHubId
+  })
+  const q = query(driversRef, constraints)
   const { status, data } = useFirestoreCollectionData(q)
 
-  const availableDrivers = data.filter((d: IdbDrivers) => d.available)
-  const busyDrivers = data.filter((d: IdbDrivers) => !d.available)
+  useEffect(() => {
+    if (status == 'success') {
+      const drivers = modelDrivers(data)
+
+      setState({
+        availableDrivers: drivers.filter((d: IDriver) => d.available),
+        busyDrivers: drivers.filter((d: IDriver) => !d.available)
+      })
+    }
+  }, [status])
   return (
     <Box sx={ui.container}>
       <Input
@@ -74,7 +93,7 @@ const RegionSelected = ({ regionHubId }: IProps) => {
       <Stack sx={ui.stack} spacing={2}>
         <Alert severity="success">Available</Alert>
         <List dense>
-          {availableDrivers.map((driver) => (
+          {state.availableDrivers.map((driver) => (
             <ListItem key={driver.id}>
               <Avatar {...stringAvatar(driver.name)} />
               <div>&nbsp;</div>
@@ -84,7 +103,7 @@ const RegionSelected = ({ regionHubId }: IProps) => {
         </List>
         <Alert severity="warning">Busy</Alert>
         <List dense>
-          {busyDrivers.map((driver) => (
+          {state.busyDrivers.map((driver) => (
             <ListItem key={driver.id}>
               <Avatar {...stringAvatar(driver.name)} />
               <div>&nbsp;</div>

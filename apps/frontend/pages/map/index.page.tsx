@@ -45,7 +45,7 @@ export default function CesiumMap() {
             />
           </TabPanel>
           <TabPanel value={state.tab} index={1}>
-            <Drivers regionHubId={state.regionHub} />
+            <Drivers regionHubId={state.regionHub.split('-')[1]} />
           </TabPanel>
         </Box>
       </Drawer>
