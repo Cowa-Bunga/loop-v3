@@ -1,6 +1,10 @@
 const Actions = (_state, setState) => ({
-  regionChange: (e) => {
-    setState({ region: e.target.value })
+  regionChange: async (e) => {
+    setState({ regionHub: e.target.value })
+  },
+
+  tabChange(e, value: number) {
+    setState({ tab: value })
   }
 })
 
