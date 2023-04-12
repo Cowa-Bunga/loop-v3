@@ -12,6 +12,7 @@ import {
   Stack
 } from '@mui/material'
 import ui from '@pages/map/components/Drivers/style'
+import { IdbDrivers } from '../../../../../../libs/@types/loop/src'
 
 function stringToColor(string: string) {
   let hash = 0
@@ -61,8 +62,8 @@ const RegionSelected = ({ regionHubId }: IProps) => {
   const q = query(burritoRef, constraints)
   const { status, data } = useFirestoreCollectionData(q)
 
-  const availableDrivers = data.filter((d) => d.available)
-  const busyDrivers = data.filter((d) => !d.available)
+  const availableDrivers = data.filter((d: IdbDrivers) => d.available)
+  const busyDrivers = data.filter((d: IdbDrivers) => !d.available)
   return (
     <Box sx={ui.container}>
       <Input
