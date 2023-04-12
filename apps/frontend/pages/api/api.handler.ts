@@ -1,7 +1,7 @@
 import { authOptions } from '@pages/api/auth/[...nextauth].page'
 import { getServerSession } from 'next-auth/next'
 import { NextAuthOptions } from 'next-auth'
-import axios, { AxiosResponse } from 'axios/index'
+import axios, { AxiosResponse } from 'axios'
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
