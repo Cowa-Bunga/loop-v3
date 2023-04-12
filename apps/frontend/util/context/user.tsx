@@ -1,6 +1,10 @@
 import { createContext, useContext, useEffect } from 'react'
 import { useMergeState } from '@hooks'
 import { IUserContext } from '@util/types/IappContext'
+import { useSession } from 'next-auth/react'
+import { authFirebase } from '@util/lib/firebase'
+import { getAuth } from 'firebase/auth'
+import { useFirebaseApp } from 'reactfire'
 
 const UserContext = createContext({
   state: {} as IUserContext,
@@ -14,7 +18,8 @@ export function UserWrapper({ children }) {
     regions: []
   } as IUserContext
   const [state, updateState] = useMergeState(initialState)
-
+  const firebaseAuth = getAuth(useFirebaseApp())
+  const { data } = useSession()
   const update = (updated: object) => {
     updateState(updated as IUserContext)
   }
@@ -29,9 +34,17 @@ export function UserWrapper({ children }) {
 
   useEffect(() => {
     const userContext = localStorage.getItem('userContext')
-    console.log('fetching user context', userContext)
     if (userContext) {
       updateState(JSON.parse(userContext))
+    }
+
+    if (data) {
+      const session = {
+        ...data.user
+      } as ISessionUser
+      if (session.firebase_token) {
+        authFirebase(firebaseAuth, session.firebase_token)
+      }
     }
   }, [])
 
