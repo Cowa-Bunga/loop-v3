@@ -23,7 +23,8 @@ export const useMergeState = <T>(
       console.info('%c setState:\n', 'color: aquamarine; font-weight: bold;', {
         mutation,
         old: state,
-        new: mergedState
+        new: mergedState,
+        time: new Date().toLocaleTimeString()
       })
     }
 

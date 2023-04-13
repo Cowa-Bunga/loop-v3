@@ -12,6 +12,9 @@ import '@locale/config'
 import '../public/cesium/Widgets/widgets.css'
 import '../public/app.css'
 import 'reactflow/dist/style.css'
+import { getServerSession, NextAuthOptions } from 'next-auth'
+import { authOptions } from '@pages/api/auth/[...nextauth].page'
+import { UserWrapper } from '@context/user'
 
 // hide debugs in prod
 if (process.env.NODE_ENV === 'production') {
@@ -37,7 +40,9 @@ const LoopApp = ({
             <CssBaseline />
             <main id="loop-frontend">
               <SessionProvider session={session}>
-                <Component {...pageProps} />
+                <UserWrapper>
+                  <Component {...pageProps} />
+                </UserWrapper>
               </SessionProvider>
             </main>
           </ThemeProvider>
@@ -47,8 +52,31 @@ const LoopApp = ({
   )
 }
 
-export function getInitialProps() {
+export async function getInitialProps() {
   return {}
+}
+
+export async function getServerSideProps(context) {
+  const session = await getServerSession(
+    context.req,
+    context.res,
+    authOptions as NextAuthOptions
+  )
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      session
+    }
+  }
 }
 
 export default LoopApp

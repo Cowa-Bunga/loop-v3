@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+import { UserWrapper } from '@util/context/user'
 import NavBar from '../../NavBar'
 import { ui } from './style'
 

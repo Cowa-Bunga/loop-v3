@@ -3,28 +3,37 @@ import { authLocalePathBuilder } from '@locale/locale-utils'
 import Actions from './actions'
 import ui from './style'
 import {
-  useRouter,
   useEffect,
   useMergeState,
+  useRouter,
   useSession,
+  useState,
   useTranslation
 } from '@hooks'
 import {
-  Card,
-  Button,
-  TextField,
-  Grid,
+  Alert,
   Box,
-  Typography,
+  Button,
+  Card,
   Container,
   Divider,
-  Alert
+  Grid,
+  TextField,
+  Typography
 } from '@mui/material'
+import { authFirebase } from '@util/lib/firebase'
+import { useUserContext } from '@context/user'
+import { getAuth } from 'firebase/auth'
+import { useFirebaseApp } from 'reactfire'
 
 const SignIn = () => {
+  const [hasInitialised, setHasInitialised] = useState(false)
+
   const router = useRouter()
-  const { status } = useSession()
   const { t } = useTranslation()
+  const { state: userContext, update: updateUserContext } = useUserContext()
+  const { data, status } = useSession()
+  const firebaseAuth = getAuth(useFirebaseApp())
   const _t = (v: string) => t(authLocalePathBuilder(v))
 
   const [state, setState] = useMergeState({
@@ -32,11 +41,28 @@ const SignIn = () => {
     password: ''
   })
 
-  const { change, submit } = Actions(state, setState)
+  const { getUser, change, submit } = Actions(state, setState)
 
   useEffect(() => {
-    if (status === 'authenticated') {
-      router.push('/dashboard')
+    if (status === 'authenticated' && !hasInitialised) {
+      setHasInitialised(true)
+      console.info('firebase init', {
+        status,
+        hasInitialised,
+        userContext,
+        data
+      })
+
+      const userSession = { ...data.user } as ISessionUser
+
+      authFirebase(firebaseAuth, userSession.firebase_token)
+      getUser(userSession.clients[0], updateUserContext)
+
+      if (userSession.clients.length == 1) {
+        router.push('/map')
+      } else {
+        router.push('/auth/client_select')
+      }
     }
   }, [router, status])
 

@@ -31,9 +31,7 @@
   "paths": {
     "/me": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get loggedin user info",
         "responses": {
           "200": {
@@ -47,9 +45,7 @@
     },
     "/drivers/hub/IWKb2xsLtnAgR2UqqmuN": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get drivers - servicing hub",
         "responses": {
           "200": {
@@ -63,9 +59,7 @@
     },
     "/drivers/region/xSxl3SeETEQXZRyCjzOU": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get drivers - servicing region",
         "responses": {
           "200": {
@@ -79,9 +73,7 @@
     },
     "/drivers/oLpggkccIMOw2Cm7LKwI": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get driver",
         "responses": {
           "200": {
@@ -95,9 +87,7 @@
     },
     "/drivers/HfU5uxdyrlifalIamJNW/acknowledge-sos": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "acknowledge driver sos",
         "requestBody": {
           "content": {
@@ -121,9 +111,7 @@
     },
     "/orders/U7bGd1ValUgCnk9UaS2C/cancel": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "cancel order",
         "requestBody": {
           "content": {
@@ -147,9 +135,7 @@
     },
     "/orders/w0fElhy0e6Eu8em7EbaU/reset": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "reset order",
         "requestBody": {
           "content": {
@@ -175,9 +161,7 @@
     },
     "/orders/y6WFlBd8keZ9YEEyHcsD/returned": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "driver returned order",
         "requestBody": {
           "content": {
@@ -203,9 +187,7 @@
     },
     "/orders/L233jwHGtRzRlh64AYqx/cancel/in/trip": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "cancel order in a trip",
         "requestBody": {
           "content": {
@@ -231,9 +213,7 @@
     },
     "/orders/create": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "create order - without parcels",
         "requestBody": {
           "content": {
@@ -276,9 +256,7 @@
     },
     "/orders/9THPpCvIfzOOfrzP0RbR/set-order-asignable": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "set order assignable",
         "requestBody": {
           "content": {
@@ -302,9 +280,7 @@
     },
     "/orders/EF2TrA5Smo8jmr6MhSRS": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get order",
         "responses": {
           "200": {
@@ -318,9 +294,7 @@
     },
     "/orders/branch/0sBcNNQzHoRDciNv4wqg": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get orders",
         "responses": {
           "200": {
@@ -334,9 +308,7 @@
     },
     "/orders/active": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get active orders",
         "responses": {
           "200": {
@@ -350,9 +322,7 @@
     },
     "/orders/abandoned": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get abandoned orders",
         "responses": {
           "200": {
@@ -366,9 +336,7 @@
     },
     "/orders/y13Peqf1iRJ5qOKURitn/returned": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "mark order as returned",
         "requestBody": {
           "content": {
@@ -394,9 +362,7 @@
     },
     "/trips": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get trips",
         "responses": {
           "200": {
@@ -410,9 +376,7 @@
     },
     "/trips/create": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "create trip (fail safe)",
         "requestBody": {
           "content": {
@@ -421,9 +385,7 @@
                 "type": "object",
                 "example": {
                   "branch_id": "0sBcNNQzHoRDciNv4wqg",
-                  "order_ids": [
-                    "NvHTtYRtI8BrjrUizkvw"
-                  ]
+                  "order_ids": ["NvHTtYRtI8BrjrUizkvw"]
                 }
               }
             }
@@ -441,9 +403,7 @@
     },
     "/trips/create-manual": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "create trip manual (fail safe)",
         "requestBody": {
           "content": {
@@ -452,9 +412,7 @@
                 "type": "object",
                 "example": {
                   "branch_id": "7uiS9J3Fi2eJQlVcMmnV",
-                  "order_ids": [
-                    "kgeIEvFEf2edfCAQgG6m"
-                  ],
+                  "order_ids": ["kgeIEvFEf2edfCAQgG6m"],
                   "compute_route": true
                 }
               }
@@ -473,9 +431,7 @@
     },
     "/trips/lOz50EBqEkgYNxUsMhVi": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get trip",
         "responses": {
           "200": {
@@ -489,9 +445,7 @@
     },
     "/trips/zpjbRYHHfescHI3zHrs1/assign-driver": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "assign driver to trip",
         "requestBody": {
           "content": {
@@ -517,9 +471,7 @@
     },
     "/trips/zpjbRYHHfescHI3zHrs1/remove-driver": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "remove driver from trip",
         "requestBody": {
           "content": {
@@ -545,9 +497,7 @@
     },
     "/clusters/branch/1g9ckRkuzBl8B6Kmvf4J": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get active clusters",
         "responses": {
           "200": {
@@ -561,9 +511,7 @@
     },
     "/clusters/fZC9UOnBKkQd9I0zLvhP": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get cluster",
         "responses": {
           "200": {
@@ -577,9 +525,7 @@
     },
     "/clusters/fZC9UOnBKkQd9I0zLvhP/lock-cluster": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "lock cluster prematurely",
         "requestBody": {
           "content": {

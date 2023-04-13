@@ -9,19 +9,31 @@ import {
   Tabs,
   TextField,
   Box,
-  Drawer,
   Button,
-  Divider
+  Divider,
+  SelectChangeEvent
 } from '@mui/material'
+import { IHub, IRegion } from '@pages/api/me/me.interface'
 
-const DashboardFilter = () => {
-  const [state, setState] = useMergeState({
+interface IState {
+  tab: number
+  hub: string
+}
+
+interface IProps {
+  regions: IRegion[]
+  hubs: IHub[]
+  onChange: (e: SelectChangeEvent<string>) => void
+  regionHub: string
+}
+
+const DashboardFilter = ({ regions, hubs, regionHub, onChange }: IProps) => {
+  const [state, setState] = useMergeState<IState>({
     tab: 0,
-    region: 'Western Cape',
-    hub: 'Hub 234'
+    hub: ''
   })
 
-  const { tabChange, regionChange, hubChange } = Actions(state, setState)
+  const { tabChange, hubChange } = Actions(state, setState)
 
   return (
     <Box sx={ui.container}>
@@ -29,13 +41,24 @@ const DashboardFilter = () => {
         <Select
           variant="outlined"
           fullWidth
-          value={state.region}
-          label="region"
-          onChange={regionChange}
+          value={regionHub}
+          defaultValue={regionHub}
+          label="region-hub"
+          onChange={onChange}
           sx={ui.select}
         >
-          <MenuItem value={10}>Western Cape</MenuItem>
-          <MenuItem value={20}>Limpopo</MenuItem>
+          <MenuItem disabled>Hubs</MenuItem>
+          {hubs.map((hub) => (
+            <MenuItem key={hub.id} value={`h-${hub.id}`}>
+              {hub.name}
+            </MenuItem>
+          ))}
+          <MenuItem disabled>Regions</MenuItem>
+          {regions.map((region) => (
+            <MenuItem key={region.id} value={`r-${region.id}`}>
+              {region.name}
+            </MenuItem>
+          ))}
         </Select>
 
         <Select
