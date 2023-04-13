@@ -1,9 +1,8 @@
 import { Node, Edge } from 'reactflow'
 
-export const initialNodes: Node[] = [
+export const initialNodes = [
   {
     id: '1',
-    type: 'input',
     data: { label: 'Organisation' },
     position: { x: 400, y: 100 },
     visible: false,
@@ -33,7 +32,6 @@ export const initialNodes: Node[] = [
 ]
 
 export const initialEdges: Edge[] = [
-  // { id: 'e1-2', source: '1', target: '2', animated: true },
-  { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e1-3', source: '2', target: '3' }
+  { id: 'e1-2', source: '1', target: '2', animated: true },
+  { id: 'e1-3', source: '2', target: '3', animated: true }
 ]

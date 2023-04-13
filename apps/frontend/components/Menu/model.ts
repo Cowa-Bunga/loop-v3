@@ -123,63 +123,63 @@ export const MODEL_MENU = ({ client_id }) =>
           title: 'Average Durations',
           link: '/organisation/todo-id/reports',
           permissions: []
-        },
-        {
-          id: 'looker-orders',
-          icon: DatasetLinkedIcon,
-          title: 'Orders Overview',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-delivery-times',
-          icon: DatasetLinkedIcon,
-          title: 'Delivery Times',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-sla-time-bands',
-          icon: DatasetLinkedIcon,
-          title: 'SLA Time Bands',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-distance-ranges',
-          icon: DatasetLinkedIcon,
-          title: 'Distance Ranges',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-driver-monitoring',
-          icon: DatasetLinkedIcon,
-          title: 'Driver Monitoring',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-driver-scheduling',
-          icon: DatasetLinkedIcon,
-          title: 'Driver Scheduling',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-locations',
-          icon: DatasetLinkedIcon,
-          title: 'Locations',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'looker-exceptions',
-          icon: DatasetLinkedIcon,
-          title: 'Exceptions',
-          link: '/organisation/todo-id/reports',
-          permissions: []
         }
+        // {
+        //   id: 'looker-orders',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Orders Overview',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-delivery-times',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Delivery Times',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-sla-time-bands',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'SLA Time Bands',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-distance-ranges',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Distance Ranges',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-driver-monitoring',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Driver Monitoring',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-driver-scheduling',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Driver Scheduling',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-locations',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Locations',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // },
+        // {
+        //   id: 'looker-exceptions',
+        //   icon: DatasetLinkedIcon,
+        //   title: 'Exceptions',
+        //   link: '/organisation/todo-id/reports',
+        //   permissions: []
+        // }
       ]
     },
 
