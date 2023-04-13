@@ -3,15 +3,15 @@ import RegionSelect from './region-select'
 import RegionSelected from './regions-selected'
 
 interface IProps {
-  regionHubId: string
+  hubs: string[]
 }
 
-const Drivers = ({ regionHubId }: IProps) => {
-  if (regionHubId == '') {
+const Drivers = ({ hubs }: IProps) => {
+  if (hubs.length === 0) {
     return <RegionSelect />
   }
 
-  return <RegionSelected regionHubId={regionHubId} />
+  return <RegionSelected hubs={hubs} />
 }
 
 export default Drivers

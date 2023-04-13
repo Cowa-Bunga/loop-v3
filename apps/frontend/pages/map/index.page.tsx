@@ -3,29 +3,23 @@ import { LayoutBase, TabPanel } from '@components'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 import { Box, Divider, Drawer, Tab, Tabs } from '@mui/material'
-import { useMergeState } from '@hooks'
 import ui from './style'
 import { useUserContext } from '@context/user'
 import Actions from './actions'
+import { useReducer } from 'react'
+import { initialState, reducer } from '@pages/map/reducer'
 
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 const Cesium = dynamic(() => import('apps/frontend/components/Cesium'), {
   ssr: false
 })
 
-interface IState {
-  tab: number
-  regionHub: string
-}
-
 export default function CesiumMap() {
   const { state: userContext } = useUserContext()
-  const [state, setState] = useMergeState<IState>({
-    tab: 0,
-    regionHub: ''
-  })
   const { hubs = [], regions = [] } = userContext
-  const { regionChange, tabChange } = Actions(state, setState)
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const { regionChange, tabChange } = Actions(state, dispatch)
 
   return (
     <LayoutBase>
@@ -41,11 +35,11 @@ export default function CesiumMap() {
               hubs={hubs}
               regions={regions}
               regionHub={state.regionHub}
-              onChange={regionChange}
+              onChange={(e) => regionChange(e, userContext.client.client_id)}
             />
           </TabPanel>
           <TabPanel value={state.tab} index={1}>
-            <Drivers regionHubId={state.regionHub.split('-')[1]} />
+            <Drivers hubs={state.hubs} />
           </TabPanel>
         </Box>
       </Drawer>
