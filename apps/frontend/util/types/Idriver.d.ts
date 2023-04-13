@@ -3,7 +3,7 @@ interface IDriver {
   name: string
   email: string
   mobile_no: string
-  vehicle_type: EnumDbVehicleTypes
+  vehicle_type: string
   employee_code: string
   location: {
     latitude: number
