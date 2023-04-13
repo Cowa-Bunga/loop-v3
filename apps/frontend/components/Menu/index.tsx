@@ -13,7 +13,7 @@ import {
   AccordionDetails
 } from '@mui/material'
 
-export default function Menu({ open }: IMenuProps) {
+export default function Menu({ open, setOpen }: IMenuProps) {
   const router = useRouter()
 
   const goto = (url: string) => {
@@ -21,7 +21,13 @@ export default function Menu({ open }: IMenuProps) {
   }
 
   return (
-    <Drawer variant="temporary" anchor="left" open={open}>
+    <Drawer
+      variant="temporary"
+      anchor="left"
+      open={open}
+      sx={{ zIndex: 10000 }}
+      onClose={(e) => setOpen(false)}
+    >
       <Box sx={ui.container}>
         <MenuList sx={ui.menuList}>
           {MODEL_MENU({ client_id: 'todo-id' }).map((item: IMenu) =>

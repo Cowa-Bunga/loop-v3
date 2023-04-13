@@ -8,7 +8,7 @@ jest.mock('next/router', () => ({
 
 describe('Menu', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Menu open={true} />)
+    const { baseElement } = render(<Menu open={true} setOpen={() => ''} />)
     expect(baseElement).toBeTruthy()
     expect(baseElement).toMatchSnapshot()
   })

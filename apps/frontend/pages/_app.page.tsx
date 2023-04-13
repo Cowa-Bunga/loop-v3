@@ -11,6 +11,7 @@ import { firebaseConfig } from '@util/lib/firebase'
 import '@locale/config'
 import '../public/cesium/Widgets/widgets.css'
 import '../public/app.css'
+import 'reactflow/dist/style.css'
 
 // hide debugs in prod
 if (process.env.NODE_ENV === 'production') {

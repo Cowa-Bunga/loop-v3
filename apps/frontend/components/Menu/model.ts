@@ -18,6 +18,8 @@ import GroupsIcon from '@mui/icons-material/Groups'
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions'
 import ApiIcon from '@mui/icons-material/Api'
 import ElectricCarIcon from '@mui/icons-material/ElectricCar'
+import DatasetLinkedIcon from '@mui/icons-material/DatasetLinked'
+import { BookOnline } from '@mui/icons-material'
 
 export const MODEL_MENU = ({ client_id }) =>
   [
@@ -92,7 +94,93 @@ export const MODEL_MENU = ({ client_id }) =>
       title: 'Reports',
       link: '/organisation/todo-id/reports',
       permissions: [],
-      children: []
+      children: [
+        {
+          id: 'all-orders-report',
+          icon: AssessmentIcon,
+          title: 'All Orders',
+          link: '/organisation/todo-id/settings',
+          permissions: []
+        },
+        {
+          id: 'trip-report',
+          icon: AssessmentIcon,
+          title: 'Trip',
+          link: '/organisation/todo-id/settings',
+          permissions: []
+        },
+        {
+          id: 'logbook-report',
+          icon: AssessmentIcon,
+          title: 'Log Book',
+          link: '/organisation/todo-id/settings',
+          permissions: []
+        },
+        // lookerstudio reports
+        {
+          id: 'looker-average-duration',
+          icon: DatasetLinkedIcon,
+          title: 'Average Durations',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-orders',
+          icon: DatasetLinkedIcon,
+          title: 'Orders Overview',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-delivery-times',
+          icon: DatasetLinkedIcon,
+          title: 'Delivery Times',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-sla-time-bands',
+          icon: DatasetLinkedIcon,
+          title: 'SLA Time Bands',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-distance-ranges',
+          icon: DatasetLinkedIcon,
+          title: 'Distance Ranges',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-driver-monitoring',
+          icon: DatasetLinkedIcon,
+          title: 'Driver Monitoring',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-driver-scheduling',
+          icon: DatasetLinkedIcon,
+          title: 'Driver Scheduling',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-locations',
+          icon: DatasetLinkedIcon,
+          title: 'Locations',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+        {
+          id: 'looker-exceptions',
+          icon: DatasetLinkedIcon,
+          title: 'Exceptions',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        }
+      ]
     },
 
     {
@@ -104,7 +192,7 @@ export const MODEL_MENU = ({ client_id }) =>
         {
           id: 'settings-billing',
           icon: AppSettingsAltIcon,
-          title: 'Account Billing',
+          title: 'Account',
           link: '/organisation/todo-id/settings',
           permissions: []
         },
@@ -156,7 +244,7 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'support-main',
           icon: LiveHelpIcon,
           title: 'Documentation',
-          link: '/support',
+          link: '/support/documentation',
           permissions: []
         },
         {
@@ -164,6 +252,34 @@ export const MODEL_MENU = ({ client_id }) =>
           icon: ModelTrainingIcon,
           title: 'Training Centre',
           link: '/support/training',
+          permissions: []
+        }
+      ]
+    },
+    {
+      id: 'tools',
+      icon: ModelTrainingIcon,
+      title: 'Tools',
+      children: [
+        {
+          id: 'flow',
+          icon: BookOnline,
+          title: 'Flow Demo',
+          link: '/tools/flow',
+          permissions: []
+        },
+        {
+          id: 'api-dos',
+          icon: BookOnline,
+          title: 'DOS API',
+          link: '/support/api-doc',
+          permissions: []
+        },
+        {
+          id: 'api-driver',
+          icon: BookOnline,
+          title: 'API docs',
+          link: '/support/api-doc',
           permissions: []
         }
       ]
