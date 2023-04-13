@@ -16,7 +16,7 @@ export const emptyDriver: IDriver = {
   name: '',
   email: '',
   mobile_no: '',
-  vehicle_type: EnumDbVehicleTypes.Bike,
+  vehicle_type: '',
   employee_code: '',
   location: {
     latitude: 0,
