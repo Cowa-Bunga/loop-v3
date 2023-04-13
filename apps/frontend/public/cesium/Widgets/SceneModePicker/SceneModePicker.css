@@ -32,22 +32,34 @@ span.cesium-sceneModePicker-wrapper {
 .cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button2D {
   margin: 0 0 3px 0;
 }
-.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button3D .cesium-sceneModePicker-icon2D {
+.cesium-sceneModePicker-wrapper
+  .cesium-sceneModePicker-button3D
+  .cesium-sceneModePicker-icon2D {
   left: 100%;
 }
-.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button3D .cesium-sceneModePicker-iconColumbusView {
+.cesium-sceneModePicker-wrapper
+  .cesium-sceneModePicker-button3D
+  .cesium-sceneModePicker-iconColumbusView {
   left: 200%;
 }
-.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-buttonColumbusView .cesium-sceneModePicker-icon3D {
+.cesium-sceneModePicker-wrapper
+  .cesium-sceneModePicker-buttonColumbusView
+  .cesium-sceneModePicker-icon3D {
   left: -200%;
 }
-.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-buttonColumbusView .cesium-sceneModePicker-icon2D {
+.cesium-sceneModePicker-wrapper
+  .cesium-sceneModePicker-buttonColumbusView
+  .cesium-sceneModePicker-icon2D {
   left: -100%;
 }
-.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button2D .cesium-sceneModePicker-icon3D {
+.cesium-sceneModePicker-wrapper
+  .cesium-sceneModePicker-button2D
+  .cesium-sceneModePicker-icon3D {
   left: -100%;
 }
-.cesium-sceneModePicker-wrapper .cesium-sceneModePicker-button2D .cesium-sceneModePicker-iconColumbusView {
+.cesium-sceneModePicker-wrapper
+  .cesium-sceneModePicker-button2D
+  .cesium-sceneModePicker-iconColumbusView {
   left: 100%;
 }
 .cesium-sceneModePicker-wrapper .cesium-sceneModePicker-selected {

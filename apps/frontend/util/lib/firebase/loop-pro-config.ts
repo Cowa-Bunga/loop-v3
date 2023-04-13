@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { Auth, signInWithCustomToken } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDIbl1MrXQRkYihSN0U1mL-qnEOIDksdx4',
@@ -14,9 +15,10 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
 
 async function authFirebase(firebaseAuth: Auth, token: string) {
   return signInWithCustomToken(firebaseAuth, token)
 }
 
-export { app, authFirebase, firebaseConfig }
+export { app, authFirebase, firebaseConfig, db }

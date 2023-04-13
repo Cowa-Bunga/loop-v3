@@ -26,10 +26,14 @@ span.cesium-projectionPicker-wrapper {
 .cesium-projectionPicker-wrapper .cesium-projectionPicker-buttonOrthographic {
   margin: 0 0 3px 0;
 }
-.cesium-projectionPicker-wrapper .cesium-projectionPicker-buttonPerspective .cesium-projectionPicker-iconOrthographic {
+.cesium-projectionPicker-wrapper
+  .cesium-projectionPicker-buttonPerspective
+  .cesium-projectionPicker-iconOrthographic {
   left: 100%;
 }
-.cesium-projectionPicker-wrapper .cesium-projectionPicker-buttonOrthographic .cesium-projectionPicker-iconPerspective {
+.cesium-projectionPicker-wrapper
+  .cesium-projectionPicker-buttonOrthographic
+  .cesium-projectionPicker-iconPerspective {
   left: -100%;
 }
 .cesium-projectionPicker-wrapper .cesium-projectionPicker-selected {

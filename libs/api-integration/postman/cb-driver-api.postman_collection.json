@@ -1,1260 +1,1078 @@
 {
-	"info": {
-		"_postman_id": "840973c3-669e-4b79-81e2-a559f77f71f7",
-		"name": "cb-driver-api",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26448833"
-	},
-	"item": [
-		{
-			"name": "simulate new app fcm",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"trip_id\",\n    \"push_token\": \"dpqNszaFQDa2I0I_JqZBxy:APA91bFGdQD0WGUZNO-n0IsCegasWcZYk1o5kpnHMHcB-gRdFtWfziy9POkLaUyNY9pFTeXa_Hkvqzaw4tFxh57yBONLxD7uXOW6zcjVCx47olz5G-iXrG8ixFJfw4R7Du8itvqQMeVv\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/pooling/simulate/fcm",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"pooling",
-						"simulate",
-						"fcm"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updates driver's push token",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"push_token\": \"c9whx29ZQaG4JjU2RGVCG2:APA91bFYfwb8wCBWWLfd0pFirlQnbZrqE2SB-yyMlV64fWsTXQo9dwEQvNJ0ONN1Iu277f9oOLrYqoMDm7OC6thijiTV2gf0EWg5yAU_pdn0-niZUlzOHL8mmcqMbZTiDXepJwsBIFwZ\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/driver/update/push-token",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"driver",
-						"update",
-						"push-token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "send SOS",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/driver/send/sos",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"driver",
-						"send",
-						"sos"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "me - get logged in driver",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/driver/me",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"driver",
-						"me"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "start lunch",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n     \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/driver/start-lunch",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"driver",
-						"start-lunch"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "end lunch",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file",
-							"src": []
-						}
-					]
-				},
-				"url": {
-					"raw": "{{base_url}}/driver/end-lunch",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"driver",
-						"end-lunch"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "go online",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"push_token\": \"eVuQ67niR1SLodfZ6P14mS:APA91bGl_hYzMj_PXT_uhR0GY9iJEP0iFj-i2hw_UcMIk5WayGlTCM2CadQFk9Pe-eZyLpcy0gwsJZJBeksqmY7nikPN5vXgbqCO8SyYn3kjv7AhggZsPFQjpSq7z2fKWgnanKWCftSI\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/driver/go-online",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"driver",
-						"go-online"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "go offline",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n     \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/driver/go-offline",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"driver",
-						"go-offline"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "simulate push notification - (deprecated)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"push_token\": \"cF9fXx7rRmqe0XlPk25BrV:APA91bFWMGZOIOs4mmPMgpwlI8H0m-IkiE8P_WsEbvl8oNI2rBh2Dp9ScpSp7GRW-ZnzVA0byEoUUhE4amtkmzWdQHiledqrCy0fZpnKLXEmn_SiU4JGukNOBh_nd3qXhcY94dOgFFVo\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/driver/notify-fcm",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"driver",
-						"notify-fcm"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get trip",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{auth_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/trip/ckw3pYRwD8FJNznzyU2r/client/6IB4FgVQZyQIG9T2xdEx",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"trip",
-						"ckw3pYRwD8FJNznzyU2r",
-						"client",
-						"6IB4FgVQZyQIG9T2xdEx"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						}
-					]
-				},
-				"description": "https://{url}/trip/{trip_id}/client/{client_id}"
-			},
-			"response": []
-		},
-		{
-			"name": "check wallet",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/ke3QmxMCSosaFRX8ga31/client/YmuHJz2QrNqwznyG1Y9D",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"ke3QmxMCSosaFRX8ga31",
-						"client",
-						"YmuHJz2QrNqwznyG1Y9D"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						}
-					]
-				},
-				"description": "https://{url}/trip/{trip_id}/client/{client_id}"
-			},
-			"response": []
-		},
-		{
-			"name": "accept trip",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiJnSk9Fa3VRUUQ4OHVrWTFkRTVuVyIsImNsaWVudCI6InBHWjR0cVNvcHdFY01LNTlNUzk2In0sImlhdCI6MTY2NTQyMDU1NiwiZXhwIjoxNjY4MDEyNTU2fQ.mI5wVJrR5ZQUGvWozj8xdLcAblFWPmxqzLstq-d9VOQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"pGZ4tqSopwEcMK59MS96\",\n    \"trip_id\": \"Sd9Sf5LsGaGh9csjLHqW\",\n    \"location\": {\n        \"latitude\": 0,\n        \"longitude\": 0\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/accept",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"accept"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "accept adhoc order",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiI5TnIxNGFITUVHRjlWOHJPUXo4WiJ9LCJpYXQiOjE2Mjk0NDc1NjgsImV4cCI6MTYzMjAzOTU2OH0.PFWoa42d4YhxR_ayefVfZ0pY9HzP57VjUXmSlVwbz1c",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"zG8d6LmGTMH09W63O2U3\",\n    \"trip_id\": \"tWAj8jTmhoTq3u3dVmie\",\n    \"order_id\": \"7InVNEXMuZYBbniZNYQC\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/trip/acceptAdhoc",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"trip",
-						"acceptAdhoc"
-					]
-				},
-				"description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body"
-			},
-			"response": [
-				{
-					"name": "create a trip",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"branch_id\": \"U5swtfJIMC6FOoe2WpYS\",\n    \"order_ids\": [\n        \"lbenAMrhNcfdgYHL4PfF\",\n        \"G35BHgT2oUS5kA1JPpCc\"\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": ""
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "x-powered-by",
-							"value": "Express"
-						},
-						{
-							"key": "access-control-allow-origin",
-							"value": "*"
-						},
-						{
-							"key": "content-type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "etag",
-							"value": "W/\"77a-tLWmeSi5i8glQ/0U0y5tSbn4kF0\""
-						},
-						{
-							"key": "X-Cloud-Trace-Context",
-							"value": "26534a2934677a87402a0112dc4ca03d;o=1"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 04 Mar 2021 04:16:22 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "Google Frontend"
-						},
-						{
-							"key": "Content-Length",
-							"value": "1914"
-						},
-						{
-							"key": "Alt-Svc",
-							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": \"7KCREir7FV2CT41LoqTW\",\n    \"status\": \"pending\",\n    \"branch\": {\n        \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n        \"name\": \"Bryanston\",\n        \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n        \"location\": {\n            \"latitude\": -26.04257,\n            \"longitude\": 28.01687\n        }\n    },\n    \"orders\": [\n        {\n            \"id\": \"lbenAMrhNcfdgYHL4PfF\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"70056652\",\n            \"status\": \"batched\",\n            \"alcohol\": true,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tino Manhema\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2021-01-14T13:55:00.000Z\",\n            \"delivery_time\": \"2021-01-14T13:55:00.000Z\",\n            \"parcels\": [\n                {\n                    \"qr_code\": \"ESTIMATE1\",\n                    \"size\": \"Small\"\n                }\n            ],\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-04T03:42:47.565Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-04T04:16:22.531Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-04T03:42:47.573Z\"\n        },\n        {\n            \"id\": \"G35BHgT2oUS5kA1JPpCc\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"80704953\",\n            \"status\": \"batched\",\n            \"alcohol\": false,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tsitsi Marote\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2019-09-03T12:20:00.000Z\",\n            \"delivery_time\": \"2019-09-03T12:20:00.000Z\",\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-04T03:42:47.565Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-04T04:16:22.533Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-04T03:42:47.573Z\"\n        }\n    ]\n}"
-				},
-				{
-					"name": "Create trip",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"branch_id\": \"U5swtfJIMC6FOoe2WpYS\",\n    \"order_ids\": [\n        \"z8l1SSicvf4DaFePCATj\",\n        \"1a52YpiGTnfCJiw8FjPs\"\n    ],\n    \"vehicle_type\": \"Car\",\n    \"TSP\": true\n    \n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{dev_url}}/trips/create",
-							"host": [
-								"{{dev_url}}"
-							],
-							"path": [
-								"trips",
-								"create"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "x-powered-by",
-							"value": "Express"
-						},
-						{
-							"key": "access-control-allow-origin",
-							"value": "*"
-						},
-						{
-							"key": "content-type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "etag",
-							"value": "W/\"79a-Am6n7QKP6xXHuDaXXiptj33BdEc\""
-						},
-						{
-							"key": "X-Cloud-Trace-Context",
-							"value": "cc1f974147aab1b76e4dfc468c772132;o=1"
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 29 Mar 2021 12:05:43 GMT"
-						},
-						{
-							"key": "Server",
-							"value": "Google Frontend"
-						},
-						{
-							"key": "Content-Length",
-							"value": "1946"
-						},
-						{
-							"key": "Alt-Svc",
-							"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": \"Ezi6fdcdyyEgr8pU5DCJ\",\n    \"status\": \"pending\",\n    \"vehicle_type\": \"Car\",\n    \"branch\": {\n        \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n        \"name\": \"Bryanston\",\n        \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n        \"location\": {\n            \"latitude\": -26.04257,\n            \"longitude\": 28.01687\n        }\n    },\n    \"orders\": [\n        {\n            \"id\": \"z8l1SSicvf4DaFePCATj\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"70056652\",\n            \"status\": \"batched\",\n            \"alcohol\": true,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tino Manhema\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2021-01-14T13:55:00.000Z\",\n            \"delivery_time\": \"2021-01-14T13:55:00.000Z\",\n            \"parcels\": [\n                {\n                    \"qr_code\": \"ESTIMATE1\",\n                    \"size\": \"Small\"\n                }\n            ],\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-29T12:05:19.224Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-29T12:05:43.371Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-29T12:05:19.234Z\"\n        },\n        {\n            \"id\": \"1a52YpiGTnfCJiw8FjPs\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"80704953\",\n            \"status\": \"batched\",\n            \"alcohol\": false,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tsitsi Marote\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2019-09-03T12:20:00.000Z\",\n            \"delivery_time\": \"2019-09-03T12:20:00.000Z\",\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-29T12:05:19.225Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-29T12:05:43.372Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-29T12:05:19.234Z\"\n        }\n    ],\n    \"TSP\": true\n}"
-				}
-			]
-		},
-		{
-			"name": "accept adhoc 2",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiJhQmJkSTlRYXRHdzVwcXJkRnNLSCJ9LCJpYXQiOjE2NTU3MTc0NzYsImV4cCI6MTY1ODMwOTQ3Nn0.6yyb_cGRuEFF-KWkvlYFvmfO4ADuWayxj_ye9kl8WSc",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"zG8d6LmGTMH09W63O2U3\",\n    \"trip_id\": \"Oba7Zx1cHCrLw3Se6T8k\",\n    \"order_id\": \"v28ocU1EISQTclMTabPU\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/trip/acceptAdhoc",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"trip",
-						"acceptAdhoc"
-					]
-				},
-				"description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body"
-			},
-			"response": []
-		},
-		{
-			"name": "reject trip",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"vFLJpx0OhZFxFLMHx9xv\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/reject",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"reject"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "trip notification received",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/received/notification",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"received",
-						"notification"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "rollback trip - (deprecated)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"UItXbYwpy9a6vf9e5aKf\",\n    \"trip_id\": \"JaRfoPU5Z7sdsStmLBzC\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/rollback",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"rollback"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "arrived at branch/collection point",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/arrived/collection-point",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"arrived",
-						"collection-point"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "start trip",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/start",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"start"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "collect order",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"order_id\": \"241iDdzVRZbgAF1OZYzf\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/collect",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"collect"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "collect order with parcels",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"51iBQ098PxAN87nsqPCK\",\n    \"order_id\": \"AehA0YPi6nQc0WoWuWWS\",\n    \"parcel_qr_codes\": [\n        \"ESTIMATE1\"\n    ],\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/collect-with-parcels",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"collect-with-parcels"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "in transit (driver departed)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n   \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"order_id\": \"241iDdzVRZbgAF1OZYzf\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/order/in-transit",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"order",
-						"in-transit"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "arrived at customer",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"order_id\": \"241iDdzVRZbgAF1OZYzf\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/arrived-at-customer",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"arrived-at-customer"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "new abandon order",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"51iBQ098PxAN87nsqPCK\",\n    \"order_id\": \"AehA0YPi6nQc0WoWuWWS\",\n    \"reason\": \"\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/abandon",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"abandon"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deliver order",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\":\"RlOno84MTS2YNZMQDMe3\",\n    \"trip_id\":\"yhshTFhNf4qC1f0CLD0a\",\n    \"order_id\":\"L8D9wUgGWk01pFucTIlC\",\n    \"location\":{\n        \"latitude\":-25.7480574,\n        \"longitude\":28.1857857\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/deliver",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"deliver"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "abandon order (deprecated)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"51iBQ098PxAN87nsqPCK\",\n    \"order_id\": \"AehA0YPi6nQc0WoWuWWS\",\n    \"reason\": \"\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/abandon-order",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"abandon-order"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "signed POD after delivery -  (deprecated)",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"UItXbYwpy9a6vf9e5aKf\",\n    \"order_id\": \"J6P4v6qoE9vDceyPgblN\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/sign/pod",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"sign",
-						"pod"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "end trip",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/end",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"end"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "driver event webhook",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"driver_id\": \"lGLlL6WiHqTBFByph5EU\",\n    \"event\": \"driver.online\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://cb-client-location-updates-api-ukxjb66ceq-ew.a.run.app/driver/activity",
-					"protocol": "https",
-					"host": [
-						"cb-client-location-updates-api-ukxjb66ceq-ew",
-						"a",
-						"run",
-						"app"
-					],
-					"path": [
-						"driver",
-						"activity"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "return order",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"trip_id\": \"jJ4aSfwlQU0klCsvbidF\",\n    \"order_id\": \"dO8czrVPbdCm1asgYiH3\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    },\n    \"optional_settings\": {\n        \"otp\": \"0000\",\n        \"qr_codes\": [\"10111\"]\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/return",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"return"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "get trip Copy 2",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/trip/HiH83P7y3iDGjtNO5MUj/client/YmuHJz2QrNqwznyG1Y9D",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"trip",
-						"HiH83P7y3iDGjtNO5MUj",
-						"client",
-						"YmuHJz2QrNqwznyG1Y9D"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						}
-					]
-				},
-				"description": "https://{url}/trip/{trip_id}/client/{client_id}"
-			},
-			"response": []
-		},
-		{
-			"name": "reject adhoc order",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiIxU3RHVGQzUmtzQnNKNXozdG14WSIsImNsaWVudCI6ImF5Y2UzbDVuMFFTQTdGTzdDRHRyIn0sImlhdCI6MTY1NzExNzM2NiwiZXhwIjoxNjU5NzA5MzY2fQ.5mABSO-myElDFQ2uW4ABFe5tnmK7dJbCznqmNccxWrQ",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"zG8d6LmGTMH09W63O2U3\",\n    \"trip_id\": \"tWAj8jTmhoTq3u3dVmie\",\n    \"order_id\": \"7InVNEXMuZYBbniZNYQC\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/trip/rejectAdhoc",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"trip",
-						"rejectAdhoc"
-					]
-				},
-				"description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body"
-			},
-			"response": []
-		},
-		{
-			"name": "update parcels",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"order_id\": \"sZDLUhr3JKDsb84SfOK1\",\n    \"parcels\": [\n{\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Small\",\n        \"quantity\": 3\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Large\",\n        \"quantity\": 4\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Medium\",\n        \"quantity\": 6\n    }\n    ]\n}\n\n{{\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Small\",\n        \"quantity\": 3\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Large\",\n        \"quantity\": 4\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Medium\",\n        \"quantity\": 6\n    }}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/update/parcels",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"update",
-						"parcels"
-					]
-				},
-				"description": "# Updating order assignable\n\nLorem lorem"
-			},
-			"response": []
-		},
-		{
-			"name": "update order payment fields",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiIxU3RHVGQzUmtzQnNKNXozdG14WSIsImNsaWVudCI6ImF5Y2UzbDVuMFFTQTdGTzdDRHRyIn0sImlhdCI6MTY2Nzg4Nzk2NCwiZXhwIjoxNjcwNDc5OTY0fQ.T_C2QmwghG5hs0c6Q1SJPhHt2EBu_zDw5LHjXm9Q1-o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"order_id\": \"rEdC7XKcpUIMqpGxzCtd\",\n    \"trip_id\": \"TcgIGHRAacCPD1tVfQdw\",\n    \"payment_type\": \"cash\",\n    \"delivery_price\": 25.7,\n    \"post_payment_flow\": {\n        \"type\": \"cash_pin_required\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{dev_url}}/order/update/payment-fields",
-					"host": [
-						"{{dev_url}}"
-					],
-					"path": [
-						"order",
-						"update",
-						"payment-fields"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "verify order cash pin",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"order_id\": \"sZDLUhr3JKDsb84SfOK1\",\n    \"trip_id\": \"sZDLUhr3JKDsb84SfOK1\",\n    \"cash_pin\":1234\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/order/payment/verify-pin",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"order",
-						"payment",
-						"verify-pin"
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{auth_token}}",
-				"type": "string"
-			}
-		]
-	},
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "base_url",
-			"value": "http://localhost:8080"
-		},
-		{
-			"key": "dev_url",
-			"value": "https://cb-driver-api-ukxjb66ceq-ew.a.run.app"
-		},
-		{
-			"key": "prod_url",
-			"value": "https://cb-driver-api-f5dovyimaq-ew.a.run.app"
-		}
-	]
+  "info": {
+    "_postman_id": "840973c3-669e-4b79-81e2-a559f77f71f7",
+    "name": "cb-driver-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26448833"
+  },
+  "item": [
+    {
+      "name": "simulate new app fcm",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"trip_id\",\n    \"push_token\": \"dpqNszaFQDa2I0I_JqZBxy:APA91bFGdQD0WGUZNO-n0IsCegasWcZYk1o5kpnHMHcB-gRdFtWfziy9POkLaUyNY9pFTeXa_Hkvqzaw4tFxh57yBONLxD7uXOW6zcjVCx47olz5G-iXrG8ixFJfw4R7Du8itvqQMeVv\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/pooling/simulate/fcm",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["pooling", "simulate", "fcm"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updates driver's push token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"push_token\": \"c9whx29ZQaG4JjU2RGVCG2:APA91bFYfwb8wCBWWLfd0pFirlQnbZrqE2SB-yyMlV64fWsTXQo9dwEQvNJ0ONN1Iu277f9oOLrYqoMDm7OC6thijiTV2gf0EWg5yAU_pdn0-niZUlzOHL8mmcqMbZTiDXepJwsBIFwZ\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/driver/update/push-token",
+          "host": ["{{base_url}}"],
+          "path": ["driver", "update", "push-token"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "send SOS",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/driver/send/sos",
+          "host": ["{{dev_url}}"],
+          "path": ["driver", "send", "sos"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "me - get logged in driver",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/driver/me",
+          "host": ["{{base_url}}"],
+          "path": ["driver", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "start lunch",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n     \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/driver/start-lunch",
+          "host": ["{{base_url}}"],
+          "path": ["driver", "start-lunch"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "end lunch",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": []
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/driver/end-lunch",
+          "host": ["{{base_url}}"],
+          "path": ["driver", "end-lunch"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "go online",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"push_token\": \"eVuQ67niR1SLodfZ6P14mS:APA91bGl_hYzMj_PXT_uhR0GY9iJEP0iFj-i2hw_UcMIk5WayGlTCM2CadQFk9Pe-eZyLpcy0gwsJZJBeksqmY7nikPN5vXgbqCO8SyYn3kjv7AhggZsPFQjpSq7z2fKWgnanKWCftSI\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/driver/go-online",
+          "host": ["{{base_url}}"],
+          "path": ["driver", "go-online"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "go offline",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n     \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763,\n        \"accuracy\": 20.9,\n        \"altitude\": 78,\n        \"speed\": 0.19733982,\n        \"speedAccuracy\": 0,\n        \"provider\": \"fused\",\n        \"bearing\": 237.07773,\n        \"bearingAccuracy\": 0,\n        \"verticalAccuracy\": 1.3333334\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/driver/go-offline",
+          "host": ["{{dev_url}}"],
+          "path": ["driver", "go-offline"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "simulate push notification - (deprecated)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"push_token\": \"cF9fXx7rRmqe0XlPk25BrV:APA91bFWMGZOIOs4mmPMgpwlI8H0m-IkiE8P_WsEbvl8oNI2rBh2Dp9ScpSp7GRW-ZnzVA0byEoUUhE4amtkmzWdQHiledqrCy0fZpnKLXEmn_SiU4JGukNOBh_nd3qXhcY94dOgFFVo\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/driver/notify-fcm",
+          "host": ["{{base_url}}"],
+          "path": ["driver", "notify-fcm"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get trip",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{auth_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/trip/ckw3pYRwD8FJNznzyU2r/client/6IB4FgVQZyQIG9T2xdEx",
+          "host": ["{{dev_url}}"],
+          "path": [
+            "trip",
+            "ckw3pYRwD8FJNznzyU2r",
+            "client",
+            "6IB4FgVQZyQIG9T2xdEx"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        },
+        "description": "https://{url}/trip/{trip_id}/client/{client_id}"
+      },
+      "response": []
+    },
+    {
+      "name": "check wallet",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/ke3QmxMCSosaFRX8ga31/client/YmuHJz2QrNqwznyG1Y9D",
+          "host": ["{{base_url}}"],
+          "path": [
+            "trip",
+            "ke3QmxMCSosaFRX8ga31",
+            "client",
+            "YmuHJz2QrNqwznyG1Y9D"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        },
+        "description": "https://{url}/trip/{trip_id}/client/{client_id}"
+      },
+      "response": []
+    },
+    {
+      "name": "accept trip",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiJnSk9Fa3VRUUQ4OHVrWTFkRTVuVyIsImNsaWVudCI6InBHWjR0cVNvcHdFY01LNTlNUzk2In0sImlhdCI6MTY2NTQyMDU1NiwiZXhwIjoxNjY4MDEyNTU2fQ.mI5wVJrR5ZQUGvWozj8xdLcAblFWPmxqzLstq-d9VOQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"pGZ4tqSopwEcMK59MS96\",\n    \"trip_id\": \"Sd9Sf5LsGaGh9csjLHqW\",\n    \"location\": {\n        \"latitude\": 0,\n        \"longitude\": 0\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/accept",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "accept"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accept adhoc order",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiI5TnIxNGFITUVHRjlWOHJPUXo4WiJ9LCJpYXQiOjE2Mjk0NDc1NjgsImV4cCI6MTYzMjAzOTU2OH0.PFWoa42d4YhxR_ayefVfZ0pY9HzP57VjUXmSlVwbz1c",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"zG8d6LmGTMH09W63O2U3\",\n    \"trip_id\": \"tWAj8jTmhoTq3u3dVmie\",\n    \"order_id\": \"7InVNEXMuZYBbniZNYQC\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/trip/acceptAdhoc",
+          "host": ["{{dev_url}}"],
+          "path": ["trip", "acceptAdhoc"]
+        },
+        "description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body"
+      },
+      "response": [
+        {
+          "name": "create a trip",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"branch_id\": \"U5swtfJIMC6FOoe2WpYS\",\n    \"order_ids\": [\n        \"lbenAMrhNcfdgYHL4PfF\",\n        \"G35BHgT2oUS5kA1JPpCc\"\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": ""
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"77a-tLWmeSi5i8glQ/0U0y5tSbn4kF0\""
+            },
+            {
+              "key": "X-Cloud-Trace-Context",
+              "value": "26534a2934677a87402a0112dc4ca03d;o=1"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 04 Mar 2021 04:16:22 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Google Frontend"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1914"
+            },
+            {
+              "key": "Alt-Svc",
+              "value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"7KCREir7FV2CT41LoqTW\",\n    \"status\": \"pending\",\n    \"branch\": {\n        \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n        \"name\": \"Bryanston\",\n        \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n        \"location\": {\n            \"latitude\": -26.04257,\n            \"longitude\": 28.01687\n        }\n    },\n    \"orders\": [\n        {\n            \"id\": \"lbenAMrhNcfdgYHL4PfF\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"70056652\",\n            \"status\": \"batched\",\n            \"alcohol\": true,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tino Manhema\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2021-01-14T13:55:00.000Z\",\n            \"delivery_time\": \"2021-01-14T13:55:00.000Z\",\n            \"parcels\": [\n                {\n                    \"qr_code\": \"ESTIMATE1\",\n                    \"size\": \"Small\"\n                }\n            ],\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-04T03:42:47.565Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-04T04:16:22.531Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-04T03:42:47.573Z\"\n        },\n        {\n            \"id\": \"G35BHgT2oUS5kA1JPpCc\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"80704953\",\n            \"status\": \"batched\",\n            \"alcohol\": false,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tsitsi Marote\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2019-09-03T12:20:00.000Z\",\n            \"delivery_time\": \"2019-09-03T12:20:00.000Z\",\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-04T03:42:47.565Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-04T04:16:22.533Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-04T03:42:47.573Z\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "Create trip",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"branch_id\": \"U5swtfJIMC6FOoe2WpYS\",\n    \"order_ids\": [\n        \"z8l1SSicvf4DaFePCATj\",\n        \"1a52YpiGTnfCJiw8FjPs\"\n    ],\n    \"vehicle_type\": \"Car\",\n    \"TSP\": true\n    \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{dev_url}}/trips/create",
+              "host": ["{{dev_url}}"],
+              "path": ["trips", "create"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"79a-Am6n7QKP6xXHuDaXXiptj33BdEc\""
+            },
+            {
+              "key": "X-Cloud-Trace-Context",
+              "value": "cc1f974147aab1b76e4dfc468c772132;o=1"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 29 Mar 2021 12:05:43 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Google Frontend"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1946"
+            },
+            {
+              "key": "Alt-Svc",
+              "value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"Ezi6fdcdyyEgr8pU5DCJ\",\n    \"status\": \"pending\",\n    \"vehicle_type\": \"Car\",\n    \"branch\": {\n        \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n        \"name\": \"Bryanston\",\n        \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n        \"location\": {\n            \"latitude\": -26.04257,\n            \"longitude\": 28.01687\n        }\n    },\n    \"orders\": [\n        {\n            \"id\": \"z8l1SSicvf4DaFePCATj\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"70056652\",\n            \"status\": \"batched\",\n            \"alcohol\": true,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tino Manhema\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2021-01-14T13:55:00.000Z\",\n            \"delivery_time\": \"2021-01-14T13:55:00.000Z\",\n            \"parcels\": [\n                {\n                    \"qr_code\": \"ESTIMATE1\",\n                    \"size\": \"Small\"\n                }\n            ],\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-29T12:05:19.224Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-29T12:05:43.371Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-29T12:05:19.234Z\"\n        },\n        {\n            \"id\": \"1a52YpiGTnfCJiw8FjPs\",\n            \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n            \"order_no\": \"80704953\",\n            \"status\": \"batched\",\n            \"alcohol\": false,\n            \"instructions\": \"Call on delivery\",\n            \"assignable\": true,\n            \"branch\": {\n                \"id\": \"U5swtfJIMC6FOoe2WpYS\",\n                \"name\": \"Bryanston\",\n                \"address\": \"22 Sloane St, Bryanston, Sandton, 2191, South Africa\",\n                \"location\": {\n                    \"latitude\": -26.04257,\n                    \"longitude\": 28.01687\n                }\n            },\n            \"customer\": {\n                \"name\": \"Tsitsi Marote\",\n                \"mobile_no\": \"+27839480104\"\n            },\n            \"address\": \"Address\",\n            \"location\": {\n                \"latitude\": -26.042088,\n                \"longitude\": 28.016763\n            },\n            \"collection_time\": \"2019-09-03T12:20:00.000Z\",\n            \"delivery_time\": \"2019-09-03T12:20:00.000Z\",\n            \"history\": [\n                {\n                    \"status\": \"pending\",\n                    \"timestamp\": \"2021-03-29T12:05:19.225Z\"\n                },\n                {\n                    \"status\": \"batched\",\n                    \"timestamp\": \"2021-03-29T12:05:43.372Z\"\n                }\n            ],\n            \"delivery_price\": 90,\n            \"payment_type\": \"cash\",\n            \"origination\": \"app\",\n            \"created_at\": \"2021-03-29T12:05:19.234Z\"\n        }\n    ],\n    \"TSP\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "accept adhoc 2",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiJhQmJkSTlRYXRHdzVwcXJkRnNLSCJ9LCJpYXQiOjE2NTU3MTc0NzYsImV4cCI6MTY1ODMwOTQ3Nn0.6yyb_cGRuEFF-KWkvlYFvmfO4ADuWayxj_ye9kl8WSc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"zG8d6LmGTMH09W63O2U3\",\n    \"trip_id\": \"Oba7Zx1cHCrLw3Se6T8k\",\n    \"order_id\": \"v28ocU1EISQTclMTabPU\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/trip/acceptAdhoc",
+          "host": ["{{dev_url}}"],
+          "path": ["trip", "acceptAdhoc"]
+        },
+        "description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body"
+      },
+      "response": []
+    },
+    {
+      "name": "reject trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"vFLJpx0OhZFxFLMHx9xv\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/reject",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "reject"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "trip notification received",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/received/notification",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "received", "notification"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "rollback trip - (deprecated)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"UItXbYwpy9a6vf9e5aKf\",\n    \"trip_id\": \"JaRfoPU5Z7sdsStmLBzC\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/rollback",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "rollback"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "arrived at branch/collection point",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/arrived/collection-point",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "arrived", "collection-point"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "start trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/start",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "start"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "collect order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"order_id\": \"241iDdzVRZbgAF1OZYzf\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/collect",
+          "host": ["{{base_url}}"],
+          "path": ["order", "collect"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "collect order with parcels",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"51iBQ098PxAN87nsqPCK\",\n    \"order_id\": \"AehA0YPi6nQc0WoWuWWS\",\n    \"parcel_qr_codes\": [\n        \"ESTIMATE1\"\n    ],\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/collect-with-parcels",
+          "host": ["{{base_url}}"],
+          "path": ["order", "collect-with-parcels"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "in transit (driver departed)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"order_id\": \"241iDdzVRZbgAF1OZYzf\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/order/in-transit",
+          "host": ["{{dev_url}}"],
+          "path": ["order", "in-transit"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "arrived at customer",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"order_id\": \"241iDdzVRZbgAF1OZYzf\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/arrived-at-customer",
+          "host": ["{{base_url}}"],
+          "path": ["order", "arrived-at-customer"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "new abandon order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"51iBQ098PxAN87nsqPCK\",\n    \"order_id\": \"AehA0YPi6nQc0WoWuWWS\",\n    \"reason\": \"\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/abandon",
+          "host": ["{{base_url}}"],
+          "path": ["order", "abandon"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "deliver order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\":\"RlOno84MTS2YNZMQDMe3\",\n    \"trip_id\":\"yhshTFhNf4qC1f0CLD0a\",\n    \"order_id\":\"L8D9wUgGWk01pFucTIlC\",\n    \"location\":{\n        \"latitude\":-25.7480574,\n        \"longitude\":28.1857857\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/deliver",
+          "host": ["{{base_url}}"],
+          "path": ["order", "deliver"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "abandon order (deprecated)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"51iBQ098PxAN87nsqPCK\",\n    \"order_id\": \"AehA0YPi6nQc0WoWuWWS\",\n    \"reason\": \"\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/abandon-order",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "abandon-order"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "signed POD after delivery -  (deprecated)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"UItXbYwpy9a6vf9e5aKf\",\n    \"order_id\": \"J6P4v6qoE9vDceyPgblN\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/sign/pod",
+          "host": ["{{base_url}}"],
+          "path": ["order", "sign", "pod"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "end trip",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"YmuHJz2QrNqwznyG1Y9D\",\n    \"trip_id\": \"l6SKjCAeVnhxxdyM99lG\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/end",
+          "host": ["{{base_url}}"],
+          "path": ["trip", "end"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "driver event webhook",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"driver_id\": \"lGLlL6WiHqTBFByph5EU\",\n    \"event\": \"driver.online\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://cb-client-location-updates-api-ukxjb66ceq-ew.a.run.app/driver/activity",
+          "protocol": "https",
+          "host": [
+            "cb-client-location-updates-api-ukxjb66ceq-ew",
+            "a",
+            "run",
+            "app"
+          ],
+          "path": ["driver", "activity"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "return order",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"trip_id\": \"jJ4aSfwlQU0klCsvbidF\",\n    \"order_id\": \"dO8czrVPbdCm1asgYiH3\",\n    \"location\": {\n        \"latitude\": -26.042088,\n        \"longitude\": 28.016763\n    },\n    \"optional_settings\": {\n        \"otp\": \"0000\",\n        \"qr_codes\": [\"10111\"]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/return",
+          "host": ["{{base_url}}"],
+          "path": ["order", "return"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "get trip Copy 2",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/trip/HiH83P7y3iDGjtNO5MUj/client/YmuHJz2QrNqwznyG1Y9D",
+          "host": ["{{base_url}}"],
+          "path": [
+            "trip",
+            "HiH83P7y3iDGjtNO5MUj",
+            "client",
+            "YmuHJz2QrNqwznyG1Y9D"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        },
+        "description": "https://{url}/trip/{trip_id}/client/{client_id}"
+      },
+      "response": []
+    },
+    {
+      "name": "reject adhoc order",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiIxU3RHVGQzUmtzQnNKNXozdG14WSIsImNsaWVudCI6ImF5Y2UzbDVuMFFTQTdGTzdDRHRyIn0sImlhdCI6MTY1NzExNzM2NiwiZXhwIjoxNjU5NzA5MzY2fQ.5mABSO-myElDFQ2uW4ABFe5tnmK7dJbCznqmNccxWrQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"zG8d6LmGTMH09W63O2U3\",\n    \"trip_id\": \"tWAj8jTmhoTq3u3dVmie\",\n    \"order_id\": \"7InVNEXMuZYBbniZNYQC\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/trip/rejectAdhoc",
+          "host": ["{{dev_url}}"],
+          "path": ["trip", "rejectAdhoc"]
+        },
+        "description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body"
+      },
+      "response": []
+    },
+    {
+      "name": "update parcels",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"order_id\": \"sZDLUhr3JKDsb84SfOK1\",\n    \"parcels\": [\n{\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Small\",\n        \"quantity\": 3\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Large\",\n        \"quantity\": 4\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Medium\",\n        \"quantity\": 6\n    }\n    ]\n}\n\n{{\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Small\",\n        \"quantity\": 3\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Large\",\n        \"quantity\": 4\n    },\n    {\n        \"qr_code\": \"ESTIMATE25\",\n        \"size\": \"Medium\",\n        \"quantity\": 6\n    }}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/update/parcels",
+          "host": ["{{base_url}}"],
+          "path": ["order", "update", "parcels"]
+        },
+        "description": "# Updating order assignable\n\nLorem lorem"
+      },
+      "response": []
+    },
+    {
+      "name": "update order payment fields",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkcml2ZXIiOnsiaWQiOiIxU3RHVGQzUmtzQnNKNXozdG14WSIsImNsaWVudCI6ImF5Y2UzbDVuMFFTQTdGTzdDRHRyIn0sImlhdCI6MTY2Nzg4Nzk2NCwiZXhwIjoxNjcwNDc5OTY0fQ.T_C2QmwghG5hs0c6Q1SJPhHt2EBu_zDw5LHjXm9Q1-o",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"order_id\": \"rEdC7XKcpUIMqpGxzCtd\",\n    \"trip_id\": \"TcgIGHRAacCPD1tVfQdw\",\n    \"payment_type\": \"cash\",\n    \"delivery_price\": 25.7,\n    \"post_payment_flow\": {\n        \"type\": \"cash_pin_required\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{dev_url}}/order/update/payment-fields",
+          "host": ["{{dev_url}}"],
+          "path": ["order", "update", "payment-fields"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "verify order cash pin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"client_id\": \"ayce3l5n0QSA7FO7CDtr\",\n    \"order_id\": \"sZDLUhr3JKDsb84SfOK1\",\n    \"trip_id\": \"sZDLUhr3JKDsb84SfOK1\",\n    \"cash_pin\":1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/order/payment/verify-pin",
+          "host": ["{{base_url}}"],
+          "path": ["order", "payment", "verify-pin"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{auth_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "dev_url",
+      "value": "https://cb-driver-api-ukxjb66ceq-ew.a.run.app"
+    },
+    {
+      "key": "prod_url",
+      "value": "https://cb-driver-api-f5dovyimaq-ew.a.run.app"
+    }
+  ]
 }

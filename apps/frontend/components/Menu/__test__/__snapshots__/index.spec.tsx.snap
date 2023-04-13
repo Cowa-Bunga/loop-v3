@@ -25,7 +25,7 @@ exports[`Menu should render successfully 1`] = `
       tabindex="-1"
     >
       <div
-        class="MuiBox-root css-ug0kwg"
+        class="MuiBox-root css-mvy7y5"
       >
         <ul
           class="MuiList-root MuiList-padding css-17osibc-MuiList-root"
@@ -932,7 +932,7 @@ exports[`Menu should render successfully 1`] = `
                                 />
                               </svg>
                             </span>
-                            Account
+                            Account Billing
                             <span
                               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                             />

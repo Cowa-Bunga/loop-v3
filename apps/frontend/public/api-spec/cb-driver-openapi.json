@@ -34,9 +34,7 @@
   "paths": {
     "/pooling/simulate/fcm": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "simulate new app fcm",
         "requestBody": {
           "content": {
@@ -64,9 +62,7 @@
     },
     "/driver/update/push-token": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "updates driver's push token",
         "requestBody": {
           "content": {
@@ -104,9 +100,7 @@
     },
     "/driver/send/sos": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "send SOS",
         "requestBody": {
           "content": {
@@ -143,9 +137,7 @@
     },
     "/driver/me": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "me - get logged in driver",
         "responses": {
           "200": {
@@ -159,9 +151,7 @@
     },
     "/driver/start-lunch": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "start lunch",
         "requestBody": {
           "content": {
@@ -190,9 +180,7 @@
     },
     "/driver/end-lunch": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "end lunch",
         "requestBody": {
           "content": {
@@ -221,9 +209,7 @@
     },
     "/driver/go-online": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "go online",
         "requestBody": {
           "content": {
@@ -261,9 +247,7 @@
     },
     "/driver/go-offline": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "go offline",
         "requestBody": {
           "content": {
@@ -300,9 +284,7 @@
     },
     "/driver/notify-fcm": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "simulate push notification - (deprecated)",
         "requestBody": {
           "content": {
@@ -328,9 +310,7 @@
     },
     "/trip/ckw3pYRwD8FJNznzyU2r/client/6IB4FgVQZyQIG9T2xdEx": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get trip",
         "description": "https://{url}/trip/{trip_id}/client/{client_id}",
         "security": [
@@ -350,9 +330,7 @@
     },
     "/trip/ke3QmxMCSosaFRX8ga31/client/YmuHJz2QrNqwznyG1Y9D": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "check wallet",
         "description": "https://{url}/trip/{trip_id}/client/{client_id}",
         "responses": {
@@ -367,9 +345,7 @@
     },
     "/trip/accept": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "accept trip",
         "requestBody": {
           "content": {
@@ -405,9 +381,7 @@
     },
     "/trip/acceptAdhoc": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "accept adhoc 2",
         "description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body",
         "requestBody": {
@@ -441,9 +415,7 @@
     },
     "/trip/reject": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "reject trip",
         "requestBody": {
           "content": {
@@ -474,9 +446,7 @@
     },
     "/trip/received/notification": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "trip notification received",
         "requestBody": {
           "content": {
@@ -507,9 +477,7 @@
     },
     "/trip/rollback": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "rollback trip - (deprecated)",
         "requestBody": {
           "content": {
@@ -540,9 +508,7 @@
     },
     "/trip/arrived/collection-point": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "arrived at branch/collection point",
         "requestBody": {
           "content": {
@@ -573,9 +539,7 @@
     },
     "/trip/start": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "start trip",
         "requestBody": {
           "content": {
@@ -606,9 +570,7 @@
     },
     "/order/collect": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "collect order",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -641,9 +603,7 @@
     },
     "/order/collect-with-parcels": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "collect order with parcels",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -655,9 +615,7 @@
                   "client_id": "YmuHJz2QrNqwznyG1Y9D",
                   "trip_id": "51iBQ098PxAN87nsqPCK",
                   "order_id": "AehA0YPi6nQc0WoWuWWS",
-                  "parcel_qr_codes": [
-                    "ESTIMATE1"
-                  ],
+                  "parcel_qr_codes": ["ESTIMATE1"],
                   "location": {
                     "latitude": -26.042088,
                     "longitude": 28.016763
@@ -679,9 +637,7 @@
     },
     "/order/in-transit": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "in transit (driver departed)",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -714,9 +670,7 @@
     },
     "/order/arrived-at-customer": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "arrived at customer",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -749,9 +703,7 @@
     },
     "/order/abandon": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "new abandon order",
         "requestBody": {
           "content": {
@@ -784,9 +736,7 @@
     },
     "/order/deliver": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "deliver order",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -819,9 +769,7 @@
     },
     "/trip/abandon-order": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "abandon order (deprecated)",
         "requestBody": {
           "content": {
@@ -854,9 +802,7 @@
     },
     "/order/sign/pod": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "signed POD after delivery -  (deprecated)",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -884,9 +830,7 @@
     },
     "/trip/end": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "end trip",
         "requestBody": {
           "content": {
@@ -917,9 +861,7 @@
     },
     "/driver/activity": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "driver event webhook",
         "requestBody": {
           "content": {
@@ -946,9 +888,7 @@
     },
     "/order/return": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "return order",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -966,9 +906,7 @@
                   },
                   "optional_settings": {
                     "otp": "0000",
-                    "qr_codes": [
-                      "10111"
-                    ]
+                    "qr_codes": ["10111"]
                   }
                 }
               }
@@ -987,9 +925,7 @@
     },
     "/trip/HiH83P7y3iDGjtNO5MUj/client/YmuHJz2QrNqwznyG1Y9D": {
       "get": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "get trip Copy 2",
         "description": "https://{url}/trip/{trip_id}/client/{client_id}",
         "responses": {
@@ -1004,9 +940,7 @@
     },
     "/trip/rejectAdhoc": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "reject adhoc order",
         "description": "This endpoint creates a trip, it takes in the branch_id, order_ids, vehicle_type, TSP in the body",
         "requestBody": {
@@ -1040,9 +974,7 @@
     },
     "/order/update/parcels": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "update parcels",
         "description": "# Updating order assignable\n\nLorem lorem",
         "requestBody": {
@@ -1067,9 +999,7 @@
     },
     "/order/update/payment-fields": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "update order payment fields",
         "requestBody": {
           "content": {
@@ -1107,9 +1037,7 @@
     },
     "/order/payment/verify-pin": {
       "post": {
-        "tags": [
-          "default"
-        ],
+        "tags": ["default"],
         "summary": "verify order cash pin",
         "requestBody": {
           "content": {
