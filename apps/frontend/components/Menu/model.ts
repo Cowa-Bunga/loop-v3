@@ -268,13 +268,13 @@ export const MODEL_MENU = ({ client_id }) =>
           link: '/tools/flow',
           permissions: []
         },
-        {
-          id: 'api-dos',
-          icon: BookOnline,
-          title: 'DOS API',
-          link: '/support/api-doc',
-          permissions: []
-        },
+        // {
+        //   id: 'api-dos',
+        //   icon: BookOnline,
+        //   title: 'DOS API',
+        //   link: '/support/api-doc',
+        //   permissions: []
+        // },
         {
           id: 'api-driver',
           icon: BookOnline,
@@ -283,12 +283,12 @@ export const MODEL_MENU = ({ client_id }) =>
           permissions: []
         }
       ]
-    },
-    {
-      id: 'signout',
-      icon: PowerSettingsNewIcon,
-      title: 'Sign out',
-      action: () => 'signOut',
-      permissions: []
     }
+    // {
+    //   id: 'signout',
+    //   icon: PowerSettingsNewIcon,
+    //   title: 'Sign out',
+    //   action: () => 'signOut',
+    //   permissions: []
+    // }
   ] as unknown as IMenu[]
