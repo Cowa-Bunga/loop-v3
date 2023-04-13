@@ -5,6 +5,7 @@ import {
   Alert,
   Avatar,
   Box,
+  CircularProgress,
   Input,
   List,
   ListItem,
@@ -49,7 +50,7 @@ function stringAvatar(name: string) {
 }
 
 interface IProps {
-  regionHubId: string
+  hubs: string[]
 }
 
 interface IState {
@@ -57,32 +58,45 @@ interface IState {
   busyDrivers: IDriver[]
 }
 
-const RegionSelected = ({ regionHubId }: IProps) => {
+const RegionSelected = ({ hubs }: IProps) => {
   const { state: userContext } = useUserContext()
   const [state, setState] = useMergeState<IState>({
     availableDrivers: [],
     busyDrivers: []
   })
   const { modelDrivers } = Actions(state, setState)
-  console.log('regionHubId', regionHubId, userContext.client.client_id)
+
   const driversRef = collection(useFirestore(), 'drivers')
-  const constraints = where('delivery_permissions', 'array-contains', {
+  const contains = hubs.map((id) => ({
     promisor_id: userContext.client.client_id,
-    hub_id: regionHubId
-  })
+    hub_id: id
+  }))
+  const constraints = where(
+    'delivery_permissions',
+    'array-contains-any',
+    contains
+  )
   const q = query(driversRef, constraints)
   const { status, data } = useFirestoreCollectionData(q)
 
   useEffect(() => {
     if (status == 'success') {
       const drivers = modelDrivers(data)
-
       setState({
         availableDrivers: drivers.filter((d: IDriver) => d.available),
         busyDrivers: drivers.filter((d: IDriver) => !d.available)
       })
     }
   }, [status])
+
+  if (status !== 'success') {
+    return (
+      <Box sx={ui.container}>
+        <CircularProgress color="secondary" />
+      </Box>
+    )
+  }
+
   return (
     <Box sx={ui.container}>
       <Input
