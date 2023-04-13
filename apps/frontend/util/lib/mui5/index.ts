@@ -10,7 +10,8 @@ export const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#063863'
+      main: '#063863',
+      contrastText: '#FFF'
     },
     secondary: {
       main: purple[200]

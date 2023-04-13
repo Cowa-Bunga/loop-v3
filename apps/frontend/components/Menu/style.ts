@@ -1,7 +1,9 @@
 const ui = {
   container: {
     width: '320px',
-    minHeight: '100vh',
+    height: '100vh',
+    maxHeight: '100vh',
+    overflow: 'scroll',
     pt: '80px',
     backgroundColor: 'primary.main',
     backgroundImage:

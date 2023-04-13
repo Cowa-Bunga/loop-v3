@@ -1,6 +1,5 @@
 import { IconButton, AppBar, Box, Toolbar, Typography } from '@mui/material'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { useMergeState } from '@hooks'
 import { Menu, LockOpen, Lock } from '@mui/icons-material'
 
 export default function NavBar({ open, setOpen }) {
@@ -12,7 +11,7 @@ export default function NavBar({ open, setOpen }) {
         position="fixed"
         sx={{
           backgroundColor: 'primary.main',
-          zIndex: 10000
+          zIndex: 10001
         }}
       >
         <Toolbar>
@@ -22,7 +21,7 @@ export default function NavBar({ open, setOpen }) {
                 size="large"
                 edge="start"
                 color="inherit"
-                onClick={() => setOpen({ open: !open })}
+                onClick={() => setOpen(!open)}
               >
                 <Menu />
               </IconButton>
