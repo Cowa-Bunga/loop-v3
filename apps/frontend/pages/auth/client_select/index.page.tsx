@@ -2,58 +2,59 @@ import { LayoutSite } from '@components'
 import Actions from './actions'
 import ui from './style'
 import { clientSelectLocalePathBuilder } from '@locale/locale-utils'
-import { Select } from '@mui/material'
+import {
+  Alert,
+  Box,
+  Button,
+  Card,
+  Container,
+  Divider,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography
+} from '@mui/material'
 import { useUserContext } from '@context/user'
 import {
   useEffect,
-  useState,
+  useMergeState,
   useRouter,
-  useTranslation,
-  useSession
+  useSession,
+  useTranslation
 } from '@hooks'
-import {
-  Card,
-  Button,
-  Grid,
-  Box,
-  Typography,
-  Container,
-  Divider,
-  Alert,
-  MenuItem,
-  FormControl,
-  InputLabel
-} from '@mui/material'
 
 const SignIn = () => {
   const router = useRouter()
   const { t } = useTranslation()
   const _t = (path: string) => t(clientSelectLocalePathBuilder(path))
 
-  const [state, setState] = useState({
+  const [state, setState] = useMergeState({
     client_id: '',
-    clientSelected: false
+    clientSelected: false,
+    clients: []
   })
-  const { data } = useSession()
-  const [session, setSession] = useState({ clients: [] } as ISessionUser)
+  const { data, status } = useSession()
   const { state: user, update: updateUserContext } = useUserContext()
 
   useEffect(() => {
-    if (data) {
-      setSession({
-        ...data.user
-      } as ISessionUser)
+    if (data && status === 'authenticated') {
+      setState({
+        ...state,
+        clients: (data.user as ISessionUser).clients
+      })
     }
 
     if (state.clientSelected) {
       updateUserContext({
-        client: session.clients.find(
+        client: state.clients.find(
           (client) => client.client_id === state.client_id
         )
       })
       router.push('/map')
     }
-  }, [data, router, session?.clients, state, user])
+  }, [data, router, state?.clients, state, user])
 
   const { change, submit } = Actions(state, setState)
 
@@ -82,18 +83,22 @@ const SignIn = () => {
                     <Select
                       labelId="client-select-label"
                       id="client-select"
+                      data-testid="client-select"
                       value={state.client_id}
                       label="client_id"
                       onChange={(e) => change(e, 'client_id')}
                     >
-                      {session.clients.map((client) => (
-                        <MenuItem
-                          key={client.client_id}
-                          value={client.client_id}
-                        >
-                          {client.name}
-                        </MenuItem>
-                      ))}
+                      {state.clients.map((client) => {
+                        return (
+                          <MenuItem
+                            key={client.client_id}
+                            value={client.client_id}
+                            data-testid={`client-select-option-${client.client_id}`}
+                          >
+                            {client.name}
+                          </MenuItem>
+                        )
+                      })}
                     </Select>
                   </FormControl>
                 </Grid>
