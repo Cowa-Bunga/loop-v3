@@ -80,7 +80,7 @@ export const authOptions = {
           tokenType: user.token_type,
           maxAge: user.expires_in,
           clients: modelClientList(user.body.clients)
-        } satisfies ISessionUser
+        } as ISessionUser
       }
       return token
     },
