@@ -63,6 +63,8 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@deck.gl/core": "^8.9.7",
+    "@deck.gl/google-maps": "^8.9.7",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "11.10.0",
     "@emotion/styled": "^11.10.6",

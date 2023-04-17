@@ -52,7 +52,7 @@ const SignIn = () => {
           (client) => client.client_id === state.client_id
         )
       })
-      router.push('/map')
+      router.push('/dashboard')
     }
   }, [data, router, state?.clients, state, user])
 

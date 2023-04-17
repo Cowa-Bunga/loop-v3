@@ -59,7 +59,7 @@ const SignIn = () => {
       getUser(userSession.clients[0], updateUserContext)
 
       if (userSession.clients.length == 1) {
-        router.push('/map')
+        router.push('/dashboard')
       } else {
         router.push('/auth/client_select')
       }

@@ -19,7 +19,8 @@
       "@util/*": ["apps/frontend/util/*"],
       "@locale/*": ["libs/i18n/*"],
       "@context/*": ["apps/frontend/util/context/*"],
-      "@pages/*": ["apps/frontend/pages/*"]
+      "@pages/*": ["apps/frontend/pages/*"],
+      "@test/*": ["apps/frontend/test/*"]
     }
   },
   "include": [

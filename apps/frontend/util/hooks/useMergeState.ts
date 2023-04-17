@@ -20,12 +20,15 @@ export const useMergeState = <T>(
     origSetState(mergedState)
 
     if (process.env.NODE_ENV === 'development') {
-      console.info('%c setState:\n', 'color: aquamarine; font-weight: bold;', {
-        mutation,
-        old: state,
-        new: mergedState,
-        time: new Date().toLocaleTimeString()
-      })
+      console.info(
+        '%c setMergeState:\n',
+        'color: aquamarine; font-weight: bold;',
+        {
+          mutation,
+          old: state,
+          new: { ...mergedState, _time: new Date().toLocaleTimeString() }
+        }
+      )
     }
 
     if (cb) {
