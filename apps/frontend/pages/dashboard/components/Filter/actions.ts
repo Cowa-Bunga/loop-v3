@@ -3,10 +3,6 @@ const Actions = (_state, setState) => ({
     setState({ tab: index })
   },
 
-  regionChange: (e) => {
-    setState({ region: e.target.value })
-  },
-
   hubChange: (e) => {
     setState({ hub: e.target.value })
   }

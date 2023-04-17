@@ -1,23 +1,20 @@
 const ui = {
   container: {
     textAlign: 'center',
-    width: '360px',
+    width: '320px',
     minHeight: '100vh',
-    pt: '80px',
     px: 2,
-    backgroundColor: 'primary.main',
-    backgroundImage:
-      'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
-    backgroundSize: 'cover',
-    backgroundPosition: '0 0',
     '& *': {
+      borderColor: 'white !important',
       color: 'white !important'
     }
   },
 
   select: {
-    height: '40px',
-    my: 1
+    height: '50px',
+    my: 1,
+    color: 'white',
+    border: 'white'
   },
 
   search: {

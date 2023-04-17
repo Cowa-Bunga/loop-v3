@@ -1,7 +1,7 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { Icon } from '@mui/material'
 import { useRouter } from '@hooks'
-import { MODEL_MENU } from './model'
+import { MODEL_MENU } from './model_dos'
 import ui from './style'
 import {
   MenuList,
