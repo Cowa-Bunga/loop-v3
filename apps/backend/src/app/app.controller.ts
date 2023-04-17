@@ -1,8 +1,6 @@
-import { Controller, Post, Param, UseGuards } from '@nestjs/common'
-// import { AuthGuard } from '@nestjs/passport';
-// import { LocalAuthGuard } from '../auth/local-auth.guard'
+import { Controller } from '@nestjs/common'
 
 @Controller()
 export class AppController {
-  // @UseGuards(LocalAuthGuard)
+  // todo: see @UseGuards()
 }

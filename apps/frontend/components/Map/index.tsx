@@ -1,14 +1,13 @@
 // @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
 // TODO: deck.gl
 import { memo, useCallback, useEffect, useState } from 'react'
+import { Paper } from '@mui/material'
 import {
   GoogleMap,
   useJsApiLoader
   // StreetViewPanorama,
   // DrawingManager
 } from '@react-google-maps/api'
-
-import { Paper } from '@mui/material'
 
 const center = {
   lat: -33.918861,
@@ -38,12 +37,12 @@ function Map() {
   }, [])
 
   // const onLoadDrawing = (drawingManager) => {
-  //   console.log(drawingManager);
-  // };
+  //   console.log(drawingManager)
+  // }
 
   // const onPolygonComplete = (polygon) => {
-  //   console.log(polygon);
-  // };
+  //   console.log(polygon)
+  // }
 
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
@@ -54,15 +53,15 @@ function Map() {
       <GoogleMap
         mapContainerStyle={{ width: '100%', height }}
         center={center}
-        zoom={8}
+        zoom={12}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
         {/* <DrawingManager
-        onLoad={onLoadDrawing}
-        onPolygonComplete={onPolygonComplete}
-      />
-      <StreetViewPanorama /> */}
+          onLoad={onLoadDrawing}
+          onPolygonComplete={onPolygonComplete}
+        /> */}
+        {/* <StreetViewPanorama /> */}
       </GoogleMap>
     </Paper>
   ) : null

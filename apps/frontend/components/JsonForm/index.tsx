@@ -1,8 +1,12 @@
 import { JsonForms } from '@jsonforms/react'
 import { materialRenderers, materialCells } from '@jsonforms/material-renderers'
-import { useState } from '@hooks'
 
-export default function JsonForm({ schema, ui, model, onChange }) {
+export default function JsonForm({
+  schema,
+  ui,
+  model,
+  onChange = (_data: unknown) => ''
+}) {
   return (
     <div className="App">
       <JsonForms

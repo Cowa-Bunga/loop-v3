@@ -1,17 +1,17 @@
-import { Stack, Alert, Box, Drawer, TextField } from '@mui/material'
-import ui from './style'
+import React from 'react'
+import RegionSelect from './region-select'
+import RegionSelected from './regions-selected'
 
-const Drivers = () => (
-  <Box sx={ui.container}>
-    <h4>Driver Activity</h4>
-    <Box>
-      <TextField fullWidth placeholder="Search driver name or code" />
-      <Stack sx={ui.stack} spacing={2}>
-        <Alert severity="warning">Available</Alert>
-        <Alert severity="success">Busy</Alert>
-      </Stack>
-    </Box>
-  </Box>
-)
+interface IProps {
+  hubs: string[]
+}
+
+const Drivers = ({ hubs }: IProps) => {
+  if (hubs.length === 0) {
+    return <RegionSelect />
+  }
+
+  return <RegionSelected hubs={hubs} />
+}
 
 export default Drivers
