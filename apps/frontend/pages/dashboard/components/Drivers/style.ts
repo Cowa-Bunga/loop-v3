@@ -1,4 +1,4 @@
-const ui = {
+export const ui = {
   container: {
     textAlign: 'center',
     width: '320px',
