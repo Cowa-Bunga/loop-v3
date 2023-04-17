@@ -3,7 +3,7 @@
 import {
   renderWithProviders,
   selectMaterialUiSelectOption
-} from '../../../../__test__/test-helpers'
+} from '../../../../test/helpers'
 // @ts-ignore
 import { withMockAuth } from '@tomfreudenberg/next-auth-mock/jest'
 import ClientSelect from '@pages/auth/client_select/index.page'
@@ -117,7 +117,7 @@ describe('ClientSelect', () => {
     expect(mockActionSubmit).toHaveBeenCalled()
   })
 
-  it('should push sot /map when client is selected', async () => {
+  it('should push sot /dashboard when client is selected', async () => {
     const clients = [...mockClients]
     mockUseMergeState.mockImplementation(() => [
       {
@@ -142,6 +142,6 @@ describe('ClientSelect', () => {
 
     renderWithProviders(withMockAuth(<ClientSelect />))
 
-    expect(mockRouterPush).toHaveBeenCalledWith('/map')
+    expect(mockRouterPush).toHaveBeenCalledWith('/dashboard')
   })
 })

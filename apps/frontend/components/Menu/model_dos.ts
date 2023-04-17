@@ -89,35 +89,35 @@ export const MODEL_MENU = ({ client_id }) =>
       permissions: [],
       children: [
         {
-          id: 'fleet-management',
+          id: 'hubs',
           icon: DashboardIcon,
           title: 'Hubs',
           link: '/organisation/todo-id/reports',
           permissions: []
         },
         {
-          id: 'fleet-management',
+          id: 'branches',
           icon: DashboardIcon,
           title: 'Branches',
           link: '/organisation/todo-id/reports',
           permissions: []
         },
         {
-          id: 'fleet-management',
+          id: 'regions',
           icon: DashboardIcon,
           title: 'Regions',
           link: '/organisation/todo-id/reports',
           permissions: []
         },
         {
-          id: 'fleet-management',
+          id: 'users',
           icon: DashboardIcon,
           title: 'Users',
           link: '/organisation/todo-id/reports',
           permissions: []
         },
         {
-          id: 'fleet-management',
+          id: 'management',
           icon: DashboardIcon,
           title: 'Settings',
           link: '/organisation/todo-id/reports',

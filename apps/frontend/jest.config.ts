@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'frontend',
+  displayName: 'loop-pro: frontend',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
@@ -15,6 +15,10 @@ export default {
     'lcov'
     // "clover"
   ],
-  setupFiles: ['<rootDir>/.jest/setEnvVars.js', '<rootDir>/.jest/cleanLogs.js'],
+  setupFiles: [
+    '<rootDir>/test/jest/setEnvVars.js',
+    '<rootDir>/test/jest/cleanLogs.js',
+    '<rootDir>/test/jest/mocks.ts'
+  ],
   coverageDirectory: '../../coverage/apps/frontend'
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import LayoutBase from '../index'
 // @ts-ignore
 import { withMockAuth } from '@tomfreudenberg/next-auth-mock/jest'
-import { renderWithProviders } from '../../../../__test__/test-helpers'
+import { renderWithProviders } from '../../../../test/helpers'
 
 jest.mock('next/router', () => ({
   useRouter: () => ({

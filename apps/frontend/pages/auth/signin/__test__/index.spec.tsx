@@ -4,7 +4,7 @@ import React from 'react'
 import SignIn from '../index.page'
 // @ts-ignore
 import { withMockAuth } from '@tomfreudenberg/next-auth-mock/jest'
-import { renderWithProviders } from '../../../../__test__/test-helpers'
+import { renderWithProviders } from '@test/helpers'
 import { MODEL_CLIENT_EMPTY } from '@util/models/client/model'
 import { fireEvent } from '@testing-library/react'
 
@@ -98,7 +98,7 @@ describe('SignIn', () => {
 
     renderWithProviders(withMockAuth(<SignIn />))
 
-    expect(mockRouterPush).toHaveBeenCalledWith('/map')
+    expect(mockRouterPush).toHaveBeenCalledWith('/dashboard')
   })
 
   it('should redirect the user to the client select page', () => {
