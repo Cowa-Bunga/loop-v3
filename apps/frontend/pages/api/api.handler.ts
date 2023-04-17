@@ -16,8 +16,8 @@ export async function handler<T>(
     res,
     authOptions as NextAuthOptions
   )
-
-  if (!session) {
+  console.debug('session', session)
+  if (!session && !session.user) {
     res.status(401).json({ message: 'You must be logged in.' })
     return
   }
