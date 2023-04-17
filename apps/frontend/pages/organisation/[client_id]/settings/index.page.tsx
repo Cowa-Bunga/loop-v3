@@ -5,9 +5,8 @@ import { mock } from './mock'
 
 // @see: https://jsonforms.io
 // @see: https://ginkgobioworks.github.io/react-json-schema-form-builder
-// @desc: demo
 const Settings = () => {
-  const [model, setModel] = useState(mock.data)
+  const [model, _setModel] = useState(mock.data)
   return (
     <LayoutBase>
       <br />
@@ -23,7 +22,7 @@ const Settings = () => {
             schema={mock.schema}
             ui={mock.ui}
             model={model}
-            onChange={setModel}
+            // onChange={setModel}
           />
         </Card>
       </Container>
