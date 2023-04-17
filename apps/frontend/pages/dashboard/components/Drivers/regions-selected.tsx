@@ -12,7 +12,7 @@ import {
   ListItemText,
   Stack
 } from '@mui/material'
-import ui from '@pages/map/components/Drivers/style'
+import ui from './style'
 import { useMergeState } from '@hooks'
 import { useEffect } from 'react'
 import Actions from './actions'
@@ -87,7 +87,7 @@ const RegionSelected = ({ hubs }: IProps) => {
         busyDrivers: drivers.filter((d: IDriver) => !d.available)
       })
     }
-  }, [status])
+  }, [data, modelDrivers, setState, status])
 
   if (status !== 'success') {
     return (

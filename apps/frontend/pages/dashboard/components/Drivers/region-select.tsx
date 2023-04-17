@@ -1,5 +1,5 @@
 import { Alert, Box, Stack } from '@mui/material'
-import ui from '@pages/map/components/Drivers/style'
+import ui from './style'
 
 const RegionSelect = () => (
   <Box sx={ui.container}>

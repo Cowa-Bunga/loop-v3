@@ -1,4 +1,3 @@
-import React from 'react'
 import RegionSelect from './region-select'
 import RegionSelected from './regions-selected'
 
