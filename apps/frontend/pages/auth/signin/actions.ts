@@ -8,6 +8,7 @@ const Actions = (state, setState) => ({
 
   submit: async (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    setState({ authenticating: true })
     signIn('credentials', {
       callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/dashboard`,
       redirect: false,

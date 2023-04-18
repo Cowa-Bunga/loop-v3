@@ -12,6 +12,7 @@ import {
   FormControl,
   Grid,
   InputLabel,
+  LinearProgress,
   MenuItem,
   Select,
   Typography
@@ -33,10 +34,11 @@ const SignIn = () => {
   const [state, setState] = useMergeState({
     client_id: '',
     clientSelected: false,
-    clients: []
+    clients: [],
+    authenticating: false
   })
   const { data, status } = useSession()
-  const { state: user, update: updateUserContext } = useUserContext()
+  const { update: updateUserContext } = useUserContext()
 
   useEffect(() => {
     if (data && status === 'authenticated') {
@@ -54,7 +56,7 @@ const SignIn = () => {
       })
       router.push('/dashboard')
     }
-  }, [data, router, state?.clients, state, user])
+  }, [data, state.clientSelected])
 
   const { change, submit } = Actions(state, setState)
 
@@ -105,15 +107,19 @@ const SignIn = () => {
               </Grid>
               <br />
               <Divider />
-              <Button
-                type="submit"
-                fullWidth
-                size="large"
-                variant="outlined"
-                sx={ui.btn}
-              >
-                {_t('submit')}
-              </Button>
+              {state.authenticating ? (
+                <LinearProgress />
+              ) : (
+                <Button
+                  type="submit"
+                  fullWidth
+                  size="large"
+                  variant="outlined"
+                  sx={ui.btn}
+                >
+                  {_t('submit')}
+                </Button>
+              )}
             </Box>
           </Card>
         </Container>
