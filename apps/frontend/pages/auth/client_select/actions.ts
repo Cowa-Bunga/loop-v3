@@ -5,7 +5,7 @@ const Actions = (state, setState) => ({
 
   submit: (e) => {
     e.preventDefault()
-    setState({ ...state, clientSelected: true })
+    setState({ ...state, clientSelected: true, authenticating: true })
   }
 })
 

@@ -18,6 +18,7 @@ import {
   Container,
   Divider,
   Grid,
+  LinearProgress,
   TextField,
   Typography
 } from '@mui/material'
@@ -38,7 +39,8 @@ const SignIn = () => {
 
   const [state, setState] = useMergeState({
     email: '',
-    password: ''
+    password: '',
+    authenticating: false
   })
 
   const { getUser, change, submit } = Actions(state, setState)
@@ -114,15 +116,19 @@ const SignIn = () => {
               </Grid>
               <br />
               <Divider />
-              <Button
-                type="submit"
-                fullWidth
-                size="large"
-                variant="outlined"
-                sx={ui.btn}
-              >
-                {_t('signIn')}
-              </Button>
+              {state.authenticating ? (
+                <LinearProgress />
+              ) : (
+                <Button
+                  type="submit"
+                  fullWidth
+                  size="large"
+                  variant="outlined"
+                  sx={ui.btn}
+                >
+                  {_t('signIn')}
+                </Button>
+              )}
             </Box>
           </Card>
         </Container>
