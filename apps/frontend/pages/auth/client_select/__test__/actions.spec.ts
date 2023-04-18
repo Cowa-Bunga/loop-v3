@@ -29,6 +29,10 @@ describe('actions', () => {
     const state = { ...MODEL_CLIENT_EMPTY, clientSelected: false }
     const e = { preventDefault: jest.fn() }
     Actions(state, setState).submit(e)
-    expect(setState).toHaveBeenCalledWith({ ...state, clientSelected: true })
+    expect(setState).toHaveBeenCalledWith({
+      ...state,
+      clientSelected: true,
+      authenticating: true
+    })
   })
 })
