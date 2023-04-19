@@ -3,15 +3,15 @@ import Actions from './actions'
 import { useMergeState } from '@hooks'
 import ui from './style'
 import {
-  Select,
-  MenuItem,
-  Tab,
-  Tabs,
-  TextField,
   Box,
   Button,
   Divider,
-  SelectChangeEvent
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Tab,
+  Tabs,
+  TextField
 } from '@mui/material'
 import { IHub, IRegion } from '@pages/api/me/me.interface'
 
@@ -101,7 +101,7 @@ const DashboardFilter = ({ regions, hubs, regionHub, onChange }: IProps) => {
       </TabPanel>
       <TabPanel value={state.tab} index={2}>
         <br />
-        trips
+        Tript
       </TabPanel>
     </Box>
   )
