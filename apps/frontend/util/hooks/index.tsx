@@ -27,7 +27,11 @@ export { useSearchParams } from 'next/navigation'
 export { useMergeState } from './useMergeState'
 
 // firebase / reactfire
-export { useFirebaseApp } from 'reactfire'
+export {
+  useFirebaseApp,
+  useFirestore,
+  useFirestoreCollectionData
+} from 'reactfire'
 
 // next-auth
 export { useSession } from 'next-auth/react'
