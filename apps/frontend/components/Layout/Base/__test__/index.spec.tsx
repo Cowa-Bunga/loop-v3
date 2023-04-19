@@ -1,7 +1,6 @@
 import React from 'react'
 import LayoutBase from '../index'
-import { withMockAuth } from '@tomfreudenberg/next-auth-mock/jest'
-import { renderWithProviders } from '../../../../test/helpers'
+import { renderWithProviders } from '@test/helpers'
 
 jest.mock('next/router', () => ({
   useRouter: () => ({
@@ -11,9 +10,7 @@ jest.mock('next/router', () => ({
 
 describe('LayoutBase', () => {
   it('should render successfully', () => {
-    const { baseElement } = renderWithProviders(
-      withMockAuth(<LayoutBase>panel</LayoutBase>)
-    )
+    const { baseElement } = renderWithProviders(<LayoutBase>panel</LayoutBase>)
     expect(baseElement).toBeTruthy()
     expect(baseElement).toMatchSnapshot()
   })
