@@ -1,5 +1,4 @@
 import { signIn } from 'next-auth/react'
-import { IHub, IMeInterface, IRegion } from '@pages/api/me/me.interface'
 
 const Actions = (state, setState) => ({
   change: (key: string, value: string) => {

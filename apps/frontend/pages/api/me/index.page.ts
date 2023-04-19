@@ -1,7 +1,10 @@
-import { IMeInterface } from '@pages/api/me/me.interface'
-import { handler } from '@pages/api/api.handler'
+import { handler } from '@util/lib/loop-api/request-wrapper'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-const GetMeAPI = async (req, res): Promise<void> => {
+const GetMeAPI = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   try {
     const response = await handler<IMeInterface>(req, res, 'me', 'GET')
     console.debug('response', response.data)

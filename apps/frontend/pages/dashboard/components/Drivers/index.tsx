@@ -1,16 +1,6 @@
-import RegionSelect from './region-select'
-import RegionSelected from './regions-selected'
+import RegionSelect from '../RegionSelect'
+import RegionSelected from '../RegionsSelected'
 
-interface IProps {
-  hubs: string[]
+export default function Drivers({ hubs }: { hubs: string[] }) {
+  return hubs.length === 0 ? <RegionSelect /> : <RegionSelected hubs={hubs} />
 }
-
-const Drivers = ({ hubs }: IProps) => {
-  if (hubs.length === 0) {
-    return <RegionSelect />
-  }
-
-  return <RegionSelected hubs={hubs} />
-}
-
-export default Drivers
