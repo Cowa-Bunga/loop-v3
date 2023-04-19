@@ -1,4 +1,3 @@
-import React from 'react'
 import fetchMock from 'jest-fetch-mock'
 
 const mockRouter = jest.fn()
@@ -25,3 +24,11 @@ jest.mock('next-auth/react', () => ({
 }))
 
 global.fetch = fetchMock
+
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn()
+}))
+
+Math.random = jest.fn(() => 0.5)

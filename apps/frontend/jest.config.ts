@@ -7,6 +7,10 @@ export default {
     '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/next/babel'] }]
   },
   collectCoverageFrom: ['**/*.{ts,tsx}'],
+  coveragePathIgnorePatterns: [
+    'apps/frontend/pages/api/auth/*.ts',
+    'apps/frontend/test'
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageReporters: [
     'json',

@@ -1,50 +1,32 @@
-import { createMocks } from 'node-mocks-http'
 import GetMeAPI from '@pages/api/me/index.page'
-import { IMeInterface } from '@pages/api/me/me.interface'
+import { handler } from '@pages/api/api.handler'
 
-const mockHandler = jest.fn()
+const mockHandler = handler as jest.Mock
 jest.mock('@pages/api/api.handler', () => ({
-  handler: jest.fn().mockImplementation(() => mockHandler)
+  handler: jest.fn()
 }))
+// mock for res.status(response.status).json(response.data)
+
+const mockReq = {} as any
+const mockRes = {
+  send: jest.fn()
+} as any
 
 describe('GET /api/me', () => {
-  xit('should return 200', async () => {
-    const { req, res } = createMocks({
-      method: 'GET'
-    })
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
 
-    const mockData: IMeInterface = {
-      user: {
-        id: '1',
-        email: 'test@test.com',
-        firstname: 'John',
-        lastname: 'Doe',
-        mobile_no: '1234567890',
-        fleet: false,
-        administrator: false
-      },
-      client_id: 'test',
-      client_type: 'test',
-      regions: [],
-      hubs: [],
-      organization: {
-        id: '1',
-        name: 'Test',
-        logo: 'test'
-      }
-    }
-
-    mockHandler.mockResolvedValue(() => ({
+  it('should call handler with correct arguments and send response', async () => {
+    const mockResponse = {
       status: 200,
-      data: mockData
-    }))
+      data: { name: 'John', age: 30 }
+    }
+    mockHandler.mockResolvedValueOnce(mockResponse)
 
-    await GetMeAPI(req, res)
+    await GetMeAPI(mockReq, mockRes)
 
-    console.debug(res._getData())
-    expect(res._getStatusCode()).toBe(200)
-    // expect(JSON.parse(res._getData())).toEqual(
-    //   expect.objectContaining(mockData)
-    // )
+    expect(mockHandler).toHaveBeenCalledWith(mockReq, mockRes, 'me', 'GET')
+    expect(mockRes.send).toHaveBeenCalledWith(mockResponse.data)
   })
 })
