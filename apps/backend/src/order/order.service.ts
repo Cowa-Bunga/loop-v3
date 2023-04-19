@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
+import { CreateOrderDto } from './dto/create-order.dto'
 
 @Injectable()
 export class OrderService {
-  create() {
+  //TODO make use of order entity
+
+  createOrder(order: CreateOrderDto, client_id: string) {
     return 'This action adds a new order'
   }
 
@@ -23,15 +26,39 @@ export class OrderService {
     return orders
   }
 
-  findOne() {
-    return `This action returns a order`
-  }
+  async getOrder(order_id: string, client_id: string) {
+    const db = admin.firestore()
+    const order = await db
+      .collection('clients')
+      .doc(client_id)
+      .collection('orders')
+      .doc(order_id)
+      .get()
 
-  update() {
-    return `This action updates a order`
-  }
+    const orderData = order.data()
 
-  remove() {
-    return `This action removes a order`
+    if (orderData.trip_id) {
+      //TODO replace with trip service
+      const trip = await db
+        .collection('clients')
+        .doc(client_id)
+        .collection('trips')
+        .doc(orderData.trip_id)
+        .get()
+      if (trip.data().driver) {
+        //TODO replace with driver service
+        const driver = await trip.data().driver.get()
+        Object.assign(orderData, {
+          driver_id: driver.id,
+          driver_name: driver.data().name
+        })
+      }
+    }
+
+    return {
+      id: order.id,
+      client_id: client_id,
+      ...orderData
+    }
   }
 }
