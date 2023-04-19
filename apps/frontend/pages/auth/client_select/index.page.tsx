@@ -1,6 +1,7 @@
 import { LayoutSite } from '@components'
 import Actions from './actions'
 import ui from './style'
+import { useUserContext } from '@context/user'
 import { clientSelectLocalePathBuilder } from '@locale/locale-utils'
 import {
   Alert,
@@ -16,7 +17,6 @@ import {
   Select,
   Typography
 } from '@mui/material'
-import { useUserContext } from '@context/user'
 import {
   useEffect,
   useMergeState,
@@ -54,7 +54,16 @@ const SignIn = () => {
       })
       router.push('/dashboard')
     }
-  }, [data, router, state?.clients, state, user])
+  }, [
+    data,
+    router,
+    state.clients,
+    state,
+    user,
+    status,
+    setState,
+    updateUserContext
+  ])
 
   const { change, submit } = Actions(state, setState)
 

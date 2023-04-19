@@ -1,6 +1,10 @@
 import { useUserContext } from '@context/user'
 import { collection, query, where } from 'firebase/firestore'
 import { useFirestore, useFirestoreCollectionData } from 'reactfire'
+import ui from '../Drivers/style'
+import { useMergeState, useEffect } from '@hooks'
+import Actions from '../Drivers/actions'
+import { stringAvatar } from '@util/helpers'
 import {
   Alert,
   Avatar,
@@ -12,55 +16,14 @@ import {
   ListItemText,
   Stack
 } from '@mui/material'
-import ui from './style'
-import { useMergeState } from '@hooks'
-import { useEffect } from 'react'
-import Actions from './actions'
 
-function stringToColor(string: string) {
-  let hash = 0
-  let i
-
-  /* eslint-disable no-bitwise */
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash)
-  }
-
-  let color = '#'
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff
-    color += `00${value.toString(16)}`.slice(-2)
-  }
-  /* eslint-enable no-bitwise */
-
-  return color
-}
-
-function stringAvatar(name: string) {
-  const fn = name.split(' ')[0][0]
-  const ln = name.split(' ')[1] ? name.split(' ')[1][0] : ''
-
-  return {
-    sx: {
-      bgcolor: stringToColor(name)
-    },
-    children: `${fn}${ln}`
-  }
-}
-
-interface IProps {
-  hubs: string[]
-}
-
-interface IState {
-  availableDrivers: IDriver[]
-  busyDrivers: IDriver[]
-}
-
-const RegionSelected = ({ hubs }: IProps) => {
+export default function RegionSelected({ hubs }: { hubs: string[] }) {
   const { state: userContext } = useUserContext()
-  const [state, setState] = useMergeState<IState>({
+
+  const [state, setState] = useMergeState<{
+    availableDrivers: IDriver[]
+    busyDrivers: IDriver[]
+  }>({
     availableDrivers: [],
     busyDrivers: []
   })
@@ -89,15 +52,11 @@ const RegionSelected = ({ hubs }: IProps) => {
     }
   }, [data, modelDrivers, setState, status])
 
-  if (status !== 'success') {
-    return (
-      <Box sx={ui.container}>
-        <CircularProgress color="secondary" />
-      </Box>
-    )
-  }
-
-  return (
+  return status !== 'success' ? (
+    <Box sx={ui.container}>
+      <CircularProgress color="secondary" />
+    </Box>
+  ) : (
     <Box sx={ui.container}>
       <Input
         sx={ui.searchDriver}
@@ -129,5 +88,3 @@ const RegionSelected = ({ hubs }: IProps) => {
     </Box>
   )
 }
-
-export default RegionSelected

@@ -37,8 +37,6 @@ const CustomNode = ({
           <Button variant="outlined">expand</Button>
         </Card>
       </NodeToolbar>
-
-      {/* <div style={{ padding: '10px 20px' }}>label</div> */}
     </Card>
   )
 }

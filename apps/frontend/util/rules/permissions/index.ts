@@ -5,7 +5,7 @@ export const MODEL_LEGACY_PERMISSIONS = {
     id: 'string',
     fleet: 'bool',
     administrator: 'bool',
-    scopes: ['admin:all', 'admin:clients', 'admin:users']
+    scopes: ['orders:create', 'orders:recreate', 'import:create']
   }
 }
 

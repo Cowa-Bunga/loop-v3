@@ -1,110 +1,72 @@
-import { TabPanel } from '@components'
-import Actions from './actions'
-import { useMergeState } from '@hooks'
+// import Actions from './actions'
+// import { useMergeState } from '@hooks'
 import ui from './style'
+import { DataGrid } from '@mui/x-data-grid'
+import { tripColumns, tripRows } from './mock'
+import { ExpandMore, Add, Tune } from '@mui/icons-material'
 import {
-  Select,
-  MenuItem,
-  Tab,
-  Tabs,
-  TextField,
   Box,
-  Button,
-  Divider,
-  SelectChangeEvent
+  Accordion,
+  AccordionDetails,
+  Typography,
+  IconButton,
+  AccordionSummary,
+  TextField
 } from '@mui/material'
-import { IHub, IRegion } from '@pages/api/me/me.interface'
+export default function DashboardFilter({
+  regions,
+  hubs,
+  regionHub,
+  onChange
+}: IappDashboardFilterProps) {
+  // const [state, setState] = useMergeState<IappDashboardFilterState>({
+  //   tab: 0,
+  //   hub: ''
+  // })
 
-interface IState {
-  tab: number
-  hub: string
-}
-
-interface IProps {
-  regions: IRegion[]
-  hubs: IHub[]
-  onChange: (e: SelectChangeEvent<string>) => void
-  regionHub: string
-}
-
-const DashboardFilter = ({ regions, hubs, regionHub, onChange }: IProps) => {
-  const [state, setState] = useMergeState<IState>({
-    tab: 0,
-    hub: ''
-  })
-
-  const { tabChange, hubChange } = Actions(state, setState)
+  // const { tabChange, hubChange } = Actions(state, setState)
 
   return (
     <Box sx={ui.container}>
-      <Box>
-        <Select
-          variant="outlined"
-          fullWidth
-          value={regionHub}
-          defaultValue={regionHub}
-          label="region-hub"
-          onChange={onChange}
-          sx={ui.select}
-        >
-          <MenuItem disabled>Hubs</MenuItem>
-          {hubs.map((hub) => (
-            <MenuItem key={hub.id} value={`h-${hub.id}`}>
-              {hub.name}
-            </MenuItem>
-          ))}
-          <MenuItem disabled>Regions</MenuItem>
-          {regions.map((region) => (
-            <MenuItem key={region.id} value={`r-${region.id}`}>
-              {region.name}
-            </MenuItem>
-          ))}
-        </Select>
-
-        <Select
-          variant="outlined"
-          fullWidth
-          value={state.hub}
-          defaultValue={state.hub}
-          label="hub"
-          onChange={hubChange}
-          sx={ui.select}
-        >
-          <MenuItem value={10}>HUB 234</MenuItem>
-          <MenuItem value={20}>HUB 456</MenuItem>
-        </Select>
-      </Box>
-
-      <Box sx={ui.searchBox}>
-        <TextField
-          sx={ui.search}
-          variant="outlined"
-          fullWidth
-          type="search"
-          placeholder="Search order numbers"
-        />
-      </Box>
-
-      <Tabs value={state.tab} onChange={(e, i) => tabChange(i)}>
-        <Tab label="Orders" />
-        <Tab label="Clusters" />
-        <Tab label="Trips" />
-      </Tabs>
-      <Divider />
-      <TabPanel value={state.tab} index={0}>
-        <br />
-        <Button variant="outlined">Create Order</Button>
-      </TabPanel>
-      <TabPanel value={state.tab} index={1}>
-        <br />
-        clusters
-      </TabPanel>
-      <TabPanel value={state.tab} index={2}>
-        <br />
-        trips
-      </TabPanel>
+      {['Tasks', 'Trips'].map((v) => (
+        <Accordion square key={v} expanded>
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Box>
+              <Typography sx={{ lineHeight: '34px', mr: '20px' }}>
+                <b>{v.toUpperCase()}</b>
+              </Typography>
+            </Box>
+            <Box>
+              <IconButton size="small">
+                <Add />
+              </IconButton>
+            </Box>
+            <Box sx={{ ml: 4, mr: '50px' }}>
+              <TextField
+                size="small"
+                variant="outlined"
+                placeholder="enter Task/Customer"
+                label="search"
+              />
+            </Box>
+            <Box>
+              <IconButton size="small">
+                <Tune />
+              </IconButton>
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <DataGrid
+              rows={tripRows}
+              columns={tripColumns}
+              autoHeight
+              density="compact"
+              checkboxSelection
+              loading={false}
+            />
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </Box>
   )
 }
-
-export default DashboardFilter

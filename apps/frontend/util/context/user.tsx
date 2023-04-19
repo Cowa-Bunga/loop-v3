@@ -8,15 +8,15 @@ import { useFirebaseApp } from 'reactfire'
 
 const UserContext = createContext({
   state: {} as IUserContext,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  update: (updated: object) => {}
+  update: (updated: object) => updated
 })
 
 export function UserWrapper({ children }) {
   const initialState = {
     hubs: [],
     regions: []
-  } as IUserContext
+  }
+
   const [state, updateState] = useMergeState(initialState)
   const firebaseAuth = getAuth(useFirebaseApp())
   const { data } = useSession()
@@ -27,10 +27,11 @@ export function UserWrapper({ children }) {
   useEffect(() => {
     // temp caching method for user context to persist beyond browser reload...
     // need to find a better way to do this as this data will become stale
+    // TODO: may pose security risk
     if (JSON.stringify(initialState) !== JSON.stringify(state)) {
       localStorage.setItem('userContext', JSON.stringify(state))
     }
-  }, [state])
+  })
 
   useEffect(() => {
     const userContext = localStorage.getItem('userContext')
