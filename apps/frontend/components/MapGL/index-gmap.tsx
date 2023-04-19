@@ -1,5 +1,4 @@
 import { memo, useCallback, useEffect, useState } from 'react'
-import { Paper } from '@mui/material'
 import {
   GoogleMap,
   useJsApiLoader,
@@ -8,7 +7,6 @@ import {
 } from '@react-google-maps/api'
 import { GoogleMapsOverlay } from '@deck.gl/google-maps'
 import { GeoJsonLayer } from 'deck.gl'
-import TripsLayers from './trips'
 
 const AIR_PORTS = '/dataset/airports.geojson'
 
@@ -37,8 +35,8 @@ const deckOverlay = new GoogleMapsOverlay({
 function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
-    // libraries: ['drawing']
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY,
+    libraries: ['drawing']
   })
 
   const [height, setHeight] = useState(0)
@@ -71,23 +69,19 @@ function Map() {
   }, [])
 
   return isLoaded ? (
-    <TripsLayers>
-      <GoogleMap
-        mapContainerStyle={{ width: '100%', height }}
-        // center={center}
-        mapTypeId="satellite"
-        // tilt={4}
-        // zoom={5}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        <Marker position={center} icon="/pin.png" />
-        {/* <DrawingManager
-          onLoad={onLoadDrawing}
-          onPolygonComplete={onPolygonComplete}
-        /> */}
-      </GoogleMap>
-    </TripsLayers>
+    <GoogleMap
+      mapContainerStyle={{ width: '100%', height }}
+      center={center}
+      mapTypeId="satellite"
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+    >
+      <Marker position={center} icon="/pin.png" />
+      <DrawingManager
+        onLoad={onLoadDrawing}
+        onPolygonComplete={onPolygonComplete}
+      />
+    </GoogleMap>
   ) : null
 }
 

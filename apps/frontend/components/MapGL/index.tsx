@@ -73,7 +73,7 @@ export default function App({
   animationSpeed = 1
 }) {
   const [time, setTime] = useState(0)
-  const [animation] = useState({})
+  const [animation] = useState({ id: null })
 
   const animate = () => {
     setTime((t) => (t + animationSpeed) % loopLength)
@@ -127,12 +127,7 @@ export default function App({
       initialViewState={initialViewState}
       controller={true}
     >
-      <Map
-        reuseMaps
-        mapLib={maplibregl}
-        mapStyle={mapStyle}
-        preventStyleDiffing={true}
-      />
+      <Map reuseMaps mapLib={maplibregl} mapStyle={mapStyle} />
     </DeckGL>
   )
 }
