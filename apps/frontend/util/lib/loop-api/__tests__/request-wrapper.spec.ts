@@ -1,4 +1,4 @@
-import { handler } from '../api.handler'
+import { handler } from '../request-wrapper'
 import { getServerSession } from 'next-auth/next'
 import { createMocks } from 'node-mocks-http'
 
