@@ -303,9 +303,9 @@ exports[`DashboardFilter should render 1`] = `
                                     aria-haspopup="true"
                                     aria-label="Menu"
                                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                                    data-mui-internal-clone-element="true"
                                     id=":r9:"
                                     tabindex="-1"
-                                    title="Menu"
                                     type="button"
                                   >
                                     <svg
@@ -401,13 +401,13 @@ exports[`DashboardFilter should render 1`] = `
                                   class="MuiDataGrid-menuIcon"
                                 >
                                   <button
-                                    aria-controls=":rb:"
+                                    aria-controls=":rc:"
                                     aria-haspopup="true"
                                     aria-label="Menu"
                                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                                    id=":rc:"
+                                    data-mui-internal-clone-element="true"
+                                    id=":rd:"
                                     tabindex="-1"
-                                    title="Menu"
                                     type="button"
                                   >
                                     <svg
@@ -756,6 +756,7 @@ exports[`DashboardFilter should render 1`] = `
                             </div>
                             <input
                               aria-hidden="true"
+                              aria-invalid="false"
                               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                               tabindex="-1"
                               value="100"
@@ -1124,13 +1125,13 @@ exports[`DashboardFilter should render 1`] = `
                                   class="MuiDataGrid-menuIcon"
                                 >
                                   <button
-                                    aria-controls=":rg:"
+                                    aria-controls=":ri:"
                                     aria-haspopup="true"
                                     aria-label="Menu"
                                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                                    id=":rh:"
+                                    data-mui-internal-clone-element="true"
+                                    id=":rj:"
                                     tabindex="-1"
-                                    title="Menu"
                                     type="button"
                                   >
                                     <svg
@@ -1226,13 +1227,13 @@ exports[`DashboardFilter should render 1`] = `
                                   class="MuiDataGrid-menuIcon"
                                 >
                                   <button
-                                    aria-controls=":rj:"
+                                    aria-controls=":rm:"
                                     aria-haspopup="true"
                                     aria-label="Menu"
                                     class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                                    id=":rk:"
+                                    data-mui-internal-clone-element="true"
+                                    id=":rn:"
                                     tabindex="-1"
-                                    title="Menu"
                                     type="button"
                                   >
                                     <svg
@@ -1581,6 +1582,7 @@ exports[`DashboardFilter should render 1`] = `
                             </div>
                             <input
                               aria-hidden="true"
+                              aria-invalid="false"
                               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                               tabindex="-1"
                               value="100"
