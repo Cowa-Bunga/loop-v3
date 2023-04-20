@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PermissionsProvider /> should render the fleet component when the user has admin access 1`] = `
+<div>
+  <div>
+    admin
+  </div>
+</div>
+`;
+
+exports[`<PermissionsProvider /> should render the fleet component when the user has fleet access 1`] = `
+<div>
+  <div>
+    fleet
+  </div>
+</div>
+`;
+
+exports[`<PermissionsProvider /> should render the order create component when the order:create has admin access 1`] = `
+<div>
+  <div>
+    order
+  </div>
+</div>
+`;

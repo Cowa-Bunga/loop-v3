@@ -1,4 +1,4 @@
-import RegionsSelected from '../regions-selected'
+import RegionsSelected from '../'
 import { renderWithProviders } from '@test/helpers'
 
 import { useFirestoreCollectionData } from '@hooks'
