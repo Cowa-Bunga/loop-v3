@@ -1,4 +1,4 @@
-import { IHub, IOrganization, IRegion } from '@pages/api/me/me.interface'
+import { IHub, IOrganization, IRegion } from '@pages/api/me/type'
 
 interface IUserContext {
   id: string
