@@ -1,8 +1,8 @@
 import GetMeAPI from '@pages/api/me/index.page'
-import { handler } from '@pages/api/api.handler'
+import { handler } from '@util/lib/loop-api/request-wrapper'
 
 const mockHandler = handler as jest.Mock
-jest.mock('@pages/api/api.handler', () => ({
+jest.mock('@util/lib/loop-api/request-wrapper', () => ({
   handler: jest.fn()
 }))
 // mock for res.status(response.status).json(response.data)

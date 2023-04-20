@@ -1,8 +1,7 @@
-
 /**
  * @function stringToColor
  * @desc
- * @param string 
+ * @param string
  * @returns {string}
  */
 export function stringToColor(string: string) {
@@ -26,7 +25,7 @@ export function stringToColor(string: string) {
 /**
  * @function stringAvatar
  * @desc
- * @param name 
+ * @param name
  * @returns {string}
  */
 export function stringAvatar(name: string) {
