@@ -1,5 +1,6 @@
 name: Unit Tests
 on:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -34,5 +35,5 @@ jobs:
 
       - uses: VeryGoodOpenSource/very_good_coverage@v1
         with:
-          path: './coverage/lcov.info'
+          path: './coverage/apps/frontend/lcov.info'
           min_coverage: 60
