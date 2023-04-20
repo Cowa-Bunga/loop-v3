@@ -14,6 +14,7 @@ import 'reactflow/dist/style.css'
 import { getServerSession, NextAuthOptions } from 'next-auth'
 import { authOptions } from '@pages/api/auth/[...nextauth].page'
 import { UserWrapper } from '@context/user'
+import { PermissionsProvider } from '@util/rules/permissions'
 
 // hide debugs in prod
 if (process.env.NODE_ENV === 'production') {
@@ -40,7 +41,9 @@ const LoopApp = ({
             <main id="loop-frontend">
               <SessionProvider session={session}>
                 <UserWrapper>
-                  <Component {...pageProps} />
+                  <PermissionsProvider>
+                    <Component {...pageProps} />
+                  </PermissionsProvider>
                 </UserWrapper>
               </SessionProvider>
             </main>

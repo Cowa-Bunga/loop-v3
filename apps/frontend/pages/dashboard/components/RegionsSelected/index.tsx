@@ -1,8 +1,12 @@
 import { useUserContext } from '@context/user'
-import { collection, query, where } from 'firebase/firestore'
-import { useFirestore, useFirestoreCollectionData } from 'reactfire'
+import { collection, query, where } from '@util/lib/firebase'
 import ui from '../Drivers/style'
-import { useMergeState, useEffect } from '@hooks'
+import {
+  useEffect,
+  useFirestore,
+  useFirestoreCollectionData,
+  useMergeState
+} from '@hooks'
 import Actions from '../Drivers/actions'
 import { stringAvatar } from '@util/helpers'
 import {

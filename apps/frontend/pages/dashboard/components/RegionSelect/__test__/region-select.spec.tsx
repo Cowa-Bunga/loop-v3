@@ -1,4 +1,4 @@
-import RegionSelect from '../region-select'
+import RegionSelect from '../'
 import { renderWithProviders } from '@test/helpers'
 
 describe('RegionSelect', () => {
