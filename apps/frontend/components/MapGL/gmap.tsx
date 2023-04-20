@@ -8,6 +8,7 @@ import {
 import { GoogleMapsOverlay } from '@deck.gl/google-maps'
 import { GeoJsonLayer } from 'deck.gl'
 
+// Demo: wip
 const AIR_PORTS = '/dataset/airports.geojson'
 
 const center = {
@@ -51,7 +52,6 @@ function Map() {
     if (typeof window !== 'undefined') {
       const bounds = new window.google.maps.LatLngBounds(center)
       map.fitBounds(bounds)
-      // setMap(map)
       deckOverlay.setMap(map)
     }
   }, [])

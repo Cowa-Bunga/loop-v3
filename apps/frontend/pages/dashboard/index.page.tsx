@@ -19,7 +19,7 @@ const DeckMap = dynamic(() => import('../../components/MapGL'), {
 const Dashboard = () => {
   const [state, setState] = useMergeState({
     right: false,
-    left: true
+    left: false
   })
 
   const { toggleLeft, toggleRight } = Actions(state, setState)
@@ -44,20 +44,31 @@ const Dashboard = () => {
 
       <Box
         sx={{
-          ml: state.left ? '560px' : '30px',
-          mr: state.right ? '440px' : '30px'
+          height: 'calc(100vh-60px)',
+          overflow: 'hidden'
         }}
       >
         <Box sx={ui.openBox} onClick={toggleLeft}>
           <KeyboardDoubleArrowRight />
         </Box>
-        <Card>
+        <Card
+          sx={{
+            ml: state.left ? '560px' : '30px',
+            mr: state.right ? '440px' : '30px'
+          }}
+        >
           <DeckMap />
         </Card>
+        <Box sx={ui.openBoxR} onClick={toggleRight}>
+          <KeyboardDoubleArrowLeft />
+        </Box>
       </Box>
 
       <Drawer anchor="right" variant="persistent" open={state.right}>
         <Box sx={ui.filter}>
+          <Box sx={ui.closedBoxIconR} onClick={toggleRight}>
+            <KeyboardDoubleArrowRight sx={ui.closedBoxIcon} />
+          </Box>
           <Drivers hubs={[]} />
         </Box>
       </Drawer>

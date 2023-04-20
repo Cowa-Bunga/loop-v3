@@ -1,5 +1,4 @@
 import { createContext, useContext } from 'react'
-import { IUserPermissions } from '../../../../libs/@types/loop/src/loop-api/IclientLogin'
 
 const AppState = createContext({} as IappAppContext)
 
@@ -13,16 +12,10 @@ export function useAppContext() {
 }
 
 interface IappAppContext {
-  organisation: {
-    id: string
-    name: string
-    logo: string
-    locations: {
-      lat: number
-      lng: number
-    }[]
-    permissions: IUserPermissions[]
-    model: []
+  session: null
+  user: null
+  settings: {
+    permissions: []
   }
   theme: {
     mode: 'light' | 'dark'
@@ -32,11 +25,6 @@ interface IappAppContext {
   layout: {
     nav: {
       logo: string
-    }
-    menu: {
-      open: boolean
-      logo: string
-      model: IMenu[]
     }
   }
 }

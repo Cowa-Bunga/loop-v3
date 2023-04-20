@@ -16,23 +16,22 @@ export const useMergeState = <T>(
   const [state, origSetState] = useState(initState)
 
   const setState = (mutation: T, cb) => {
-    const mergedState = deepmerge(state, mutation)
-    origSetState(mergedState)
-
-    if (process.env.NODE_ENV === 'development') {
-      console.debug(
-        '%c setMergeState: \n',
-        'color: aquamarine; font-weight: bold;',
-        {
-          mutation,
-          old: state,
-          new: { ...mergedState, _time: new Date().toLocaleTimeString() }
-        }
-      )
-    }
+    let merged
+    origSetState((_state: unknown) => {
+      merged = deepmerge(_state, mutation)
+      return merged
+    })
 
     if (cb) {
-      cb(mergedState)
+      cb(merged)
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+      console.debug('%c setMergeState: \n', 'color: silver', {
+        mutation,
+        old: state,
+        new: merged
+      })
     }
   }
 
