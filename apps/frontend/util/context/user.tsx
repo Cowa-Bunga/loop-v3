@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect } from 'react'
-import { useMergeState } from '@hooks'
+import { createContext } from 'react'
+import { useContext, useEffect, useMergeState } from '@hooks'
 import { IUserContext } from '@util/types/IappContext'
 import { useSession } from 'next-auth/react'
 import { authFirebase } from '@util/lib/firebase'
@@ -12,10 +12,15 @@ const UserContext = createContext({
   update: (updated: object) => {}
 })
 
-export function UserWrapper({ children }) {
+function UserWrapper({ children }) {
   const initialState = {
     hubs: [],
-    regions: []
+    regions: [],
+    permissions: {
+      fleet: false,
+      administrator: false,
+      scopes: []
+    }
   } as IUserContext
   const [state, updateState] = useMergeState(initialState)
   const firebaseAuth = getAuth(useFirebaseApp())
@@ -55,6 +60,8 @@ export function UserWrapper({ children }) {
   )
 }
 
-export function useUserContext() {
+function useUserContext() {
   return useContext(UserContext)
 }
+
+export { useUserContext, UserWrapper }
