@@ -51,7 +51,7 @@ function UserWrapper({ children }) {
         authFirebase(firebaseAuth, session.firebase_token)
       }
     }
-  })
+  }, [])
 
   return (
     <UserContext.Provider value={{ state, update }}>
