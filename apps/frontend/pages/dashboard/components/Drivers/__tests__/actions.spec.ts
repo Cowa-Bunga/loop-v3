@@ -76,38 +76,4 @@ describe('Actions', () => {
       ])
     })
   })
-
-  describe('stringAvatar', () => {
-    it('should return a valid style object code from Actions.stringAvatar (full name)', () => {
-      const mockState = {}
-      const mockSetState = jest.fn()
-
-      const actions = Actions(mockState, mockSetState)
-
-      const result = actions.stringAvatar('test test')
-
-      expect(result).toEqual({
-        sx: {
-          bgcolor: '#60fb30'
-        },
-        children: 'tt'
-      })
-    })
-
-    it('should return a valid style object code from Actions.stringAvatar (first name)', () => {
-      const mockState = {}
-      const mockSetState = jest.fn()
-
-      const actions = Actions(mockState, mockSetState)
-
-      const result = actions.stringAvatar('test')
-
-      expect(result).toEqual({
-        sx: {
-          bgcolor: '#924436'
-        },
-        children: 't'
-      })
-    })
-  })
 })

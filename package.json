@@ -6,6 +6,7 @@
     "start": "NX_MODE=frontend npx nx serve frontend",
     "duo": "NX_MODE=duo npx nx run-many --parallel --target=serve --projects=frontend,backend",
     "test": "npx nx test",
+    "coverage": "npx nx test -- --coverage",
     "build": "npx nx build",
     "lint": "npx nx lint",
     "e2e": "npx nx e2e frontend-e2e"
