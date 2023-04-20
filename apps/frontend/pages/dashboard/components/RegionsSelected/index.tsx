@@ -1,11 +1,10 @@
 import { useUserContext } from '@context/user'
-import { collection, query, where } from '@util/lib/firebase'
-import {
-  useEffect,
-  useFirestore,
-  useFirestoreCollectionData,
-  useMergeState
-} from '@hooks'
+import { collection, query, where } from 'firebase/firestore'
+import { useFirestore, useFirestoreCollectionData } from 'reactfire'
+import ui from '../Drivers/style'
+import { useMergeState, useEffect } from '@hooks'
+import Actions from '../Drivers/actions'
+import { stringAvatar } from '@util/helpers'
 import {
   Alert,
   Avatar,
@@ -17,25 +16,18 @@ import {
   ListItemText,
   Stack
 } from '@mui/material'
-import ui from './style'
-import Actions from './actions'
 
-interface IProps {
-  hubs: string[]
-}
-
-interface IState {
-  availableDrivers: IDriver[]
-  busyDrivers: IDriver[]
-}
-
-const RegionSelected = ({ hubs }: IProps) => {
+export default function RegionSelected({ hubs }: { hubs: string[] }) {
   const { state: userContext } = useUserContext()
-  const [state, setState] = useMergeState<IState>({
+
+  const [state, setState] = useMergeState<{
+    availableDrivers: IDriver[]
+    busyDrivers: IDriver[]
+  }>({
     availableDrivers: [],
     busyDrivers: []
   })
-  const { modelDrivers, stringAvatar } = Actions(state, setState)
+  const { modelDrivers } = Actions(state, setState)
 
   const driversRef = collection(useFirestore(), 'drivers')
   const contains = hubs.map((id) => ({
@@ -60,15 +52,11 @@ const RegionSelected = ({ hubs }: IProps) => {
     }
   }, [data, status])
 
-  if (status !== 'success') {
-    return (
-      <Box sx={ui.container}>
-        <CircularProgress color="secondary" />
-      </Box>
-    )
-  }
-
-  return (
+  return status !== 'success' ? (
+    <Box sx={ui.container}>
+      <CircularProgress color="secondary" />
+    </Box>
+  ) : (
     <Box sx={ui.container}>
       <Input
         sx={ui.searchDriver}
@@ -100,5 +88,3 @@ const RegionSelected = ({ hubs }: IProps) => {
     </Box>
   )
 }
-
-export default RegionSelected

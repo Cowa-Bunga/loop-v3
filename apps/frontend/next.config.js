@@ -1,6 +1,5 @@
 const { withNx } = require('@nrwl/next/plugins/with-nx')
 const path = require('path')
-const webpack = require('webpack')
 
 const nextConfig = {
   // output: 'standalone',
@@ -14,16 +13,7 @@ const nextConfig = {
   nx: {
     svgr: false
   },
-  pageExtensions: ['page.tsx', 'page.ts'],
-
-  webpack: (config) => {
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        CESIUM_BASE_URL: JSON.stringify('cesium')
-      })
-    )
-    return config
-  }
+  pageExtensions: ['page.tsx', 'page.ts']
 }
 
 module.exports = withNx(nextConfig)

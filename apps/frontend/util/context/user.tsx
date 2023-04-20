@@ -35,7 +35,7 @@ function UserWrapper({ children }) {
     if (JSON.stringify(initialState) !== JSON.stringify(state)) {
       localStorage.setItem('userContext', JSON.stringify(state))
     }
-  }, [state])
+  }, [initialState, state])
 
   useEffect(() => {
     const userContext = localStorage.getItem('userContext')
