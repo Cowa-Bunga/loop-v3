@@ -39,7 +39,7 @@ const PermissionsProvider = ({ children }) => {
   if (permissions.administrator) {
     scopes.add('admin:access')
   }
-  console.debug('permissions', scopes)
+
   const canAccess = (required: string[]) =>
     checkPermissions([...scopes], required)
 
