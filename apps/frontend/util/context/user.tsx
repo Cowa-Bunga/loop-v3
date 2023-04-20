@@ -35,7 +35,7 @@ function UserWrapper({ children }) {
     if (JSON.stringify(initialState) !== JSON.stringify(state)) {
       localStorage.setItem('userContext', JSON.stringify(state))
     }
-  }, [initialState, state])
+  }, [state])
 
   useEffect(() => {
     const userContext = localStorage.getItem('userContext')
@@ -51,7 +51,7 @@ function UserWrapper({ children }) {
         authFirebase(firebaseAuth, session.firebase_token)
       }
     }
-  }, [])
+  })
 
   return (
     <UserContext.Provider value={{ state, update }}>
