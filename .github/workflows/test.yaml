@@ -1,0 +1,38 @@
+name: Unit Tests
+on:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+
+      - uses: zcong1993/setup-timezone@v2.0.0
+        with:
+          # which timezone you want to use
+          timezone: Africa/Johannesburg
+
+      - name: Install packages
+        run: npm install
+
+      #      - name: Danger
+      #        run: npx danger ci
+      #        env:
+      #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run tests
+        run: npm run coverage
+
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+
+      - uses: VeryGoodOpenSource/very_good_coverage@v1
+        with:
+          path: './coverage/lcov.info'
+          min_coverage: 60
