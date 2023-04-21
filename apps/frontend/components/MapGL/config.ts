@@ -9,14 +9,14 @@ export const DATA_URL = {
 }
 
 export const DEFAULT_THEME = {
-  buildingColor: [74, 80, 87],
-  trailColor0: [253, 128, 93],
-  trailColor1: [23, 184, 190],
+  buildingColor: [24, 20, 27],
+  trailColor0: [153, 228, 293],
+  trailColor1: [200, 200, 100],
   material: {
-    ambient: 0.1,
+    ambient: 0.4,
     diffuse: 0.6,
-    shininess: 32,
-    specularColor: [60, 64, 70]
+    shininess: 100,
+    specularColor: [120, 220, 240]
   },
   effects: [
     new LightingEffect({
