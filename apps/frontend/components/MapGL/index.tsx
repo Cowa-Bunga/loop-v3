@@ -36,47 +36,49 @@ export default function MapGL({
   }, [animation])
 
   const layers = [
-    new PolygonLayer({
-      id: 'ground',
-      data: LAND_COVER,
-      getPolygon: (f) => f,
-      stroked: false,
-      getFillColor: [0, 0, 0, 0]
-    }),
+    // new PolygonLayer({
+    //   id: 'ground',
+    //   data: LAND_COVER,
+    //   getPolygon: (f) => f,
+    //   stroked: false,
+    //   getFillColor: [0, 0, 0, 0]
+    // }),
     new TripsLayer({
       id: 'trips',
       data: trips,
       getPath: (d) => d.path,
       getTimestamps: (d) => d.timestamps,
       getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.4,
+      opacity: 0.8,
       widthMinPixels: 2,
       rounded: true,
       trailLength,
       currentTime: time,
       shadowEnabled: false
-    }),
-    new PolygonLayer({
-      id: 'buildings',
-      data: DATA_URL.BUILDINGS,
-      extruded: true,
-      wireframe: true,
-      opacity: 0.4,
-      getPolygon: (f) => f.polygon,
-      getElevation: (f) => f.height,
-      getFillColor: theme.buildingColor,
-      material: theme.material
     })
+    // new PolygonLayer({
+    //   id: 'buildings',
+    //   data: DATA_URL.BUILDINGS,
+    //   extruded: true,
+    //   wireframe: true,
+    //   opacity: 0.2,
+    //   getPolygon: (f) => f.polygon,
+    //   getElevation: (f) => f.height,
+    //   getFillColor: theme.buildingColor,
+    //   material: theme.material
+    // })
   ]
 
   return (
-    <DeckGL
-      layers={layers}
-      effects={theme.effects}
-      initialViewState={initialViewState}
-      controller={true}
-    >
-      <Map reuseMaps mapLib={maplibregl} mapStyle={mapStyle} />
-    </DeckGL>
+    <div style={{ height: '100vh', overflow: 'hidden' }}>
+      <DeckGL
+        layers={layers}
+        effects={theme.effects}
+        initialViewState={initialViewState}
+        controller={true}
+      >
+        <Map reuseMaps mapLib={maplibregl} mapStyle={mapStyle} />
+      </DeckGL>
+    </div>
   )
 }

@@ -4,6 +4,7 @@ import ui from './style'
 import { DataGrid } from '@mui/x-data-grid'
 import { tripColumns, tripRows } from './mock'
 import { ExpandMore, Add, Tune } from '@mui/icons-material'
+import { useSession } from 'next-auth/react'
 import {
   Box,
   Accordion,
@@ -19,6 +20,8 @@ export default function DashboardFilter({
   regionHub,
   onChange
 }: IappDashboardFilterProps) {
+  const { data: session } = useSession()
+  console.warn(session)
   // const [state, setState] = useMergeState<IappDashboardFilterState>({
   //   tab: 0,
   //   hub: ''
@@ -28,11 +31,13 @@ export default function DashboardFilter({
 
   return (
     <Box sx={ui.container}>
-      {['Tasks', 'Trips'].map((v) => (
-        <Accordion square key={v} expanded>
+      {['Regions', 'Hubs', 'Tasks', 'Trips'].map((v) => (
+        <Accordion square key={v}>
           <AccordionSummary expandIcon={<ExpandMore />}>
             <Box>
-              <Typography sx={{ lineHeight: '34px', mr: '20px' }}>
+              <Typography
+                sx={{ lineHeight: '34px', mr: '20px', width: '100px' }}
+              >
                 <b>{v.toUpperCase()}</b>
               </Typography>
             </Box>
@@ -41,7 +46,7 @@ export default function DashboardFilter({
                 <Add />
               </IconButton>
             </Box>
-            <Box sx={{ ml: 4, mr: '50px' }}>
+            <Box sx={{ ml: 4, mr: '20px' }}>
               <TextField
                 size="small"
                 variant="outlined"
