@@ -1,2 +1,5 @@
 export * from './loop-pro-config'
+export { FirebaseAppProvider } from 'reactfire'
 export { collection, query, where } from 'firebase/firestore'
+export { getRemoteConfig, fetchAndActivate } from 'firebase/remote-config'
+export { useInitRemoteConfig, RemoteConfigProvider } from 'reactfire'
