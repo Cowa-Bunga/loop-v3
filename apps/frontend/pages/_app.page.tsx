@@ -5,9 +5,8 @@ import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import { SessionProvider } from 'next-auth/react'
 import { theme } from '@util/lib/mui5'
-import { FirebaseAppProvider } from 'reactfire'
 import { NoSsr } from '@mui/material'
-import { firebaseConfig } from '@util/lib/firebase'
+import { FirebaseAppProvider, firebaseConfig } from '@util/lib/firebase'
 import '@locale/config'
 import '../public/app.css'
 import 'reactflow/dist/style.css'
@@ -35,10 +34,10 @@ const LoopApp = ({
         <title>Loop logistics</title>
       </Head>
       <NoSsr>
-        <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <main id="loop-frontend">
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <main id="loop-frontend">
+            <FirebaseAppProvider firebaseConfig={firebaseConfig}>
               <SessionProvider session={session}>
                 <UserWrapper>
                   <PermissionsProvider>
@@ -46,9 +45,9 @@ const LoopApp = ({
                   </PermissionsProvider>
                 </UserWrapper>
               </SessionProvider>
-            </main>
-          </ThemeProvider>
-        </FirebaseAppProvider>
+            </FirebaseAppProvider>
+          </main>
+        </ThemeProvider>
       </NoSsr>
     </>
   )
