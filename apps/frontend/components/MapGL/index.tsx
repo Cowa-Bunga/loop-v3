@@ -2,15 +2,29 @@ import { useState, useEffect } from 'react'
 import { Map } from 'react-map-gl'
 import maplibregl from 'maplibre-gl'
 import DeckGL from '@deck.gl/react'
-import { PolygonLayer } from '@deck.gl/layers'
+import { IconLayer, PolygonLayer, ColumnLayer } from '@deck.gl/layers'
 import { TripsLayer } from '@deck.gl/geo-layers'
-import { Box } from '@mui/material'
+import { ScenegraphLayer } from '@deck.gl/mesh-layers'
+
 import {
   DATA_URL,
   DEFAULT_THEME,
-  INITIAL_VIEW_STATE,
-  LAND_COVER
+  INITIAL_VIEW_STATE
+  // LAND_COVER
 } from './config'
+
+const ICON_MAPPING = {
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true }
+}
+
+const data = [
+  {
+    name: 'Colma (COLM)',
+    address: '365 D Street, Colma CA 94014',
+    exits: 4214,
+    coordinates: [-74, 40.724]
+  }
+]
 
 export default function MapGL({
   trips = DATA_URL.TRIPS,
@@ -55,7 +69,7 @@ export default function MapGL({
       trailLength,
       currentTime: time,
       shadowEnabled: false
-    })
+    }),
     // new PolygonLayer({
     //   id: 'buildings',
     //   data: DATA_URL.BUILDINGS,
@@ -67,6 +81,63 @@ export default function MapGL({
     //   getFillColor: theme.buildingColor,
     //   material: theme.material
     // })
+    new IconLayer({
+      id: 'icon-layer',
+      data,
+      pickable: true,
+      // iconAtlas and iconMapping are required
+      // getIcon: return a string
+      iconAtlas:
+        'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
+      iconMapping: ICON_MAPPING,
+      getIcon: (d) => 'marker',
+
+      sizeScale: 1,
+      getPosition: (d) => d.coordinates,
+      getSize: (d) => 20,
+      getColor: (d) => [140, 180, 250]
+    }),
+
+    new ColumnLayer({
+      id: 'column-layer',
+      data: [
+        { centroid: [-74.1, 40.731], value: 0.12 },
+        { centroid: [-74.15, 40.732], value: 0.2 },
+        { centroid: [-74.2, 40.733], value: 0.19 },
+        { centroid: [-74.25, 40.734], value: 0.14 }
+      ],
+      diskResolution: 12,
+      radius: 40,
+      extruded: true,
+      pickable: true,
+      elevationScale: 2000,
+      getPosition: (d) => d.centroid,
+      getFillColor: (d) => [148, 168, d.value * 255, 255],
+      getLineColor: [255, 100, 100],
+      getElevation: (d) => d.value
+    }),
+
+    new ScenegraphLayer({
+      id: 'scenegraph-layer',
+      data: [
+        {
+          name: 'Colma (COLM)',
+          address: '365 D Street, Colma CA 94014',
+          exits: 4214,
+          coordinates: [-74, 40.72]
+        }
+      ],
+      pickable: true,
+      scenegraph:
+        'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+      getPosition: (d) => d.coordinates,
+      getOrientation: (d) => [0, Math.random() * 180, 90],
+      _animations: {
+        '*': { speed: 5 }
+      },
+      sizeScale: 20,
+      _lighting: 'pbr'
+    })
   ]
 
   return (
