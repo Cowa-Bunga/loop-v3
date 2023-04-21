@@ -25,6 +25,13 @@ const data = [
     coordinates: [-74, 40.724]
   }
 ]
+let posx = -74.0001
+let posy = 40.7203
+const initPos = () => {
+  posx = posx + 0.00001
+  posy = posy + 0.00001
+  return [posx, posy]
+}
 
 export default function MapGL({
   trips = DATA_URL.TRIPS,
@@ -70,17 +77,17 @@ export default function MapGL({
       currentTime: time,
       shadowEnabled: false
     }),
-    // new PolygonLayer({
-    //   id: 'buildings',
-    //   data: DATA_URL.BUILDINGS,
-    //   extruded: true,
-    //   wireframe: true,
-    //   opacity: 0.2,
-    //   getPolygon: (f) => f.polygon,
-    //   getElevation: (f) => f.height,
-    //   getFillColor: theme.buildingColor,
-    //   material: theme.material
-    // })
+    new PolygonLayer({
+      id: 'buildings',
+      data: DATA_URL.BUILDINGS,
+      extruded: true,
+      wireframe: true,
+      opacity: 0.2,
+      getPolygon: (f) => f.polygon,
+      getElevation: (f) => f.height,
+      getFillColor: theme.buildingColor,
+      material: theme.material
+    }),
     new IconLayer({
       id: 'icon-layer',
       data,
@@ -116,15 +123,14 @@ export default function MapGL({
       getLineColor: [255, 100, 100],
       getElevation: (d) => d.value
     }),
-
     new ScenegraphLayer({
-      id: 'scenegraph-layer',
+      id: 'scenegraph-layer2',
       data: [
         {
           name: 'Colma (COLM)',
           address: '365 D Street, Colma CA 94014',
           exits: 4214,
-          coordinates: [-74, 40.72]
+          coordinates: [-74, 40.7244]
         }
       ],
       pickable: true,
@@ -133,11 +139,53 @@ export default function MapGL({
       getPosition: (d) => d.coordinates,
       getOrientation: (d) => [0, Math.random() * 180, 90],
       _animations: {
-        '*': { speed: 5 }
+        '*': { speed: 4 }
       },
-      sizeScale: 20,
+      sizeScale: 10,
+      _lighting: 'pbr'
+    }),
+
+    new ScenegraphLayer({
+      id: 'scenegraph-layer',
+      data: [
+        {
+          name: 'Colma (COLM)',
+          address: '365 D Street, Colma CA 94014',
+          exits: 4214,
+          coordinates: [...initPos()]
+        }
+      ],
+      pickable: true,
+      scenegraph:
+        // 'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+        '/Giulettina.glb',
+      getPosition: (d) => d.coordinates,
+      getOrientation: (d) => [0, 145, 90],
+      _animations: {
+        '*': { speed: 0.0000005 }
+      },
+      sizeScale: 4,
       _lighting: 'pbr'
     })
+
+    // new TileLayer({
+    //   data: 'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    //   minZoom: 0,
+    //   maxZoom: 19,
+    //   tileSize: 256,
+    //   renderSubLayers: (props) => {
+    //     const {
+    //       bbox: { west, south, east, north }
+    //     } = props.tile
+
+    //     return new BitmapLayer(props, {
+    //       data: null,
+    //       image: props.data,
+    //       _imageCoordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
+    //       bounds: [west, south, east, north]
+    //     })
+    //   }
+    // })
   ]
 
   return (
