@@ -1,5 +1,3 @@
-// @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
-// TODO: deck.gl
 import { memo, useCallback, useEffect, useState } from 'react'
 import { Paper } from '@mui/material'
 import {

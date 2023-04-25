@@ -1,5 +1,3 @@
-import { DocumentData } from 'firebase/firestore'
-
 const Actions = (_state, _setState) => ({
   modelDrivers: (documents: DocumentData[]): IDriver[] => {
     return documents.map((document) => ({

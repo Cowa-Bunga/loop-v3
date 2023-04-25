@@ -1,5 +1,6 @@
 export const ui = {
   leftDrawer: {},
+  rightDrawer: {},
 
   openBox: {
     position: 'fixed',
