@@ -17,20 +17,20 @@ export const DEFAULT_THEME = {
     diffuse: 0.6,
     shininess: 20,
     specularColor: [20, 20, 40]
-  }
-  // effects: [
-  //   new LightingEffect({
-  //     ambientLight: new AmbientLight({
-  //       color: [255, 255, 255],
-  //       intensity: 1.0
-  //     }),
-  //     pointLight: new PointLight({
-  //       color: [255, 255, 255],
-  //       intensity: 2.0,
-  //       position: [-74.5, 40.7, 8000]
-  //     })
-  //   })
-  // ]
+  },
+  effects: [
+    // new LightingEffect({
+    //   ambientLight: new AmbientLight({
+    //     color: [255, 255, 255],
+    //     intensity: 1.0
+    //   }),
+    //   pointLight: new PointLight({
+    //     color: [255, 255, 255],
+    //     intensity: 2.0,
+    //     position: [-74.5, 40.7, 8000]
+    //   })
+    // })
+  ]
 }
 
 export const INITIAL_VIEW_STATE = {

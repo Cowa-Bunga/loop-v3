@@ -7,7 +7,7 @@ import {
   useFirestoreCollectionData,
   useMergeState
 } from '@hooks'
-import Actions from '../Drivers/actions'
+import { Actions } from '../../actions'
 import { stringAvatar } from '@util/helpers'
 import {
   Alert,
