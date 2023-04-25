@@ -1,4 +1,4 @@
-export interface IMeInterface {
+interface IMeInterface {
   client_id: string
   client_type: string
   user: IMeUser
@@ -17,19 +17,19 @@ interface IMeUser {
   mobile_no: string
 }
 
-export interface IRegion {
+interface IRegion {
   hub_ids: string[]
   id: string
   name: string
 }
 
-export interface IHub {
+interface IHub {
   id: string
   name: string
   branches: IBranch[]
 }
 
-export interface IOrganization {
+interface IOrganization {
   id: string
   name: string
   logo: string

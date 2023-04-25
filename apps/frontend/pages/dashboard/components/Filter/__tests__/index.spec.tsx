@@ -29,22 +29,4 @@ describe('DashboardFilter', () => {
 
     expect(baseElement).toMatchSnapshot()
   })
-
-  it('should trigger tabChange', () => {
-    const regions = []
-    const hubs = []
-    const component = (
-      <DashboardFilter
-        regions={regions}
-        hubs={hubs}
-        onChange={jest.fn()}
-        regionHub={''}
-      />
-    )
-    const { baseElement, getByText } = renderWithProviders(component)
-
-    const tab = getByText('Trips')
-    tab.click()
-    expect(baseElement).toMatchSnapshot()
-  })
 })

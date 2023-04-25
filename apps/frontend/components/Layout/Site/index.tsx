@@ -1,6 +1,5 @@
 import { Box } from '@mui/material'
-import { UserWrapper } from '@util/context/user'
-import NavBar from '../../NavBar'
+import { NavBar } from '@components'
 import { ui } from './style'
 
 export default function LayoutBase({ children }) {

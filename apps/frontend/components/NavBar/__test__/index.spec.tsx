@@ -1,7 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import NavBar from '../index'
-// @ts-ignore
 import { withMockAuth } from '@tomfreudenberg/next-auth-mock/jest'
 
 describe('NavBar', () => {

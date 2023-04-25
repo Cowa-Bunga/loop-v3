@@ -8,3 +8,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.maplibregl-control-container, .mapboxgl-control-container, *[mapboxgl-children] {
+  display: none;
+  visibility: hidden !important;
+}
+
+

@@ -4,7 +4,7 @@ exports[`RegionsSelected should render: loading 1`] = `
 <body>
   <div>
     <div
-      class="MuiBox-root css-19go3g1"
+      class="MuiBox-root css-1yy4zhf"
     >
       <span
         class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorSecondary css-1szo49z-MuiCircularProgress-root"
@@ -34,10 +34,10 @@ exports[`RegionsSelected should render: success 1`] = `
 <body>
   <div>
     <div
-      class="MuiBox-root css-19go3g1"
+      class="MuiBox-root css-1yy4zhf"
     >
       <div
-        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth css-fv9q7q-MuiInputBase-root-MuiInput-root"
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth css-1ulwgiq-MuiInputBase-root-MuiInput-root"
       >
         <input
           class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"

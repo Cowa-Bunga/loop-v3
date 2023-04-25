@@ -227,9 +227,9 @@ exports[`Orders should render successfully 1`] = `
                               aria-haspopup="true"
                               aria-label="Menu"
                               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                              data-mui-internal-clone-element="true"
                               id=":r1:"
                               tabindex="-1"
-                              title="Menu"
                               type="button"
                             >
                               <svg
@@ -325,13 +325,13 @@ exports[`Orders should render successfully 1`] = `
                             class="MuiDataGrid-menuIcon"
                           >
                             <button
-                              aria-controls=":r3:"
+                              aria-controls=":r4:"
                               aria-haspopup="true"
                               aria-label="Menu"
                               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                              id=":r4:"
+                              data-mui-internal-clone-element="true"
+                              id=":r5:"
                               tabindex="-1"
-                              title="Menu"
                               type="button"
                             >
                               <svg
@@ -427,13 +427,13 @@ exports[`Orders should render successfully 1`] = `
                             class="MuiDataGrid-menuIcon"
                           >
                             <button
-                              aria-controls=":r6:"
+                              aria-controls=":r8:"
                               aria-haspopup="true"
                               aria-label="Menu"
                               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall MuiDataGrid-menuIconButton css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                              id=":r7:"
+                              data-mui-internal-clone-element="true"
+                              id=":r9:"
                               tabindex="-1"
-                              title="Menu"
                               type="button"
                             >
                               <svg
