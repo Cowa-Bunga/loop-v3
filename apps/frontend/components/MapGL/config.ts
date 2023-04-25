@@ -3,34 +3,34 @@ import { AmbientLight, PointLight, LightingEffect } from '@deck.gl/core'
 export const DATA_URL = {
   BUILDINGS:
     'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json',
-  TRIPS:
-    'https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/trips-v7.json',
+  TRIPS: '/dataset/trip.json',
   MAP_STYLE: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 }
 
 export const DEFAULT_THEME = {
   buildingColor: [24, 20, 27],
-  trailColor0: [153, 228, 293],
-  trailColor1: [200, 200, 100],
+  trailColor0: [100, 280, 195],
+  trailColor1: [100, 200, 200],
+  trailColor2: [153, 228, 153],
   material: {
-    ambient: 0.4,
+    ambient: 0.8,
     diffuse: 0.6,
-    shininess: 100,
-    specularColor: [120, 220, 240]
-  },
-  effects: [
-    new LightingEffect({
-      ambientLight: new AmbientLight({
-        color: [255, 255, 255],
-        intensity: 1.0
-      }),
-      pointLight: new PointLight({
-        color: [255, 255, 255],
-        intensity: 2.0,
-        position: [-74.05, 40.7, 8000]
-      })
-    })
-  ]
+    shininess: 20,
+    specularColor: [20, 20, 40]
+  }
+  // effects: [
+  //   new LightingEffect({
+  //     ambientLight: new AmbientLight({
+  //       color: [255, 255, 255],
+  //       intensity: 1.0
+  //     }),
+  //     pointLight: new PointLight({
+  //       color: [255, 255, 255],
+  //       intensity: 2.0,
+  //       position: [-74.5, 40.7, 8000]
+  //     })
+  //   })
+  // ]
 }
 
 export const INITIAL_VIEW_STATE = {
@@ -49,3 +49,7 @@ export const LAND_COVER = [
     [-74.0, 40.72]
   ]
 ]
+
+export const ICON_MAPPING = {
+  marker: { x: 0, y: 0, width: 128, height: 128, mask: true }
+}

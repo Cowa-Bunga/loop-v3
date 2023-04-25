@@ -64,7 +64,12 @@ const Dashboard = () => {
         </Box>
       </Box>
 
-      <Drawer anchor="right" variant="persistent" open={state.right}>
+      <Drawer
+        sx={ui.rightDrawer}
+        anchor="right"
+        variant="persistent"
+        open={state.right}
+      >
         <Box sx={ui.filter}>
           <Box sx={ui.closedBoxIconR} onClick={toggleRight}>
             <KeyboardDoubleArrowRight sx={ui.closedBoxIcon} />

@@ -17,8 +17,7 @@ import {
 export default function DashboardFilter({
   regions,
   hubs,
-  regionHub,
-  onChange
+  regionHub
 }: IappDashboardFilterProps) {
   const { data: session } = useSession()
   console.warn(session)
