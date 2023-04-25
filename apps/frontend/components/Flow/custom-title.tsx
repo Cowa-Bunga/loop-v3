@@ -1,6 +1,6 @@
-import { Button, Card, Typography } from '@mui/material'
+import { Card, Typography } from '@mui/material'
 import { memo } from 'react'
-import { Handle, NodeProps, NodeToolbar, Position } from 'reactflow'
+import { Handle, NodeProps, Position } from 'reactflow'
 
 const CustomNode = ({
   data,

@@ -66,7 +66,16 @@ const SignIn = () => {
         router.push('/auth/client_select')
       }
     }
-  }, [router, status])
+  }, [
+    data,
+    firebaseAuth,
+    getUser,
+    hasInitialised,
+    router,
+    status,
+    updateUserContext,
+    userContext
+  ])
 
   return (
     <LayoutSite>

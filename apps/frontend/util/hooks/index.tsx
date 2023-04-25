@@ -30,7 +30,9 @@ export { useMergeState } from './useMergeState'
 export {
   useFirebaseApp,
   useFirestore,
-  useFirestoreCollectionData
+  useFirestoreCollectionData,
+  useRemoteConfigString,
+  useRemoteConfigBoolean
 } from 'reactfire'
 
 // next-auth

@@ -1,5 +1,3 @@
-// @see: https://react-google-maps-api-docs.netlify.app/#section-introduction
-// TODO: deck.gl
 import { memo, useCallback, useEffect, useState } from 'react'
 import { Paper } from '@mui/material'
 import {
@@ -18,6 +16,7 @@ function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
+    // libraries: ['drawing']
   })
 
   const [height, setHeight] = useState(0)
@@ -61,7 +60,6 @@ function Map() {
           onLoad={onLoadDrawing}
           onPolygonComplete={onPolygonComplete}
         /> */}
-        {/* <StreetViewPanorama /> */}
       </GoogleMap>
     </Paper>
   ) : null
