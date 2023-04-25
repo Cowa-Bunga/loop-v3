@@ -1,12 +1,16 @@
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
-import { AppModule } from './app/app.module'
+import { AppModule } from './app.module'
+import * as admin from 'firebase-admin'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: true
   })
+
+  admin.initializeApp()
+  admin.firestore().settings({ ignoreUndefinedProperties: true })
 
   const globalPrefix = 'api'
   app.setGlobalPrefix(globalPrefix)
