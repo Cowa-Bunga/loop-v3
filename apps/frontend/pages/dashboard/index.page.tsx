@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { LayoutBase } from '@components'
-import { Box, Drawer, Card } from '@mui/material'
+import { Box, Button, Card, Drawer } from '@mui/material'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 import dynamic from 'next/dynamic'
@@ -8,9 +8,10 @@ import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
 import {
-  KeyboardDoubleArrowRight,
-  KeyboardDoubleArrowLeft
+  KeyboardDoubleArrowLeft,
+  KeyboardDoubleArrowRight
 } from '@mui/icons-material'
+import CreateJob from '@pages/dashboard/components/CreateJob'
 
 const DeckMap = dynamic(() => import('../../components/MapGL'), {
   ssr: false
@@ -19,10 +20,11 @@ const DeckMap = dynamic(() => import('../../components/MapGL'), {
 const Dashboard = () => {
   const [state, setState] = useMergeState({
     right: false,
-    left: false
+    left: false,
+    create: false
   })
 
-  const { toggleLeft, toggleRight } = Actions(state, setState)
+  const { toggleLeft, toggleRight, toggleCreate } = Actions(state, setState)
 
   const MemFilter = memo(Filter)
 
@@ -38,6 +40,7 @@ const Dashboard = () => {
           <Box sx={ui.closedBox} onClick={toggleLeft}>
             <KeyboardDoubleArrowLeft sx={ui.closedBoxIcon} />
           </Box>
+          <Button onClick={toggleCreate}>Create Order</Button>
           <MemFilter hubs={[]} regions={[]} onChange={() => ''} regionHub="" />
         </Box>
       </Drawer>
@@ -77,6 +80,7 @@ const Dashboard = () => {
           <Drivers hubs={[]} />
         </Box>
       </Drawer>
+      <CreateJob isOpen={state.create} handleClose={toggleCreate} />
     </LayoutBase>
   )
 }
