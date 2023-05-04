@@ -120,10 +120,7 @@ export const createJob = {
               {
                 type: 'Control',
                 scope: '#/properties/abandonFlow',
-                i18n: 'create_task_form.abandonFlow',
-                options: {
-                  multi: true
-                }
+                i18n: 'create_task_form.abandonFlow'
               }
             ]
           },
@@ -175,53 +172,52 @@ export const createJob = {
       },
       // Bottom optional items like QR Codes and Items...
       {
-        type: 'Group',
-        i18n: 'create_task_form.parcels',
+        type: 'HorizontalLayout',
         elements: [
           {
-            type: 'HorizontalLayout',
+            type: 'Control',
             scope: '#/properties/parcels',
             i18n: 'create_task_form.parcels',
             elements: [
               {
                 type: 'Control',
-                scope: '#/properties/parcels/items/properties/qrCode',
-                i18n: 'create_task_form.parcels.qrCode'
+                scope: '#/properties/parcels/properties/qrCode',
+                i18n: 'create_task_form.qrCode'
               },
               {
                 type: 'Control',
-                scope: '#/properties/parcels/items/properties/size',
-                i18n: 'create_task_form.parcels.size'
+                scope: '#/properties/parcels/properties/size',
+                i18n: 'create_task_form.size'
               }
             ]
           }
-        ],
-        rule: {
-          effect: 'SHOW',
-          condition: {
-            scope: '#',
-            schema: {
-              anyOf: [
-                {
-                  properties: {
-                    deliveryFlow: {
-                      const: 'qrCode'
-                    }
-                  },
-                  required: ['deliveryFlow']
-                },
-                {
-                  properties: {
-                    abandonFlow: {
-                      const: 'qrCode'
-                    }
-                  },
-                  required: ['abandonFlow']
-                }
-              ]
-            }
-          }
-        }
+        ]
+        // rule: {
+        //   effect: 'SHOW',
+        //   condition: {
+        //     scope: '#',
+        //     schema: {
+        //       anyOf: [
+        //         {
+        //           properties: {
+        //             deliveryFlow: {
+        //               const: 'qrCode'
+        //             }
+        //           },
+        //           required: ['deliveryFlow']
+        //         },
+        //         {
+        //           properties: {
+        //             abandonFlow: {
+        //               const: 'qrCode'
+        //             }
+        //           },
+        //           required: ['abandonFlow']
+        //         }
+        //       ]
+        //     }
+        //   }
+        // }
       }
     ]
   },
@@ -240,11 +236,6 @@ export const createJob = {
     abandonFlow: '',
     deliveryFlow: '',
     taskType: '',
-    parcels: [
-      {
-        qr_code: '',
-        size: ''
-      }
-    ]
+    parcels: []
   }
 }

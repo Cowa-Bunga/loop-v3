@@ -3,6 +3,8 @@ import { materialCells, materialRenderers } from '@jsonforms/material-renderers'
 import { JsonSchema, UISchemaElement, ValidationMode } from '@jsonforms/core'
 import { useTranslation } from '@hooks'
 import { getI18n } from 'react-i18next'
+import MultiSelectControl from './components/MultiSelectControl/index.control'
+import multiSelectControlTester from './components/MultiSelectControl/index.tester'
 
 interface IProps {
   schema: JsonSchema
@@ -11,6 +13,12 @@ interface IProps {
   validationMode?: ValidationMode
   onChange: (data: any) => void
 }
+
+const renderers = [
+  ...materialRenderers,
+  // register custom renderers
+  { tester: multiSelectControlTester, renderer: MultiSelectControl }
+]
 
 export default function JsonForm({
   schema,
@@ -23,7 +31,7 @@ export default function JsonForm({
 
   const createTranslator = (key, defaultMessage) => {
     const translated = t(key)
-    return !translated.startsWith(key) ? translated : defaultMessage
+    return !translated.startsWith(key) ? translated : key
   }
 
   return (
@@ -36,7 +44,7 @@ export default function JsonForm({
         schema={schema}
         uischema={ui}
         data={model}
-        renderers={materialRenderers}
+        renderers={renderers}
         cells={materialCells}
         onChange={({ data, errors }) => onChange(data)}
         validationMode={validationMode}
