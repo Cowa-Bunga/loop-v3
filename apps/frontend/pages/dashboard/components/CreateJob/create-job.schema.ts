@@ -52,7 +52,7 @@ export const createJob = {
         items: {
           type: 'object',
           properties: {
-            qr_code: {
+            qrCode: {
               type: 'string'
             },
             size: {
@@ -60,7 +60,7 @@ export const createJob = {
               enum: ['small', 'medium', 'large'] // enums should be localized keys
             }
           },
-          required: ['qr_code', 'size']
+          required: ['qrCode', 'size']
         }
       }
     },
@@ -79,6 +79,8 @@ export const createJob = {
 
   ui: {
     type: 'Group',
+    label: 'Create Task Form',
+    i18n: 'create_task_form.title',
     elements: [
       {
         type: 'HorizontalLayout',
@@ -92,27 +94,33 @@ export const createJob = {
                 scope: '#/properties/address',
                 options: {
                   autocomplete: true
-                }
+                },
+                i18n: 'create_task_form.address'
               },
               {
                 type: 'Control',
-                scope: '#/properties/latitude'
+                scope: '#/properties/latitude',
+                i18n: 'create_task_form.latitude'
               },
               {
                 type: 'Control',
-                scope: '#/properties/longitude'
+                scope: '#/properties/longitude',
+                i18n: 'create_task_form.longitude'
               },
               {
                 type: 'Control',
-                scope: '#/properties/collectionTime'
+                scope: '#/properties/collectionTime',
+                i18n: 'create_task_form.collectionTime'
               },
               {
                 type: 'Control',
-                scope: '#/properties/alcohol'
+                scope: '#/properties/alcohol',
+                i18n: 'create_task_form.alcohol'
               },
               {
                 type: 'Control',
                 scope: '#/properties/abandonFlow',
+                i18n: 'create_task_form.abandonFlow',
                 options: {
                   multi: true
                 }
@@ -125,34 +133,41 @@ export const createJob = {
             elements: [
               {
                 type: 'Control',
-                scope: '#/properties/taskNumber'
+                scope: '#/properties/taskNumber',
+                i18n: 'create_task_form.taskNumber'
               },
               {
                 type: 'Control',
-                scope: '#/properties/customerName'
+                scope: '#/properties/customerName',
+                i18n: 'create_task_form.customerName'
               },
               {
                 type: 'Control',
-                scope: '#/properties/mobileNo'
+                scope: '#/properties/mobileNo',
+                i18n: 'create_task_form.mobileNo'
               },
               {
                 type: 'Control',
-                scope: '#/properties/deliveryTime'
+                scope: '#/properties/deliveryTime',
+                i18n: 'create_task_form.deliveryTime'
               },
               {
                 type: 'Control',
-                scope: '#/properties/instructions'
+                scope: '#/properties/instructions',
+                i18n: 'create_task_form.instructions'
               },
               {
                 type: 'Control',
                 scope: '#/properties/deliveryFlow',
+                i18n: 'create_task_form.deliveryFlow',
                 options: {
                   multi: true
                 }
               },
               {
                 type: 'Control',
-                scope: '#/properties/taskType'
+                scope: '#/properties/taskType',
+                i18n: 'create_task_form.taskType'
               }
             ]
           }
@@ -160,39 +175,53 @@ export const createJob = {
       },
       // Bottom optional items like QR Codes and Items...
       {
-        type: 'HorizontalLayout',
+        type: 'Group',
+        i18n: 'create_task_form.parcels',
         elements: [
           {
-            type: 'Control',
+            type: 'HorizontalLayout',
             scope: '#/properties/parcels',
-            rule: {
-              effect: 'SHOW',
-              condition: {
-                scope: '#',
-                schema: {
-                  anyOf: [
-                    {
-                      properties: {
-                        deliveryFlow: {
-                          const: 'qrCode'
-                        }
-                      },
-                      required: ['deliveryFlow']
-                    },
-                    {
-                      properties: {
-                        abandonFlow: {
-                          const: 'qrCode'
-                        }
-                      },
-                      required: ['abandonFlow']
-                    }
-                  ]
-                }
+            i18n: 'create_task_form.parcels',
+            elements: [
+              {
+                type: 'Control',
+                scope: '#/properties/parcels/items/properties/qrCode',
+                i18n: 'create_task_form.parcels.qrCode'
+              },
+              {
+                type: 'Control',
+                scope: '#/properties/parcels/items/properties/size',
+                i18n: 'create_task_form.parcels.size'
               }
+            ]
+          }
+        ],
+        rule: {
+          effect: 'SHOW',
+          condition: {
+            scope: '#',
+            schema: {
+              anyOf: [
+                {
+                  properties: {
+                    deliveryFlow: {
+                      const: 'qrCode'
+                    }
+                  },
+                  required: ['deliveryFlow']
+                },
+                {
+                  properties: {
+                    abandonFlow: {
+                      const: 'qrCode'
+                    }
+                  },
+                  required: ['abandonFlow']
+                }
+              ]
             }
           }
-        ]
+        }
       }
     ]
   },

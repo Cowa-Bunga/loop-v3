@@ -15,8 +15,8 @@ const style = {
   transform: 'translate(-50%, 0%)',
   width: '80%',
   height: '80%',
-  p: 4,
-  overflow: 'scroll'
+  overflow: 'scroll',
+  backgroundColor: 'white'
 }
 
 const CreateJob = ({ isOpen, handleClose }: CreateJobProps) => {
