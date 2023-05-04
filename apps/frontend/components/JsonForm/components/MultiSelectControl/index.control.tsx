@@ -4,13 +4,15 @@ import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Checkbox, ListItemText, MenuItem } from '@mui/material'
-import { JsonSchema } from '@jsonforms/core'
+import { JsonSchema, UISchemaElement } from '@jsonforms/core'
+import { useTranslation } from 'react-i18next'
 
 interface IMultiSelectControl {
   data: any
   path: string
   label: string
   schema: JsonSchema
+  uischema: UISchemaElement
 
   handleChange(path: string, value: any): void
 }
@@ -34,6 +36,7 @@ const MultiSelectControl = ({
   ...rest
 }: IMultiSelectControl) => {
   const [selected, setSelected] = useState<string[]>([])
+  const { t } = useTranslation()
 
   const onChange = (event: SelectChangeEvent<typeof selected>) => {
     const {
@@ -64,7 +67,7 @@ const MultiSelectControl = ({
           {rest.schema.enum.map((v: string) => (
             <MenuItem key={v} value={v}>
               <Checkbox checked={selected.includes(v)} />
-              <ListItemText primary={v} />
+              <ListItemText primary={t(`${rest.uischema['i18n']}.${v}`)} />
             </MenuItem>
           ))}
         </Select>
