@@ -21,7 +21,7 @@ const Dashboard = () => {
   const [state, setState] = useMergeState({
     right: false,
     left: false,
-    create: false
+    create: true
   })
 
   const { toggleLeft, toggleRight, toggleCreate } = Actions(state, setState)
