@@ -118,7 +118,7 @@ export const createJob = {
                 i18n: 'create_task_form.alcohol'
               },
               {
-                type: 'Control',
+                type: 'MultiSelectControl',
                 scope: '#/properties/abandonFlow',
                 i18n: 'create_task_form.abandonFlow'
               }
@@ -154,7 +154,7 @@ export const createJob = {
                 i18n: 'create_task_form.instructions'
               },
               {
-                type: 'Control',
+                type: 'MultiSelectControl',
                 scope: '#/properties/deliveryFlow',
                 i18n: 'create_task_form.deliveryFlow',
                 options: {
