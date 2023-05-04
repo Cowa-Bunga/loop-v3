@@ -1,3 +1,3 @@
-import { rankWith, scopeEndsWith } from '@jsonforms/core'
+import { rankWith, uiTypeIs } from '@jsonforms/core'
 
-export default rankWith(5, scopeEndsWith('abandonFlow'))
+export default rankWith(5, uiTypeIs('MultiSelectControl'))
