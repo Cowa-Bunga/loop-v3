@@ -90,30 +90,27 @@ export const createJob = {
             type: 'VerticalLayout',
             elements: [
               {
-                type: 'Control',
+                type: 'AutoCompleteControl',
                 scope: '#/properties/address',
-                options: {
-                  autocomplete: true
-                },
                 i18n: 'create_task_form.address'
               },
               {
-                type: 'Control',
+                type: 'TextInputControl',
                 scope: '#/properties/latitude',
                 i18n: 'create_task_form.latitude'
               },
               {
-                type: 'Control',
+                type: 'TextInputControl',
                 scope: '#/properties/longitude',
                 i18n: 'create_task_form.longitude'
               },
               {
-                type: 'Control',
+                type: 'DateTimeControl',
                 scope: '#/properties/collectionTime',
                 i18n: 'create_task_form.collectionTime'
               },
               {
-                type: 'Control',
+                type: 'CheckboxControl',
                 scope: '#/properties/alcohol',
                 i18n: 'create_task_form.alcohol'
               },
@@ -129,40 +126,37 @@ export const createJob = {
             type: 'VerticalLayout',
             elements: [
               {
-                type: 'Control',
+                type: 'TextInputControl',
                 scope: '#/properties/taskNumber',
                 i18n: 'create_task_form.taskNumber'
               },
               {
-                type: 'Control',
+                type: 'TextInputControl',
                 scope: '#/properties/customerName',
                 i18n: 'create_task_form.customerName'
               },
               {
-                type: 'Control',
+                type: 'TextInputControl',
                 scope: '#/properties/mobileNo',
                 i18n: 'create_task_form.mobileNo'
               },
               {
-                type: 'Control',
+                type: 'DateTimeControl',
                 scope: '#/properties/deliveryTime',
                 i18n: 'create_task_form.deliveryTime'
               },
               {
-                type: 'Control',
+                type: 'TextInputControl',
                 scope: '#/properties/instructions',
                 i18n: 'create_task_form.instructions'
               },
               {
                 type: 'MultiSelectControl',
                 scope: '#/properties/deliveryFlow',
-                i18n: 'create_task_form.deliveryFlow',
-                options: {
-                  multi: true
-                }
+                i18n: 'create_task_form.deliveryFlow'
               },
               {
-                type: 'Control',
+                type: 'DropdownControl',
                 scope: '#/properties/taskType',
                 i18n: 'create_task_form.taskType'
               }

@@ -4,29 +4,9 @@ import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import { Checkbox, ListItemText, MenuItem } from '@mui/material'
-import { JsonSchema, UISchemaElement } from '@jsonforms/core'
 import { useTranslation } from 'react-i18next'
-
-interface IMultiSelectControl {
-  data: any
-  path: string
-  label: string
-  schema: JsonSchema
-  uischema: UISchemaElement
-
-  handleChange(path: string, value: any): void
-}
-
-const ITEM_HEIGHT = 48
-const ITEM_PADDING_TOP = 8
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250
-    }
-  }
-}
+import { ISelectControl } from '../controls.interface'
+import { formControlStyles, MenuProps } from '../styles'
 
 const MultiSelectControl = ({
   // the incoming selected items
@@ -34,7 +14,7 @@ const MultiSelectControl = ({
   handleChange,
   path,
   ...rest
-}: IMultiSelectControl) => {
+}: ISelectControl) => {
   const [selected, setSelected] = useState<string[]>([])
   const { t } = useTranslation()
 
@@ -51,16 +31,17 @@ const MultiSelectControl = ({
   }
 
   return (
-    <>
-      <FormControl sx={{ width: '100%' }}>
-        <InputLabel id="demo-multiple-checkbox-label">{rest.label}</InputLabel>
+    <div id={rest.id}>
+      <FormControl fullWidth sx={formControlStyles}>
+        <InputLabel id={`${rest.id}-label`}>{rest.label}</InputLabel>
         <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
+          labelId={`${rest.id}-label`}
+          id={`${rest.id}-checkbox`}
           multiple
           value={selected}
           onChange={onChange}
           renderValue={(selected) => selected.join(', ')}
+          required={rest.required}
           MenuProps={MenuProps}
           label={rest.label}
         >
@@ -72,7 +53,7 @@ const MultiSelectControl = ({
           ))}
         </Select>
       </FormControl>
-    </>
+    </div>
   )
 }
 
