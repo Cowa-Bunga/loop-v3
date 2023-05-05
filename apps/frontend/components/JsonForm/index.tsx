@@ -3,8 +3,20 @@ import { materialCells, materialRenderers } from '@jsonforms/material-renderers'
 import { JsonSchema, UISchemaElement, ValidationMode } from '@jsonforms/core'
 import { useTranslation } from '@hooks'
 import { getI18n } from 'react-i18next'
-import MultiSelectControl from './components/MultiSelectControl/index.control'
-import multiSelectControlTester from './components/MultiSelectControl/index.tester'
+import {
+  AutoCompleteControl,
+  autoCompleteControlTester,
+  CheckboxControl,
+  checkboxControlTester,
+  DateTimeControl,
+  dateTimeControlTester,
+  DropdownControl,
+  dropdownControlTester,
+  MultiSelectControl,
+  multiSelectControlTester,
+  TextInputControl,
+  textInputControlTester
+} from './controls'
 
 interface IProps {
   schema: JsonSchema
@@ -17,7 +29,12 @@ interface IProps {
 const renderers = [
   ...materialRenderers,
   // register custom renderers
-  { tester: multiSelectControlTester, renderer: MultiSelectControl }
+  { tester: multiSelectControlTester, renderer: MultiSelectControl },
+  { tester: dropdownControlTester, renderer: DropdownControl },
+  { tester: autoCompleteControlTester, renderer: AutoCompleteControl },
+  { tester: textInputControlTester, renderer: TextInputControl },
+  { tester: dateTimeControlTester, renderer: DateTimeControl },
+  { tester: checkboxControlTester, renderer: CheckboxControl }
 ]
 
 export default function JsonForm({
