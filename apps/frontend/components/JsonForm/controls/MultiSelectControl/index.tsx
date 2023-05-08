@@ -16,7 +16,6 @@ const MultiSelectControl = ({
   path,
   ...rest
 }: ISelectControl) => {
-  console.log(rest)
   const { t } = useTranslation()
 
   const [state, setState] = useMergeState({
@@ -27,7 +26,7 @@ const MultiSelectControl = ({
     const {
       target: { value }
     } = event
-    const oneOf = rest.schema['options']['oneOf'] ?? []
+    const oneOf = rest.schema['options']?.['oneOf'] ?? []
     const selected = value.filter((v) => oneOf.includes(v))
 
     if (selected.length > 1) {

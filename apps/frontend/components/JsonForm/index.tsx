@@ -21,6 +21,12 @@ import {
   TextInputControl,
   textInputControlTester
 } from './controls'
+import {
+  ChildGroupLayout,
+  childGroupTester,
+  GroupLayout,
+  groupTester
+} from './layouts'
 
 interface IProps {
   schema: JsonSchema
@@ -40,9 +46,10 @@ const renderers = [
   { tester: dateTimeControlTester, renderer: DateTimeControl },
   { tester: checkboxControlTester, renderer: CheckboxControl },
   { tester: phoneNumberControlTester, renderer: PhoneNumberControl },
-  { tester: googlePlacesControlTester, renderer: GooglePlacesControl }
+  { tester: googlePlacesControlTester, renderer: GooglePlacesControl },
   // Custom layouts
-  // { tester: groupTester, renderer: GroupLayout }
+  { tester: groupTester, renderer: GroupLayout },
+  { tester: childGroupTester, renderer: ChildGroupLayout }
 ]
 
 export default function JsonForm({
