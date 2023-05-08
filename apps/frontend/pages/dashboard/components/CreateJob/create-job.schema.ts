@@ -161,70 +161,58 @@ export const createJob = {
         ]
       },
       {
-        type: 'Group',
-        label: 'Delivery Flow',
+        type: 'ChildGroup',
+        label: 'Delivery/Abandon Flows',
         elements: [
           {
-            type: 'MultiSelectControl',
-            scope: '#/properties/deliveryFlow',
-            i18n: 'create_task_form.deliveryFlow'
-          },
-          {
-            type: 'MultiSelectControl',
-            scope: '#/properties/abandonFlow',
-            i18n: 'create_task_form.abandonFlow'
-          }
-        ]
-      },
-      // Bottom optional items like QR Codes and Items...
-      {
-        type: 'HorizontalLayout',
-        elements: [
-          {
-            type: 'Control',
-            scope: '#/properties/parcels',
-            i18n: 'create_task_form.parcels',
+            type: 'HorizontalLayout',
             elements: [
               {
-                type: 'Control',
-                scope: '#/properties/parcels/properties/qrCode',
-                i18n: 'create_task_form.qrCode'
+                type: 'MultiSelectControl',
+                scope: '#/properties/deliveryFlow',
+                i18n: 'create_task_form.deliveryFlow'
               },
               {
-                type: 'Control',
-                scope: '#/properties/parcels/properties/size',
-                i18n: 'create_task_form.size'
+                type: 'MultiSelectControl',
+                scope: '#/properties/abandonFlow',
+                i18n: 'create_task_form.abandonFlow'
               }
             ]
           }
         ]
-        // rule: {
-        //   effect: 'SHOW',
-        //   condition: {
-        //     scope: '#',
-        //     schema: {
-        //       anyOf: [
-        //         {
-        //           properties: {
-        //             deliveryFlow: {
-        //               const: 'qrCode'
-        //             }
-        //           },
-        //           required: ['deliveryFlow']
-        //         },
-        //         {
-        //           properties: {
-        //             abandonFlow: {
-        //               const: 'qrCode'
-        //             }
-        //           },
-        //           required: ['abandonFlow']
-        //         }
-        //       ]
-        //     }
-        //   }
-        // }
       }
+      // Bottom optional items like QR Codes and Items...
+      // {
+      // type: 'Control',
+      // scope: '#/properties/parcels',
+      // i18n: 'create_task_form.parcels'
+      // rule: {
+      //   effect: 'SHOW',
+      //   condition: {
+      //     scope: '#',
+      //     schema: {
+      //       anyOf: [
+      //         {
+      //           properties: {
+      //             deliveryFlow: {
+      //               const: 'qrCode'
+      //             }
+      //           },
+      //           required: ['deliveryFlow']
+      //         },
+      //         {
+      //           properties: {
+      //             abandonFlow: {
+      //               const: 'qrCode'
+      //             }
+      //           },
+      //           required: ['abandonFlow']
+      //         }
+      //       ]
+      //     }
+      //   }
+      // }
+      // }
     ]
   },
 

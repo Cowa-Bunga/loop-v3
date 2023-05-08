@@ -9,13 +9,13 @@ import { formControlStyles, MenuProps } from '../styles'
 import { ISelectControl } from '../controls.interface'
 
 const DropdownControl = ({
-  data = [],
+  data = '',
   handleChange,
   path,
   ...rest
 }: ISelectControl) => {
   const { t } = useTranslation()
-
+  console.log('the data', data)
   return (
     <div id={rest.id}>
       <FormControl fullWidth sx={formControlStyles}>
@@ -29,6 +29,9 @@ const DropdownControl = ({
           MenuProps={MenuProps}
           label={rest.label}
         >
+          <MenuItem key={'none'} value={''}>
+            <ListItemText primary={''} />
+          </MenuItem>
           {rest.schema.enum.map((v: string) => (
             <MenuItem key={v} value={v}>
               <ListItemText primary={t(`${rest.uischema['i18n']}.${v}`)} />
