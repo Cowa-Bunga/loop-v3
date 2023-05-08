@@ -136,7 +136,7 @@ export const createJob = {
                 i18n: 'create_task_form.customerName'
               },
               {
-                type: 'TextInputControl',
+                type: 'PhoneNumberControl',
                 scope: '#/properties/mobileNo',
                 i18n: 'create_task_form.mobileNo'
               },

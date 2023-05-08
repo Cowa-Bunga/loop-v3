@@ -14,6 +14,8 @@ import {
   dropdownControlTester,
   MultiSelectControl,
   multiSelectControlTester,
+  PhoneNumberControl,
+  phoneNumberControlTester,
   TextInputControl,
   textInputControlTester
 } from './controls'
@@ -34,7 +36,8 @@ const renderers = [
   { tester: autoCompleteControlTester, renderer: AutoCompleteControl },
   { tester: textInputControlTester, renderer: TextInputControl },
   { tester: dateTimeControlTester, renderer: DateTimeControl },
-  { tester: checkboxControlTester, renderer: CheckboxControl }
+  { tester: checkboxControlTester, renderer: CheckboxControl },
+  { tester: phoneNumberControlTester, renderer: PhoneNumberControl }
 ]
 
 export default function JsonForm({
