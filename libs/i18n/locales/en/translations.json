@@ -10,5 +10,73 @@
     "submit": "Select Client",
     "choose_client": "Choose a client",
     "error": "Could not load clients. Please try again later."
+  },
+  "create_task_form": {
+    "title": {
+      "label": "Create Task"
+    },
+    "address": {
+      "label": "Address"
+    },
+    "latitude": {
+      "label": "Latitude"
+    },
+    "longitude": {
+      "label": "Longitude"
+    },
+    "collectionTime": {
+      "label": "Collection Time"
+    },
+    "alcohol": {
+      "label": "Alcohol"
+    },
+    "abandonFlow": {
+      "label": "Abandon Flow",
+      "sog": "Sign On Glass",
+      "otp": "One Time Pin",
+      "qrCode": "QR Codes",
+      "img": "Photo",
+      "item": "Items"
+    },
+    "taskNumber": {
+      "label": "Task Number"
+    },
+    "customerName": {
+      "label": "Customer Name"
+    },
+    "mobileNo": {
+      "label": "Mobile Number"
+    },
+    "deliveryTime": {
+      "label": "Delivery Time"
+    },
+    "instructions": {
+      "label": "Instructions"
+    },
+    "deliveryFlow": {
+      "label": "Delivery Flow",
+      "sog": "Sign On Glass",
+      "otp": "One Time Pin",
+      "qrCode": "QR Codes",
+      "img": "Photo",
+      "item": "Items"
+    },
+    "taskType": {
+      "label": "Task Type",
+      "delivery": "Delivery",
+      "collection": "Collection"
+    },
+    "parcels": {
+      "label": "Parcels",
+      "size": {
+        "label": "Size",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large"
+      },
+      "qrCode": {
+        "label": "QR Code,"
+      }
+    }
   }
 }
