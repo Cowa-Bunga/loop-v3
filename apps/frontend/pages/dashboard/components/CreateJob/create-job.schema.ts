@@ -40,7 +40,10 @@ export const createJob = {
       },
       abandonFlow: {
         type: 'string',
-        enum: ['sog', 'otp', 'img', 'qrCode', 'item'] // enums should be localized keys
+        enum: ['sog', 'otp', 'img', 'qrCode', 'item'], // enums should be localized keys
+        options: {
+          oneOf: ['item', 'qrCode']
+        }
       },
       deliveryFlow: {
         type: 'string',
@@ -116,11 +119,6 @@ export const createJob = {
                 type: 'CheckboxControl',
                 scope: '#/properties/alcohol',
                 i18n: 'create_task_form.alcohol'
-              },
-              {
-                type: 'MultiSelectControl',
-                scope: '#/properties/abandonFlow',
-                i18n: 'create_task_form.abandonFlow'
               }
             ]
           },
@@ -154,16 +152,27 @@ export const createJob = {
                 i18n: 'create_task_form.instructions'
               },
               {
-                type: 'MultiSelectControl',
-                scope: '#/properties/deliveryFlow',
-                i18n: 'create_task_form.deliveryFlow'
-              },
-              {
                 type: 'DropdownControl',
                 scope: '#/properties/taskType',
                 i18n: 'create_task_form.taskType'
               }
             ]
+          }
+        ]
+      },
+      {
+        type: 'Group',
+        label: 'Delivery Flow',
+        elements: [
+          {
+            type: 'MultiSelectControl',
+            scope: '#/properties/deliveryFlow',
+            i18n: 'create_task_form.deliveryFlow'
+          },
+          {
+            type: 'MultiSelectControl',
+            scope: '#/properties/abandonFlow',
+            i18n: 'create_task_form.abandonFlow'
           }
         ]
       },

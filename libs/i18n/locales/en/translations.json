@@ -34,7 +34,7 @@
       "label": "Abandon Flow",
       "sog": "Sign On Glass",
       "otp": "One Time Pin",
-      "qrCode": "Parcel QR Codes",
+      "qrCode": "QR Codes",
       "img": "Photo",
       "item": "Items"
     },
@@ -57,7 +57,7 @@
       "label": "Delivery Flow",
       "sog": "Sign On Glass",
       "otp": "One Time Pin",
-      "qrCode": "Parcel QR Codes",
+      "qrCode": "QR Codes",
       "img": "Photo",
       "item": "Items"
     },

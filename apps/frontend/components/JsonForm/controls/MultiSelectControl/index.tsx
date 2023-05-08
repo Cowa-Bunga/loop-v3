@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
@@ -7,6 +7,7 @@ import { Checkbox, ListItemText, MenuItem } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles, MenuProps } from '../styles'
+import { useMergeState } from '@hooks'
 
 const MultiSelectControl = ({
   // the incoming selected items
@@ -15,23 +16,35 @@ const MultiSelectControl = ({
   path,
   ...rest
 }: ISelectControl) => {
+  console.log(rest)
   const { t } = useTranslation()
-  const [selected, setSelected] = useState<string[]>(data)
 
-  const onChange = (event: SelectChangeEvent<typeof selected>) => {
+  const [state, setState] = useMergeState({
+    selected: data
+  })
+
+  const onChange = (event: SelectChangeEvent<typeof state.selected>) => {
     const {
       target: { value }
     } = event
-    setSelected(
+    const oneOf = rest.schema['options']['oneOf'] ?? []
+    const selected = value.filter((v) => oneOf.includes(v))
+
+    if (selected.length > 1) {
+      // Think of a viable way to inform the user of why this is not allowed
+      return
+    }
+
+    setState(
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
+      { selected: value }
     )
   }
 
   useEffect(() => {
-    handleChange(path, selected)
+    handleChange(path, state.selected)
     return
-  }, [selected])
+  }, [state.selected])
 
   const renderTranslatedValue = (values: string[]) => {
     return values
@@ -47,7 +60,7 @@ const MultiSelectControl = ({
           labelId={`${rest.id}-label`}
           id={`${rest.id}-checkbox`}
           multiple
-          value={selected}
+          value={state.selected}
           onChange={onChange}
           renderValue={(selected) => renderTranslatedValue(selected)}
           required={rest.required}
@@ -56,7 +69,7 @@ const MultiSelectControl = ({
         >
           {rest.schema.enum.map((v: string) => (
             <MenuItem key={v} value={v}>
-              <Checkbox checked={selected.includes(v)} />
+              <Checkbox checked={state.selected.includes(v)} />
               <ListItemText primary={t(`${rest.uischema['i18n']}.${v}`)} />
             </MenuItem>
           ))}
