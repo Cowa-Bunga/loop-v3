@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
 import { FormControl } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
@@ -7,6 +7,7 @@ import GooglePlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-google-places-autocomplete'
+import { useMergeState } from '@hooks'
 
 const GooglePlacesControl = ({
   data = '',
@@ -14,10 +15,13 @@ const GooglePlacesControl = ({
   path,
   ...rest
 }: ISelectControl) => {
-  const onChange = (address: string) => {
-    handleChange(path, address)
+  const [state, setState] = useMergeState({
+    address: data
+  })
+  useEffect(() => {
+    if (data == '') return
 
-    geocodeByAddress(address)
+    geocodeByAddress(data)
       .then((results) => getLatLng(results[0]))
       .then((latLng) => {
         if (rest.schema['options']['update_lat_long']) {
@@ -26,7 +30,8 @@ const GooglePlacesControl = ({
         }
       })
       .catch((error) => console.error('Error', error))
-  }
+    return
+  }, [data])
 
   return (
     <div id={rest.id}>
@@ -36,8 +41,9 @@ const GooglePlacesControl = ({
           selectProps={{
             placeholder: rest.label,
             required: rest.required,
-            inputValue: data.length > 60 ? data.substring(0, 60) + '...' : data,
-            onChange: (e) => onChange(e.label),
+            inputValue: state.address,
+            onChange: (e) => handleChange(path, e.label),
+            onInputChange: (e) => setState({ address: e }),
             styles: {
               input: (provided) => ({
                 ...provided,
