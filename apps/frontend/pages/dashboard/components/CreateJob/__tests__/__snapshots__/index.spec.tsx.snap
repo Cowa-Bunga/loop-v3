@@ -36,7 +36,11 @@ exports[`CreateJob should render open 1`] = `
     >
       <div
         class="App"
-      />
+      >
+        <div
+          style="padding: 20px;"
+        />
+      </div>
     </div>
     <div
       data-testid="sentinelEnd"
