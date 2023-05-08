@@ -19,7 +19,7 @@ const CheckboxControl = ({
           control={
             <Checkbox
               checked={data}
-              onChange={(e) => handleChange(path, e.target.value)}
+              onChange={(e) => handleChange(path, e.target.checked)}
             />
           }
         />
