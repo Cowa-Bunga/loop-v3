@@ -41,6 +41,8 @@ const renderers = [
   { tester: checkboxControlTester, renderer: CheckboxControl },
   { tester: phoneNumberControlTester, renderer: PhoneNumberControl },
   { tester: googlePlacesControlTester, renderer: GooglePlacesControl }
+  // Custom layouts
+  // { tester: groupTester, renderer: GroupLayout }
 ]
 
 export default function JsonForm({
