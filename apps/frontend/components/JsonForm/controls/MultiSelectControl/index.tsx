@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
@@ -15,8 +15,8 @@ const MultiSelectControl = ({
   path,
   ...rest
 }: ISelectControl) => {
-  const [selected, setSelected] = useState<string[]>([])
   const { t } = useTranslation()
+  const [selected, setSelected] = useState<string[]>(data)
 
   const onChange = (event: SelectChangeEvent<typeof selected>) => {
     const {
@@ -26,8 +26,17 @@ const MultiSelectControl = ({
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value
     )
+  }
 
+  useEffect(() => {
     handleChange(path, selected)
+    return
+  }, [selected])
+
+  const renderTranslatedValue = (values: string[]) => {
+    return values
+      .map((value) => t(`${rest.uischema['i18n']}.${value}`))
+      .join(', ')
   }
 
   return (
@@ -40,7 +49,7 @@ const MultiSelectControl = ({
           multiple
           value={selected}
           onChange={onChange}
-          renderValue={(selected) => selected.join(', ')}
+          renderValue={(selected) => renderTranslatedValue(selected)}
           required={rest.required}
           MenuProps={MenuProps}
           label={rest.label}
