@@ -1,108 +1,88 @@
-import { useState, useEffect } from 'react'
 import { Map } from 'react-map-gl'
 import maplibregl from 'maplibre-gl'
+import { DEFAULT_THEME, ICON_MAPPING, DATASET, ASSETS } from './config'
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
+import { useEffect, useMergeState } from '@hooks'
 import DeckGL from '@deck.gl/react'
-import { IconLayer, ColumnLayer, PathLayer } from '@deck.gl/layers'
-import { TripsLayer } from '@deck.gl/geo-layers'
-import { ScenegraphLayer } from '@deck.gl/mesh-layers'
-import { Fab } from '@mui/material'
-
+import { Settings as SettingsIcon } from '@mui/icons-material'
 import {
-  DATA_URL,
-  DEFAULT_THEME,
-  INITIAL_VIEW_STATE,
-  ICON_MAPPING
-} from './config'
+  IconLayer,
+  GeoJsonLayer,
+  ScenegraphLayer,
+  HexagonLayer,
+  PolygonLayer
+} from 'deck.gl'
+import { ui } from './style'
+import {
+  Map as MapIcon,
+  SmartButton,
+  Send as SendIcon,
+  LoopRounded as LoopIcon
+} from '@mui/icons-material'
 
-let posx = -74.001
-let posy = 40.7231
-const initPos = () => {
-  // posx = posx + 0.000001
-  // posy = posy + 0.0000011
-  return [posx, posy]
-}
+export default function MapGL({ theme = DEFAULT_THEME }) {
+  const [state, setState] = useMergeState({
+    route: null,
+    iso: null,
+    start: [],
+    end: []
+  })
 
-export default function MapGL({
-  trips = DATA_URL.TRIPS,
-  trailLength = 2000,
-  initialViewState = INITIAL_VIEW_STATE,
-  mapStyle = DATA_URL.MAP_STYLE,
-  theme = DEFAULT_THEME,
-  // unit corresponds to the timestamp in source data
-  loopLength = 1800,
-  animationSpeed = 1
-}) {
-  const [time, setTime] = useState(0)
-  const [animation] = useState({ id: null })
-
-  const animate = () => {
-    setTime((t) => (t + animationSpeed) % loopLength)
-    animation.id = window.requestAnimationFrame(animate)
-  }
-
+  // test
   useEffect(() => {
-    animation.id = window.requestAnimationFrame(animate)
-    return () => window.cancelAnimationFrame(animation.id)
-  }, [animation])
+    !state.route &&
+      fetch(DATASET.ROUTE)
+        .then((res) => res.json())
+        .then((res) => {
+          res && setState(res)
+        })
+
+    !state.iso &&
+      fetch(DATASET.ISOCHRONE)
+        .then((res) => res.json())
+        .then((res) => {
+          return setState({ iso: res?.isochrones?.raw })
+        })
+  }, [setState, state.iso, state.route])
+
+  const trip = state.route?.routes
+  const start = [state.start?._longitude || 0, state.start?._latitude || 0]
+  const end = [state.end?._longitude || 0, state.end?._latitude || 0]
+
+  const waypoints =
+    state.route?.waypoints?.map((v, i) => ({
+      ...v,
+      coordinates: v.location,
+      color: i === 0 ? [140, 240, 140] : [200, 100, 100]
+    })) || []
 
   const layers = [
-    new TripsLayer({
-      id: 'trips',
-      data: trips,
-      getPath: (d) => d.path,
-      getTimestamps: (d) => d.timestamps,
-      getColor: (d) =>
-        d.vendor === 0
-          ? theme.trailColor0
-          : d.vendor === 2
-          ? theme.trailColor2
-          : theme.trailColor1,
-      opacity: 0.8,
-      widthMinPixels: 4,
-      rounded: true,
-      trailLength: 2000,
-      currentTime: time,
-      shadowEnabled: false
-    }),
-
-    new PathLayer({
-      id: 'path-layer',
-      data: trips,
-      pickable: true,
-      opacity: 0.4,
-      widthScale: 1,
-      widthMinPixels: 2,
-      getPath: (d) => d.path,
-      getColor: (d) => [110, 190, 120]
-    }),
-
-    new IconLayer({
-      id: 'marker-layer',
+    // driver
+    new ScenegraphLayer({
+      id: 'scenegraph-car',
       data: [
         {
-          name: 'Start',
-          address: 'New York City',
-          exits: 4214,
-          coordinates: [-74.00823, 40.71351],
-          color: [140, 240, 140]
-        },
-        {
-          name: 'Waypoint',
-          address: 'Food Collection',
-          exits: 4214,
-          coordinates: [-74.00913, 40.74065],
-          color: [140, 180, 180]
-        },
-        {
-          name: 'End',
-          address: 'New York City',
-          exits: 4214,
-          coordinates: [-74.00336, 40.75891],
-          color: [240, 180, 140]
+          coordinates: [end[0], end[1] + 0.0003],
+          label: 'Driver: John Smith \n#8765789'
         }
       ],
       pickable: true,
-      iconAtlas: '/icon-atlas.png',
+      scenegraph: '/assets/car.glb',
+      getPosition: (d) => d.coordinates,
+      getOrientation: (d) => [0, 90, 90],
+      _animations: {
+        '*': { speed: 1 }
+      },
+      sizeScale: 10,
+      _lighting: 'pbr'
+    }),
+
+    // markers
+    new IconLayer({
+      id: 'marker-layer',
+      data: waypoints,
+      pickable: true,
+      iconAtlas: ASSETS.ICON,
       iconMapping: ICON_MAPPING,
       getIcon: (d) => 'marker',
       sizeScale: 2,
@@ -111,105 +91,105 @@ export default function MapGL({
       getColor: (d) => d.color
     }),
 
-    // new ColumnLayer({
-    //   id: 'graph-layer',
-    //   data: [
-    //     { centroid: [-74, 40.73], value: 0.22 },
-    //     { centroid: [-74.0005, 40.73001], value: 0.12 },
-    //     { centroid: [-74.001, 40.73002], value: 0.2 },
-    //     { centroid: [-74.002, 40.73003], value: 0.13 },
-    //     { centroid: [-74.0025, 40.730035], value: 0.19 },
-    //     { centroid: [-74.003, 40.73004], value: 0.14 }
-    //   ],
-    //   diskResolution: 120,
-    //   radius: 10,
-    //   extruded: true,
-    //   pickable: true,
-    //   elevationScale: 1000,
-    //   getPosition: (d) => d.centroid,
-    //   getFillColor: (d) => [148, 218, d.value * 255, 255],
-    //   getLineColor: [255, 100, 100],
-    //   getElevation: (d) => d.value,
-    //   opacity: 0.6
-    // }),
-
-    // new ScenegraphLayer({
-    //   id: 'box-animated',
-    //   pickable: true,
-    //   scenegraph:
-    //     'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
-    //   getPosition: (d) => [-74, 40.7244],
-    //   getOrientation: (d) => [0, 180, 90],
-    //   _animations: { '*': { speed: 4 } },
-    //   sizeScale: 2,
-    //   _lighting: 'pbr'
-    // }),
-
-    new ScenegraphLayer({
-      id: 'Car',
+    // point highlights
+    new HexagonLayer({
+      id: 'hexagon-layer',
       data: [
-        {
-          name: 'Car',
-          coordinates: [...initPos()]
-        }
+        { point: start, label: 'HUB' },
+        { point: end, label: 'CUSTOMER x' }
       ],
       pickable: true,
-      scenegraph: '/car.glb',
-      currentTime: time,
-      getPosition: (d) => d.coordinates,
-      getOrientation: (d) => [0, 145, 90],
-      _animations: { '*': { speed: 1 } },
-      sizeScale: 6,
-      _lighting: 'pbr'
+      radius: 40,
+      opacity: 0.4,
+      getPosition: (d) => d.point,
+      getSize: (d) => 10,
+      getFillColor: (d) => [48, 128, 255, 255]
     }),
 
-    new ScenegraphLayer({
-      id: 'fast-food',
-      data: [
-        {
-          name: 'Food box',
-          coordinates: [-74.00336, 40.75891]
-        }
-      ],
+    // route
+    new GeoJsonLayer({
+      id: 'geojson-layer',
+      data: trip,
       pickable: true,
-      scenegraph: '/food.glb',
-      getPosition: (d) => d.coordinates,
-      getOrientation: (d) => [0, 280, 90],
-      _animations: { '*': { speed: 1 } },
-      sizeScale: 4,
-      _lighting: 'pbr'
+      lineWidthMinPixels: 4,
+      getLineColor: (d) => [150, 250, 150],
+      getLineWidth: 4,
+      opacity: 0.2,
+      getPath: (d) => d.geometry.coordinates,
+      material: theme.material
+    }),
+
+    // isochrone view
+    new PolygonLayer({
+      id: 'polygon-layer',
+      data: state.iso?.features,
+      pickable: true,
+      stroked: true,
+      filled: true,
+      wireframe: true,
+      lineWidthMinPixels: 1,
+      getPolygon: (d) => d.geometry.coordinates,
+      // getElevation: d => 0,
+      getFillColor: (d) => [160, 140, 240],
+      getLineColor: [80, 80, 80],
+      getLineWidth: 1,
+      opacity: 0.001
+    }),
+
+    new GeoJsonLayer({
+      id: 'distance-layer',
+      data: state.iso,
+      pickable: true,
+      lineWidthMinPixels: 2,
+      getLineColor: (d) => [50, 250, 250],
+      extruded: true,
+      lineWidthScale: 20,
+      getFillColor: [160, 160, 180, 200],
+      getPointRadius: 100,
+      getLineWidth: 2,
+      getElevation: 30,
+      opacity: 0.01
     })
+  ]
 
-    // new TileLayer({
-    //   data: 'https://c.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    //   minZoom: 0,
-    //   maxZoom: 19,
-    //   tileSize: 256,
-    //   renderSubLayers: (props) => {
-    //     const {
-    //       bbox: { west, south, east, north }
-    //     } = props.tile
-
-    //     return new BitmapLayer(props, {
-    //       data: null,
-    //       image: props.data,
-    //       _imageCoordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
-    //       bounds: [west, south, east, north]
-    //     })
-    //   }
-    // })
+  const actions = [
+    { icon: <MapIcon />, name: 'Map' },
+    { icon: <SmartButton />, name: 'Trip Analysis' },
+    { icon: <LoopIcon />, name: 'Routing' },
+    { icon: <SendIcon />, name: 'Send' }
   ]
 
   return (
-    <div style={{ maxHeight: '100vh', overflow: 'hidden' }}>
+    <div style={ui.container}>
       <DeckGL
+        getTooltip={({ object }) => object?.label && object.label}
         layers={layers}
-        effects={theme.effects}
-        initialViewState={initialViewState}
+        initialViewState={{
+          latitude: start[1],
+          longitude: start[0],
+          zoom: 12,
+          pitch: 45,
+          bearing: 0
+        }}
         controller={true}
+        _animate={true}
       >
-        <Map reuseMaps mapLib={maplibregl} mapStyle={mapStyle} />
+        <Map reuseMaps mapLib={maplibregl} mapStyle={ASSETS.MAP_STYLE} />
       </DeckGL>
+
+      <SpeedDial
+        ariaLabel="loop controls"
+        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+        icon={<SettingsIcon />}
+      >
+        {actions.map((action) => (
+          <SpeedDialAction
+            key={action.name}
+            icon={action.icon}
+            tooltipTitle={action.name}
+          />
+        ))}
+      </SpeedDial>
     </div>
   )
 }

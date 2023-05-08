@@ -1,6 +1,7 @@
 const { withNx } = require('@nrwl/next/plugins/with-nx')
 const path = require('path')
 
+
 const nextConfig = {
   // output: 'standalone',
   // typescript: {
@@ -13,7 +14,17 @@ const nextConfig = {
   nx: {
     svgr: false
   },
-  pageExtensions: ['page.tsx', 'page.ts']
+  pageExtensions: ['page.tsx', 'page.ts'],
+  async rewrites() {
+    return {
+      fallback: [
+        {
+          source: '/api/:path*',
+          destination: 'http://localhost:3333/api/:path*'
+        }
+      ]
+    }
+  }
 }
 
 module.exports = withNx(nextConfig)

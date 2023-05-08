@@ -2,25 +2,25 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useEffect } from '@hooks'
 import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
 import { SessionProvider } from 'next-auth/react'
 import { theme } from '@util/lib/mui5'
-import { NoSsr } from '@mui/material'
+import { NoSsr, CssBaseline } from '@mui/material'
 import { FirebaseAppProvider, firebaseConfig } from '@util/lib/firebase'
-import '@locale/config'
-import '../public/app.css'
-import 'reactflow/dist/style.css'
 import { getServerSession, NextAuthOptions } from 'next-auth'
 import { authOptions } from '@pages/api/auth/[...nextauth].page'
 import { UserWrapper } from '@context/user'
 import { PermissionsProvider } from '@util/rules/permissions'
+import FirebaseWrapper from '../components/Firebase'
+import '@locale/config'
+import '../public/app.css'
+import 'reactflow/dist/style.css'
 
 // hide debugs in prod
 if (process.env.NODE_ENV === 'production') {
   console.info = console.log = console.warn = console.error = () => ''
 }
 
-const LoopApp = ({
+const LoopPro = ({
   Component,
   pageProps: { session, ...pageProps }
 }: AppProps) => {
@@ -36,13 +36,15 @@ const LoopApp = ({
       <NoSsr>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <main id="loop-frontend">
+          <main id="loop-pro">
             <FirebaseAppProvider firebaseConfig={firebaseConfig}>
               <SessionProvider session={session}>
-                <UserWrapper>
-                  <PermissionsProvider>
-                    <Component {...pageProps} />
-                  </PermissionsProvider>
+                <UserWrapper session={session}>
+                  <FirebaseWrapper>
+                    <PermissionsProvider>
+                      <Component {...pageProps} />
+                    </PermissionsProvider>
+                  </FirebaseWrapper>
                 </UserWrapper>
               </SessionProvider>
             </FirebaseAppProvider>
@@ -80,4 +82,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default LoopApp
+export default LoopPro

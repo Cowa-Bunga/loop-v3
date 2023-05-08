@@ -4,13 +4,14 @@ import { Box, Drawer, Card } from '@mui/material'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 import dynamic from 'next/dynamic'
-import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
 import {
   KeyboardDoubleArrowRight,
   KeyboardDoubleArrowLeft
 } from '@mui/icons-material'
+import { useMergeState, useEffect, useSession } from '@hooks'
+import { useUserContext } from '@util/context/user'
 
 const DeckMap = dynamic(() => import('../../components/MapGL'), {
   ssr: false
@@ -19,11 +20,16 @@ const DeckMap = dynamic(() => import('../../components/MapGL'), {
 const Dashboard = () => {
   const [state, setState] = useMergeState({
     right: false,
-    left: false
+    left: false,
+    data: null
   })
 
+  const user = useUserContext().state
+
+  console.warn(user)
   const { toggleLeft, toggleRight } = Actions(state, setState)
 
+  // cache sidebar components
   const MemFilter = memo(Filter)
 
   return (
@@ -74,7 +80,7 @@ const Dashboard = () => {
           <Box sx={ui.closedBoxIconR} onClick={toggleRight}>
             <KeyboardDoubleArrowRight sx={ui.closedBoxIcon} />
           </Box>
-          <Drivers hubs={[]} />
+          <Drivers hubs={user.hubs} />
         </Box>
       </Drawer>
     </LayoutBase>

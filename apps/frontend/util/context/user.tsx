@@ -12,8 +12,10 @@ const UserContext = createContext({
   update: (updated: object) => {}
 })
 
-function UserWrapper({ children }) {
+function UserWrapper({ session, children }) {
+  const sessionData = session?.data || {}
   const initialState = {
+    ...sessionData,
     hubs: [],
     regions: [],
     permissions: {

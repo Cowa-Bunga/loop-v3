@@ -6,7 +6,7 @@ import { CreateOrderDto } from './dto/create-order.dto'
 export class OrderService {
   //TODO make use of order entity
 
-  createOrder(order: CreateOrderDto, client_id: string) {
+  createOrder(_order: CreateOrderDto, _client_id: string) {
     return 'This action adds a new order'
   }
 

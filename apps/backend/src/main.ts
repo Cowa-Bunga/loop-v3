@@ -16,8 +16,8 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix)
 
   const config = new DocumentBuilder()
-    .setTitle('LOOP openAPI spec')
-    .setDescription('LOOP api')
+    .setTitle('LOOP')
+    .setDescription('OpenAPI spec.')
     .setVersion('3.1')
     .build()
 

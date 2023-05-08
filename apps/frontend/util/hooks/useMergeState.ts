@@ -27,7 +27,7 @@ export const useMergeState = <T>(
     }
 
     if (process.env.NODE_ENV === 'development') {
-      console.debug('%c setMergeState: \n', 'color: silver', {
+      console.debug('%c setMergeState: \n', 'color: aquamarine', {
         mutation,
         old: state,
         new: merged

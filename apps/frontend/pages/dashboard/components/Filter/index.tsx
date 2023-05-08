@@ -30,8 +30,8 @@ export default function DashboardFilter({
 
   return (
     <Box sx={ui.container}>
-      {['Regions', 'Hubs', 'Tasks', 'Trips'].map((v) => (
-        <Accordion square key={v}>
+      {['Tasks', 'Trips'].map((v) => (
+        <Accordion square key={v} expanded>
           <AccordionSummary expandIcon={<ExpandMore />}>
             <Box>
               <Typography

@@ -20,8 +20,35 @@ export const MODEL_MENU = ({ client_id }) =>
     {
       id: 'orders',
       icon: LoopIcon,
-      title: 'All Orders',
-      link: `/organisation/${client_id}/orders/view`,
+      title: 'Orders',
+      permissions: [],
+      children: [
+        {
+          id: 'all-orders',
+          icon: LoopIcon,
+          title: 'Orders report',
+          link: `/organisation/${client_id}/orders/view`,
+          permissions: [],
+        },
+        {
+          id: 'import',
+          icon: ImportExportIcon,
+          title: 'Import Orders',
+          link: '/organisation/todo-id/reports',
+          permissions: []
+        },
+      ]
+    },
+    {
+      id: 'trip-report',
+      icon: AssessmentIcon,
+      title: 'Trip Report',
+      permissions: []
+    },
+    {
+      id: 'messages',
+      icon: Person,
+      title: 'Message Centre',
       permissions: []
     },
     {
@@ -31,32 +58,24 @@ export const MODEL_MENU = ({ client_id }) =>
       permissions: []
     },
     {
-      id: 'dashboards',
-      icon: DashboardIcon,
+      id: 'reports',
+      icon: PowerSettingsNewIcon,
       title: 'Dashboards',
+      link: '/organisation/todo-id/reports',
       permissions: [],
-      children: [
-        {
-          id: 'fleet-management',
-          icon: DashboardIcon,
-          title: 'Fleet Management',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'reports',
-          icon: AssessmentIcon,
-          title: 'Reports',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        }
-      ]
     },
     {
-      id: 'import',
-      icon: ImportExportIcon,
-      title: 'Import Orders',
-      link: '/organisation/todo-id/reports',
+      id: 'routing',
+      icon: LiveHelpIcon,
+      title: 'Route Planning',
+      link: '/dashboard',
+      permissions: []
+    },
+    {
+      id: 'learn',
+      icon: ModelTrainingIcon,
+      title: 'Learning Centre',
+      link: '/support/documentation',
       permissions: []
     },
     {
@@ -64,72 +83,6 @@ export const MODEL_MENU = ({ client_id }) =>
       icon: SupportAgentIcon,
       title: 'Support',
       permissions: [],
-      children: [
-        {
-          id: 'support-main',
-          icon: LiveHelpIcon,
-          title: 'Documentation',
-          link: '/support/documentation',
-          permissions: []
-        },
-        {
-          id: 'training',
-          icon: ModelTrainingIcon,
-          title: 'Training Centre',
-          link: '/support/training',
-          permissions: []
-        }
-      ]
-    },
-    {
-      id: 'client-admin',
-      icon: DashboardIcon,
-      title: 'Client Admin',
-      link: `/organisation/${client_id}/reports`,
-      permissions: [],
-      children: [
-        {
-          id: 'hubs',
-          icon: DashboardIcon,
-          title: 'Hubs',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'branches',
-          icon: DashboardIcon,
-          title: 'Branches',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'regions',
-          icon: DashboardIcon,
-          title: 'Regions',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'users',
-          icon: DashboardIcon,
-          title: 'Users',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'management',
-          icon: DashboardIcon,
-          title: 'Settings',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        }
-      ]
-    },
-    {
-      id: 'signout',
-      icon: PowerSettingsNewIcon,
-      title: 'Log Out',
-      action: () => 'signOut',
-      permissions: []
+      link: '/support/documentation',
     }
   ] as unknown as IMenu[]
