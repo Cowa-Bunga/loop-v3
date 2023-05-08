@@ -12,6 +12,8 @@ import {
   dateTimeControlTester,
   DropdownControl,
   dropdownControlTester,
+  GooglePlacesControl,
+  googlePlacesControlTester,
   MultiSelectControl,
   multiSelectControlTester,
   PhoneNumberControl,
@@ -37,7 +39,8 @@ const renderers = [
   { tester: textInputControlTester, renderer: TextInputControl },
   { tester: dateTimeControlTester, renderer: DateTimeControl },
   { tester: checkboxControlTester, renderer: CheckboxControl },
-  { tester: phoneNumberControlTester, renderer: PhoneNumberControl }
+  { tester: phoneNumberControlTester, renderer: PhoneNumberControl },
+  { tester: googlePlacesControlTester, renderer: GooglePlacesControl }
 ]
 
 export default function JsonForm({

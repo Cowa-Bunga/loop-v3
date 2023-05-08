@@ -11,7 +11,6 @@ const PhoneNumberControl = ({
   path,
   ...rest
 }: ISelectControl) => {
-  console.log(data)
   return (
     <div id={rest.id}>
       <FormControl fullWidth sx={formControlStyles}>

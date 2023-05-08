@@ -15,7 +15,7 @@ const DropdownControl = ({
   ...rest
 }: ISelectControl) => {
   const { t } = useTranslation()
-  console.log(rest)
+
   return (
     <div id={rest.id}>
       <FormControl fullWidth sx={formControlStyles}>

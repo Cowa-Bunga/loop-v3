@@ -7,6 +7,7 @@ export { default as TextInputControl } from './TextInputControl'
 export { default as DateTimeControl } from './DateTimeControl'
 export { default as CheckboxControl } from './CheckboxControl'
 export { default as PhoneNumberControl } from './PhoneNumberControl'
+export { default as GooglePlacesControl } from './GooglePlacesControl'
 
 const RANK = 3
 
@@ -28,4 +29,8 @@ export const checkboxControlTester = rankWith(RANK, uiTypeIs('CheckboxControl'))
 export const phoneNumberControlTester = rankWith(
   RANK,
   uiTypeIs('PhoneNumberControl')
+)
+export const googlePlacesControlTester = rankWith(
+  RANK,
+  uiTypeIs('GooglePlacesControl')
 )
