@@ -4,7 +4,10 @@ export const createJob = {
     properties: {
       address: {
         type: 'string',
-        enum: ['1 Main Street', '2 Main Street', '3 Main Street']
+        options: {
+          api_key: 'AIzaSyCgiluwpE3dNxGLL_iAPaV4SKZDTm_tpME',
+          update_lat_long: true
+        }
       },
       latitude: {
         type: 'integer'
@@ -90,7 +93,7 @@ export const createJob = {
             type: 'VerticalLayout',
             elements: [
               {
-                type: 'AutoCompleteControl',
+                type: 'GooglePlacesControl',
                 scope: '#/properties/address',
                 i18n: 'create_task_form.address'
               },
