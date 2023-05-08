@@ -230,8 +230,8 @@ export const createJob = {
     mobileNo: '',
     deliveryTime: '',
     instructions: '',
-    abandonFlow: '',
-    deliveryFlow: '',
+    abandonFlow: [],
+    deliveryFlow: [],
     taskType: '',
     parcels: []
   }
