@@ -9,5 +9,9 @@ export const Actions = (state, setState) => ({
 
   toggleRight: () => {
     setState({ right: !state.right })
+  },
+
+  toggleCreate: () => {
+    setState({ create: !state.create })
   }
 })
