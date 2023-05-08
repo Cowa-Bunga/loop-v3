@@ -6,16 +6,26 @@ export { default as AutoCompleteControl } from './AutoCompleteControl'
 export { default as TextInputControl } from './TextInputControl'
 export { default as DateTimeControl } from './DateTimeControl'
 export { default as CheckboxControl } from './CheckboxControl'
+export { default as PhoneNumberControl } from './PhoneNumberControl'
+
+const RANK = 3
 
 export const multiSelectControlTester = rankWith(
-  3,
+  RANK,
   uiTypeIs('MultiSelectControl')
 )
-export const dropdownControlTester = rankWith(3, uiTypeIs('DropdownControl'))
+export const dropdownControlTester = rankWith(RANK, uiTypeIs('DropdownControl'))
 export const autoCompleteControlTester = rankWith(
-  3,
+  RANK,
   uiTypeIs('AutoCompleteControl')
 )
-export const textInputControlTester = rankWith(3, uiTypeIs('TextInputControl'))
-export const dateTimeControlTester = rankWith(3, uiTypeIs('DateTimeControl'))
-export const checkboxControlTester = rankWith(3, uiTypeIs('CheckboxControl'))
+export const textInputControlTester = rankWith(
+  RANK,
+  uiTypeIs('TextInputControl')
+)
+export const dateTimeControlTester = rankWith(RANK, uiTypeIs('DateTimeControl'))
+export const checkboxControlTester = rankWith(RANK, uiTypeIs('CheckboxControl'))
+export const phoneNumberControlTester = rankWith(
+  RANK,
+  uiTypeIs('PhoneNumberControl')
+)
