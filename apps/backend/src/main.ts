@@ -19,6 +19,7 @@ async function bootstrap() {
     .setTitle('LOOP openAPI spec')
     .setDescription('LOOP api')
     .setVersion('3.1')
+    .addApiKey({ type: 'apiKey', name: 'x-api-key', in: 'header' }, 'x-api-key')
     .build()
 
   const document = SwaggerModule.createDocument(app, config)
