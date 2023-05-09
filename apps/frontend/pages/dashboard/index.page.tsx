@@ -3,7 +3,6 @@ import { LayoutBase } from '@components'
 import { Box, Button, Card, Drawer } from '@mui/material'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
-import dynamic from 'next/dynamic'
 import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
@@ -13,9 +12,9 @@ import {
 } from '@mui/icons-material'
 import CreateJob from '@pages/dashboard/components/CreateJob'
 
-const DeckMap = dynamic(() => import('../../components/MapGL'), {
-  ssr: false
-})
+// const DeckMap = dynamic(() => import('../components/MapGL'), {
+//   ssr: false
+// })
 
 const Dashboard = () => {
   const [state, setState] = useMergeState({
@@ -60,7 +59,7 @@ const Dashboard = () => {
             mr: state.right ? '440px' : '30px'
           }}
         >
-          <DeckMap />
+          {/*<DeckMap />*/}
         </Card>
         <Box sx={ui.openBoxR} onClick={toggleRight}>
           <KeyboardDoubleArrowLeft />

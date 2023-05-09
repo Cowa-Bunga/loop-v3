@@ -1,5 +1,5 @@
-import { LayoutBase, JsonForm } from '@components'
-import { Container, Card, Typography, Divider } from '@mui/material'
+import { JsonForm, LayoutBase } from '@components'
+import { Card, Container, Divider, Typography } from '@mui/material'
 import { useState } from '@hooks'
 import { mock } from './mock'
 
@@ -22,7 +22,7 @@ const Settings = () => {
             schema={mock.schema}
             ui={mock.ui}
             model={model}
-            // onChange={setModel}
+            onChange={console.log}
           />
         </Card>
       </Container>

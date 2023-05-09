@@ -67,20 +67,18 @@ export default function JsonForm({
   }
 
   return (
-    <div className="App">
-      <JsonForms
-        i18n={{
-          locale: getI18n().resolvedLanguage,
-          translate: createTranslator
-        }}
-        schema={schema}
-        uischema={ui}
-        data={model}
-        renderers={renderers}
-        cells={materialCells}
-        onChange={({ data, errors }) => onChange(data)}
-        validationMode={validationMode}
-      />
-    </div>
+    <JsonForms
+      i18n={{
+        locale: getI18n().resolvedLanguage,
+        translate: createTranslator
+      }}
+      schema={schema}
+      uischema={ui}
+      data={model}
+      renderers={renderers}
+      cells={materialCells}
+      onChange={({ data, errors }) => onChange(data)}
+      validationMode={validationMode}
+    />
   )
 }

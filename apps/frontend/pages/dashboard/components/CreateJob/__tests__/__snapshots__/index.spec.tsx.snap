@@ -16,8 +16,8 @@ exports[`CreateJob should render open 1`] = `
     aria-hidden="true"
   />
   <div
-    aria-describedby="modal-modal-description"
-    aria-labelledby="modal-modal-title"
+    aria-describedby="Creat a new task or order for a driver"
+    aria-labelledby="Create Job"
     class="MuiModal-root css-79ws1d-MuiModal-root"
     role="presentation"
   >
@@ -35,11 +35,46 @@ exports[`CreateJob should render open 1`] = `
       tabindex="-1"
     >
       <div
-        class="App"
+        style="padding: 20px;"
+      />
+      <div
+        class="MuiGrid-root MuiGrid-container css-1xzqqmo-MuiGrid-root"
+        style="padding: 0px 20px;"
       >
         <div
-          style="padding: 20px;"
-        />
+          class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+          >
+            Parcels
+          </h5>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <button
+            aria-label="Add parcel"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="AddIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
       </div>
     </div>
     <div
