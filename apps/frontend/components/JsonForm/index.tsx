@@ -2,7 +2,6 @@ import { JsonForms } from '@jsonforms/react'
 import { materialCells, materialRenderers } from '@jsonforms/material-renderers'
 import { JsonSchema, UISchemaElement, ValidationMode } from '@jsonforms/core'
 import { useTranslation } from '@hooks'
-import { getI18n } from 'react-i18next'
 import {
   AutoCompleteControl,
   autoCompleteControlTester,
@@ -68,10 +67,6 @@ export default function JsonForm({
 
   return (
     <JsonForms
-      i18n={{
-        locale: getI18n().resolvedLanguage,
-        translate: createTranslator
-      }}
       schema={schema}
       uischema={ui}
       data={model}
