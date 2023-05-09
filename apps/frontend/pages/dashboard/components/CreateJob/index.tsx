@@ -1,10 +1,11 @@
 import { Box, Modal } from '@mui/material'
 import { JsonForm } from '@components'
-import { useMergeState } from '@hooks'
+import { useMergeState, useTranslation } from '@hooks'
 import { createJob } from '@pages/dashboard/components/CreateJob/create-job.schema'
 import { createJobParcels } from '@pages/dashboard/components/CreateJob/create-job-parcels.schema'
 import ParcelsForm from '@pages/dashboard/components/CreateJob/components/ParcelsForm'
 import { Actions } from './actions'
+import { createJobFormLocalePathBuilder } from '@locale/locale-utils'
 
 export interface CreateJobProps {
   isOpen: boolean
@@ -28,13 +29,15 @@ const CreateJob = ({ isOpen, handleClose }: CreateJobProps) => {
     formData,
     setFormData
   )
+  const { t } = useTranslation()
+  const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
 
   return (
     <Modal
       open={isOpen}
       onClose={handleClose}
-      aria-labelledby="Create Job"
-      aria-describedby="Creat a new task or order for a driver"
+      aria-labelledby={_t('aria.label')}
+      aria-describedby={_t('aria.description')}
     >
       <Box sx={style}>
         <JsonForm

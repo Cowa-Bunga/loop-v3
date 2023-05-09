@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles, MenuProps } from '../styles'
 import { useMergeState } from '@hooks'
+import { makeInputId } from '../../helpers'
 
 const MultiSelectControl = ({
   // the incoming selected items
@@ -52,12 +53,12 @@ const MultiSelectControl = ({
   }
 
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
-        <InputLabel id={`${rest.id}-label`}>{rest.label}</InputLabel>
+        <InputLabel id={makeInputId(rest.id, 'label')}>{rest.label}</InputLabel>
         <Select
-          labelId={`${rest.id}-label`}
-          id={`${rest.id}-checkbox`}
+          id={makeInputId(rest.id, 'select')}
+          labelId={makeInputId(rest.id, 'label')}
           multiple
           value={state.selected}
           onChange={onChange}

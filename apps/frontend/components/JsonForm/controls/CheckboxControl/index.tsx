@@ -3,6 +3,7 @@ import { withJsonFormsControlProps } from '@jsonforms/react'
 
 import { Checkbox, FormControl, FormControlLabel } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
+import { makeInputId } from '../../helpers'
 
 const CheckboxControl = ({
   data = false,
@@ -11,10 +12,10 @@ const CheckboxControl = ({
   ...rest
 }: ISelectControl) => {
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth style={{ margin: '23px 0' }}>
         <FormControlLabel
-          id={`${rest.id}-checkbox`}
+          id={makeInputId(rest.id, 'checkbox')}
           label={rest.label}
           control={
             <Checkbox
