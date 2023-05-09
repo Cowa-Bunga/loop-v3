@@ -4,6 +4,7 @@ import { withJsonFormsControlProps } from '@jsonforms/react'
 import { Autocomplete, FormControl, TextField } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles } from '../styles'
+import { makeInputId } from '../../helpers'
 
 const AutoCompleteControl = ({
   data = [],
@@ -12,11 +13,11 @@ const AutoCompleteControl = ({
   ...rest
 }: ISelectControl) => {
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
         <Autocomplete
           disablePortal
-          id={`${rest.id}-auto-complete`}
+          id={makeInputId(rest.id, 'auto-complete')}
           options={rest.schema.enum}
           renderInput={(params) => (
             <TextField

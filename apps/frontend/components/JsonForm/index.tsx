@@ -1,7 +1,6 @@
 import { JsonForms } from '@jsonforms/react'
 import { materialCells, materialRenderers } from '@jsonforms/material-renderers'
 import { JsonSchema, UISchemaElement, ValidationMode } from '@jsonforms/core'
-import { useTranslation } from '@hooks'
 import {
   AutoCompleteControl,
   autoCompleteControlTester,
@@ -58,13 +57,6 @@ export default function JsonForm({
   validationMode = 'ValidateAndShow',
   onChange = (_data: unknown) => ''
 }: IProps) {
-  const { t } = useTranslation()
-
-  const createTranslator = (key, defaultMessage) => {
-    const translated = t(key)
-    return !translated.startsWith(key) ? translated : key
-  }
-
   return (
     <JsonForms
       schema={schema}

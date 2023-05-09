@@ -12,6 +12,10 @@
     "error": "Could not load clients. Please try again later."
   },
   "create_task_form": {
+    "aria": {
+      "label": "Create Task Form",
+      "description": "Creat a new task or order for a driver"
+    },
     "title": {
       "label": "Create Task"
     },

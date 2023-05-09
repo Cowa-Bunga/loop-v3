@@ -4,6 +4,7 @@ import { FormControl } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles } from '../styles'
 import MuiPhoneNumber from 'mui-phone-number'
+import { makeInputId } from '../../helpers'
 
 const PhoneNumberControl = ({
   data = 'ZA',
@@ -12,10 +13,10 @@ const PhoneNumberControl = ({
   ...rest
 }: ISelectControl) => {
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
         <MuiPhoneNumber
-          id={`${rest.id}-text-input`}
+          id={makeInputId(rest.id, 'text-input')}
           label={rest.label}
           defaultCountry={'za'}
           preferredCountries={['za']}

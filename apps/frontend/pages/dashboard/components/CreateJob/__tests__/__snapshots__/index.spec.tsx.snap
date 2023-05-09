@@ -16,8 +16,8 @@ exports[`CreateJob should render open 1`] = `
     aria-hidden="true"
   />
   <div
-    aria-describedby="Creat a new task or order for a driver"
-    aria-labelledby="Create Job"
+    aria-describedby="create_task_form.aria.description"
+    aria-labelledby="create_task_form.aria.label"
     class="MuiModal-root css-79ws1d-MuiModal-root"
     role="presentation"
   >
