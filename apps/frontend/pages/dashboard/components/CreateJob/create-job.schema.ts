@@ -70,7 +70,7 @@ export const createJob = {
   ui: {
     type: 'Group',
     label: 'Create Task Form',
-    i18n: 'create_task_form.title',
+    i18n: 'create_task_form.title.label',
     elements: [
       {
         type: 'HorizontalLayout',
@@ -147,6 +147,7 @@ export const createJob = {
       {
         type: 'ChildGroup',
         label: 'Delivery/Abandon Flows',
+        i18n: 'create_task_form.proof.label',
         elements: [
           {
             type: 'HorizontalLayout',

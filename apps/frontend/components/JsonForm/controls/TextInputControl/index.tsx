@@ -11,6 +11,7 @@ const TextInputControl = ({
   path,
   ...rest
 }: ISelectControl) => {
+  console.log(rest)
   return (
     <div id={rest.id}>
       <FormControl fullWidth sx={formControlStyles}>
