@@ -15,6 +15,15 @@ jest.mock('@hooks', () => ({
   })
 }))
 
+jest.mock('./actions', () => ({
+  Actions: jest.fn().mockImplementation(() => ({
+    addEmptyParcel: jest.fn(),
+    updateParcel: jest.fn(),
+    updateFormData: jest.fn(),
+    getForms: jest.fn().mockImplementation(() => Promise.resolve())
+  }))
+}))
+
 describe('CreateJob', () => {
   it('should render open', () => {
     const { baseElement } = renderWithProviders(
