@@ -27,16 +27,9 @@ jest.mock('./actions', () => ({
 describe('CreateJob', () => {
   it('should render open', () => {
     const { baseElement } = renderWithProviders(
-      <CreateJob handleClose={console.log} isOpen={true} />
+      <CreateJob handleClose={console.log} />
     )
 
-    expect(baseElement).toMatchSnapshot()
-  })
-
-  it('should render closed', () => {
-    const { baseElement } = renderWithProviders(
-      <CreateJob handleClose={console.log} isOpen={false} />
-    )
     expect(baseElement).toMatchSnapshot()
   })
 })

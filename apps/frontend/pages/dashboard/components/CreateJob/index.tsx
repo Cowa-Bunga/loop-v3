@@ -8,7 +8,6 @@ import { useEffect } from 'react'
 import { IForm } from '@pages/api/forms/[reference]/type'
 
 export interface CreateJobProps {
-  isOpen: boolean
   handleClose: () => void
 }
 
@@ -29,7 +28,7 @@ interface IState {
   parcelsForm: IForm
 }
 
-const CreateJob = ({ isOpen, handleClose }: CreateJobProps) => {
+const CreateJob = ({ handleClose }: CreateJobProps) => {
   const [isLoading, setLoading] = useState(true)
 
   const [state, setState] = useMergeState<IState>({
@@ -48,11 +47,11 @@ const CreateJob = ({ isOpen, handleClose }: CreateJobProps) => {
     getForms().then(() => setLoading(false))
 
     return
-  })
+  }, [])
 
   return (
     <Modal
-      open={isOpen}
+      open
       onClose={handleClose}
       aria-labelledby={_t('aria.label')}
       aria-describedby={_t('aria.description')}
