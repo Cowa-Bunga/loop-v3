@@ -35,46 +35,27 @@ exports[`CreateJob should render open 1`] = `
       tabindex="-1"
     >
       <div
-        style="padding: 20px;"
-      />
-      <div
-        class="MuiGrid-root MuiGrid-container css-1xzqqmo-MuiGrid-root"
-        style="padding: 0px 20px;"
+        class="MuiBox-root css-byjdlg"
       >
-        <div
-          class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        <span
+          class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+          role="progressbar"
+          style="width: 40px; height: 40px;"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+          <svg
+            class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+            viewBox="22 22 44 44"
           >
-            Parcels
-          </h5>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
-        >
-          <button
-            aria-label="Add parcel"
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeMedium css-1kuq5xv-MuiButtonBase-root-MuiIconButton-root"
-            tabindex="0"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="AddIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-              />
-            </svg>
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            <circle
+              class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+              cx="44"
+              cy="44"
+              fill="none"
+              r="20.2"
+              stroke-width="3.6"
             />
-          </button>
-        </div>
+          </svg>
+        </span>
       </div>
     </div>
     <div
