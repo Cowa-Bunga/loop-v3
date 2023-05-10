@@ -11,16 +11,17 @@ import {
   KeyboardDoubleArrowRight
 } from '@mui/icons-material'
 import CreateJob from '@pages/dashboard/components/CreateJob'
+import dynamic from 'next/dynamic'
 
-// const DeckMap = dynamic(() => import('../components/MapGL'), {
-//   ssr: false
-// })
+const DeckMap = dynamic(() => import('../../components/MapGL'), {
+  ssr: false
+})
 
 const Dashboard = () => {
   const [state, setState] = useMergeState({
     right: false,
     left: false,
-    create: true
+    create: false
   })
 
   const { toggleLeft, toggleRight, toggleCreate } = Actions(state, setState)
@@ -59,7 +60,7 @@ const Dashboard = () => {
             mr: state.right ? '440px' : '30px'
           }}
         >
-          {/*<DeckMap />*/}
+          <DeckMap />
         </Card>
         <Box sx={ui.openBoxR} onClick={toggleRight}>
           <KeyboardDoubleArrowLeft />
@@ -79,7 +80,7 @@ const Dashboard = () => {
           <Drivers hubs={[]} />
         </Box>
       </Drawer>
-      <CreateJob isOpen={state.create} handleClose={toggleCreate} />
+      {state.create && <CreateJob handleClose={toggleCreate} />}
     </LayoutBase>
   )
 }
