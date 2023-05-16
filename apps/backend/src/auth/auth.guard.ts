@@ -4,6 +4,7 @@ import {
   Injectable,
   UnauthorizedException
 } from '@nestjs/common'
+import { ClientRequest } from '../shared/entities/request.entity'
 import * as admin from 'firebase-admin'
 
 @Injectable()
@@ -33,13 +34,5 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException('Invalid or missing x-api-key.')
     }
     return true
-  }
-}
-
-export class ClientRequest {
-  id: string
-
-  constructor(client: FirebaseFirestore.DocumentSnapshot) {
-    this.id = client.id
   }
 }
