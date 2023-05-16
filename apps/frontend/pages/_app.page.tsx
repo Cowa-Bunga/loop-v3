@@ -14,6 +14,7 @@ import FirebaseWrapper from '../components/Firebase'
 import '@locale/config'
 import '../public/app.css'
 import 'reactflow/dist/style.css'
+import 'react-vis/dist/style.css'
 
 // hide debugs in prod
 if (process.env.NODE_ENV === 'production') {

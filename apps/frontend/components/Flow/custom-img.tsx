@@ -30,7 +30,7 @@ const CustomNode = ({
 
       <NodeToolbar isVisible={data.visible} position={data.position}>
         <Card sx={{ p: 2, width: '300px', textAlign: 'center' }}>
-          <CardMedia image="/spark.png" component="img" />
+          <CardMedia image="" component="img" />
           <br />
           <ButtonGroup>
             <Button variant="outlined">delete</Button>

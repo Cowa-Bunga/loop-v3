@@ -2,6 +2,11 @@ export const ui = {
   leftDrawer: {},
   rightDrawer: {},
 
+  map: {
+    height: 'calc(100vh-60px)',
+    overflow: 'hidden'
+  },
+
   openBox: {
     position: 'fixed',
     height: '100vh',
@@ -54,5 +59,17 @@ export const ui = {
     pt: '60px',
     backgroundColor: '#F3F4F6',
     color: 'black'
+  },
+
+  speedDial: {
+    position: 'absolute',
+    bottom: 16,
+    right: 40
+  },
+
+  speedDial2: {
+    position: 'absolute',
+    bottom: 16,
+    left: 50
   }
 }

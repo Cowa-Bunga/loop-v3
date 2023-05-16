@@ -31,15 +31,19 @@ exports[`CreateJob should render open 1`] = `
       tabindex="0"
     />
     <div
-      class="MuiBox-root css-oyhib8"
+      class="MuiBox-root css-m66zyu"
       tabindex="-1"
     >
       <div
-        class="App"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-xt7fqp-MuiPaper-root-MuiCard-root"
       >
         <div
-          style="padding: 20px;"
-        />
+          class="App"
+        >
+          <div
+            style="padding: 20px;"
+          />
+        </div>
       </div>
     </div>
     <div

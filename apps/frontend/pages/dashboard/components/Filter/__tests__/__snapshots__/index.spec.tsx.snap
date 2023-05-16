@@ -7,6 +7,186 @@ exports[`DashboardFilter should render 1`] = `
       class="MuiBox-root css-1fygqoo"
     >
       <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-i0bk1x-MuiPaper-root"
+      >
+        <div
+          class="MuiBox-root css-1silhop"
+        >
+          <span
+            aria-valuenow="25"
+            class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorInfo css-18ojg8m-MuiCircularProgress-root"
+            role="progressbar"
+            style="width: 90px; height: 90px; transform: rotate(-90deg);"
+            title="Orders"
+          >
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="19"
+                stroke-width="6"
+                style="stroke-dasharray: 119.381; stroke-dashoffset: 89.535px;"
+              />
+            </svg>
+          </span>
+          <div
+            class="MuiBox-root css-1o8dslu"
+          >
+            <button
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary css-13d2zao-MuiButtonBase-root-MuiFab-root"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+              >
+                25%
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1silhop"
+        >
+          <span
+            aria-valuenow="50"
+            class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorInfo css-18ojg8m-MuiCircularProgress-root"
+            role="progressbar"
+            style="width: 90px; height: 90px; transform: rotate(-90deg);"
+            title="Orders"
+          >
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="19"
+                stroke-width="6"
+                style="stroke-dasharray: 119.381; stroke-dashoffset: 59.690px;"
+              />
+            </svg>
+          </span>
+          <div
+            class="MuiBox-root css-1o8dslu"
+          >
+            <button
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary css-13d2zao-MuiButtonBase-root-MuiFab-root"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+              >
+                50%
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1silhop"
+        >
+          <span
+            aria-valuenow="75"
+            class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorInfo css-18ojg8m-MuiCircularProgress-root"
+            role="progressbar"
+            style="width: 90px; height: 90px; transform: rotate(-90deg);"
+            title="Orders"
+          >
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="19"
+                stroke-width="6"
+                style="stroke-dasharray: 119.381; stroke-dashoffset: 29.845px;"
+              />
+            </svg>
+          </span>
+          <div
+            class="MuiBox-root css-1o8dslu"
+          >
+            <button
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary css-13d2zao-MuiButtonBase-root-MuiFab-root"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+              >
+                75%
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1silhop"
+        >
+          <span
+            aria-valuenow="100"
+            class="MuiCircularProgress-root MuiCircularProgress-determinate MuiCircularProgress-colorInfo css-18ojg8m-MuiCircularProgress-root"
+            role="progressbar"
+            style="width: 90px; height: 90px; transform: rotate(-90deg);"
+            title="Orders"
+          >
+            <svg
+              class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate css-oxts8u-MuiCircularProgress-circle"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="19"
+                stroke-width="6"
+                style="stroke-dasharray: 119.381; stroke-dashoffset: 0.000px;"
+              />
+            </svg>
+          </span>
+          <div
+            class="MuiBox-root css-1o8dslu"
+          >
+            <button
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary css-13d2zao-MuiButtonBase-root-MuiFab-root"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+              >
+                100%
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
         class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation1 MuiAccordion-root MuiAccordion-gutters css-t4qmgb-MuiPaper-root-MuiAccordion-root"
       >
         <div
@@ -21,19 +201,8 @@ exports[`DashboardFilter should render 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-zerk3f-MuiTypography-root"
-              >
-                <b>
-                  REGIONS
-                </b>
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
               <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary css-qize55-MuiButtonBase-root-MuiFab-root"
                 tabindex="0"
                 type="button"
               >
@@ -54,7 +223,42 @@ exports[`DashboardFilter should render 1`] = `
               </button>
             </div>
             <div
-              class="MuiBox-root css-93x1iv"
+              class="MuiBox-root css-0"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-lz6cwb-MuiTypography-root"
+              >
+                <b>
+                  HUBS
+                </b>
+              </p>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="TuneIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+                  />
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiBox-root css-apcsbe"
             >
               <div
                 class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
@@ -92,30 +296,6 @@ exports[`DashboardFilter should render 1`] = `
                   </fieldset>
                 </div>
               </div>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
-              <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="TuneIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-                  />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
             </div>
           </div>
           <div
@@ -847,19 +1027,8 @@ exports[`DashboardFilter should render 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-zerk3f-MuiTypography-root"
-              >
-                <b>
-                  HUBS
-                </b>
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
               <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary css-qize55-MuiButtonBase-root-MuiFab-root"
                 tabindex="0"
                 type="button"
               >
@@ -880,7 +1049,42 @@ exports[`DashboardFilter should render 1`] = `
               </button>
             </div>
             <div
-              class="MuiBox-root css-93x1iv"
+              class="MuiBox-root css-0"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-lz6cwb-MuiTypography-root"
+              >
+                <b>
+                  TRIPS
+                </b>
+              </p>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="TuneIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+                  />
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiBox-root css-apcsbe"
             >
               <div
                 class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
@@ -918,30 +1122,6 @@ exports[`DashboardFilter should render 1`] = `
                   </fieldset>
                 </div>
               </div>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
-              <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="TuneIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-                  />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
             </div>
           </div>
           <div
@@ -1673,19 +1853,8 @@ exports[`DashboardFilter should render 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-zerk3f-MuiTypography-root"
-              >
-                <b>
-                  TASKS
-                </b>
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
               <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary css-qize55-MuiButtonBase-root-MuiFab-root"
                 tabindex="0"
                 type="button"
               >
@@ -1706,7 +1875,42 @@ exports[`DashboardFilter should render 1`] = `
               </button>
             </div>
             <div
-              class="MuiBox-root css-93x1iv"
+              class="MuiBox-root css-0"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-lz6cwb-MuiTypography-root"
+              >
+                <b>
+                  TASKS
+                </b>
+              </p>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="TuneIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+                  />
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiBox-root css-apcsbe"
             >
               <div
                 class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
@@ -1744,30 +1948,6 @@ exports[`DashboardFilter should render 1`] = `
                   </fieldset>
                 </div>
               </div>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
-              <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="TuneIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-                  />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
             </div>
           </div>
           <div
@@ -2499,19 +2679,8 @@ exports[`DashboardFilter should render 1`] = `
             <div
               class="MuiBox-root css-0"
             >
-              <p
-                class="MuiTypography-root MuiTypography-body1 css-zerk3f-MuiTypography-root"
-              >
-                <b>
-                  TRIPS
-                </b>
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
               <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-primary css-qize55-MuiButtonBase-root-MuiFab-root"
                 tabindex="0"
                 type="button"
               >
@@ -2532,7 +2701,42 @@ exports[`DashboardFilter should render 1`] = `
               </button>
             </div>
             <div
-              class="MuiBox-root css-93x1iv"
+              class="MuiBox-root css-0"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1 css-lz6cwb-MuiTypography-root"
+              >
+                <b>
+                  ZONES
+                </b>
+              </p>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <button
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+                tabindex="0"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="TuneIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+                  />
+                </svg>
+                <span
+                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <div
+              class="MuiBox-root css-apcsbe"
             >
               <div
                 class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
@@ -2570,30 +2774,6 @@ exports[`DashboardFilter should render 1`] = `
                   </fieldset>
                 </div>
               </div>
-            </div>
-            <div
-              class="MuiBox-root css-0"
-            >
-              <button
-                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="TuneIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-                  />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
             </div>
           </div>
           <div

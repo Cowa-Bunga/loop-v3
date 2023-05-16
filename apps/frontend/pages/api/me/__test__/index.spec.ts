@@ -7,10 +7,10 @@ jest.mock('@util/lib/loop-api/request-wrapper', () => ({
 }))
 // mock for res.status(response.status).json(response.data)
 
-const mockReq = {} as any
+const mockReq = {} as unknown
 const mockRes = {
   send: jest.fn()
-} as any
+} as unknown
 
 describe('GET /api/me', () => {
   beforeEach(() => {

@@ -14,6 +14,7 @@ const UserContext = createContext({
 
 function UserWrapper({ session, children }) {
   const sessionData = session?.data || {}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialState = {
     ...sessionData,
     hubs: [],
@@ -24,9 +25,11 @@ function UserWrapper({ session, children }) {
       scopes: []
     }
   } as IUserContext
+
   const [state, updateState] = useMergeState(initialState)
   const firebaseAuth = getAuth(useFirebaseApp())
   const { data } = useSession()
+
   const update = (updated: object) => {
     updateState(updated as IUserContext)
   }
@@ -37,7 +40,7 @@ function UserWrapper({ session, children }) {
     if (JSON.stringify(initialState) !== JSON.stringify(state)) {
       localStorage.setItem('userContext', JSON.stringify(state))
     }
-  }, [state])
+  }, [initialState, state])
 
   useEffect(() => {
     const userContext = localStorage.getItem('userContext')

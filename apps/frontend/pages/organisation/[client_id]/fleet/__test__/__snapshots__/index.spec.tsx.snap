@@ -45,11 +45,13 @@ exports[`Fleet should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1t019bo"
+      class="MuiBox-root css-1abb3vo"
     >
       <div
         class="MuiBox-root css-0"
-      />
+      >
+        FLEET
+      </div>
     </div>
   </div>
 </body>

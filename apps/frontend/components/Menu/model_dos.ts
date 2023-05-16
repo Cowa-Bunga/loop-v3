@@ -8,7 +8,7 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 import LoopIcon from '@mui/icons-material/Loop'
 import { Person } from '@mui/icons-material'
 
-export const MODEL_MENU = ({ client_id }) =>
+export const MODEL_MENU = ({ client_id, driver_id }) =>
   [
     {
       id: 'home',
@@ -26,23 +26,32 @@ export const MODEL_MENU = ({ client_id }) =>
         {
           id: 'all-orders',
           icon: LoopIcon,
-          title: 'Orders report',
+          title: 'Overview',
           link: `/organisation/${client_id}/orders/view`,
           permissions: [],
         },
         {
           id: 'import',
           icon: ImportExportIcon,
-          title: 'Import Orders',
-          link: '/organisation/todo-id/reports',
+          title: 'Import New',
+          link: `/organisation/${client_id}/reports`,
+          permissions: []
+        },
+        {
+          id: 'trip-report',
+          icon: AssessmentIcon,
+          title: 'Trip Report',
+          link: `/organisation/${client_id}/fleet`,
           permissions: []
         },
       ]
     },
     {
-      id: 'trip-report',
-      icon: AssessmentIcon,
-      title: 'Trip Report',
+      id: 'driver',
+      icon: Person,
+      title: 'Drivers',
+      // tmp
+      link: `/drivers/overview`,
       permissions: []
     },
     {
@@ -52,16 +61,10 @@ export const MODEL_MENU = ({ client_id }) =>
       permissions: []
     },
     {
-      id: 'driver',
-      icon: Person,
-      title: 'Driver Details',
-      permissions: []
-    },
-    {
       id: 'reports',
       icon: PowerSettingsNewIcon,
-      title: 'Dashboards',
-      link: '/organisation/todo-id/reports',
+      title: 'Reports',
+      link: `/organisation/${client_id}/reports`,
       permissions: [],
     },
     {
@@ -75,7 +78,7 @@ export const MODEL_MENU = ({ client_id }) =>
       id: 'learn',
       icon: ModelTrainingIcon,
       title: 'Learning Centre',
-      link: '/support/documentation',
+      link: '/support/training',
       permissions: []
     },
     {
