@@ -28,6 +28,6 @@ RUN npm --omit=dev -f install
 # RUN npm run docker-postinstall
 
 
-EXPOSE 3000
+EXPOSE 3333
 
 CMD ["node", "main.js"]
