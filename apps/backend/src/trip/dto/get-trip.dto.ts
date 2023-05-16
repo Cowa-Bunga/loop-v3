@@ -10,10 +10,12 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  Validate,
   ValidateIf,
   ValidateNested,
   isNotEmpty
 } from 'class-validator'
+import { BadRequestException } from '@nestjs/common'
 
 enum FlowTypes {
   DEFAULT = 'default',
@@ -139,13 +141,15 @@ class Trip {
 
 export class GetTripDto {
 
-  // @ApiProperty({
-  //   description: 'The id of the trip',
-  //   example: '1234567890'
-  // })
-  
-  // USE THIS FOR CREATE TRIP
-  
+  @ApiProperty({
+    description: 'The id of the trip',
+    example: '1234567890'
+  })
   @IsNotEmpty()
+  @Validate((value) => {
+    if (!value || value.length === 0) {
+      throw new BadRequestException('No trip IDs provided.')
+    }
+  })
   trip_id: string
 }
