@@ -7,9 +7,6 @@ import { GetTripDto } from './dto/get-trip.dto'
 export class TripService {
 
   async getTrips(trip_ids: string[], client_id: string) {
-    if (!trip_ids || trip_ids.length === 0) {
-      throw new BadRequestException('No trip IDs provided.')
-    }
   
     const db = admin.firestore()
     const refs = trip_ids.map((id) =>
@@ -48,37 +45,26 @@ export class TripService {
     const { trip_id } = getTripDto
   
     const db = admin.firestore()
-    const trip = await db
-      .collection('clients')
-      .doc(client_id)
-      .collection('trips')
-      .doc(trip_id)
-      .get()
+    const tripRef = db.collection('clients').doc(client_id).collection('trips').doc(trip_id)
   
-    if (!trip.exists) {
+    const tripSnapshot = await tripRef.get()
+  
+    if (!tripSnapshot.exists) {
       throw new NotFoundException(`Trip with ID '${trip_id}' not found.`)
     }
   
-    const tripData = trip.data()
+    const tripData = tripSnapshot.data()
   
-    if (trip_id) {
-      const trip = await db
-        .collection('clients')
-        .doc(client_id)
-        .collection('trips')
-        .doc(trip_id)
-        .get()
-      if (trip.data().driver) {
-        const driver = await trip.data().driver.get()
-        Object.assign(tripData, {
-          driver_id: driver.id,
-          driver_name: driver.data().name,
-        })
-      }
+    if (tripData.driver) {
+      const driverSnapshot = await tripData.driver.get()
+      Object.assign(tripData, {
+        driver_id: driverSnapshot.id,
+        driver_name: driverSnapshot.data().name,
+      })
     }
   
     return {
-      id: trip.id,
+      id: tripSnapshot.id,
       ...tripData,
       client_id: client_id,
     }
@@ -92,118 +78,93 @@ export class TripService {
       compute_route,
       automatic_assignment,
     } = createTripDto
+  
     const db = admin.firestore()
     const refs = order_ids.map((id) => db.doc(`clients/${client_id}/orders/${id}`))
     const tripRef = db.collection('clients').doc(client_id).collection('trips').doc()
     const branchRef = db.collection('clients').doc(client_id).collection('branches').doc(branch_id)
     const clientRef = db.collection('clients').doc(client_id)
-
+  
     await db.runTransaction(async (transaction) => {
-      const [client, branch, orders] = await Promise.all([
+      const [clientSnapshot, branchSnapshot, ordersSnapshot] = await Promise.all([
         transaction.get(clientRef),
         transaction.get(branchRef),
-        transaction.getAll(...refs),
+        transaction.getAll(...refs)
       ])
-
-      if (!branch.exists) {
-        throw new BadRequestException(`Provide a valid branch`)
+  
+      const clientData = clientSnapshot.data()
+  
+      if (!branchSnapshot.exists) {
+        throw new BadRequestException('Provide a valid branch')
       }
-
-      if (!client.exists) {
-        throw new BadRequestException(`Provide a valid client`)
+  
+      if (!clientData.vehicle_types.includes(vehicle_type)) {
+        throw new BadRequestException(`Provide a vehicle type that matches any of the following: [${clientData.vehicle_types}]`)
       }
-
-      if (!client.data().vehicle_types.includes(vehicle_type)) {
-        throw new BadRequestException(
-          `Provide a vehicle type that match any of the following: [` +
-            client.data().vehicle_types +
-            `]`,
-        )
-      }
-
+  
       const order_ids = []
-      for (const order of orders) {
-        if (!order.exists) {
-          throw new BadRequestException(
-            `Order ${order.id}, to be batched does not exist`,
-          )
+      let updatedServiceTypeRoute
+  
+      for (const orderSnapshot of ordersSnapshot) {
+        const orderData = orderSnapshot.data()
+  
+        if (!orderSnapshot.exists) {
+          throw new BadRequestException(`Order ${orderSnapshot.id}, to be batched does not exist`)
         }
-
-        if (order.data().branch.id !== branch_id) {
-          throw new BadRequestException(
-            `Order ${order.id}, doesn't belong to the same branch`,
-          )
+  
+        if (orderData.branch.id !== branch_id) {
+          throw new BadRequestException(`Order ${orderSnapshot.id}, doesn't belong to the same branch`)
         }
-
-        if (order.data().status !== 'pending') {
-          throw new BadRequestException(
-            `Order ${order.id}, has been allocated already`,
-          )
+  
+        if (orderData.status !== 'pending') {
+          throw new BadRequestException(`Order ${orderSnapshot.id}, has been allocated already`)
         }
-
-        let updatedServiceTypeRoute = createTripDto.service_type_route
-
+  
         // Add the service type route for certain clients based on their client_type
-        if (updatedServiceTypeRoute === undefined) {
-          if (client.data().client_type !== undefined) {
-            if (client.data().client_type === "LOGISTICS") {
-              updatedServiceTypeRoute = true
-            }
-          }
+        if (updatedServiceTypeRoute === undefined && clientData.client_type === 'LOGISTICS') {
+          updatedServiceTypeRoute = true
         }
-
+  
         // Make sure skeleton orders are not being pushed through normal route optimization
-        if (updatedServiceTypeRoute === undefined || updatedServiceTypeRoute === false) {
-          // Check if there are any skeleton orders
-          if (order.data().address === 'TBC') {
-            throw new BadRequestException(
-              `Skeleton orders cannot be assigned to this Trip; updatedServiceTypeRoute is set to false or undefined`,
-            )
-          }
+        if (!updatedServiceTypeRoute && orderData.address === 'TBC') {
+          throw new BadRequestException(`Skeleton orders cannot be assigned to this Trip; updatedServiceTypeRoute is set to false or undefined`)
         }
-
-        order_ids.push(order.id)
-        if (order.data().reset === true) {
-          transaction.update(order.ref, {
+  
+        order_ids.push(orderSnapshot.id)
+  
+        const orderUpdate = {
+          status: 'batched',
+          assignable: true,
+          trip_id: tripRef.id,
+          history: admin.firestore.FieldValue.arrayUnion({
             status: 'batched',
-            assignable: true,
-            clustered: false,
-            trip_id: tripRef.id,
-            history: admin.firestore.FieldValue.arrayUnion({
-              status: 'batched',
-              timestamp: admin.firestore.Timestamp.now(),
-            }),
-          })
-        } else {
-          transaction.update(order.ref, {
-            status: 'batched',
-            assignable: true,
-            trip_id: tripRef.id,
-            history: admin.firestore.FieldValue.arrayUnion({
-              status: 'batched',
-              timestamp: admin.firestore.Timestamp.now(),
-            }),
+            timestamp: admin.firestore.Timestamp.now()
           })
         }
   
-        transaction.set(tripRef, {
-          status: 'pending',
-          vehicle_type: vehicle_type,
-          compute_route: compute_route,
-          automatic_assignment: automatic_assignment,
-          service_type_route: updatedServiceTypeRoute,
-          history: admin.firestore.FieldValue.arrayUnion({
-            status: 'pending',
-            timestamp: admin.firestore.Timestamp.now(),
-          }),
-          branch: db.doc(`/clients/${client_id}/branches/${branch_id}`),
-          orders: order_ids,
-          created_at: admin.firestore.FieldValue.serverTimestamp(),
-        })
+        transaction.update(orderSnapshot.ref, orderUpdate)
+
       }
+  
+      const tripData = {
+        status: 'pending',
+        vehicle_type: vehicle_type,
+        compute_route: compute_route,
+        automatic_assignment: automatic_assignment,
+        service_type_route: updatedServiceTypeRoute,
+        history: admin.firestore.FieldValue.arrayUnion({
+          status: 'pending',
+          timestamp: admin.firestore.Timestamp.now()
+        }),
+        branch: db.doc(`/clients/${client_id}/branches/${branch_id}`),
+        orders: order_ids,
+        created_at: admin.firestore.FieldValue.serverTimestamp()
+      }
+  
+      transaction.set(tripRef, tripData)
   
       return { id: tripRef.id }
-      }
-    )
-  } 
+    })
+  }
+
 }
