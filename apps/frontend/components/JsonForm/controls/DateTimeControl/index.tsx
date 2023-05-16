@@ -7,6 +7,7 @@ import { formControlStyles } from '../styles'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { makeInputId } from '../../helpers'
 
 const TextInputControl = ({
   data = '',
@@ -15,7 +16,7 @@ const TextInputControl = ({
   ...rest
 }: ISelectControl) => {
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker

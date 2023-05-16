@@ -4,7 +4,7 @@ steps:
     args: [ 'install' ]
   - name: "gcr.io/cloud-builders/npm"
     entrypoint: "npx"
-    args: [ 'nx', 'build', 'frontend', '--prod' ]
+    args: [ 'nx', 'build', 'backend', '--prod' ]
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
@@ -12,22 +12,22 @@ steps:
         '--build-arg',
         'SOURCE=cb-dev-298308',
         '-f',
-        'apps/frontend/Dockerfile',
+        'apps/backend/Dockerfile',
         '-t',
-        'gcr.io/cb-dev-298308/loop-v3/frontend',
+        'gcr.io/cb-dev-298308/loop-v3/backend',
         '.'
       ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'gcr.io/cb-dev-298308/loop-v3/frontend' ]
+    args: [ 'push', 'gcr.io/cb-dev-298308/loop-v3/backend' ]
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       [
         'run',
         'deploy',
-        'loop-pro-frontend',
+        'loop-pro-backend',
         '--image',
-        'gcr.io/cb-dev-298308/loop-v3/frontend',
+        'gcr.io/cb-dev-298308/loop-v3/backend',
         '--region',
         'europe-west1',
         '--platform',
@@ -37,4 +37,4 @@ steps:
     timeout: 1600s
 timeout: 1600s
 images:
-  - 'gcr.io/cb-dev-298308/loop-v3/frontend'
+  - 'gcr.io/cb-dev-298308/loop-v3/backend'

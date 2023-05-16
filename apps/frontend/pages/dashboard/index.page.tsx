@@ -4,9 +4,9 @@ import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 import CreateJob from './components/CreateJob'
 import dynamic from 'next/dynamic'
+import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
-import { useMergeState } from '@hooks'
 import { useUserContext } from '@util/context/user'
 import DistanceChart from './components/Chart'
 import {
@@ -147,7 +147,7 @@ const Dashboard = () => {
         ))}
       </SpeedDial>
 
-      <CreateJob isOpen={state.create} handleClose={toggleMap} />
+      {state.create && <CreateJob handleClose={toggleCreate} />}
     </LayoutBase>
   )
 }

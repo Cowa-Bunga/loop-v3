@@ -8,6 +8,7 @@ import GooglePlacesAutocomplete, {
   getLatLng
 } from 'react-google-places-autocomplete'
 import { useMergeState } from '@hooks'
+import { makeInputId } from '../../helpers'
 
 const GooglePlacesControl = ({
   data = '',
@@ -21,20 +22,20 @@ const GooglePlacesControl = ({
   useEffect(() => {
     if (data == '') return
 
-    geocodeByAddress(data)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => {
-        if (rest.schema['options']['update_lat_long']) {
+    if (rest.schema['options']['update_lat_long']) {
+      geocodeByAddress(data)
+        .then((results) => getLatLng(results[0]))
+        .then((latLng) => {
           handleChange('latitude', latLng.lat)
           handleChange('longitude', latLng.lng)
-        }
-      })
-      .catch((error) => console.error('Error', error))
+        })
+        .catch((error) => console.error('Error', error))
+    }
     return
   }, [data])
 
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
         <GooglePlacesAutocomplete
           minLengthAutocomplete={4}

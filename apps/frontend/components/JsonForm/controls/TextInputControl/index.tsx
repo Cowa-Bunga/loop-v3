@@ -4,6 +4,7 @@ import { withJsonFormsControlProps } from '@jsonforms/react'
 import { FormControl, TextField } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles } from '../styles'
+import { makeInputId } from '../../helpers'
 
 const TextInputControl = ({
   data = '',
@@ -12,10 +13,10 @@ const TextInputControl = ({
   ...rest
 }: ISelectControl) => {
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
         <TextField
-          id={`${rest.id}-text-input`}
+          id={makeInputId(rest.id, 'text-input')}
           label={rest.label}
           required={rest.required}
           value={data}

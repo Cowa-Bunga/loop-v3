@@ -52,22 +52,6 @@ export const createJob = {
       taskType: {
         type: 'string',
         enum: ['delivery', 'collection'] // enums should be localized keys
-      },
-      parcels: {
-        type: 'array',
-        items: {
-          type: 'object',
-          properties: {
-            qrCode: {
-              type: 'string'
-            },
-            size: {
-              type: 'string',
-              enum: ['small', 'medium', 'large'] // enums should be localized keys
-            }
-          },
-          required: ['qrCode', 'size']
-        }
       }
     },
     required: [
@@ -86,7 +70,7 @@ export const createJob = {
   ui: {
     type: 'Group',
     label: 'Create Task',
-    i18n: 'create_task_form.title',
+    i18n: 'create_task_form.title.label',
     elements: [
       {
         type: 'HorizontalLayout',
@@ -163,6 +147,7 @@ export const createJob = {
       {
         type: 'ChildGroup',
         label: 'Delivery/Abandon Flows',
+        i18n: 'create_task_form.proof.label',
         elements: [
           {
             type: 'HorizontalLayout',
@@ -181,38 +166,6 @@ export const createJob = {
           }
         ]
       }
-      // Bottom optional items like QR Codes and Items...
-      // {
-      // type: 'Control',
-      // scope: '#/properties/parcels',
-      // i18n: 'create_task_form.parcels'
-      // rule: {
-      //   effect: 'SHOW',
-      //   condition: {
-      //     scope: '#',
-      //     schema: {
-      //       anyOf: [
-      //         {
-      //           properties: {
-      //             deliveryFlow: {
-      //               const: 'qrCode'
-      //             }
-      //           },
-      //           required: ['deliveryFlow']
-      //         },
-      //         {
-      //           properties: {
-      //             abandonFlow: {
-      //               const: 'qrCode'
-      //             }
-      //           },
-      //           required: ['abandonFlow']
-      //         }
-      //       ]
-      //     }
-      //   }
-      // }
-      // }
     ]
   },
 

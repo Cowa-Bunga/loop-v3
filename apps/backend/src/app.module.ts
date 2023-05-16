@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { OrderModule } from './order/order.module'
+import { TripModule } from './trip/trip.module'
 import { AuthModule } from './auth/auth.module'
 import { RouteModule } from './route/route.module'
 import { GeoModule } from './geo/geo.module'
@@ -12,11 +13,12 @@ import { GeoEntity } from './geo/entities/geo.entity'
   imports: [
     OrderModule,
     AuthModule,
+    TripModule,
     RouteModule,
     GeoModule,
     ResilienceModule,
     TypeOrmModule.forRoot({
-      // TODO:
+      // TODO: move to envs
       type: 'postgres',
       host: '35.241.202.202',
       // port: 5432,

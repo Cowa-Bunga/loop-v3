@@ -2,6 +2,7 @@ import type { MaterialLayoutRendererProps } from '@jsonforms/material-renderers'
 import { MaterialLayoutRenderer } from '@jsonforms/material-renderers'
 import { withJsonFormsLayoutProps } from '@jsonforms/react'
 import { Hidden, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 const ChildGroupLayout = (props) => {
   const { uischema, schema, path, visible, renderers } = props
@@ -15,11 +16,12 @@ const ChildGroupLayout = (props) => {
     uischema: uischema,
     renderers: renderers
   } as MaterialLayoutRendererProps
+  const { t } = useTranslation()
 
   return (
     <div style={{ padding: 20 }}>
       <Hidden xsUp={!visible}>
-        <Typography variant="h5">{uischema.label}</Typography>
+        <Typography variant="h5">{t(uischema['i18n'])}</Typography>
         <MaterialLayoutRenderer {...layoutProps} />
       </Hidden>
     </div>
