@@ -1,5 +1,5 @@
 {
-    "name": "loop-v3",
+    "name": "loop-pro-backend",
     "options": {
       "allow-unauthenticated": true,
       "memory": "256Mi",
