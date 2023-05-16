@@ -9,7 +9,12 @@ export class CreateGeoDto {
   trip_id: string
 
   @IsString()
+  driver_id?: string
+
+  @IsString()
   status: string
+
+  distance: number
 
   start: Point
 
@@ -17,7 +22,7 @@ export class CreateGeoDto {
 
   waypoints: GeometryCollection
 
-  route: Geometry
+  route: GeometryCollection
 
   zones: GeometryCollection
 }

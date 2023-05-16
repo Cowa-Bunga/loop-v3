@@ -11,8 +11,6 @@ import { Toolbox } from '../shared/components/ToolBox'
 import { MapView } from 'deck.gl'
 import load from '../shared/load'
 
-type TypeMapGLState = unknown
-
 export default function MapGL() {
   const [state, setState] = useMergeState({
     load: true,
@@ -35,18 +33,18 @@ export default function MapGL() {
       pitch: 45,
       bearing: 0
     }
-  } as TypeMapGLState)
+  } as any)
 
   useEffect(() => {
     if (state.load) {
       setState({ load: false })
       load([], (res) => {
-        return setState({
+        setState({
           trip: res.route.routes,
           isochrone: res.isochrones?.raw,
           start: [res.start._longitude, res.start._latitude],
           end: [res.end._longitude, res.end._latitude]
-        })
+        } as any)
       })
     }
   }, [])
@@ -60,7 +58,7 @@ export default function MapGL() {
     return <div>loading</div>
   }
 
-  // @ts-ignore
+  /* @ts-ignore */
   const toolbox = new EditableGeoJsonLayer({
     id: 'geojson-layer-edit',
     data: state.geojson,
@@ -123,15 +121,14 @@ export default function MapGL() {
 
       <Toolbox
         mode={state.mode}
+        modeConfig={modeConfig}
+        onSetModeConfig={(modeConfig) => setModeConfig(modeConfig)}
+        onSetGeoJson={(obj: { updatedData: unknown }) => {
+          setState({ geojson: obj.updatedData })
+        }}
         onSetMode={(mode) => {
           setModeConfig({ modeConfig: null })
           setMode(mode)
-        }}
-        modeConfig={modeConfig}
-        onSetModeConfig={(modeConfig) => setModeConfig(modeConfig)}
-        geoJson={state.geojson}
-        onSetGeoJson={(obj) => {
-          setState({ geojson: obj.updatedData })
         }}
       />
     </div>

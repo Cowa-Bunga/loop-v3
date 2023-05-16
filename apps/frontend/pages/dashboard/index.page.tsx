@@ -76,7 +76,7 @@ const Dashboard = () => {
           <Box sx={ui.closedBox} onClick={toggleLeft}>
             <KeyboardDoubleArrowLeft sx={ui.closedBoxIcon} />
           </Box>
-          <MemFilter hubs={[]} regions={[]} onChange={() => ''} regionHub="" />
+          <MemFilter />
         </Box>
       </Drawer>
 
@@ -90,7 +90,7 @@ const Dashboard = () => {
             mr: state.right ? '440px' : '30px'
           }}
         >
-          {state.routeView ? <MapGL /> : <GMapGL material={null} />}
+          {state.routeView ? <MapGL /> : <GMapGL />}
         </Card>
         <Box sx={ui.openBoxR} onClick={toggleRight}>
           <KeyboardDoubleArrowLeft />

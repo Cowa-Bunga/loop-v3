@@ -1,4 +1,6 @@
 import { RouteService } from '../services/route.service'
+import { ApiOperation, ApiTags, ApiSecurity } from '@nestjs/swagger'
+import { DEFAULT } from '../../assets/errors'
 import {
   Controller,
   Get,
@@ -14,6 +16,8 @@ import {
 } from 'nestjs-resilience'
 
 @Controller('route')
+@ApiTags('Routing Service')
+@ApiSecurity('x-api-key')
 export class RouteController {
   constructor(private readonly routeService: RouteService) {}
 
@@ -21,11 +25,10 @@ export class RouteController {
   @UseInterceptors(
     ResilienceInterceptor(
       new TimeoutStrategy(20000),
-      ResilienceFactory.createFallbackStrategy(() => ({
-        message: 'timeout 20000 occurred'
-      }))
+      ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
+  @ApiOperation({ summary: 'Get spatial route data' })
   async loadRoute() {
     // return this.routeService.osrm()
     return await this.routeService.valhalla()
@@ -34,12 +37,11 @@ export class RouteController {
   @Post(':trip_id')
   @UseInterceptors(
     ResilienceInterceptor(
-      new TimeoutStrategy(20000),
-      ResilienceFactory.createFallbackStrategy(() => ({
-        message: 'timeout 20000 occurred'
-      }))
+      new TimeoutStrategy(60000),
+      ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
+  @ApiOperation({ summary: 'Get all spatial trip data by trip_id' })
   getRouteByTripId(@Param('order_id') trip_id: string, @Request() req) {
     return this.routeService.getRouteByTripId(trip_id, req)
   }

@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common'
+import { Logger, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { AppModule } from './app.module'
@@ -8,6 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: true
   })
+  app.useGlobalPipes(new ValidationPipe())
 
   admin.initializeApp()
   admin.firestore().settings({ ignoreUndefinedProperties: true })

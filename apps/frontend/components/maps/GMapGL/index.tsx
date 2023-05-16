@@ -16,7 +16,7 @@ function Map() {
     start: null,
     end: null,
     height: null
-  }) as unknown
+  } as any)
 
   useEffect(() => {
     if (state.load) {
@@ -27,7 +27,7 @@ function Map() {
           iso: res.isochrones?.raw,
           start: [res.start._longitude, res.start._latitude],
           end: [res.end._longitude, res.end._latitude]
-        })
+        } as any)
       })
     }
   }, [])

@@ -8,7 +8,7 @@ import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew'
 import LoopIcon from '@mui/icons-material/Loop'
 import { Person } from '@mui/icons-material'
 
-export const MODEL_MENU = ({ client_id, driver_id }) =>
+export const MODEL_MENU = ({ client_id }) =>
   [
     {
       id: 'home',
@@ -28,7 +28,7 @@ export const MODEL_MENU = ({ client_id, driver_id }) =>
           icon: LoopIcon,
           title: 'Overview',
           link: `/organisation/${client_id}/orders/view`,
-          permissions: [],
+          permissions: []
         },
         {
           id: 'import',
@@ -43,7 +43,7 @@ export const MODEL_MENU = ({ client_id, driver_id }) =>
           title: 'Trip Report',
           link: `/organisation/${client_id}/fleet`,
           permissions: []
-        },
+        }
       ]
     },
     {
@@ -65,7 +65,7 @@ export const MODEL_MENU = ({ client_id, driver_id }) =>
       icon: PowerSettingsNewIcon,
       title: 'Reports',
       link: `/organisation/${client_id}/reports`,
-      permissions: [],
+      permissions: []
     },
     {
       id: 'routing',
@@ -86,6 +86,6 @@ export const MODEL_MENU = ({ client_id, driver_id }) =>
       icon: SupportAgentIcon,
       title: 'Support',
       permissions: [],
-      link: '/support/documentation',
+      link: '/support/documentation'
     }
   ] as unknown as IMenu[]

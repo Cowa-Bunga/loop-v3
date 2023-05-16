@@ -45,7 +45,7 @@ export default function RegionSelected({ hubs }: { hubs: string[] }) {
     'array-contains-any',
     contains
   )
-  
+
   const q = query(driversRef, constraints)
   const { status, data } = useFirestoreCollectionData(q)
 

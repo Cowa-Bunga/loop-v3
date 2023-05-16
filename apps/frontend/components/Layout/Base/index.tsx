@@ -1,9 +1,7 @@
-import FirebaseWrapper from '../../Firebase'
 import { Box } from '@mui/material'
 import { NavBar, Menu as MenuDrawer } from '@components'
 import { useMergeState } from '@hooks'
 import { ui } from './style'
-import { UserWrapper } from '@util/context/user'
 
 const LayoutBase = ({ children }) => {
   const [state, setState] = useMergeState({
@@ -16,7 +14,6 @@ const LayoutBase = ({ children }) => {
       <MenuDrawer open={state.open} />
       <Box sx={{ ...ui.box }}>{children}</Box>
     </>
-
   )
 }
 

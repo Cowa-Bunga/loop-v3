@@ -1,20 +1,17 @@
 import { Body, Controller, Get, Post, UseInterceptors } from '@nestjs/common'
-import { GeoEntity } from '../entities/geo.entity'
+import { CreateGeoDto } from '../dto/create-geo.dto'
 import { GeoService } from '../services/geo.service'
+import { ApiOperation, ApiTags, ApiSecurity } from '@nestjs/swagger'
+import { DEFAULT } from '../../assets/errors'
 import {
   ResilienceInterceptor,
   TimeoutStrategy,
   ResilienceFactory
 } from 'nestjs-resilience'
 
-const DEFAULT = {
-  TIMEOUT: {
-    status: 401,
-    message: 'Request timed out'
-  }
-}
-
 @Controller('geo')
+@ApiTags('Geo Service')
+@ApiSecurity('x-api-key')
 export class GeoController {
   constructor(private readonly service: GeoService) {}
 
@@ -25,6 +22,7 @@ export class GeoController {
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
+  @ApiOperation({ summary: 'Get all spatial trip data' })
   public async getAll() {
     return await this.service.getAll()
   }
@@ -36,9 +34,9 @@ export class GeoController {
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
-  createGeo(@Body() location: GeoEntity): void {
-    console.warn(location)
-    this.service.create(location)
+  @ApiOperation({ summary: 'Create a new spatial trip record' })
+  createGeo(@Body() params: CreateGeoDto): void {
+    this.service.create(params)
   }
 
   @Post('range')
@@ -48,13 +46,10 @@ export class GeoController {
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
+  @ApiOperation({ summary: 'Get a spatial range in km' })
   public async getRange(
-    @Body() location: { lat: number; long: number; range: number }
+    @Body() params: { lat: number; long: number; range: number }
   ) {
-    return await this.service.getRange(
-      location.lat,
-      location.long,
-      location.range
-    )
+    return await this.service.getRange(params.lat, params.long, params.range)
   }
 }

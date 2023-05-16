@@ -42,18 +42,12 @@ export default function DriverCard({ title }) {
         <Grid container>
           <Grid item xs={6}>
             <RadialChart
-            animation
-            style={{
-              stroke: 'transparent',
-              strokeLinejoin: 'round'
-            }}
-            colorRange={[
-              'steelBlue',
-              'yellow',
-              'lightGreen',
-              'gold',
-              
-            ]}
+              animation
+              style={{
+                stroke: 'transparent',
+                strokeLinejoin: 'round'
+              }}
+              colorRange={['steelBlue', 'yellow', 'lightGreen', 'gold']}
               width={200}
               height={200}
               data={data}
@@ -67,9 +61,9 @@ export default function DriverCard({ title }) {
           </Grid>
           <Grid item xs={6}>
             <List>
-              {data.map((v) => (
+              {data.map((v, i) => (
                 <ListItem
-                  key={v}
+                  key={i}
                   disablePadding
                   sx={{ height: '40px', m: 0, p: 0 }}
                 >
