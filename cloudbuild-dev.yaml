@@ -25,7 +25,7 @@ steps:
       [
         'run',
         'deploy',
-        'loop-v3',
+        'loop-pro-frontend',
         '--image',
         'gcr.io/cb-dev-298308/loop-v3/frontend',
         '--region',
