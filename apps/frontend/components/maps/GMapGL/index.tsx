@@ -22,7 +22,8 @@ function Map() {
     if (state.load) {
       setState({ load: false })
       load([], (res) => {
-        return setState({
+        setState({
+          load: false,
           trip: res.route.routes,
           iso: res.isochrones?.raw,
           start: [res.start._longitude, res.start._latitude],
@@ -30,18 +31,17 @@ function Map() {
         } as any)
       })
     }
-  }, [])
+  }, [state.load])
 
   const { isLoaded } = useJsApiLoader({
     id: 'loop-gmap-vector',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
   })
 
-  if (state.load || !state.start || !isLoaded) {
+  if (state.load || !state.start) {
     return <div>loading</div>
   }
 
-  const center = { lat: state.start[1], lng: state.start[0] }
   const driver = [28.321779, -26.2290333]
 
   // Deckgl
@@ -53,14 +53,14 @@ function Map() {
       end: state.end,
       waypoints: state.waypoints,
       trip: state.trip,
-      iso: state.isochrone
+      iso: state.iso
     })
   })
 
-  return isLoaded && state.start && state.waypoints ? (
+  return isLoaded ? (
     <GoogleMap
       mapContainerStyle={ui.mapContainer}
-      center={center}
+      center={{ lat: state.start[1], lng: state.start[0] }}
       zoom={13}
       tilt={45}
       options={{ mapId: '713dad0b0aefa8cc' }}
