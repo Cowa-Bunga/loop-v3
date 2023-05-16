@@ -10,9 +10,10 @@ import * as admin from 'firebase-admin'
 export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest()
-    const apiKey = request.header('x-api-key')
+    const apiKey = request.headers['x-api-key']
+    
     if (!apiKey) {
-      throw new UnauthorizedException()
+      throw new UnauthorizedException('Invalid or missing x-api-key.')
     }
     try {
       const db = admin.firestore()
@@ -23,13 +24,13 @@ export class AuthGuard implements CanActivate {
         .get()
 
       if (clients.empty) {
-        throw new UnauthorizedException()
+        throw new UnauthorizedException('Invalid or missing x-api-key.')
       }
 
       const client = clients.docs.pop()
       request['client'] = client.id
     } catch {
-      throw new UnauthorizedException()
+      throw new UnauthorizedException('Invalid or missing x-api-key.')
     }
     return true
   }
