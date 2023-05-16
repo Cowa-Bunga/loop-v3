@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest()
     const apiKey = request.headers['x-api-key']
-    
+
     if (!apiKey) {
       throw new UnauthorizedException('Invalid or missing x-api-key.')
     }
@@ -28,10 +28,18 @@ export class AuthGuard implements CanActivate {
       }
 
       const client = clients.docs.pop()
-      request['client'] = client.id
+      request['client'] = new ClientRequest(client)
     } catch {
       throw new UnauthorizedException('Invalid or missing x-api-key.')
     }
     return true
+  }
+}
+
+export class ClientRequest {
+  id: string
+
+  constructor(client: FirebaseFirestore.DocumentSnapshot) {
+    this.id = client.id
   }
 }
