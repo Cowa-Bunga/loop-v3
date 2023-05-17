@@ -6,7 +6,7 @@ import {
   HexagonLayer,
   ColumnLayer,
   PolygonLayer
-} from 'deck.gl'
+} from 'deck.gl/typed'
 
 export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
   return [

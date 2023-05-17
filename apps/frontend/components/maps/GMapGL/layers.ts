@@ -6,9 +6,8 @@ import {
   GeoJsonLayer,
   PolygonLayer,
   ColumnLayer,
-  Position3D
-} from 'deck.gl'
-import { Position } from 'geojson'
+  Position
+} from 'deck.gl/typed'
 
 /* @ts-ignore */
 export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
@@ -63,11 +62,12 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
 
   new ColumnLayer({
     id: 'point-highlight',
-    data: [
-      { point: start, label: 'HUB', color: [100, 200, 100] },
-      { point: end, label: 'CUSTOMER x', color: [200, 100, 100] },
-      { point: driver, label: 'Driver x', color: [100, 200, 200] }
-    ] as LayerDataProps,
+    data: () =>
+      [
+        { point: start, label: 'HUB', color: [100, 200, 100] },
+        { point: end, label: 'CUSTOMER x', color: [200, 100, 100] },
+        { point: driver, label: 'Driver x', color: [100, 200, 200] }
+      ] as LayerDataProps,
     radius: 40,
     opacity: 0.04,
     getPosition: (d: LayerDataProps) => [d.point[0], d.point[1], 100],
@@ -139,7 +139,7 @@ interface LayerDataProps {
   label?: string
   point?: number[]
   color?: number[]
-  coordinates?: Position3D[]
+  coordinates?: Position[]
   geometry?: {
     label?: string
     coordinates?: Position

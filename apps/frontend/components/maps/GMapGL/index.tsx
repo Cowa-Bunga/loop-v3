@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { GoogleMapsOverlay } from '@deck.gl/google-maps'
+import { GoogleMapsOverlay } from '@deck.gl/google-maps/typed'
 import { layers } from './layers'
 import { DEFAULT_THEME } from '../shared/config'
 import { useEffect, useMergeState } from '@hooks'
