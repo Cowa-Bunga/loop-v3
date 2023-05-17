@@ -109,7 +109,9 @@ export default function MapGL() {
     <div style={ui.container}>
       <DeckGL
         getTooltip={({ object }) => object?.label && object.label}
+        // @ts-ignore
         views={[new MapView()]}
+        // @ts-ignore
         layers={comboLayers}
         controller={{ doubleClickZoom: false }}
         _animate
