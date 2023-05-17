@@ -8,7 +8,7 @@ import { ui } from './style'
 import { layers } from './layers'
 import { EditableGeoJsonLayer } from 'nebula.gl'
 import { Toolbox } from '../shared/components/ToolBox'
-import { MapView } from 'deck.gl'
+import { MapView } from 'deck.gl/typed'
 import load from '../shared/load'
 
 export default function MapGL() {
@@ -105,12 +105,13 @@ export default function MapGL() {
     })
   ]
 
+  const mapView = new MapView({})
+
   return (
     <div style={ui.container}>
       <DeckGL
         getTooltip={({ object }) => object?.label && object.label}
-        // @ts-ignore
-        views={[new MapView()]}
+        views={[mapView]}
         // @ts-ignore
         layers={comboLayers}
         controller={{ doubleClickZoom: false }}
