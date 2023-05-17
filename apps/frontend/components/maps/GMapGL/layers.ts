@@ -21,7 +21,7 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
       }
     ] as LayerDataProps[],
     pickable: true,
-    scenegraph: ASSETS.OBJ_CAR,
+    scenegraph: ASSETS.OBJ_CAR as unknown,
     /* @ts-ignore */
     getPosition: (d: LayerDataProps) => d.coordinates,
     getOrientation: (d) => [0, 10, 90],

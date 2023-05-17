@@ -19,7 +19,7 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
         }
       ],
       pickable: true,
-      scenegraph: ASSETS.OBJ_CAR,
+      scenegraph: ASSETS.OBJ_CAR as unknown,
       getPosition: (d) => d.coordinates,
       getOrientation: (d) => [0, 10, 90],
       _animations: {
