@@ -45,7 +45,8 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
       }
     ] as LayerDataProps[],
     pickable: true,
-    scenegraph: ASSETS.OBJ_MARKER,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    scenegraph: ASSETS.OBJ_MARKER as any,
     /* @ts-ignore */
     getPosition: (d: LayerDataProps) => [
       d.coordinates[0],

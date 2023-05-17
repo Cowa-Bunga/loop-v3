@@ -43,7 +43,8 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
         }
       ],
       pickable: true,
-      scenegraph: ASSETS.OBJ_MARKER,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      scenegraph: ASSETS.OBJ_MARKER as any,
       getPosition: (d) => [d.coordinates[0], d.coordinates[1], 100],
       getOrientation: (d) => [0, 10, 90],
       _animations: {
