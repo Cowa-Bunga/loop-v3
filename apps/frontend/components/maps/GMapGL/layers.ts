@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ICON_MAPPING, ASSETS } from '../shared/config'
 import {
   ScenegraphLayer,
   IconLayer,
   GeoJsonLayer,
   PolygonLayer,
-  ColumnLayer
+  ColumnLayer,
+  Position3D
 } from 'deck.gl'
+import { Position } from 'geojson'
 
+/* @ts-ignore */
 export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
   new ScenegraphLayer({
     id: 'driver',
@@ -15,17 +19,17 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
         coordinates: driver,
         label: 'Driver: John Smith \n#8765789'
       }
-    ],
+    ] as LayerDataProps[],
     pickable: true,
-    scenegraph: ASSETS.OBJ_CAR,
-    getPosition: (d) => d.coordinates,
+    scenegraph: ASSETS.OBJ_CAR as any,
+    /* @ts-ignore */
+    getPosition: (d: LayerDataProps) => d.coordinates,
     getOrientation: (d) => [0, 10, 90],
     _animations: {
       '*': { speed: 1 }
     },
     sizeScale: 2,
     _lighting: 'pbr',
-    material: theme.material,
     onHover: ({ object, x, y }) => {
       console.log('driver:hover')
     }
@@ -38,17 +42,21 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
         coordinates: driver,
         label: 'Driver: John Smith \n#8765789'
       }
-    ],
+    ] as LayerDataProps[],
     pickable: true,
-    scenegraph: ASSETS.OBJ_MARKER,
-    getPosition: (d) => [d.coordinates[0], d.coordinates[1], 100],
+    scenegraph: ASSETS.OBJ_MARKER as any,
+    /* @ts-ignore */
+    getPosition: (d: LayerDataProps) => [
+      d.coordinates[0],
+      d.coordinates[1],
+      100
+    ],
     getOrientation: (d) => [0, 10, 90],
     _animations: {
       '*': { speed: 1 }
     },
     sizeScale: 20,
-    _lighting: 'pbr',
-    material: theme.material
+    _lighting: 'pbr'
   }),
 
   new ColumnLayer({
@@ -57,11 +65,12 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
       { point: start, label: 'HUB', color: [100, 200, 100] },
       { point: end, label: 'CUSTOMER x', color: [200, 100, 100] },
       { point: driver, label: 'Driver x', color: [100, 200, 200] }
-    ],
+    ] as LayerDataProps,
     radius: 40,
     opacity: 0.04,
-    getPosition: (d) => [d.point[0], d.point[1], 100],
-    getFillColor: (d) => d.color
+    getPosition: (d: LayerDataProps) => [d.point[0], d.point[1], 100],
+    /* @ts-ignore */
+    getFillColor: (d: LayerDataProps) => d.color
   }),
 
   new IconLayer({
@@ -72,7 +81,8 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
     iconMapping: ICON_MAPPING,
     getIcon: (d) => 'marker',
     sizeScale: 3,
-    getPosition: (d) => d.coordinates,
+    /* @ts-ignore */
+    getPosition: (d: LayerDataProps) => d.coordinates,
     getSize: (d) => 10,
     getColor: (d) => [255, 0, 0]
   }),
@@ -85,7 +95,8 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
     iconMapping: ICON_MAPPING,
     getIcon: (d) => 'marker',
     sizeScale: 2.5,
-    getPosition: (d) => d.coordinates,
+    /* @ts-ignore */
+    getPosition: (d: LayerDataProps) => d.coordinates,
     getSize: (d) => 10,
     getColor: (d) => [250, 0, 250]
   }),
@@ -97,6 +108,7 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
     pickable: true,
     extruded: true,
     lineWidthMinPixels: 4,
+    /* @ts-ignore */
     getLineColor: (d) => d.color || [255, 0, 255],
     getLineWidth: 4,
     opacity: 0.4,
@@ -113,11 +125,21 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
     filled: true,
     wireframe: true,
     lineWidthMinPixels: 1,
-    getPolygon: (d) => d.geometry.coordinates,
-    // getElevation: d => 0,
+    /* @ts-ignore */
+    getPolygon: (d: LayerDataProps) => d.geometry.coordinates,
     getFillColor: (d) => [6, 56, 99],
-    // getLineColor: [80, 80, 80],
     getLineWidth: 1,
     opacity: 0.001
   })
 ]
+
+interface LayerDataProps {
+  label?: string
+  point?: number[]
+  color?: number[]
+  coordinates?: Position3D[]
+  geometry?: {
+    label?: string
+    coordinates?: Position
+  }
+}

@@ -21,13 +21,16 @@ function Map() {
     lng: 18.4233
   }
 
-  const onLoad = useCallback((map) => {
-    if (typeof window !== 'undefined') {
-      const bounds = new window.google.maps.LatLngBounds(center)
-      map.fitBounds(bounds)
-      setMap(map)
-    }
-  }, [])
+  const onLoad = useCallback(
+    (map) => {
+      if (typeof window !== 'undefined') {
+        const bounds = new window.google.maps.LatLngBounds(center)
+        map.fitBounds(bounds)
+        setMap(map)
+      }
+    },
+    [center]
+  )
 
   const onUnmount = useCallback(function callback(map) {
     setMap(null)
