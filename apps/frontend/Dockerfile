@@ -34,10 +34,7 @@ RUN chown -R frontend:frontend .
 WORKDIR /apps/frontend
 
 RUN npm i -g next@13.1.1 nx
-RUN npm --omit=dev -f install
-
-# RUN npm run docker-postinstall
-
+RUN npm install --legacy-peer-deps
 
 EXPOSE 3000
 
