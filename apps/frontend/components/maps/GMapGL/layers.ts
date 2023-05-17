@@ -21,7 +21,8 @@ export const layers = ({ driver, waypoints, trip, iso, theme, start, end }) => [
       }
     ] as LayerDataProps[],
     pickable: true,
-    scenegraph: ASSETS.OBJ_CAR as unknown,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    scenegraph: ASSETS.OBJ_CAR as any,
     /* @ts-ignore */
     getPosition: (d: LayerDataProps) => d.coordinates,
     getOrientation: (d) => [0, 10, 90],

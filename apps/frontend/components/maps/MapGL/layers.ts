@@ -19,7 +19,8 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
         }
       ],
       pickable: true,
-      scenegraph: ASSETS.OBJ_CAR as unknown,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      scenegraph: ASSETS.OBJ_CAR as any,
       getPosition: (d) => d.coordinates,
       getOrientation: (d) => [0, 10, 90],
       _animations: {
