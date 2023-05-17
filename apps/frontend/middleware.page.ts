@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 // import { checkPermissions } from '@util/rules/permissions'
 
 const middleware = (request: NextRequest) => {

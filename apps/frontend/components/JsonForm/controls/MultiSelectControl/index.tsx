@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { Checkbox, ListItemText, MenuItem } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles, MenuProps } from '../styles'
-import { useMergeState } from '@hooks'
+import { useEffect, useMergeState } from '@hooks'
 import { makeInputId } from '../../helpers'
+import {
+  Checkbox,
+  ListItemText,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Select
+} from '@mui/material'
 
 const MultiSelectControl = ({
-  // the incoming selected items
   data = [],
   handleChange,
   path,
@@ -20,18 +22,15 @@ const MultiSelectControl = ({
   const { t } = useTranslation()
 
   const [state, setState] = useMergeState({
-    selected: data
+    selected: data as string
   })
 
-  const onChange = (event: SelectChangeEvent<typeof state.selected>) => {
-    const {
-      target: { value }
-    } = event
+  const onChange = ({ target: { value } }) => {
     const oneOf = rest.schema['options']?.['oneOf'] ?? []
     const selected = value.filter((v) => oneOf.includes(v))
 
     if (selected.length > 1) {
-      // Think of a viable way to inform the user of why this is not allowed
+      // TODO: Think of a viable way to inform the user of why this is not allowed
       return
     }
 
@@ -44,7 +43,7 @@ const MultiSelectControl = ({
   useEffect(() => {
     handleChange(path, state.selected)
     return
-  }, [state.selected])
+  }, [handleChange, path, state.selected])
 
   const renderTranslatedValue = (values: string[]) => {
     return values
@@ -62,7 +61,7 @@ const MultiSelectControl = ({
           multiple
           value={state.selected}
           onChange={onChange}
-          renderValue={(selected) => renderTranslatedValue(selected)}
+          renderValue={(selected: []) => renderTranslatedValue(selected)}
           required={rest.required}
           MenuProps={MenuProps}
           label={rest.label}

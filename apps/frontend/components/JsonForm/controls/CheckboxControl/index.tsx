@@ -19,7 +19,7 @@ const CheckboxControl = ({
           label={rest.label}
           control={
             <Checkbox
-              checked={data}
+              checked={Boolean(data)}
               onChange={(e) => handleChange(path, e.target.checked)}
             />
           }

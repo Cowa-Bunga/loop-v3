@@ -1,11 +1,11 @@
 import { renderWithProviders } from '@test/helpers'
 import Drivers from '../'
 
-jest.mock('../RegionSelect', () => ({
+jest.mock('../components/RegionSelect', () => ({
   __esModule: true,
   default: () => <div>RegionSelect</div>
 }))
-jest.mock('../RegionsSelected', () => ({
+jest.mock('../components/RegionsSelected', () => ({
   __esModule: true,
   default: () => <div>RegionsSelected</div>
 }))

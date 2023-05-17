@@ -56,7 +56,15 @@ const SignIn = () => {
       })
       router.push('/dashboard')
     }
-  }, [data, state.clientSelected])
+  }, [
+    data,
+    router,
+    setState,
+    state,
+    state.clientSelected,
+    status,
+    updateUserContext
+  ])
 
   const { change, submit } = Actions(state, setState)
 
@@ -67,11 +75,7 @@ const SignIn = () => {
       <div style={ui.loginBg}>
         <Container component="main" maxWidth="xs">
           <Card sx={ui.card}>
-            <img
-              alt="logo"
-              src="https://cb-dos-f5dovyimaq-ew.a.run.app/images/d611b99e56af790000810c1a1f4c5eaf.png"
-              style={ui.img}
-            />
+            <img alt="logo" src="/loop-logo-icon.png" style={ui.img} />
 
             <Typography component="h1" variant="h5">
               {_t('title')}

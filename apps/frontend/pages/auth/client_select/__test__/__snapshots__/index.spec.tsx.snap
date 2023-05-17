@@ -86,7 +86,7 @@ exports[`ClientSelect should render successfully - error 1`] = `
             >
               <img
                 alt="logo"
-                src="https://cb-dos-f5dovyimaq-ew.a.run.app/images/d611b99e56af790000810c1a1f4c5eaf.png"
+                src="/loop-logo-icon.png"
                 style="height: 120px;"
               />
               <h1
@@ -251,7 +251,7 @@ exports[`ClientSelect should render successfully 1`] = `
             >
               <img
                 alt="logo"
-                src="https://cb-dos-f5dovyimaq-ew.a.run.app/images/d611b99e56af790000810c1a1f4c5eaf.png"
+                src="/loop-logo-icon.png"
                 style="height: 120px;"
               />
               <h1

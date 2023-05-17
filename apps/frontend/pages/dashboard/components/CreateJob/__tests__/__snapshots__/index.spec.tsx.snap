@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateJob should render closed 1`] = `
-<body
-  style=""
->
-  <div />
-</body>
-`;
-
 exports[`CreateJob should render open 1`] = `
 <body
   style="padding-right: 1024px; overflow: hidden;"
@@ -31,11 +23,11 @@ exports[`CreateJob should render open 1`] = `
       tabindex="0"
     />
     <div
-      class="MuiBox-root css-oyhib8"
+      class="MuiBox-root css-m66zyu"
       tabindex="-1"
     >
       <div
-        class="MuiBox-root css-byjdlg"
+        class="MuiBox-root css-1ly2j85"
       >
         <span
           class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"

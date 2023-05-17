@@ -69,7 +69,7 @@ export const createJob = {
 
   ui: {
     type: 'Group',
-    label: 'Create Task Form',
+    label: 'Create Task',
     i18n: 'create_task_form.title.label',
     elements: [
       {

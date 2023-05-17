@@ -12,8 +12,7 @@ import {
   IsString,
   Validate,
   ValidateIf,
-  ValidateNested,
-  isNotEmpty
+  ValidateNested
 } from 'class-validator'
 import { BadRequestException } from '@nestjs/common'
 
@@ -69,6 +68,7 @@ class Flow {
   code: string
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class Trip {
   @IsString()
   trip_no: string
@@ -140,7 +140,6 @@ class Trip {
 }
 
 export class GetTripDto {
-
   @ApiProperty({
     description: 'The id of the trip',
     example: '1234567890'

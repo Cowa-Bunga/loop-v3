@@ -1,0 +1,233 @@
+{
+  "start": {
+    "_latitude": -26.2251971,
+    "_longitude": 28.29998
+  },
+  "end": {
+    "_latitude": -26.2490125,
+    "_longitude": 28.3476559
+  },
+  "order": {
+    "order_no": "order8",
+    "alcohol": false,
+    "instructions": "",
+    "address": "Dalview, Brakpan, South Africa",
+    "delivery_time": {
+      "_seconds": 1681126644,
+      "_nanoseconds": 933000000
+    },
+    "recreated": false,
+    "type": "order",
+    "branch": {
+      "store_code": "0001",
+      "address": "Thakedi Ave, Wattville, Benoni, 1501, South Africa",
+      "name": "JHB1",
+      "location": {
+        "_latitude": -26.2251971,
+        "_longitude": 28.29998
+      },
+      "id": "zqeMTkGoI5QmnkZEdLK9"
+    },
+    "assignable": false,
+    "payment_type": null,
+    "service_type": "",
+    "delivery_flow": {
+      "type": "sog"
+    },
+    "origination": "manual",
+    "abandon_flow": {
+      "type": "default"
+    },
+    "location": {
+      "_latitude": -26.2490125,
+      "_longitude": 28.3476559
+    },
+    "collection_time": {
+      "_seconds": 1681126644,
+      "_nanoseconds": 447000000
+    },
+    "task_type": "",
+    "customer": {
+      "name": "Baen",
+      "mobile_no": "+27897987"
+    },
+    "delivery_price": 0,
+    "delay_batch": 0,
+    "created_at": {
+      "_seconds": 1681126651,
+      "_nanoseconds": 369000000
+    },
+    "trip_id": "2uemL3tzL3sv3oQnqoUD",
+    "clustered": false,
+    "history": [
+      {
+        "timestamp": {
+          "_seconds": 1681126651,
+          "_nanoseconds": 336000000
+        },
+        "status": "pending"
+      },
+      {
+        "timestamp": {
+          "_seconds": 1681203637,
+          "_nanoseconds": 984000000
+        },
+        "status": "batched"
+      },
+      {
+        "timestamp": {
+          "_seconds": 1681203804,
+          "_nanoseconds": 170000000
+        },
+        "status": "arrived_at_collection_point"
+      },
+      {
+        "resolved": true,
+        "timestamp": {
+          "_seconds": 1681203836,
+          "_nanoseconds": 520000000
+        },
+        "status": "collected"
+      },
+      {
+        "updated_by": "/clients/tKJWhfTFoLNvCgLtKnmv/users/Z7IN2Gz5E2ki3nhnvDux",
+        "status": "in_transit",
+        "timestamp": {
+          "_seconds": 1681203842,
+          "_nanoseconds": 690000000
+        }
+      },
+      {
+        "updated_by": "/clients/tKJWhfTFoLNvCgLtKnmv/users/Z7IN2Gz5E2ki3nhnvDux",
+        "status": "arrived",
+        "timestamp": {
+          "_seconds": 1681203844,
+          "_nanoseconds": 250000000
+        }
+      },
+      {
+        "status": "delivered",
+        "timestamp": {
+          "_seconds": 1681203846,
+          "_nanoseconds": 79000000
+        },
+        "updated_by": "/clients/tKJWhfTFoLNvCgLtKnmv/users/Z7IN2Gz5E2ki3nhnvDux"
+      }
+    ],
+    "status": "delivered",
+    "delivery_fee": 10
+  },
+  "route": {
+    "code": "Ok",
+    "routes": [
+      {
+        "geometry": {
+          "coordinates": [
+            [
+              28.299945,
+              -26.225219
+            ],
+            [
+              28.29906,
+              -26.224571
+            ],
+            [
+              28.299222,
+              -26.224137
+            ],
+            [
+              28.300514,
+              -26.223287
+            ],
+            [
+              28.317762,
+              -26.22353
+            ],
+            [
+              28.319768,
+              -26.223229
+            ],
+            [
+              28.321779,
+              -26.229033
+            ],
+            [
+              28.322288,
+              -26.232005
+            ],
+            [
+              28.321305,
+              -26.250701
+            ],
+            [
+              28.32592,
+              -26.251769
+            ],
+            [
+              28.32728,
+              -26.251771
+            ],
+            [
+              28.330326,
+              -26.25116
+            ],
+            [
+              28.334926,
+              -26.248625
+            ],
+            [
+              28.339756,
+              -26.250986
+            ],
+            [
+              28.346354,
+              -26.247616
+            ],
+            [
+              28.347261,
+              -26.248716
+            ],
+            [
+              28.347617,
+              -26.248682
+            ]
+          ],
+          "type": "LineString"
+        },
+        "legs": [
+          {
+            "steps": [],
+            "distance": 8307.4,
+            "duration": 602.3,
+            "summary": "",
+            "weight": 602.3
+          }
+        ],
+        "distance": 8307.4,
+        "duration": 602.3,
+        "weight_name": "routability",
+        "weight": 602.3
+      }
+    ],
+    "waypoints": [
+      {
+        "hint": "ZHwFgId8BYBXAAAACAAAAFUAAAAAAAAAEiNzQmZIqEAoGmxCAAAAAFcAAAAIAAAAVQAAAAAAAAAiAgAAqdKvAb3Vb_7M0q8B09Vv_gUAHwlzPNkQ",
+        "distance": 4.262963,
+        "name": "Thakedi Street",
+        "location": [
+          28.299945,
+          -26.225219
+        ]
+      },
+      {
+        "hint": "MZ0FgDSdBYA5AAAAGwAAAAAAAAAAAAAAXIuZQs4XD0IAAAAAAAAAADkAAAAbAAAAAAAAAAAAAAAiAgAA4YywARZ6b_4IjbABy3hv_gAAfxBzPNkQ",
+        "distance": 36.876939,
+        "name": "Kirkland Street",
+        "location": [
+          28.347617,
+          -26.248682
+        ]
+      }
+    ]
+  }
+}

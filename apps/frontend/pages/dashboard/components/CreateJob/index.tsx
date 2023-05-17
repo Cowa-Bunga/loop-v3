@@ -1,53 +1,32 @@
 import { Box, CircularProgress, Modal } from '@mui/material'
 import { JsonForm } from '@components'
-import { useMergeState, useState, useTranslation } from '@hooks'
-import ParcelsForm from '@pages/dashboard/components/CreateJob/components/ParcelsForm'
+import { useEffect, useMergeState, useState, useTranslation } from '@hooks'
+import ParcelsForm from './components/ParcelsForm'
 import { Actions } from './actions'
 import { createJobFormLocalePathBuilder } from '@locale/locale-utils'
-import { useEffect } from 'react'
 import { IForm } from '@pages/api/forms/[reference]/type'
+import { ui } from './style'
 
-export interface CreateJobProps {
-  handleClose: () => void
-}
-
-const style = {
-  position: 'absolute',
-  top: '10%',
-  left: '50%',
-  transform: 'translate(-50%, 0%)',
-  width: '80%',
-  height: '80%',
-  overflow: 'scroll',
-  backgroundColor: 'white'
-}
-
-interface IState {
-  data: any
-  createForm: IForm
-  parcelsForm: IForm
-}
-
-const CreateJob = ({ handleClose }: CreateJobProps) => {
+const CreateJob = ({ handleClose }: IappCreateJobProps) => {
+  const { t } = useTranslation()
   const [isLoading, setLoading] = useState(true)
 
-  const [state, setState] = useMergeState<IState>({
-    data: {},
+  const [state, setState] = useMergeState<IappCreateJobState>({
+    data: { parcels: null },
     createForm: {} as IForm,
     parcelsForm: {} as IForm
   })
+
+  useEffect(() => {
+    getForms().then(() => setLoading(false))
+    return
+  })
+
+  const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
   const { addEmptyParcel, updateParcel, updateFormData, getForms } = Actions(
     state,
     setState
   )
-  const { t } = useTranslation()
-  const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
-
-  useEffect(() => {
-    getForms().then(() => setLoading(false))
-
-    return
-  }, [])
 
   return (
     <Modal
@@ -56,10 +35,10 @@ const CreateJob = ({ handleClose }: CreateJobProps) => {
       aria-labelledby={_t('aria.label')}
       aria-describedby={_t('aria.description')}
     >
-      <Box sx={style}>
+      <Box sx={ui.container}>
         {isLoading ? (
           <Box
-            sx={style}
+            sx={ui.container}
             display="flex"
             justifyContent="center"
             alignItems="center"

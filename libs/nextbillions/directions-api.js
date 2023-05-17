@@ -1,6 +1,38 @@
 const fs = require('fs')
+const admin = require('firebase-admin')
+
 let results = []
 let delay = 300
+
+// Some of this has been offset to backend api for the trip data - WIP
+
+// load trip history to file
+async function getTrips(client_id) {
+  const db = admin.firestore()
+
+  const orders = await db
+    .collection('clients')
+    .doc(client_id)
+    .collection('orders')
+    .get()
+
+  let formatted = []
+  orders.map(async (orderData) => {
+    if (orderData.trip_id) {
+      //TODO replace with trip service
+      const trip = await db
+        .collection('clients')
+        .doc(client_id)
+        .collection('trips')
+        .doc(orderData.trip_id)
+        .get()
+
+      formatted.push(orderData)
+    }
+  })
+
+  results.push(formatted)
+}
 
 /**
  * source data is trip id only, this is a 2 step, with a firebase-admin task first.
@@ -13,10 +45,7 @@ fs.readFile('./directions-api-trip-ids-prod.json', 'utf8', (err, file) => {
     return
   }
 
-  console.info('file:', JSON.parse(file))
-
   const QueryList = JSON.parse(file)
-
   QueryList.map(async (query) => {
     const requestOptions = {
       method: 'GET',
@@ -24,6 +53,8 @@ fs.readFile('./directions-api-trip-ids-prod.json', 'utf8', (err, file) => {
     }
 
     delay = delay + 300
+
+    console.warn(results)
 
     // setTimeout(() => {
     //   fetch(

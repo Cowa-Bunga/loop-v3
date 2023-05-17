@@ -2,12 +2,12 @@ import { JsonSchema, UISchemaElement } from '@jsonforms/core'
 
 export interface ISelectControl {
   id: string
-  data: any
+  data: unknown | unknown[] | boolean | string | void
   path: string
   label: string
   schema: JsonSchema
   uischema: UISchemaElement
   required?: boolean
 
-  handleChange(path: string, value: any): void
+  handleChange(path: string, value: unknown): void
 }

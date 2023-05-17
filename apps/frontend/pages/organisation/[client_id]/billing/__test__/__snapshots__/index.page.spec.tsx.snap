@@ -45,7 +45,7 @@ exports[`Billing should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1t019bo"
+      class="MuiBox-root css-1abb3vo"
     >
       Billing
     </div>

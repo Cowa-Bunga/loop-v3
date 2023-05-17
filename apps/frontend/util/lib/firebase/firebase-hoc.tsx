@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   fetchAndActivate,
   FirebaseAppProvider,
@@ -22,7 +21,7 @@ const FBAppProvider = (Child) => {
 
 const FirebaseHOC = (Child) => {
   function Wrapper(props) {
-    const { status, data: remoteConfigInstance } = useInitRemoteConfig(
+    const { data: remoteConfigInstance } = useInitRemoteConfig(
       async (firebaseApp) => {
         const remoteConfig = getRemoteConfig(firebaseApp)
         remoteConfig.settings = {
