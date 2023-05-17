@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
 import { FormControl } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
@@ -17,13 +17,13 @@ const GooglePlacesControl = ({
   ...rest
 }: ISelectControl) => {
   const [state, setState] = useMergeState({
-    address: data
+    address: data as string
   })
   useEffect(() => {
     if (data == '') return
 
     if (rest.schema['options']['update_lat_long']) {
-      geocodeByAddress(data)
+      geocodeByAddress(data as string)
         .then((results) => getLatLng(results[0]))
         .then((latLng) => {
           handleChange('latitude', latLng.lat)
@@ -32,7 +32,7 @@ const GooglePlacesControl = ({
         .catch((error) => console.error('Error', error))
     }
     return
-  }, [data])
+  }, [data, handleChange, rest.schema])
 
   return (
     <div id={makeInputId(rest.id)}>

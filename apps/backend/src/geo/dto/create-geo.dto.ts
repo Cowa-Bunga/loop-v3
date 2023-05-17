@@ -1,4 +1,4 @@
-import { Geometry, Point, GeometryCollection } from 'geojson'
+import { Point, GeometryCollection } from 'geojson'
 import { IsString } from 'class-validator'
 
 export class CreateGeoDto {

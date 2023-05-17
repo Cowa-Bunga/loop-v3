@@ -1,10 +1,13 @@
 import { URL, URLSearchParams } from 'url'
 
 // test
-export const getCityBoundaries = async (query, options = {} as {
-  url?: string
-  format?: string
-}) => {
+export const getCityBoundaries = async (
+  query,
+  options = {} as {
+    url?: string
+    format?: string
+  }
+) => {
   const url = new URL(
     options.url || 'https://nominatim.openstreetmap.org/search'
   )
@@ -13,6 +16,7 @@ export const getCityBoundaries = async (query, options = {} as {
     q: query,
     format: options.format || 'json',
     polygon_geojson: 1
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any).toString()
 
   const response = await fetch(url)

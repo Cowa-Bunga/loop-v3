@@ -8,6 +8,11 @@ function Map() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
   })
 
+  const [center] = useState({
+    lat: -33.918861,
+    lng: 18.4233
+  })
+
   const [height, setHeight] = useState(0)
 
   useEffect(() => {
@@ -15,11 +20,6 @@ function Map() {
   }, [])
 
   const [, setMap] = useState(null)
-
-  const center = {
-    lat: -33.918861,
-    lng: 18.4233
-  }
 
   const onLoad = useCallback(
     (map) => {

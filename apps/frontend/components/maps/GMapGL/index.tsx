@@ -16,6 +16,7 @@ function Map() {
     start: null,
     end: null,
     height: null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any)
 
   useEffect(() => {
@@ -28,10 +29,10 @@ function Map() {
           iso: res.isochrones?.raw,
           start: [res.start._longitude, res.start._latitude],
           end: [res.end._longitude, res.end._latitude]
-        } as any)
+        })
       })
     }
-  }, [state.load])
+  }, [setState, state.load])
 
   const { isLoaded } = useJsApiLoader({
     id: 'loop-gmap-vector',

@@ -6,8 +6,8 @@ import { GridAddIcon } from '@mui/x-data-grid'
 interface IProps {
   schema: JsonSchema
   ui: Layout
-  model: any
-  onChange: (index: number, data: any) => void
+  model: unknown
+  onChange: (index: number, data: unknown) => void
   addParcel: () => void
   parcels: object[]
 }

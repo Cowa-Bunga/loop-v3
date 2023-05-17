@@ -33,6 +33,7 @@ export default function MapGL() {
       pitch: 45,
       bearing: 0
     }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any)
 
   useEffect(() => {
@@ -44,10 +45,10 @@ export default function MapGL() {
           isochrone: res.isochrones?.raw,
           start: [res.start._longitude, res.start._latitude],
           end: [res.end._longitude, res.end._latitude]
-        } as any)
+        })
       })
     }
-  }, [])
+  }, [setState, state.load])
 
   const theme = DEFAULT_THEME
   const [mode, setMode] = useState(() => null)
@@ -113,7 +114,6 @@ export default function MapGL() {
         controller={{ doubleClickZoom: false }}
         _animate
         initialViewState={state.viewport}
-        // onClick={onLayerClick}
         getCursor={toolbox.getCursor.bind(DeckGL)}
       >
         <Map reuseMaps mapLib={maplibregl} mapStyle={ASSETS.MAP_STYLE} />

@@ -8,5 +8,5 @@ interface IForm {
   // The layout of the form, how the fields are arranged
   ui: Layout
   // The data of the form, what is doing to be submitted to the API.
-  data: any
+  data: unknown
 }

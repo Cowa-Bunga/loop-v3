@@ -29,9 +29,9 @@ import {
 interface IProps {
   schema: JsonSchema
   ui: UISchemaElement
-  model: any
+  model: unknown
   validationMode?: ValidationMode
-  onChange: (data: any) => void
+  onChange: (data: unknown) => void
 }
 
 const renderers = [

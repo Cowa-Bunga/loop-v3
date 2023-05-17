@@ -3,9 +3,10 @@ interface IappCreateJobProps {
 }
 interface IappCreateJobState {
   data: {
-    parcels: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    parcels: any[] | null
   }
   createForm: IForm
   parcelsForm: IForm
-  parcels?: any[]
+  parcels?: unknown[] | void
 }

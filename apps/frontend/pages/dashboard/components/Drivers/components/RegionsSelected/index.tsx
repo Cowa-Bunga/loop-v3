@@ -57,7 +57,7 @@ export default function RegionSelected({ hubs }: { hubs: string[] }) {
         busyDrivers: drivers.filter((d: IDriver) => !d.available)
       })
     }
-  }, [data, status])
+  }, [data, modelDrivers, setState, status])
 
   return status !== 'success' ? (
     <Box sx={ui.container}>
