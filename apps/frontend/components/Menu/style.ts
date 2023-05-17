@@ -41,7 +41,7 @@ const ui = {
   },
 
   homeIconInner: {
-    ml: -2
+    ml: 0
   },
 
   menuBottom: {

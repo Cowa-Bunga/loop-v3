@@ -1,0 +1,82 @@
+# conceptual model
+# basis - generic relational model with flexibility and simplified nested structures
+# future proof for ERP / CRM / Tracking / Data Analysis and logging
+driver:
+  - user
+  - rating
+company:
+  - billing:
+    - could get api calls rates and usage from webhooks + api logger
+  - events:
+    - trip event / order tracking
+    - notifications
+  - hubs:
+    - region
+    - branches:
+        - drivers
+  - settings:
+    - schedules
+    - log / etc / info
+    - permissions (maybe)
+  - users / employees:
+    - some would be drivers
+    - some would be roles system users
+    - - this should also cover client-users via permissions/role seperation
+  - contracts: 
+    - contract
+    - company: []   1 -> many
+  - drivers:  []   1 -> many
+  - clusters:
+    - orders:
+      - trips:
+        - tasks:
+        - events: 
+        - routes:
+          - predicted
+          - actual / trip history
+
+  - customers: [] 1 -> many
+  - log?
+
+customer:
+  - id
+  - location
+  - trip_id
+
+user:
+  - permissions / role
+  - preferences
+  - settings
+auth: auth
+permissions: permissions / roles
+log: 
+api-log:
+
+# general system 
+# taxonomy, logs, 
+
+# webhook event log and retry tracking
+webhooks:
+ - event id
+ - status ok / retry / abandoned
+ - retry_times: 5
+ - timestamp
+ - payload (minimal for searchability)
+ - type: 'optimise'
+ - created by user
+ - client_id
+ - driver?: sometimes used if not an api call
+
+
+# location db
+trips:
+  - trip_id
+  - route_events
+  - route_actual  # actual / history
+  - route_planned
+  - limitiations: geofences  / rules
+  - permissions:
+  - rules
+geofences:
+log:
+

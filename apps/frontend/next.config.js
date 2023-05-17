@@ -14,6 +14,17 @@ const nextConfig = {
     svgr: false
   },
   pageExtensions: ['page.tsx', 'page.ts']
+
+  // async rewrites() {
+  //   return {
+  //     fallback: [
+  //       {
+  //         source: '/api/:path*',
+  //         destination: 'http://localhost:3333/api/:path*'
+  //       }
+  //     ]
+  //   }
+  // }
 }
 
 module.exports = withNx(nextConfig)

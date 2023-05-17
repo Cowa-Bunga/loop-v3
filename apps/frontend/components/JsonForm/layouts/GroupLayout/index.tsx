@@ -1,4 +1,3 @@
-import React from 'react'
 import type { MaterialLayoutRendererProps } from '@jsonforms/material-renderers'
 import { MaterialLayoutRenderer } from '@jsonforms/material-renderers'
 import { withJsonFormsLayoutProps } from '@jsonforms/react'

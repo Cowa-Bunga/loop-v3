@@ -20,43 +20,65 @@ export const MODEL_MENU = ({ client_id }) =>
     {
       id: 'orders',
       icon: LoopIcon,
-      title: 'All Orders',
-      link: `/organisation/${client_id}/orders/view`,
-      permissions: []
-    },
-    {
-      id: 'driver',
-      icon: Person,
-      title: 'Driver Details',
-      permissions: []
-    },
-    {
-      id: 'dashboards',
-      icon: DashboardIcon,
-      title: 'Dashboards',
+      title: 'Orders',
       permissions: [],
       children: [
         {
-          id: 'fleet-management',
-          icon: DashboardIcon,
-          title: 'Fleet Management',
-          link: '/organisation/todo-id/reports',
+          id: 'all-orders',
+          icon: LoopIcon,
+          title: 'Overview',
+          link: `/organisation/${client_id}/orders/view`,
           permissions: []
         },
         {
-          id: 'reports',
+          id: 'import',
+          icon: ImportExportIcon,
+          title: 'Import New',
+          link: `/organisation/${client_id}/reports`,
+          permissions: []
+        },
+        {
+          id: 'trip-report',
           icon: AssessmentIcon,
-          title: 'Reports',
-          link: '/organisation/todo-id/reports',
+          title: 'Trip Report',
+          link: `/organisation/${client_id}/fleet`,
           permissions: []
         }
       ]
     },
     {
-      id: 'import',
-      icon: ImportExportIcon,
-      title: 'Import Orders',
-      link: '/organisation/todo-id/reports',
+      id: 'driver',
+      icon: Person,
+      title: 'Drivers',
+      // tmp
+      link: `/drivers/overview`,
+      permissions: []
+    },
+    {
+      id: 'messages',
+      icon: Person,
+      title: 'Message Centre',
+      permissions: []
+    },
+    {
+      id: 'reports',
+      icon: PowerSettingsNewIcon,
+      title: 'Reports',
+      link: `/organisation/${client_id}/reports`,
+      permissions: []
+    },
+    {
+      id: 'routing',
+      icon: LiveHelpIcon,
+      title: 'Route Planning',
+      link: '/dashboard',
+      permissions: []
+    },
+    {
+      id: 'learn',
+      icon: ModelTrainingIcon,
+      title: 'Learning Centre',
+      link: '/support/training',
       permissions: []
     },
     {
@@ -64,72 +86,6 @@ export const MODEL_MENU = ({ client_id }) =>
       icon: SupportAgentIcon,
       title: 'Support',
       permissions: [],
-      children: [
-        {
-          id: 'support-main',
-          icon: LiveHelpIcon,
-          title: 'Documentation',
-          link: '/support/documentation',
-          permissions: []
-        },
-        {
-          id: 'training',
-          icon: ModelTrainingIcon,
-          title: 'Training Centre',
-          link: '/support/training',
-          permissions: []
-        }
-      ]
-    },
-    {
-      id: 'client-admin',
-      icon: DashboardIcon,
-      title: 'Client Admin',
-      link: `/organisation/${client_id}/reports`,
-      permissions: [],
-      children: [
-        {
-          id: 'hubs',
-          icon: DashboardIcon,
-          title: 'Hubs',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'branches',
-          icon: DashboardIcon,
-          title: 'Branches',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'regions',
-          icon: DashboardIcon,
-          title: 'Regions',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'users',
-          icon: DashboardIcon,
-          title: 'Users',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        },
-        {
-          id: 'management',
-          icon: DashboardIcon,
-          title: 'Settings',
-          link: '/organisation/todo-id/reports',
-          permissions: []
-        }
-      ]
-    },
-    {
-      id: 'signout',
-      icon: PowerSettingsNewIcon,
-      title: 'Log Out',
-      action: () => 'signOut',
-      permissions: []
+      link: '/support/documentation'
     }
   ] as unknown as IMenu[]
