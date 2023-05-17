@@ -26,6 +26,24 @@ export class OrderService {
     return orders
   }
 
+  async getAllOrders(client_id: string) {
+    const db = admin.firestore()
+    const orderDocs = await db
+      .collection('clients')
+      .doc(client_id)
+      .collection('orders')
+      .get()
+
+    const orders = orderDocs.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data()
+      }
+    })
+
+    return orders
+  }
+
   async getOrder(order_id: string, client_id: string) {
     const db = admin.firestore()
     const order = await db
