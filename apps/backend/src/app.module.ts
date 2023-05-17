@@ -1,21 +1,13 @@
 import { Module } from '@nestjs/common'
-import { OrderModule } from './order/order.module'
-import { TripModule } from './trip/trip.module'
-import { AuthModule } from './auth/auth.module'
-import { RouteModule } from './route/route.module'
-import { GeoModule } from './geo/geo.module'
+import { MainModule } from './modules/main.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { DataSource } from 'typeorm'
 import { ResilienceModule } from 'nestjs-resilience'
-import { GeoEntity } from './geo/entities/geo.entity'
+import { GeoEntity } from './modules/geo/entities/geo.entity'
 
 @Module({
   imports: [
-    OrderModule,
-    AuthModule,
-    TripModule,
-    RouteModule,
-    GeoModule,
+    MainModule,
     ResilienceModule,
     TypeOrmModule.forRoot({
       // TODO: move to envs
