@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
-import InputLabel from '@mui/material/InputLabel'
-import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
+import { InputLabel, FormControl, Select } from '@mui/material'
+import { SelectChangeEvent } from '@mui/material/Select'
 import { Checkbox, ListItemText, MenuItem } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles, MenuProps } from '../styles'
 import { useMergeState } from '@hooks'
+import { makeInputId } from '../../helpers'
 
 const MultiSelectControl = ({
   // the incoming selected items
@@ -16,7 +16,6 @@ const MultiSelectControl = ({
   path,
   ...rest
 }: ISelectControl) => {
-  console.log(rest)
   const { t } = useTranslation()
 
   const [state, setState] = useMergeState({
@@ -27,7 +26,7 @@ const MultiSelectControl = ({
     const {
       target: { value }
     } = event
-    const oneOf = rest.schema['options']['oneOf'] ?? []
+    const oneOf = rest.schema['options']?.['oneOf'] ?? []
     const selected = value.filter((v) => oneOf.includes(v))
 
     if (selected.length > 1) {
@@ -53,12 +52,12 @@ const MultiSelectControl = ({
   }
 
   return (
-    <div id={rest.id}>
+    <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>
-        <InputLabel id={`${rest.id}-label`}>{rest.label}</InputLabel>
+        <InputLabel id={makeInputId(rest.id, 'label')}>{rest.label}</InputLabel>
         <Select
-          labelId={`${rest.id}-label`}
-          id={`${rest.id}-checkbox`}
+          id={makeInputId(rest.id, 'select')}
+          labelId={makeInputId(rest.id, 'label')}
           multiple
           value={state.selected}
           onChange={onChange}

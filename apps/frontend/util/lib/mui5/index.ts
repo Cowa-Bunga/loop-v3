@@ -19,6 +19,7 @@ export const theme = createTheme({
       main: purple[200]
     }
   },
+  
   typography: {
     allVariants: {
       fontFamily: 'Verdana'

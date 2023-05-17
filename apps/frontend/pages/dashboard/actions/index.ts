@@ -13,5 +13,9 @@ export const Actions = (state, setState) => ({
 
   toggleCreate: () => {
     setState({ create: !state.create })
+  },
+
+  toggleMap: () => {
+    setState({ routeView: !state.routeView })
   }
 })

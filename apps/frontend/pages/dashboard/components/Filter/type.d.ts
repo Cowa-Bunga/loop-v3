@@ -1,6 +1,6 @@
 interface IappDashboardFilterState {
   tab: number
-  hub: string
+  expanded: number[]
 }
 
 interface IappDashboardFilterProps {

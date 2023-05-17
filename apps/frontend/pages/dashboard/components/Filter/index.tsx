@@ -1,10 +1,8 @@
 // import Actions from './actions'
-// import { useMergeState } from '@hooks'
 import ui from './style'
 import { DataGrid } from '@mui/x-data-grid'
 import { tripColumns, tripRows } from './mock'
 import { ExpandMore, Add, Tune } from '@mui/icons-material'
-import { useSession } from 'next-auth/react'
 import {
   Box,
   Accordion,
@@ -12,51 +10,81 @@ import {
   Typography,
   IconButton,
   AccordionSummary,
-  TextField
+  TextField,
+  CircularProgress,
+  Paper,
+  Fab
 } from '@mui/material'
-export default function DashboardFilter({
-  regions,
-  hubs,
-  regionHub
-}: IappDashboardFilterProps) {
-  const { data: session } = useSession()
-  console.warn(session)
-  // const [state, setState] = useMergeState<IappDashboardFilterState>({
-  //   tab: 0,
-  //   hub: ''
-  // })
 
-  // const { tabChange, hubChange } = Actions(state, setState)
-
+export default function DashboardFilter() {
   return (
     <Box sx={ui.container}>
-      {['Regions', 'Hubs', 'Tasks', 'Trips'].map((v) => (
+      <Paper sx={{ p: 2 }}>
+        {[1, 2, 3, 4].map((l) => (
+          <>
+            <Box
+              key={l}
+              sx={{ position: 'relative', display: 'inline-flex', mx: 2 }}
+            >
+              <CircularProgress
+                color="info"
+                variant="determinate"
+                value={l * 25}
+                size={90}
+                thickness={6}
+                title="Orders"
+              />
+
+              <Box
+                sx={{
+                  top: 0,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
+                  position: 'absolute',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Fab color="primary" size="large" sx={{ fontColor: 'white' }}>
+                  <Typography variant="caption" component="div">{`${Math.round(
+                    l * 25
+                  )}%`}</Typography>
+                </Fab>
+              </Box>
+            </Box>
+          </>
+        ))}
+      </Paper>
+
+      {['Hubs', 'Trips', 'Tasks', 'Zones'].map((v, i) => (
         <Accordion square key={v}>
           <AccordionSummary expandIcon={<ExpandMore />}>
             <Box>
+              <Fab size="small" color="primary">
+                <Add />
+              </Fab>
+            </Box>
+            <Box>
               <Typography
-                sx={{ lineHeight: '34px', mr: '20px', width: '100px' }}
+                sx={{ lineHeight: '34px', ml: '20px', width: '100px' }}
               >
                 <b>{v.toUpperCase()}</b>
               </Typography>
             </Box>
             <Box>
               <IconButton size="small">
-                <Add />
+                <Tune />
               </IconButton>
             </Box>
-            <Box sx={{ ml: 4, mr: '20px' }}>
+            <Box sx={{ ml: 4, mr: '20px', mt: -0.5 }}>
               <TextField
                 size="small"
                 variant="outlined"
                 placeholder="enter Task/Customer"
                 label="search"
               />
-            </Box>
-            <Box>
-              <IconButton size="small">
-                <Tune />
-              </IconButton>
             </Box>
           </AccordionSummary>
           <AccordionDetails>

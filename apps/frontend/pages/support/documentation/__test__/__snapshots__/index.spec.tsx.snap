@@ -45,7 +45,7 @@ exports[`Support should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1t019bo"
+      class="MuiBox-root css-1abb3vo"
     >
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
@@ -124,7 +124,7 @@ exports[`Support should render successfully 1`] = `
                 alt="yip"
                 class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
                 height="194"
-                src="//picsum.photos/200/300?random=50"
+                src="/artificial-intelligence.jpg"
               />
               <div
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -246,7 +246,7 @@ exports[`Support should render successfully 1`] = `
                 alt="yip"
                 class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
                 height="194"
-                src="//picsum.photos/200/300?random=50"
+                src="/artificial-intelligence.jpg"
               />
               <div
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -368,7 +368,7 @@ exports[`Support should render successfully 1`] = `
                 alt="yip"
                 class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
                 height="194"
-                src="//picsum.photos/200/300?random=50"
+                src="/artificial-intelligence.jpg"
               />
               <div
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -490,7 +490,7 @@ exports[`Support should render successfully 1`] = `
                 alt="yip"
                 class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
                 height="194"
-                src="//picsum.photos/200/300?random=50"
+                src="/artificial-intelligence.jpg"
               />
               <div
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -612,7 +612,7 @@ exports[`Support should render successfully 1`] = `
                 alt="yip"
                 class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
                 height="194"
-                src="//picsum.photos/200/300?random=50"
+                src="/artificial-intelligence.jpg"
               />
               <div
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
@@ -734,7 +734,7 @@ exports[`Support should render successfully 1`] = `
                 alt="yip"
                 class="MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-o69gx8-MuiCardMedia-root"
                 height="194"
-                src="//picsum.photos/200/300?random=50"
+                src="/artificial-intelligence.jpg"
               />
               <div
                 class="MuiCardContent-root css-46bh2p-MuiCardContent-root"

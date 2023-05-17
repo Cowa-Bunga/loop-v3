@@ -1,41 +1,69 @@
-import { Box, Modal } from '@mui/material'
+import { Box, CircularProgress, Modal } from '@mui/material'
 import { JsonForm } from '@components'
-import { useState } from '@hooks'
-import { createJob } from '@pages/dashboard/components/CreateJob/create-job.schema'
+import { useEffect, useMergeState, useState, useTranslation } from '@hooks'
+import ParcelsForm from './components/ParcelsForm'
+import { Actions } from './actions'
+import { createJobFormLocalePathBuilder } from '@locale/locale-utils'
+import { IForm } from '@pages/api/forms/[reference]/type'
+import { ui } from './style'
 
-export interface CreateJobProps {
-  isOpen: boolean
-  handleClose: () => void
-}
+const CreateJob = ({ handleClose }: IappCreateJobProps) => {
+  const { t } = useTranslation()
+  const [isLoading, setLoading] = useState(true)
 
-const style = {
-  position: 'absolute',
-  top: '10%',
-  left: '50%',
-  transform: 'translate(-50%, 0%)',
-  width: '80%',
-  height: '80%',
-  overflow: 'scroll',
-  backgroundColor: 'white'
-}
+  const [state, setState] = useMergeState<IappCreateJobState>({
+    data: { parcels: null },
+    createForm: {} as IForm,
+    parcelsForm: {} as IForm
+  })
 
-const CreateJob = ({ isOpen, handleClose }: CreateJobProps) => {
-  const [model] = useState(createJob.data)
+  useEffect(() => {
+    getForms().then(() => setLoading(false))
+    return
+  })
+
+  const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
+  const { addEmptyParcel, updateParcel, updateFormData, getForms } = Actions(
+    state,
+    setState
+  )
 
   return (
     <Modal
-      open={isOpen}
+      open
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby={_t('aria.label')}
+      aria-describedby={_t('aria.description')}
     >
-      <Box sx={style}>
-        <JsonForm
-          schema={createJob.schema}
-          ui={createJob.ui}
-          model={model}
-          onChange={console.log}
-        />
+      <Box sx={ui.container}>
+        {isLoading ? (
+          <Box
+            sx={ui.container}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <>
+            <JsonForm
+              schema={state.createForm.schema}
+              ui={state.createForm.ui}
+              model={state.data}
+              onChange={updateFormData}
+            />
+
+            <ParcelsForm
+              ui={state.parcelsForm.ui}
+              model={state.parcelsForm.data}
+              schema={state.parcelsForm.schema}
+              onChange={updateParcel}
+              addParcel={addEmptyParcel}
+              parcels={state.data.parcels}
+            />
+          </>
+        )}
       </Box>
     </Modal>
   )

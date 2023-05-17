@@ -6,3 +6,6 @@ export const authLocalePathBuilder = (key: string): string =>
 
 export const clientSelectLocalePathBuilder = (key: string): string =>
   `${localePathBuilder(['client_select'])}.${key}`
+
+export const createJobFormLocalePathBuilder = (key: string): string =>
+  `${localePathBuilder(['create_task_form'])}.${key}`

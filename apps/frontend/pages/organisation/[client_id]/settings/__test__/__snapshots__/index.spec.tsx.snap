@@ -45,7 +45,7 @@ exports[`Settings should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1t019bo"
+      class="MuiBox-root css-1abb3vo"
     >
       <br />
       <br />
@@ -64,9 +64,6 @@ exports[`Settings should render successfully 1`] = `
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
           />
           <br />
-          <div
-            class="App"
-          />
         </div>
       </div>
     </div>

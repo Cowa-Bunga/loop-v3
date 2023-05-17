@@ -1,0 +1,120 @@
+{
+  "order_no": "order2222",
+  "alcohol": false,
+  "instructions": "",
+  "address": "Rynfield Primary School, Malherbe Road, Benoni, Johannesburg, South Africa",
+  "delivery_time": {
+    "_seconds": 1681309907,
+    "_nanoseconds": 20000000
+  },
+  "recreated": false,
+  "type": "order",
+  "branch": {
+    "store_code": "0001",
+    "address": "Thakedi Ave, Wattville, Benoni, 1501, South Africa",
+    "name": "JHB1",
+    "location": {
+      "_latitude": -26.2251971,
+      "_longitude": 28.29998
+    },
+    "id": "zqeMTkGoI5QmnkZEdLK9"
+  },
+  "assignable": false,
+  "payment_type": null,
+  "service_type": "",
+  "delivery_flow": {
+    "type": "default"
+  },
+  "origination": "manual",
+  "abandon_flow": {
+    "type": "default"
+  },
+  "location": {
+    "_latitude": -26.1658773,
+    "_longitude": 28.3269118
+  },
+  "collection_time": {
+    "_seconds": 1681309906,
+    "_nanoseconds": 90000000
+  },
+  "task_type": "",
+  "customer": {
+    "name": "de",
+    "mobile_no": "+27333"
+  },
+  "delivery_price": 0,
+  "delay_batch": 0,
+  "created_at": {
+    "_seconds": 1681309910,
+    "_nanoseconds": 702000000
+  },
+  "trip_id": "MHIGWJnF5nLOs83sRtpW",
+  "clustered": false,
+  "tracking_id": "WQSd5kK1sZZ36W9IUWeZ",
+  "history": [
+    {
+      "timestamp": {
+        "_seconds": 1681309910,
+        "_nanoseconds": 575000000
+      },
+      "status": "pending"
+    },
+    {
+      "timestamp": {
+        "_seconds": 1681309980,
+        "_nanoseconds": 449000000
+      },
+      "status": "batched"
+    },
+    {
+      "timestamp": {
+        "_seconds": 1681309995,
+        "_nanoseconds": 996000000
+      },
+      "status": "arrived_at_collection_point"
+    },
+    {
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681309997,
+        "_nanoseconds": 772000000
+      },
+      "status": "collected"
+    },
+    {
+      "location": {
+        "_latitude": -26.245665,
+        "_longitude": 28.3131567
+      },
+      "timestamp": {
+        "_seconds": 1681309999,
+        "_nanoseconds": 335000000
+      },
+      "status": "in_transit"
+    },
+    {
+      "location": {
+        "_latitude": -26.245665,
+        "_longitude": 28.3131567
+      },
+      "timestamp": {
+        "_seconds": 1681310000,
+        "_nanoseconds": 944000000
+      },
+      "status": "arrived"
+    },
+    {
+      "location": {
+        "_latitude": -26.245665,
+        "_longitude": 28.3131567
+      },
+      "timestamp": {
+        "_seconds": 1681310002,
+        "_nanoseconds": 572000000
+      },
+      "status": "delivered"
+    }
+  ],
+  "status": "delivered",
+  "delivery_fee": 10
+}

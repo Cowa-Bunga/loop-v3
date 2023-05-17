@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateJob should render closed 1`] = `
-<body
-  style=""
->
-  <div />
-</body>
-`;
-
 exports[`CreateJob should render open 1`] = `
 <body
   style="padding-right: 1024px; overflow: hidden;"
@@ -16,8 +8,8 @@ exports[`CreateJob should render open 1`] = `
     aria-hidden="true"
   />
   <div
-    aria-describedby="modal-modal-description"
-    aria-labelledby="modal-modal-title"
+    aria-describedby="create_task_form.aria.description"
+    aria-labelledby="create_task_form.aria.label"
     class="MuiModal-root css-79ws1d-MuiModal-root"
     role="presentation"
   >
@@ -31,12 +23,32 @@ exports[`CreateJob should render open 1`] = `
       tabindex="0"
     />
     <div
-      class="MuiBox-root css-oyhib8"
+      class="MuiBox-root css-m66zyu"
       tabindex="-1"
     >
       <div
-        class="App"
-      />
+        class="MuiBox-root css-1ly2j85"
+      >
+        <span
+          class="MuiCircularProgress-root MuiCircularProgress-indeterminate MuiCircularProgress-colorPrimary css-18lrjg1-MuiCircularProgress-root"
+          role="progressbar"
+          style="width: 40px; height: 40px;"
+        >
+          <svg
+            class="MuiCircularProgress-svg css-1idz92c-MuiCircularProgress-svg"
+            viewBox="22 22 44 44"
+          >
+            <circle
+              class="MuiCircularProgress-circle MuiCircularProgress-circleIndeterminate css-176wh8e-MuiCircularProgress-circle"
+              cx="44"
+              cy="44"
+              fill="none"
+              r="20.2"
+              stroke-width="3.6"
+            />
+          </svg>
+        </span>
+      </div>
     </div>
     <div
       data-testid="sentinelEnd"

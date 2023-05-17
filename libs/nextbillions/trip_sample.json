@@ -1,0 +1,159 @@
+{
+  "service_type_route": false,
+  "automatic_assignment": false,
+  "orders": [
+    "0WJk7h2geabvt4Id8W6G"
+  ],
+  "branch": {
+    "_firestore": {
+      "projectId": "cb-dev-298308"
+    },
+    "_path": {
+      "segments": [
+        "clients",
+        "tKJWhfTFoLNvCgLtKnmv",
+        "branches",
+        "zqeMTkGoI5QmnkZEdLK9"
+      ]
+    },
+    "_converter": {}
+  },
+  "compute_route": false,
+  "created_at": {
+    "_seconds": 1681309980,
+    "_nanoseconds": 468000000
+  },
+  "user_actions": [
+    {
+      "action": "created_manual_trip",
+      "timestamp": {
+        "_seconds": 1681309980,
+        "_nanoseconds": 449000000
+      },
+      "user_id": "Z7IN2Gz5E2ki3nhnvDux"
+    },
+    {
+      "action": "assigned_driver",
+      "user_id": "Z7IN2Gz5E2ki3nhnvDux",
+      "driver_id": "yKsFlYVOJVz8LPPCr3fd",
+      "timestamp": {
+        "_seconds": 1681309986,
+        "_nanoseconds": 986000000
+      }
+    }
+  ],
+  "created_by": {
+    "_firestore": {
+      "projectId": "cb-dev-298308"
+    },
+    "_path": {
+      "segments": [
+        "clients",
+        "tKJWhfTFoLNvCgLtKnmv",
+        "users",
+        "Z7IN2Gz5E2ki3nhnvDux"
+      ]
+    },
+    "_converter": {}
+  },
+  "driver_assignment_type": "manually_assigned",
+  "driver": {
+    "_firestore": {
+      "projectId": "cb-dev-298308"
+    },
+    "_path": {
+      "segments": [
+        "drivers",
+        "yKsFlYVOJVz8LPPCr3fd"
+      ]
+    },
+    "_converter": {}
+  },
+  "activity": [
+    {
+      "timestamp": {
+        "_seconds": 1681309987,
+        "_nanoseconds": 259000000
+      },
+      "driver_id": "yKsFlYVOJVz8LPPCr3fd",
+      "driver_name": "DylanOnDemand",
+      "status": "pending"
+    },
+    {
+      "timestamp": {
+        "_seconds": 1681309988,
+        "_nanoseconds": 932000000
+      },
+      "resolved": true,
+      "status": "viewed",
+      "driver_id": "yKsFlYVOJVz8LPPCr3fd",
+      "driver_name": "DylanOnDemand"
+    },
+    {
+      "driver_name": "DylanOnDemand",
+      "driver_id": "yKsFlYVOJVz8LPPCr3fd",
+      "status": "received",
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681309989,
+        "_nanoseconds": 175000000
+      }
+    },
+    {
+      "driver_name": "DylanOnDemand",
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681309993,
+        "_nanoseconds": 250000000
+      },
+      "status": "accepted",
+      "driver_id": "yKsFlYVOJVz8LPPCr3fd"
+    }
+  ],
+  "history": [
+    {
+      "status": "pending",
+      "timestamp": {
+        "_seconds": 1681309980,
+        "_nanoseconds": 449000000
+      }
+    },
+    {
+      "status": "accepted",
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681309993,
+        "_nanoseconds": 250000000
+      }
+    },
+    {
+      "status": "arrived_at_collection_point",
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681309995,
+        "_nanoseconds": 996000000
+      }
+    },
+    {
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681309998,
+        "_nanoseconds": 275000000
+      },
+      "status": "in_progress"
+    },
+    {
+      "resolved": true,
+      "timestamp": {
+        "_seconds": 1681310005,
+        "_nanoseconds": 663000000
+      },
+      "status": "completed"
+    }
+  ],
+  "status": "completed",
+  "wallet": {
+    "cost": 20,
+    "tip_amount": 0
+  }
+}

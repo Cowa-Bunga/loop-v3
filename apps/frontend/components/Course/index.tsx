@@ -33,7 +33,7 @@ export default function Course() {
       <CardMedia
         component="img"
         height="194"
-        image={`//picsum.photos/200/300?random=${Math.random() * 100}`}
+        image={`/artificial-intelligence.jpg`}
         alt="yip"
       />
       <CardContent>

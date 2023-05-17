@@ -1,0 +1,40 @@
+steps:
+  - name: "node"
+    entrypoint: "npm"
+    args: [ 'install' ]
+  - name: "gcr.io/cloud-builders/npm"
+    entrypoint: "npx"
+    args: [ 'nx', 'build', 'backend', '--prod' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '--build-arg',
+        'SOURCE=cb-dev-298308',
+        '-f',
+        'apps/backend/Dockerfile',
+        '-t',
+        'gcr.io/cb-dev-298308/loop-v3/backend',
+        '.'
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/cb-dev-298308/loop-v3/backend' ]
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      [
+        'run',
+        'deploy',
+        'loop-pro-backend',
+        '--image',
+        'gcr.io/cb-dev-298308/loop-v3/backend',
+        '--region',
+        'europe-west1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated'
+      ]
+    timeout: 1600s
+timeout: 1600s
+images:
+  - 'gcr.io/cb-dev-298308/loop-v3/backend'

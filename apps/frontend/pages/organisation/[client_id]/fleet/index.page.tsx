@@ -1,12 +1,10 @@
 import { Box } from '@mui/material'
-import { LayoutBase, Map } from '@components'
+import { LayoutBase } from '@components'
 
 const Fleet = () => {
   return (
     <LayoutBase>
-      <Box>
-        <Map />
-      </Box>
+      <Box>FLEET</Box>
     </LayoutBase>
   )
 }

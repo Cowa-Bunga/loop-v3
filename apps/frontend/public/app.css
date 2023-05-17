@@ -14,4 +14,9 @@ body {
   visibility: hidden !important;
 }
 
+.overlays canvas {
+  mix-blend-mode: multiply;
+}
+
+
 
