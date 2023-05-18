@@ -20,7 +20,7 @@ import { GeoEntity } from './geo/entities/geo.entity'
     TypeOrmModule.forRoot({
       // TODO: move to envs
       type: 'postgres',
-      host: '35.241.202.202',
+      host: process.env.POSTGRES_HOST || '35.241.202.202',
       // port: 5432,
       username: 'loop-backend',
       password: 'loop-service-postgres-user-lG#B}-O@<>gv^)Rg',
