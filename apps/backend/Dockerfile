@@ -11,9 +11,6 @@ WORKDIR /apps
 RUN addgroup --system backend && \
   adduser --system -G backend backend
 
-
-ENV POSTGRES_HOST = 0.0.0.0
-
 COPY dist/apps/backend backend
 COPY apps/backend/app.json backend
 

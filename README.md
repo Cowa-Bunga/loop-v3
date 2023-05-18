@@ -4,7 +4,7 @@
 
 > First time? Add NX
 - `npm i -g nx` 
-- or you can use npx - ie. `npx nx ...`
+- or you can use npx - ie. `npx nx serve`
 
 > Run
 - `nx serve`
@@ -23,3 +23,4 @@
 - Run `nx graph` to see a diagram of the dependencies of the projects.
 - Run `npm run doc:{name}` to see documentation.
 - Visit the [Nx Documentation](https://nx.dev) to learn more.
+

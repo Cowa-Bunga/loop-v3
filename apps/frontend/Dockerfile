@@ -8,6 +8,7 @@ RUN apk add --no-cache python3 g++ make
 
 ENV PORT=3000
 ENV NODE_ENV=production
+ENV NX_DAEMON=true
 
 ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
 ENV NEXT_PUBLIC_API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
@@ -25,16 +26,14 @@ RUN addgroup --system frontend && \
 
 COPY dist/apps/frontend frontend
 COPY apps/frontend/app.json frontend
-
-# TODO: minimise deps
-COPY package.json frontend
+# COPY package.json frontend
 
 RUN chown -R frontend:frontend .
+# RUN next telemetry disable
 
 WORKDIR /apps/frontend
-
 RUN npm i -g next@13.1.1 nx
-RUN npm install --legacy-peer-deps
+RUN npm i --legacy-peer-deps
 
 EXPOSE 3000
 
