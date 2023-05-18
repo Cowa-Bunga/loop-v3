@@ -1,14 +1,20 @@
 import { Module } from '@nestjs/common'
-import { MainModule } from './modules/main.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { DataSource } from 'typeorm'
 import { ResilienceModule } from 'nestjs-resilience'
+import { ConfigModule } from '@nestjs/config'
+import { JwtModule } from '@nestjs/jwt'
+import { MainModule } from './modules/main.module'
 import { GeoEntity } from './modules/geo/entities/geo.entity'
 
 @Module({
   imports: [
     MainModule,
     ResilienceModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+    JwtModule.register({
+      global: true
+    }),
     TypeOrmModule.forRoot({
       // TODO: move to envs
       type: 'postgres',
