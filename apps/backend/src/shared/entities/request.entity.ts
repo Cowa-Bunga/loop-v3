@@ -8,8 +8,10 @@ export class ClientRequest {
 
 export class UserRequest {
   id: string
+  hub_refs: string[]
 
-  constructor(user: FirebaseFirestore.DocumentSnapshot) {
+  constructor(user: FirebaseFirestore.DocumentSnapshot, permission?: FirebaseFirestore.DocumentSnapshot) {
     this.id = user.id
+    this.hub_refs = permission?.data().data.hubs ?? []
   }
 }

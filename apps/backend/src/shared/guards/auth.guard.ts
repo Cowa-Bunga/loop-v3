@@ -69,7 +69,10 @@ export class AuthGuard implements CanActivate {
         'Your company no longer has access to the Loop platform. Please contact customer support for further assistance.'
       )
     }
+
+    const userPermissions = await this.userService.getUserPermissionsDoc(user_id, client_id)
+
     request['client'] = new ClientRequest(client)
-    request['user'] = new UserRequest(user)
+    request['user'] = new UserRequest(user, userPermissions)
   }
 }

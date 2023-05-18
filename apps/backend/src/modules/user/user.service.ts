@@ -9,4 +9,20 @@ export class UserService {
 
     return user
   }
+
+  async getUserPermissionsDoc(user_id: string, client_id: string) {
+    const db = admin.firestore()
+    const clientRef = db.collection('clients').doc(client_id)
+
+    const permissionDocs = await db
+      .collection('client-users')
+      .doc(user_id)
+      .collection('clients')
+      .where('user_client_ref', '==', clientRef)
+      .limit(1)
+      .get()
+
+    const permissionDoc = permissionDocs.docs.pop()
+    return permissionDoc
+  }
 }
