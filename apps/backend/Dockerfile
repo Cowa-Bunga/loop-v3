@@ -21,5 +21,6 @@ RUN npm i -g nest nx
 RUN npm --omit=dev -f install
 
 EXPOSE 3333
+EXPOSE 80
 
 CMD ["node", "main.js"]

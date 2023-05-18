@@ -12,7 +12,12 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "options": {
+        "generatePackageJson": true ,
+        "updateBuildableProjectDepsInPackageJson": true,
+        "buildableProjectDepsInPackageJsonType": "dependencies"
+      }
     },
     "test": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
@@ -55,7 +60,7 @@
   "defaultProject": "frontend",
   "pluginsConfig": {
     "@nrwl/js": {
-      "analyzeSourceFiles": false
+      "analyzeSourceFiles": true
     }
   }
 }
