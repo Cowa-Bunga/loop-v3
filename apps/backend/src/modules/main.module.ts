@@ -6,9 +6,10 @@ import { RouteModule } from './route/route.module'
 import { APP_GUARD } from '@nestjs/core'
 import { AuthGuard } from '../shared/guards/auth.guard'
 import { ClientModule } from './client/client.module'
+import { UserModule } from './user/user.module'
 
 @Module({
-  imports: [OrderModule, AuthModule, TripModule, RouteModule, ClientModule],
+  imports: [OrderModule, AuthModule, TripModule, RouteModule, ClientModule, UserModule],
   providers: [
     {
       provide: APP_GUARD,
