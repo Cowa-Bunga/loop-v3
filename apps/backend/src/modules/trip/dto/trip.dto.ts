@@ -1,19 +1,5 @@
+import { IsArray, IsBoolean, IsDateString, IsEnum, IsLatitude, IsLongitude, IsMobilePhone, IsNotEmpty, IsNumber, IsOptional, IsString, Validate, ValidateIf, ValidateNested } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
-import {
-  IsBoolean,
-  IsDateString,
-  IsEnum,
-  IsLatitude,
-  IsLongitude,
-  IsMobilePhone,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  Validate,
-  ValidateIf,
-  ValidateNested
-} from 'class-validator'
 import { BadRequestException } from '@nestjs/common'
 
 enum FlowTypes {
@@ -21,7 +7,7 @@ enum FlowTypes {
   SOG = 'sog',
   OTP = 'otp',
   MULTI = 'multi',
-  img = 'img'
+  img = 'img',
 }
 
 class Customer {
@@ -68,7 +54,6 @@ class Flow {
   code: string
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 class Trip {
   @IsString()
   trip_no: string
@@ -93,7 +78,7 @@ class Trip {
   collection_time: string
 
   @IsDateString()
-  delivery_time: string
+  delivery_time: Date
 
   @IsOptional()
   @ValidateNested()
@@ -139,10 +124,47 @@ class Trip {
   task_type: string
 }
 
+export class CreateTripDto {
+  @IsString()
+  client_id: string
+
+  @ApiProperty({ description: 'The branch ID' })
+  @IsString()
+  branch_id: string
+
+  @ApiProperty({
+    description: 'Array of order IDs',
+    type: 'array',
+    items: { type: 'string' },
+    example: ['order_id_1', 'order_id_2'],
+  })
+  @IsArray()
+  @IsString({ each: true })
+  order_ids: string[]
+
+  @ApiProperty({
+    description: 'The vehicle type',
+    example: 'Bike',
+    default: 'Bike',
+  })
+  @IsString()
+  vehicle_type: string
+
+  @IsBoolean()
+  compute_route: boolean
+
+  @IsBoolean()
+  automatic_assignment: boolean
+
+  @IsOptional()
+  @IsBoolean()
+  service_type_route?: boolean
+}
+
 export class GetTripDto {
   @ApiProperty({
     description: 'The id of the trip',
-    example: '1234567890'
+    example: '1234567890',
   })
   @IsNotEmpty()
   @Validate((value) => {
@@ -151,4 +173,27 @@ export class GetTripDto {
     }
   })
   trip_id: string
+}
+
+export class AcceptAdhocTripDto {
+  @ApiProperty({
+    description: 'The driver ID',
+    example: 'driver_123',
+  })
+  @IsString()
+  driver_id: string
+
+  @ApiProperty({
+    description: 'The trip ID',
+    example: 'trip_123',
+  })
+  @IsString()
+  trip_id: string
+
+  @ApiProperty({
+    description: 'The order ID',
+    example: 'order_123',
+  })
+  @IsString()
+  order_id: string
 }
