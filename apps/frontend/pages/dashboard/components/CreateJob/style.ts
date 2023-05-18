@@ -6,6 +6,7 @@ export const ui = {
     transform: 'translate(-50%, 0%)',
     width: '80%',
     height: '80%',
-    overflow: 'scroll'
+    overflow: 'scroll',
+    backgroundColor: 'white'
   }
 }
