@@ -10,8 +10,8 @@ export class BranchService {
     const branchDocs = await db.collection('clients').doc(client_id).collection('branches').where('hub', '==', hub_ref).get()
 
     const branches = branchDocs.docs.map((doc) => {
-      const branch = new Branch(doc)
-      return essential ? branch.getEssentialData() : branch
+      const branch = essential ? new EssentialBranch(doc) : new Branch(doc)
+      return branch
     })
 
     return branches

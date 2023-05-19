@@ -26,7 +26,7 @@ export class HubService {
 
   async getHub(hub_ref: DocumentReference, essential  = false): Promise<Hub | EssentialHub> {
     const hubDoc = await hub_ref.get()
-    const hub = new Hub(hubDoc)
-    return essential ? hub.getEssentialData() : hub
+    const hub = essential ? new EssentialHub(hubDoc) : new Hub(hubDoc)
+    return hub
   }
 }

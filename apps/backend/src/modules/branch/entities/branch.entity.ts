@@ -1,13 +1,23 @@
 import { DocumentReference, GeoPoint, DocumentSnapshot } from '@google-cloud/firestore'
+import { Order } from '../../order/entities/order.entity'
 
-export type EssentialBranch = {
+export class EssentialBranch {
   id: string
   name: string
+  orders?: Order[]
+  
+  constructor(branch: DocumentSnapshot, orders?: Order[]){
+    const data = branch.data()
+    this.id = branch.id
+    this.name = data.name
+    this.orders = orders || []
+  }
+
+  setOrders(orders: Order[]): void {
+    this.orders = orders
+  }
 }
-
-export class Branch {
-  id: string
-  name: string
+export class Branch extends EssentialBranch{
   store_code: string
   address: string
   contact: string
@@ -17,9 +27,8 @@ export class Branch {
   location: GeoPoint
 
   constructor(branch: DocumentSnapshot){
+    super(branch)
     const data = branch.data()
-    this.id = branch.id
-    this.name = data.name
     this.store_code = data.store_code
     this.address = data.address
     this.contact = data.contact
@@ -29,10 +38,11 @@ export class Branch {
     this.location = data.location
   }
 
-  getEssentialData(): EssentialBranch{
+  getEssentialData(){
     return {
       id: this.id,
       name: this.name,
+      orders: this.orders
     }
   }
 }

@@ -1,20 +1,20 @@
-import { DocumentReference, DocumentSnapshot } from '@google-cloud/firestore'
+import { DocumentSnapshot } from '@google-cloud/firestore'
 
-export type EssentialHub = {
+export class EssentialHub {
   id: string
   name: string
-}
-
-export class Hub {
-  id: string
-  name: string
-  created_by: DocumentReference
 
   constructor(hub: DocumentSnapshot){
     const data = hub.data()
     this.id = hub.id
     this.name = data.name
-    this.created_by = data.created_by
+  }
+}
+
+// Allows us to extend the hub object easily without having to change the essential data.
+export class Hub extends EssentialHub{
+  constructor(hub: DocumentSnapshot){
+    super(hub)
   }
 
   getEssentialData(): EssentialHub{
