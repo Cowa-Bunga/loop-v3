@@ -29,7 +29,8 @@ export class AuthGuard implements CanActivate {
       } else {
         await this.validateToken(authHeader, request)
       }
-    } catch {
+    } catch (e) {
+      Logger.error(e)
       throw new UnauthorizedException('User is not authorized. Please provide valid authentication credentials.')
     }
     return true
