@@ -1,15 +1,10 @@
 import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
-import { CreateOrderDto } from './dto/create-order.dto'
 import { ClientRequest } from '../../shared/entities/request.entity'
 
 @Injectable()
 export class OrderService {
   //TODO make use of order entity
-
-  createOrder(_order: CreateOrderDto, _client_id: string) {
-    return 'This action adds a new order'
-  }
 
   async getOrders(order_ids: string[], client: ClientRequest) {
     const db = admin.firestore()
