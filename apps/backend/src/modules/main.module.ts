@@ -10,9 +10,21 @@ import { UserModule } from './user/user.module'
 import { HubModule } from './hub/hub.module'
 import { BranchModule } from './branch/branch.module'
 import { DashboardModule } from './dashboard/dashboard.module'
+import { DriverModule } from './driver/driver.module'
 
 @Module({
-  imports: [OrderModule, AuthModule, TripModule, RouteModule, ClientModule, UserModule, HubModule, BranchModule, DashboardModule],
+  imports: [
+    OrderModule,
+    AuthModule,
+    TripModule,
+    RouteModule,
+    ClientModule,
+    UserModule,
+    HubModule,
+    BranchModule,
+    DashboardModule,
+    DriverModule
+  ],
   providers: [
     {
       provide: APP_GUARD,
