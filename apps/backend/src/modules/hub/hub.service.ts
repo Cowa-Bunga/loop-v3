@@ -1,18 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { DocumentReference } from '@google-cloud/firestore'
+import { EssentialHub, Hub } from './entities/hub.entity'
 
 @Injectable()
 export class HubService {
-  /**
-   * Get hubs
-   * @function
-   * @param {string} client_id
-   * @param {string[]} order_ids
-   *
-   * @throws {Error}
-   * @returns {Promise}
-   */
+
   async getHubs(hub_refs: DocumentReference[]): Promise<any> {
     const db = admin.firestore()
 
@@ -29,5 +22,11 @@ export class HubService {
       }
     })
     return hubs
+  }
+
+  async getHub(hub_ref: DocumentReference, essential  = false): Promise<Hub | EssentialHub> {
+    const hubDoc = await hub_ref.get()
+    const hub = new Hub(hubDoc)
+    return essential ? hub.getEssentialData() : hub
   }
 }
