@@ -64,6 +64,7 @@ export class OrderService {
         .collection('trips')
         .doc(orderData.trip_id)
         .get()
+
       if (trip.data().driver) {
         //TODO replace with driver service
         const driver = await trip.data().driver.get()

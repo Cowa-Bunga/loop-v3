@@ -109,7 +109,6 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
       coverage: 0.88,
       lowerPercentile: 50,
       getPosition: (d) => [d.point[0], d.point[1], 0],
-      getColorValue: (d) => d.color,
       getElevationWeight: (d) => 100
     }),
 
@@ -119,7 +118,8 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
       data: trip,
       pickable: true,
       lineWidthMinPixels: 3,
-      getLineColor: (d) => d.color || [106, 256, 199],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      getLineColor: (d: any) => d.color || [106, 256, 199],
       getLineWidth: 5,
       opacity: 0.4,
       getPath: (d) => d.geometry.coordinates,

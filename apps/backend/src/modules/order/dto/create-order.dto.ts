@@ -85,10 +85,10 @@ class Order {
   location: Location
 
   @IsDateString()
-  collection_time: string
+  collection_time: Date
 
   @IsDateString()
-  delivery_time: string
+  delivery_time: Date
 
   @IsOptional()
   @ValidateNested()
