@@ -9,6 +9,12 @@ export class EssentialHub {
     this.id = hub.id
     this.name = data.name
   }
+  getEssentialData(){
+    return {
+      id: this.id,
+      name: this.name,
+    }
+  }
 }
 
 // Allows us to extend the hub object easily without having to change the essential data.
@@ -17,10 +23,5 @@ export class Hub extends EssentialHub{
     super(hub)
   }
 
-  getEssentialData(): EssentialHub{
-    return {
-      id: this.id,
-      name: this.name,
-    }
-  }
+ 
 }

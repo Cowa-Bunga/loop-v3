@@ -12,6 +12,14 @@ export class EssentialBranch {
     this.name = data.name
     this.orders = orders || []
   }
+  
+  getEssentialData(){
+    return {
+      id: this.id,
+      name: this.name,
+      orders: this.orders
+    }
+  }
 
   setOrders(orders: Order[]): void {
     this.orders = orders
@@ -38,11 +46,5 @@ export class Branch extends EssentialBranch{
     this.location = data.location
   }
 
-  getEssentialData(){
-    return {
-      id: this.id,
-      name: this.name,
-      orders: this.orders
-    }
-  }
+  
 }
