@@ -9,9 +9,10 @@ import { ClientModule } from './client/client.module'
 import { UserModule } from './user/user.module'
 import { HubModule } from './hub/hub.module'
 import { BranchModule } from './branch/branch.module'
+import { DashboardModule } from './dashboard/dashboard.module'
 
 @Module({
-  imports: [OrderModule, AuthModule, TripModule, RouteModule, ClientModule, UserModule, HubModule, BranchModule],
+  imports: [OrderModule, AuthModule, TripModule, RouteModule, ClientModule, UserModule, HubModule, BranchModule, DashboardModule],
   providers: [
     {
       provide: APP_GUARD,

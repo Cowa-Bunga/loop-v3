@@ -4,6 +4,7 @@ import { HubController } from './hub.controller'
 
 @Module({
   controllers: [HubController],
-  providers: [HubService]
+  providers: [HubService],
+  exports: [HubService]
 })
 export class HubModule {}

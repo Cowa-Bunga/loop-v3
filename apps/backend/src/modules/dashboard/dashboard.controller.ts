@@ -1,4 +1,17 @@
-import { Controller } from '@nestjs/common'
+import { Controller, Get } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
+import { Client } from '../../shared/decorators/client.decorator'
+import { User } from '../../shared/decorators/user.decorator'
+import { ClientRequest, UserRequest } from '../../shared/entities/request.entity'
+import { DashboardService } from './dashboard.service'
 
+@ApiTags('Dashboard')
 @Controller('dashboard')
-export class DashboardController {}
+export class DashboardController {
+  constructor(private readonly dashboardService: DashboardService) {}
+
+  @Get()
+  async get(@Client() client: ClientRequest, @User() user: UserRequest) {
+    return this.dashboardService.getAll(client, user)
+  }
+}
