@@ -5,6 +5,10 @@
 ## Getting started
 - `nx serve backend`
 
+## SQL access
+- currently you will need to add your IP to the GCS SQL connection tab, 
+  and be logged into the CLI locally on cb-dev
+
 #
 
 ## Tech Stack:

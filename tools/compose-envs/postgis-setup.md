@@ -8,4 +8,4 @@ CREATE EXTENSION postgis_sfcgal;
 CREATE EXTENSION pgrouting;
 
 # terminal for map files
-osm2pgsql -U postgres -W -d osmDatabase -H 192.168.0.195 --number-processes 24 -C 20480 south-africa.osm.pbf
+osm2pgsql -U postgres -W -d loop-pro-geo -H 192.168.0.195 --number-processes 24 -C 20480 south-africa.osm.pbf

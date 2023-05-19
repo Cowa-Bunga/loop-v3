@@ -49,8 +49,9 @@ export class RouteService {
 
   async getRouteByTripId(trip_id: string, req) {
     trip_id = trip_id || '6sS8RlmW56Rsj3Hx2LsQ'
+
     const db = admin.firestore()
-    const client_id = 'tKJWhfTFoLNvCgLtKnmv' || req.client
+    const client_id = req.client || 'tKJWhfTFoLNvCgLtKnmv'
 
     const trip = await db
       .collection('clients')
@@ -58,6 +59,7 @@ export class RouteService {
       .collection('trips')
       .doc(trip_id)
       .get()
+
     if (!trip) {
       return { status: 404, message: 'no trip found' }
     }

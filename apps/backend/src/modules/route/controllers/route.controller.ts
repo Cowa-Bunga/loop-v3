@@ -13,7 +13,7 @@ export class RouteController {
   @Get()
   @UseInterceptors(
     ResilienceInterceptor(
-      new TimeoutStrategy(20000),
+      new TimeoutStrategy(60000),
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
