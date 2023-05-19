@@ -5,3 +5,11 @@ export class ClientRequest {
     this.id = client.id
   }
 }
+
+export class UserRequest {
+  id: string
+
+  constructor(user: FirebaseFirestore.DocumentSnapshot) {
+    this.id = user.id
+  }
+}
