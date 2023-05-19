@@ -15,12 +15,11 @@ export class OrderController {
   @ApiGetRequest(SERVICE_NAME)
   @Get()
   async getOrders(@Client() client: ClientRequest, @Query('order_ids') order_ids?: string[]) {
-    const client_id = client.id
     let orders
     if (order_ids && order_ids.length > 0) {
-      orders = await this.orderService.getOrders(order_ids, client_id)
+      orders = await this.orderService.getOrders(order_ids, client)
     } else {
-      orders = await this.orderService.getAllOrders(client_id)
+      orders = await this.orderService.getAllOrders(client)
     }
 
     return orders

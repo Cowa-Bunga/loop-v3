@@ -1,37 +1,35 @@
 import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { CreateOrderDto } from './dto/create-order.dto'
+import { ClientRequest } from '../../shared/entities/request.entity'
 
 @Injectable()
 export class OrderService {
   //TODO make use of order entity
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   createOrder(_order: CreateOrderDto, _client_id: string) {
     return 'This action adds a new order'
   }
 
-  async getOrders(order_ids: string[], client_id: string) {
+  async getOrders(order_ids: string[], client: ClientRequest) {
     const db = admin.firestore()
-    const refs = order_ids.map((id) =>
-      db.doc(`clients/${client_id}/orders/${id}`)
-    )
+    const refs = order_ids.map((id) => db.doc(`clients/${client.id}/orders/${id}`))
     const snapshot = await db.getAll(...refs)
     const orders = snapshot.map((doc) => {
       return {
         id: doc.id,
-        client_id: client_id,
+        client_id: client.id,
         ...doc.data()
       }
     })
     return orders
   }
 
-  async getAllOrders(client_id: string) {
+  async getAllOrders(client: ClientRequest) {
     const db = admin.firestore()
     const orderDocs = await db
       .collection('clients')
-      .doc(client_id)
+      .doc(client.id)
       .collection('orders')
       .get()
 
