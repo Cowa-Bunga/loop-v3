@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { ClientRequest } from '../../shared/entities/request.entity'
+import { EssentialOrder, Order } from './entities/order.entity'
+import { ORDER_STATUS } from './entities/order.enum'
 
 @Injectable()
 export class OrderService {
@@ -73,5 +75,21 @@ export class OrderService {
       client_id: client_id,
       ...orderData
     }
+  }
+
+  async getOrdersForBranch(branch_id: string, client_id: string, essential = false): Promise<Order[] | EssentialOrder[]> {
+    const db = admin.firestore()
+    const orderDocs = await db
+      .collection('clients')
+      .doc(client_id).collection('orders')
+      .where('branch.id', '==', branch_id)
+      .where('status', 'in', [ORDER_STATUS.PENDING])
+      .get()
+
+    const orders = orderDocs.docs.map((doc) => {
+      return essential ? new EssentialOrder(doc) : new Order(doc)
+    })
+
+    return orders
   }
 }

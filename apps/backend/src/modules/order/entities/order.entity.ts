@@ -57,6 +57,7 @@ export class EssentialOrder {
   is_multipart: boolean
   cluster?: Cluster
   abandon_flow: AbandonFlow
+  reset: boolean
 
   constructor(order: DocumentSnapshot, cluster?: DocumentSnapshot) {
     const data = order.data()
@@ -77,7 +78,7 @@ export class EssentialOrder {
     this.is_multipart = data.is_multipart || false
     this.cluster= cluster ? new Cluster(cluster) : undefined
     this.abandon_flow = new AbandonFlow(order)
-    
+    this.reset = data.reset || false
   }
 
   getEssentialData(){
@@ -97,6 +98,7 @@ export class EssentialOrder {
       is_multipart: this.is_multipart,
       cluster: this.cluster,
       abandon_flow: this.abandon_flow,
+      reset: this.reset
     }
   }
 }
