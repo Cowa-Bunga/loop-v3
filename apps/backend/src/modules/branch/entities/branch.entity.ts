@@ -1,5 +1,6 @@
-import { DocumentReference, GeoPoint, DocumentSnapshot } from '@google-cloud/firestore'
+import { DocumentReference, DocumentSnapshot } from '@google-cloud/firestore'
 import { Order } from '../../order/entities/order.entity'
+import { Location } from '../../../shared/entities/location.entity'
 
 export class EssentialBranch {
   id: string
@@ -25,6 +26,21 @@ export class EssentialBranch {
     this.orders = orders
   }
 }
+
+export class OrderBranch extends EssentialBranch {
+  address: string
+  store_code: string
+  location: Location
+
+  constructor(branch: DocumentSnapshot) {
+    super(branch)
+    const data = branch.data()
+    this.address = data.address
+    this.store_code = data.store_code
+    this.location = new Location(data.location.latitude, data.location.longitude)
+    delete this.orders
+  }
+}
 export class Branch extends EssentialBranch {
   store_code: string
   address: string
@@ -32,7 +48,7 @@ export class Branch extends EssentialBranch {
   dashboard_url: string
   created_by: DocumentReference
   hub: DocumentReference
-  location: GeoPoint
+  location: Location
 
   constructor(branch: DocumentSnapshot) {
     super(branch)
@@ -43,7 +59,7 @@ export class Branch extends EssentialBranch {
     this.dashboard_url = data.dashboard_url
     this.created_by = data.created_by
     this.hub = data.hub
-    this.location = data.location
+    this.location = new Location(data.location.latitude, data.location.longitude)
   }
 
   lean() {

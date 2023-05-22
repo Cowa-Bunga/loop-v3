@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common'
-import { DocumentReference } from '@google-cloud/firestore'
+import { DocumentReference, DocumentSnapshot } from '@google-cloud/firestore'
 import * as admin from 'firebase-admin'
 import { Branch, EssentialBranch } from './entities/branch.entity'
 import { CreateBranchDto } from './dtos/branch.dto'
@@ -45,7 +45,11 @@ export class BranchService {
     return new Branch(branches.docs[0])
   }
 
-  async createBranch(createBranchDto: CreateBranchDto, client: ClientRequest, user: UserRequest): Promise<Branch> {
+  async createBranch(
+    createBranchDto: CreateBranchDto,
+    client: ClientRequest,
+    user: UserRequest
+  ): Promise<DocumentSnapshot> {
     const { hub_id, name, contact, address, store_code, dashboard_url, location } = createBranchDto
     const db = admin.firestore()
 
@@ -73,7 +77,6 @@ export class BranchService {
     })
 
     // Retrieve the newly created branch
-    const branch = await branchRef.get()
-    return new Branch(branch)
+    return await branchRef.get()
   }
 }
