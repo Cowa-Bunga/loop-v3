@@ -6,10 +6,17 @@ import { BranchService } from '../branch/branch.service'
 import { EssentialBranch } from '../branch/entities/branch.entity'
 import { EssentialHub } from '../hub/entities/hub.entity'
 import { OrderService } from '../order/order.service'
+import { DriverService } from '../driver/driver.service'
+import { EssentialDriver } from '../driver/entities/driver.entity'
 
 @Injectable()
 export class DashboardService {
-  constructor(private hubService: HubService, private branchService: BranchService, private orderService: OrderService) {}
+  constructor(
+    private hubService: HubService,
+    private branchService: BranchService,
+    private orderService: OrderService,
+    private driverService: DriverService
+  ) {}
 
   async getAll(client: ClientRequest, user: UserRequest) {
     if (user.hub_refs.length === 0) {
@@ -24,14 +31,17 @@ export class DashboardService {
     const hubData = user.hub_refs.map(async (ref) => {
       const hub: EssentialHub = await this.hubService.getHub(ref, true)
       const branches: EssentialBranch[] = await this.branchService.getBranchesForHub(ref, client.id, true)
-      await Promise.all(branches.map(async branch => {
-        const orders = await this.orderService.getOrdersForBranch(branch.id, client.id, true)
-        console.log(orders)
-        branch.setOrders(orders)
-      }))
+      const drivers: EssentialDriver[] = await this.driverService.getDriversForHub(ref.id, client.id, true)
+      await Promise.all(
+        branches.map(async (branch) => {
+          const orders = await this.orderService.getOrdersForBranch(branch.id, client.id, true)
+          branch.setOrders(orders)
+        })
+      )
       return {
         hub,
-        branches
+        branches,
+        drivers
       }
     })
     const data = await Promise.all(hubData)

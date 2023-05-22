@@ -15,6 +15,7 @@ export enum ABANDON_FLOW_TYPE {
 
 export enum ORDER_STATUS {
   PENDING = 'pending',
+  CLUSTERING = 'clustering',
   BATCHED = 'batched',
   ARRIVED_AT_COLLECTION = 'arrived_at_collection_point',
   COLLECTED = 'collected',
@@ -29,6 +30,7 @@ export enum ORDER_STATUS {
 
 export const ORDER_STATUS_DISPLAY = {
   [ORDER_STATUS.PENDING]: 'Pending',
+  [ORDER_STATUS.CLUSTERING]: 'Clustering',
   [ORDER_STATUS.BATCHED]: 'Batched',
   [ORDER_STATUS.ARRIVED_AT_COLLECTION]: 'Arrived at Collection Point',
   [ORDER_STATUS.COLLECTED]: 'Collected',
