@@ -66,31 +66,32 @@ export class ClusterService {
       if (!doc.exists) {
         throw new NotFoundException(`Order ${doc.id} does not exist`)
       }
-
-      const orderData = {
+    
+      const orderData = doc.data()
+      const branchData = orderData.branch
+      const customerData = orderData.customer
+    
+      const order = {
         id: doc.id,
-        ...doc.data(),
+        ...orderData,
         client_id,
         branch: {
-          id: doc.data().branch.id,
-          name: doc.data().branch.name,
-          address: doc.data().branch.address,
-          location: new GeoCode(
-            doc.data().branch.location._latitude,
-            doc.data().branch.location._longitude
-          ),
-          store_code: doc.data().branch.store_code,
-          dashboard_url: doc.data().branch.dashboard_url,
+          id: branchData.id,
+          name: branchData.name,
+          address: branchData.address,
+          location: new GeoCode(branchData.location._latitude, branchData.location._longitude),
+          store_code: branchData.store_code,
+          dashboard_url: branchData.dashboard_url,
         },
         customer: {
-          name: doc.data().customer.name,
-          mobile_no: doc.data().customer.mobile_no,
+          name: customerData.name,
+          mobile_no: customerData.mobile_no,
         },
       }
-
-      return orderData
+    
+      return order
     })
-
+    
     return orders
   }
 
@@ -99,7 +100,6 @@ export class ClusterService {
     branch_id: string
   ): Promise<any[]> {
     const db = admin.firestore()
-    console.log('client ID', client_id)
     const querySnapshot = await db
       .collection('clients')
       .doc(client_id)
