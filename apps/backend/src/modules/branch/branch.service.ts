@@ -5,9 +5,31 @@ import { Branch, EssentialBranch } from './entities/branch.entity'
 
 @Injectable()
 export class BranchService {
-  async getBranchesForHub(hub_ref: DocumentReference, client_id: string, essential = false): Promise<Branch[] | EssentialBranch[]> {
+  async getBranch(client_id: string, branch_id: string): Promise<any> {
     const db = admin.firestore()
-    const branchDocs = await db.collection('clients').doc(client_id).collection('branches').where('hub', '==', hub_ref).get()
+    const branchSnapshot = await db
+      .collection('clients')
+      .doc(client_id)
+      .collection('branches')
+      .doc(branch_id)
+      .get()
+
+    const branch = new Branch(branchSnapshot)
+    return branch
+  }
+
+  async getBranchesForHub(
+    hub_ref: DocumentReference,
+    client_id: string,
+    essential = false
+  ): Promise<Branch[] | EssentialBranch[]> {
+    const db = admin.firestore()
+    const branchDocs = await db
+      .collection('clients')
+      .doc(client_id)
+      .collection('branches')
+      .where('hub', '==', hub_ref)
+      .get()
 
     const branches = branchDocs.docs.map((doc) => {
       const branch = essential ? new EssentialBranch(doc) : new Branch(doc)
