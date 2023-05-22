@@ -5,15 +5,15 @@ export class EssentialBranch {
   id: string
   name: string
   orders?: Order[]
-  
-  constructor(branch: DocumentSnapshot, orders?: Order[]){
+
+  constructor(branch: DocumentSnapshot, orders?: Order[]) {
     const data = branch.data()
     this.id = branch.id
     this.name = data.name
     this.orders = orders || []
   }
-  
-  getEssentialData(){
+
+  getEssentialData() {
     return {
       id: this.id,
       name: this.name,
@@ -25,7 +25,7 @@ export class EssentialBranch {
     this.orders = orders
   }
 }
-export class Branch extends EssentialBranch{
+export class Branch extends EssentialBranch {
   store_code: string
   address: string
   contact: string
@@ -34,7 +34,7 @@ export class Branch extends EssentialBranch{
   hub: DocumentReference
   location: GeoPoint
 
-  constructor(branch: DocumentSnapshot){
+  constructor(branch: DocumentSnapshot) {
     super(branch)
     const data = branch.data()
     this.store_code = data.store_code
@@ -46,5 +46,18 @@ export class Branch extends EssentialBranch{
     this.location = data.location
   }
 
-  
+  lean() {
+    return {
+      id: this.id,
+      name: this.name,
+      orders: this.orders,
+      store_code: this.store_code,
+      address: this.address,
+      contact: this.contact,
+      dashboard_url: this.dashboard_url,
+      created_by: this.created_by.id,
+      hub: this.hub.id,
+      location: this.location
+    }
+  }
 }
