@@ -1,24 +1,23 @@
 import { Module } from '@nestjs/common'
-import { OrderModule } from './order/order.module'
-import { TripModule } from './trip/trip.module'
-import { AuthModule } from './auth/auth.module'
-import { RouteModule } from './route/route.module'
-import { GeoModule } from './geo/geo.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { DataSource } from 'typeorm'
 import { ResilienceModule } from 'nestjs-resilience'
-import { GeoEntity } from './geo/entities/geo.entity'
+import { ConfigModule } from '@nestjs/config'
+import { JwtModule } from '@nestjs/jwt'
+import { MainModule } from './modules/main.module'
+import { GeoEntity } from './modules/geo/entities/geo.entity'
 // import { ThrottlerModule } from '@nestjs/throttler'
 // import { DevtoolsModule } from '@nestjs/devtools-integration'
 
+
 @Module({
   imports: [
-    OrderModule,
-    AuthModule,
-    TripModule,
-    RouteModule,
-    GeoModule,
+    MainModule,
     ResilienceModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+    JwtModule.register({
+      global: true
+    }),
     TypeOrmModule.forRoot({
       // TODO: move to envs
       type: 'postgres',
