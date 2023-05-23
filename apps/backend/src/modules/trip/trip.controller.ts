@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, ParseArrayPipe, Query, HttpCode, HttpStatus, Post } from '@nestjs/common'
-import { ApiTags, ApiSecurity } from '@nestjs/swagger'
+import { ApiTags } from '@nestjs/swagger'
 import { Client } from '../../shared/decorators/client.decorator'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { TripService } from './trip.service'
@@ -8,7 +8,6 @@ import { ApiGetRequest, ApiGetOneRequest, ApiPostRequest } from '../../shared/de
 
 @ApiTags('Trips')
 @Controller('trip')
-@ApiSecurity('x-api-key')
 export class TripController {
   constructor(private readonly tripService: TripService) {}
 

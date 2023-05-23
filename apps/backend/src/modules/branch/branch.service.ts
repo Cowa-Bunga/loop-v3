@@ -7,6 +7,14 @@ import { ClientRequest, UserRequest } from '../../shared/entities/request.entity
 
 @Injectable()
 export class BranchService {
+  async getBranch(client_id: string, branch_id: string): Promise<any> {
+    const db = admin.firestore()
+    const branchSnapshot = await db.collection('clients').doc(client_id).collection('branches').doc(branch_id).get()
+
+    const branch = new Branch(branchSnapshot)
+    return branch
+  }
+
   async getBranchesForHub(
     hub_ref: DocumentReference,
     client_id: string,
