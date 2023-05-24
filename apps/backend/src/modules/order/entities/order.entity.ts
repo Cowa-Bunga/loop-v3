@@ -2,7 +2,7 @@ import { DocumentSnapshot } from '@google-cloud/firestore'
 import { Cluster } from '../../cluster/entities/cluster.entity'
 import { ABANDON_FLOW_TYPE, ORDER_TYPE, TASK_TYPE, ORDER_STATUS_DISPLAY } from './order.enum'
 
-class Customer {
+export class Customer {
   name: string
   mobile_no: string
   constructor(order: DocumentSnapshot) {
@@ -12,7 +12,7 @@ class Customer {
   }
 }
 
-class History {
+export class History {
   status: string
   status_display: string
   timestamp: Date
@@ -23,7 +23,7 @@ class History {
   }
 }
 
-class AbandonFlow {
+export class AbandonFlow {
   type: ABANDON_FLOW_TYPE
 
   constructor(order: DocumentSnapshot) {
