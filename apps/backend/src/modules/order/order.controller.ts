@@ -1,9 +1,10 @@
-import {  Controller, Get, Param,  Query } from '@nestjs/common'
+import { Controller, Get, Param, Query } from '@nestjs/common'
 import { OrderService } from './order.service'
 import { ApiTags } from '@nestjs/swagger'
 import { Client } from '../../shared/decorators/client.decorator'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { ApiGetOneRequest, ApiGetRequest } from '../../shared/decorators/api.decorator'
+import { Order } from './entities/order.entity'
 
 const SERVICE_NAME = 'Order'
 @ApiTags('Orders')
@@ -14,13 +15,16 @@ export class OrderController {
   @ApiGetRequest(SERVICE_NAME)
   @Get()
   async getOrders(@Client() client: ClientRequest, @Query('order_ids') order_ids?: string[]) {
-    let orders
+    let orderDocs
     if (order_ids && order_ids.length > 0) {
-      orders = await this.orderService.getOrders(order_ids, client)
+      orderDocs = await this.orderService.getOrders(order_ids, client)
     } else {
-      orders = await this.orderService.getAllOrders(client)
+      orderDocs = await this.orderService.getAllOrders(client)
     }
-
+    const orders = orderDocs.map((order) => {
+      return new Order(order)
+    })
+    console.log(orders)
     return orders
   }
 

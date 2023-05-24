@@ -10,32 +10,17 @@ import { CreateOrderDto } from './dto/order.dto'
 export class OrderService {
   //TODO make use of order entity
 
-  async getOrders(order_ids: string[], client: ClientRequest) {
+  async getOrders(order_ids: string[], client: ClientRequest): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
     const refs = order_ids.map((id) => db.doc(`clients/${client.id}/orders/${id}`))
-    const snapshot = await db.getAll(...refs)
-    const orders = snapshot.map((doc) => {
-      return {
-        id: doc.id,
-        client_id: client.id,
-        ...doc.data()
-      }
-    })
-    return orders
+    return await db.getAll(...refs)
   }
 
-  async getAllOrders(client: ClientRequest) {
+  async getAllOrders(client: ClientRequest): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
-    const orderDocs = await db.collection('clients').doc(client.id).collection('orders').get()
+    const orders = await db.collection('clients').doc(client.id).collection('orders').get()
 
-    const orders = orderDocs.docs.map((doc) => {
-      return {
-        id: doc.id,
-        ...doc.data()
-      }
-    })
-
-    return orders
+    return orders.docs
   }
 
   async getOrder(order_id: string, client_id: string) {
@@ -71,17 +56,21 @@ export class OrderService {
     essential = false
   ): Promise<Order[] | EssentialOrder[]> {
     const db = admin.firestore()
+    const date = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
     const orderDocs = await db
       .collection('clients')
       .doc(client_id)
       .collection('orders')
       .where('branch.id', '==', branch_id)
       .where('status', 'in', [ORDER_STATUS.PENDING])
+      .where('created_at', '>=', admin.firestore.Timestamp.fromDate(date))
       .get()
 
-    const orders = orderDocs.docs.map((doc) => {
-      return essential ? new EssentialOrder(doc) : new Order(doc)
-    })
+    const orders = Promise.all(
+      orderDocs.docs.map(async (doc) => {
+        return essential ? new EssentialOrder(doc) : new Order(doc)
+      })
+    )
 
     return orders
   }

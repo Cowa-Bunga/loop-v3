@@ -1,7 +1,6 @@
 import { DocumentSnapshot } from '@google-cloud/firestore'
-import { Cluster } from "../../cluster/entities/cluster.entity"
-import { ABANDON_FLOW_TYPE, ORDER_TYPE, TASK_TYPE, ORDER_STATUS_DISPLAY } from "./order.enum"
-
+import { Cluster } from '../../cluster/entities/cluster.entity'
+import { ABANDON_FLOW_TYPE, ORDER_TYPE, TASK_TYPE, ORDER_STATUS_DISPLAY } from './order.enum'
 
 class Customer {
   name: string
@@ -24,15 +23,6 @@ class History {
   }
 }
 
-// class ETA {
-//   eta_mins: string
-//   arrival: string
-//   constructor() {
-//     this.status = status
-//     this.timestamp = timestamp
-//   }
-// }
-
 class AbandonFlow {
   type: ABANDON_FLOW_TYPE
 
@@ -41,13 +31,14 @@ class AbandonFlow {
     this.type = abandon_flow.type
   }
 }
+
 export class EssentialOrder {
   id: string
   order_no: string
   status: string
   status_display: string
   type: ORDER_TYPE
-  task_type: TASK_TYPE
+  task_type: TASK_TYPE | ''
   address: string
   customer: Customer
   time_place: Date
@@ -74,32 +65,11 @@ export class EssentialOrder {
     this.collection_time = data.collection_time.toDate()
     this.history = data.history.map((history) => {
       return new History(history.status, history.timestamp.toDate())
-     })
+    })
     this.is_multipart = data.is_multipart || false
-    this.cluster= cluster ? new Cluster(cluster) : undefined
+    this.cluster = cluster ? new Cluster(cluster) : undefined
     this.abandon_flow = new AbandonFlow(order)
     this.reset = data.reset || false
-  }
-
-  getEssentialData(){
-    return {
-      id: this.id,
-      order_no: this.order_no,
-      status: this.status,
-      status_display: this.status_display,
-      type: this.type,
-      task_type: this.task_type,
-      address: this.address,
-      customer: this.customer,
-      time_place: this.time_place,
-      delivery_time: this.delivery_time,
-      collection_time: this.collection_time,
-      history: this.history,
-      is_multipart: this.is_multipart,
-      cluster: this.cluster,
-      abandon_flow: this.abandon_flow,
-      reset: this.reset
-    }
   }
 }
 
