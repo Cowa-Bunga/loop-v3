@@ -64,7 +64,7 @@ export class RouteService {
       return { status: 404, message: 'no trip found' }
     }
 
-    const orderId = ['yQVXjvCoVh8F6RJQx71i'] || trip.data()?.orders[0]
+    const orderId = trip.data()?.orders[0] || 'yQVXjvCoVh8F6RJQx71i'
     if (!orderId) {
       return { message: 'no order id found' }
     }
@@ -73,7 +73,7 @@ export class RouteService {
       .collection('clients')
       .doc(client_id)
       .collection('orders')
-      .doc(orderId[0])
+      .doc(orderId)
       .get()
 
     const orderData = order.data()

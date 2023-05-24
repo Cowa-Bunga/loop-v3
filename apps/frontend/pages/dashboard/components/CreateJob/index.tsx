@@ -23,6 +23,7 @@ const CreateJob = ({ handleClose }: IappCreateJobProps) => {
   })
 
   const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
+
   const { addEmptyParcel, updateParcel, updateFormData, getForms } = Actions(
     state,
     setState
