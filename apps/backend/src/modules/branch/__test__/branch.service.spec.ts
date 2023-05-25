@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { BranchService } from './branch.service'
+import { BranchService } from '../branch.service'
 
 describe('BranchService', () => {
   let service: BranchService
