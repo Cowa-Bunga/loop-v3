@@ -23,7 +23,6 @@ export class ClusterController {
   @Get('/branch/:branch_id')
   @ApiGetRequest('clusters', { operation_content: 'Get clusters by branch_id' }) // Apply the decorator
   async getClustersByBranch(@Param('branch_id') branchId: string, @Client() client: ClientRequest) {
-    const client_id = client.id
-    return this.clusterService.getClustersByBranch(client_id, branchId)
+    return this.clusterService.getClustersByBranch(client, branchId)
   }
 }
