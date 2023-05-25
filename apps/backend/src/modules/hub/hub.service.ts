@@ -1,37 +1,35 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { DocumentReference } from '@google-cloud/firestore'
-import { EssentialHub, Hub } from './entities/hub.entity'
 import { ClientRequest, UserRequest } from '../../shared/entities/request.entity'
 import { CreateHubDto } from './dtos/hub.dto'
+import { DocumentSnapshot } from 'firebase-admin/firestore'
 
 @Injectable()
 export class HubService {
-  async getHubs(hub_refs: DocumentReference[]): Promise<any> {
+  async getHubs(hub_refs: DocumentReference[]): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
 
     if (hub_refs.length === 0) {
       return []
     }
 
-    const snapshot = await db.getAll(...hub_refs)
-
-    const hubs = snapshot.map((doc) => {
-      return {
-        id: doc.id,
-        ...doc.data()
-      }
-    })
+    const hubs = await db.getAll(...hub_refs)
     return hubs
   }
 
-  async getHub(hub_ref: DocumentReference, essential = false): Promise<Hub | EssentialHub> {
-    const hubDoc = await hub_ref.get()
-    const hub = essential ? new EssentialHub(hubDoc) : new Hub(hubDoc)
+  async getHub(hub_ref: DocumentReference): Promise<DocumentSnapshot> {
+    return await hub_ref.get()
+  }
+
+  async getHubById(client: ClientRequest, hub_id: string): Promise<DocumentSnapshot> {
+    const db = admin.firestore()
+    const hub = await db.collection('clients').doc(client.id).collection('hubs').doc(hub_id).get()
+
     return hub
   }
 
-  async getHubByName(name: string, client: ClientRequest): Promise<Hub> {
+  async checkHubExists(client: ClientRequest, name: string): Promise<boolean> {
     const db = admin.firestore()
     const hubs = await db
       .collection('clients')
@@ -41,25 +39,12 @@ export class HubService {
       .limit(1)
       .get()
 
-    if (hubs.empty) {
-      return undefined
-    }
-
-    return new Hub(hubs.docs[0])
+    return hubs.empty ? false : true
   }
 
-  async createHub(createHubDto: CreateHubDto, client: ClientRequest, user: UserRequest): Promise<Hub> {
+  async createHub(createHubDto: CreateHubDto, client: ClientRequest, user: UserRequest): Promise<DocumentSnapshot> {
     const db = admin.firestore()
 
-    // Get hub by name, and check if it exists
-    const existingHub = await this.getHubByName(createHubDto.name, client)
-
-    // Throw error if hub exists
-    if (existingHub) {
-      throw new BadRequestException('Hub with that name already exists.')
-    }
-
-    // Create a new hub for client and user
     const hubRef: DocumentReference = db.collection('clients').doc(client.id).collection('hubs').doc()
     await hubRef.set({
       name: createHubDto.name,
@@ -67,8 +52,6 @@ export class HubService {
       created_at: admin.firestore.FieldValue.serverTimestamp()
     })
 
-    // Retrieve the newly created hub
-    const hub = await hubRef.get()
-    return new Hub(hub)
+    return await hubRef.get()
   }
 }
