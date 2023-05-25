@@ -11,8 +11,9 @@ import {
   ValidateIf,
   ValidateNested
 } from 'class-validator'
+import { OrderBranch } from '../../branch/entities/branch.entity'
 
-enum FlowTypes {
+export enum FlowTypes {
   DEFAULT = 'default',
   SOG = 'sog',
   OTP = 'otp',
@@ -57,11 +58,11 @@ class Parcel {
 
 class Flow {
   @IsEnum(FlowTypes)
-  type: FlowTypes
+  type: FlowTypes = FlowTypes.DEFAULT
 
   @ValidateIf((o) => o.type === FlowTypes.OTP)
   @IsString()
-  code: string
+  code?: string
 }
 
 class Order {
@@ -73,7 +74,7 @@ class Order {
 
   @IsOptional()
   @IsBoolean()
-  assignable: boolean
+  assignable? = false
 
   @ValidateNested()
   customer: Customer
@@ -92,51 +93,57 @@ class Order {
 
   @IsOptional()
   @ValidateNested()
-  contact_person: ContactPerson
+  contact_person?: ContactPerson
 
   @IsOptional()
   @IsString()
-  instructions: string
+  instructions? = ''
 
   @ValidateNested()
-  parcels: Parcel[]
+  @IsOptional()
+  parcels?: Parcel[] = []
 
   @IsOptional()
   @IsNumber()
-  delivery_price: number
+  delivery_price? = 0
 
   @IsOptional()
   @IsString()
-  payment_type: string
+  payment_type? = null
 
   @IsOptional()
   @IsString()
-  origination: string
+  origination? = 'manual'
 
   @IsOptional()
   @ValidateNested()
-  abandon_flow: Flow
+  abandon_flow?: Flow
 
   @IsOptional()
   @ValidateNested()
-  delivery_flow: Flow
+  delivery_flow?: Flow
 
   @IsOptional()
   @IsString()
-  service_type: string
+  service_type? = ''
 
   @IsOptional()
   @IsString()
-  type: string
+  type?: string
 
   @IsOptional()
   @IsString()
-  task_type: string
+  task_type? = ''
 }
 
 export class CreateOrderDto {
+  @ValidateIf((o) => o.branch === undefined)
   @IsString()
-  branch_id: string
+  @IsOptional()
+  branch_id?: string
+
+  @IsOptional()
+  branch?: OrderBranch
 
   @ValidateNested()
   order: Order

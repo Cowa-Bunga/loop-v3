@@ -4,9 +4,9 @@ class Location {
   latitude: number
   longitude: number
   constructor(driver: DocumentSnapshot) {
-    const data = driver.data().location
-    this.latitude = data.latitude
-    this.longitude = data.longitude
+    const data = driver.data().location || {}
+    this.latitude = data.latitude || 0
+    this.longitude = data.longitude || 0
   }
 }
 
@@ -46,22 +46,6 @@ export class EssentialDriver {
     this.idle_since = data.idle_since.toDate()
     this.sos = data.sos
     this.active_trip = data.active_trip ? new ActiveTrip(driver) : undefined
-  }
-  getEssentialData() {
-    return {
-      id: this.id,
-      name: this.name,
-      employee_code: this.employee_code,
-      image: this.image,
-      location: this.location,
-      blocked: this.blocked,
-      lunch: this.lunch,
-      on_active_trip: this.on_active_trip,
-      available: this.available,
-      idle_since: this.idle_since,
-      sos: this.sos,
-      active_trip: this.active_trip
-    }
   }
 }
 

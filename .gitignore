@@ -44,3 +44,4 @@ Thumbs.db
 .next
 
 credentials.json
+.env
