@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { DocumentSnapshot } from '@google-cloud/firestore'
 import { ClientRequest } from '../../shared/entities/request.entity'
-import { EssentialOrder, Order } from './entities/order.entity'
 import { ORDER_STATUS } from './entities/order.enum'
 import { CreateOrderDto } from './dto/order.dto'
 
@@ -44,29 +43,18 @@ export class OrderService {
     return order
   }
 
-  async getOrdersForBranch(
-    branch_id: string,
-    client_id: string,
-    essential = false
-  ): Promise<Order[] | EssentialOrder[]> {
+  async getOrdersForBranch(branch_id: string, client: ClientRequest): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
     const date = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
-    const orderDocs = await db
+    const orders = await db
       .collection('clients')
-      .doc(client_id)
+      .doc(client.id)
       .collection('orders')
       .where('branch.id', '==', branch_id)
       .where('status', 'in', [ORDER_STATUS.PENDING])
       .where('created_at', '>=', admin.firestore.Timestamp.fromDate(date))
       .get()
-
-    const orders = Promise.all(
-      orderDocs.docs.map(async (doc) => {
-        return essential ? new EssentialOrder(doc) : new Order(doc)
-      })
-    )
-
-    return orders
+    return orders.docs
   }
 
   async createOrder(createOrderDto: CreateOrderDto, client: ClientRequest): Promise<DocumentSnapshot> {

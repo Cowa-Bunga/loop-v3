@@ -3,16 +3,15 @@ import { OrderService } from './order.service'
 import { ApiTags } from '@nestjs/swagger'
 import { Client } from '../../shared/decorators/client.decorator'
 import { ClientRequest } from '../../shared/entities/request.entity'
-import { ApiGetOneRequest, ApiGetRequest } from '../../shared/decorators/api.decorator'
+import { ApiGetOneRequest, ApiGetRequest, ApiPostRequest } from '../../shared/decorators/api.decorator'
 import { Order } from './entities/order.entity'
 
-const SERVICE_NAME = 'Order'
 @ApiTags('Orders')
 @Controller('order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @ApiGetRequest(SERVICE_NAME)
+  @ApiGetRequest('Order')
   @Get()
   async getOrders(@Client() client: ClientRequest, @Query('order_ids') order_ids?: string[]) {
     let orderDocs
@@ -28,7 +27,7 @@ export class OrderController {
     return orders
   }
 
-  @ApiGetOneRequest(SERVICE_NAME)
+  @ApiGetOneRequest('Order')
   @Get(':order_id')
   async getOrder(@Param('order_id') order_id: string, @Client() client: ClientRequest) {
     return new Order(await this.orderService.getOrder(order_id, client.id))
