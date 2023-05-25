@@ -14,14 +14,6 @@ export class EssentialBranch {
     this.orders = orders || []
   }
 
-  getEssentialData() {
-    return {
-      id: this.id,
-      name: this.name,
-      orders: this.orders
-    }
-  }
-
   setOrders(orders: Order[]): void {
     this.orders = orders
   }
@@ -50,8 +42,8 @@ export class Branch extends EssentialBranch {
   hub: DocumentReference
   location: Location
 
-  constructor(branch: DocumentSnapshot) {
-    super(branch)
+  constructor(branch: DocumentSnapshot, orders?: Order[]) {
+    super(branch, orders)
     const data = branch.data()
     this.store_code = data.store_code
     this.address = data.address
