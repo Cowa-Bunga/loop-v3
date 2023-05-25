@@ -31,6 +31,6 @@ export class OrderController {
   @ApiGetOneRequest(SERVICE_NAME)
   @Get(':order_id')
   async getOrder(@Param('order_id') order_id: string, @Client() client: ClientRequest) {
-    return await this.orderService.getOrder(order_id, client.id)
+    return new Order(await this.orderService.getOrder(order_id, client.id))
   }
 }
