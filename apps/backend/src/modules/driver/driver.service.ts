@@ -64,10 +64,10 @@ export class DriverService {
   }
 
   /**
-   * Creates a new driver and adds it to the database
+   * Creates a new driver and adds it to the database for specified client
    * @param client currently authenticated client
    * @param user currently authenticated user
-   * @param createDriverDto driver details to be created
+   * @param createDriverDto details of driver to be created
    * @returns DocumentSnapshot of created driver
    */
   async createDriver(
