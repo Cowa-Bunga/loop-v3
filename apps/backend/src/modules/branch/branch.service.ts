@@ -35,11 +35,7 @@ export class BranchService {
       .limit(1)
       .get()
 
-    if (branches.empty) {
-      return false
-    }
-
-    return true
+    return branches.empty ? false : true
   }
 
   async createBranch(
