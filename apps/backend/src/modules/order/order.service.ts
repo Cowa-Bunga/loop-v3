@@ -7,7 +7,7 @@ import { CreateOrderDto } from './dto/order.dto'
 
 @Injectable()
 export class OrderService {
-  async getOrders(order_ids: string[], client: ClientRequest): Promise<DocumentSnapshot[]> {
+  async getOrders(client: ClientRequest, order_ids: string[]): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
     const refs = order_ids.map((id) => db.doc(`clients/${client.id}/orders/${id}`))
     return await db.getAll(...refs)
@@ -20,16 +20,16 @@ export class OrderService {
     return orders.docs
   }
 
-  async getOrder(order_id: string, client_id: string): Promise<DocumentSnapshot> {
+  async getOrder(client: ClientRequest, order_id: string): Promise<DocumentSnapshot> {
     const db = admin.firestore()
-    const order = await db.collection('clients').doc(client_id).collection('orders').doc(order_id).get()
+    const order = await db.collection('clients').doc(client.id).collection('orders').doc(order_id).get()
 
     const orderData = order.data()
 
     // TODO Change below to append trip and driver data in controller using their individual services.
     if (orderData.trip_id) {
       //TODO replace with trip service
-      const trip = await db.collection('clients').doc(client_id).collection('trips').doc(orderData.trip_id).get()
+      const trip = await db.collection('clients').doc(client.id).collection('trips').doc(orderData.trip_id).get()
 
       if (trip.data().driver) {
         //TODO replace with driver service
@@ -43,7 +43,7 @@ export class OrderService {
     return order
   }
 
-  async getOrdersForBranch(branch_id: string, client: ClientRequest): Promise<DocumentSnapshot[]> {
+  async getOrdersForBranch(client: ClientRequest, branch_id: string): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
     const date = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
     const orders = await db
@@ -57,7 +57,7 @@ export class OrderService {
     return orders.docs
   }
 
-  async createOrder(createOrderDto: CreateOrderDto, client: ClientRequest): Promise<DocumentSnapshot> {
+  async createOrder(client: ClientRequest, createOrderDto: CreateOrderDto): Promise<DocumentSnapshot> {
     const { order, branch } = createOrderDto
     const db = admin.firestore()
     const orderRef = await db.collection('clients').doc(client.id).collection('orders').doc()

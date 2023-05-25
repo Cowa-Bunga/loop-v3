@@ -6,7 +6,7 @@ import { ClientRequest, UserRequest } from '../../shared/entities/request.entity
 
 @Injectable()
 export class DriverService {
-  private async getDefaultDriverValues(createDriverDto: CreateDriverDto, client: ClientRequest, user: UserRequest) {
+  private async getDefaultDriverValues(client: ClientRequest, user: UserRequest, createDriverDto: CreateDriverDto) {
     const db = admin.firestore()
     const payment_setting = createDriverDto.payment_setting || 'default'
 
@@ -23,10 +23,10 @@ export class DriverService {
     }
   }
 
-  async getDriversForHub(hub_id: string, client_id: string): Promise<DocumentSnapshot[]> {
+  async getDriversForHub(client: ClientRequest, hub: DocumentReference): Promise<DocumentSnapshot[]> {
     const delivery_permission = {
-      hub_id: hub_id,
-      promisor_id: client_id
+      hub_id: hub.id,
+      promisor_id: client.id
     }
 
     const db = admin.firestore()
@@ -46,14 +46,14 @@ export class DriverService {
   }
 
   async createDriver(
-    createDriverDto: CreateDriverDto,
     client: ClientRequest,
-    user: UserRequest
+    user: UserRequest,
+    createDriverDto: CreateDriverDto
   ): Promise<DocumentSnapshot> {
     const db = admin.firestore()
 
     // Get the default driver values
-    const defaultDriverValues = await this.getDefaultDriverValues(createDriverDto, client, user)
+    const defaultDriverValues = await this.getDefaultDriverValues(client, user, createDriverDto)
 
     const driverRef: DocumentReference = db.collection('drivers').doc()
     await driverRef.set({
@@ -61,7 +61,6 @@ export class DriverService {
       ...defaultDriverValues
     })
 
-    // Retrieve the newly created driver
     return await driverRef.get()
   }
 }

@@ -24,7 +24,7 @@ export class DriverController {
       throw new BadRequestException('Driver with that email already exists.')
     }
 
-    const driver = await this.driverService.createDriver(createDriverDto, client, user)
+    const driver = await this.driverService.createDriver(client, user, createDriverDto)
 
     return new Driver(driver)
   }

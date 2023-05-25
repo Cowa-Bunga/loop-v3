@@ -3,7 +3,7 @@ import { OrderService } from './order.service'
 import { ApiTags } from '@nestjs/swagger'
 import { Client } from '../../shared/decorators/client.decorator'
 import { ClientRequest } from '../../shared/entities/request.entity'
-import { ApiGetOneRequest, ApiGetRequest, ApiPostRequest } from '../../shared/decorators/api.decorator'
+import { ApiGetOneRequest, ApiGetRequest } from '../../shared/decorators/api.decorator'
 import { Order } from './entities/order.entity'
 
 @ApiTags('Orders')
@@ -16,7 +16,7 @@ export class OrderController {
   async getOrders(@Client() client: ClientRequest, @Query('order_ids') order_ids?: string[]) {
     let orderDocs
     if (order_ids && order_ids.length > 0) {
-      orderDocs = await this.orderService.getOrders(order_ids, client)
+      orderDocs = await this.orderService.getOrders(client, order_ids)
     } else {
       orderDocs = await this.orderService.getAllOrders(client)
     }
@@ -29,7 +29,7 @@ export class OrderController {
 
   @ApiGetOneRequest('Order')
   @Get(':order_id')
-  async getOrder(@Param('order_id') order_id: string, @Client() client: ClientRequest) {
-    return new Order(await this.orderService.getOrder(order_id, client.id))
+  async getOrder(@Client() client: ClientRequest, @Param('order_id') order_id: string) {
+    return new Order(await this.orderService.getOrder(client, order_id))
   }
 }
