@@ -27,8 +27,8 @@ export class AbandonFlow {
   type: ABANDON_FLOW_TYPE
 
   constructor(order: DocumentSnapshot) {
-    const abandon_flow = order.data().abandon_flow
-    this.type = abandon_flow.type
+    const data = order.data().abandon_flow
+    this.type = data ? data.type : ''
   }
 }
 

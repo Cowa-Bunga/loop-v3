@@ -57,7 +57,7 @@ export class AuthGuard implements CanActivate {
     const client_id = payload.client.id
     const user_id = payload.user.id
 
-    const client = await this.clientService.getClientByKey(client_id)
+    const client = await this.clientService.getClientById(client_id)
     const user = await this.userService.getUserById(user_id)
 
     if (!client.exists || !user.exists) {
