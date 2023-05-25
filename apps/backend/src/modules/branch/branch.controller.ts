@@ -24,7 +24,7 @@ export class BranchController {
       throw new BadRequestException('Branch with that name already exists.')
     }
 
-    const branch = await this.branchService.createBranch(createBranchDto, client, user)
+    const branch = await this.branchService.createBranch(client, user, createBranchDto)
 
     return new Branch(branch)
   }

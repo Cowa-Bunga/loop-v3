@@ -13,11 +13,11 @@ export class BranchService {
     return branch
   }
 
-  async getBranchesForHub(hub_ref: DocumentReference, client_id: string): Promise<DocumentSnapshot[]> {
+  async getBranchesForHub(client: ClientRequest, hub_ref: DocumentReference): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
     const branches = await db
       .collection('clients')
-      .doc(client_id)
+      .doc(client.id)
       .collection('branches')
       .where('hub', '==', hub_ref)
       .get()
@@ -39,9 +39,9 @@ export class BranchService {
   }
 
   async createBranch(
-    createBranchDto: CreateBranchDto,
     client: ClientRequest,
-    user: UserRequest
+    user: UserRequest,
+    createBranchDto: CreateBranchDto
   ): Promise<DocumentSnapshot> {
     const { hub_id, name, contact, address, store_code, dashboard_url, location } = createBranchDto
     const db = admin.firestore()
