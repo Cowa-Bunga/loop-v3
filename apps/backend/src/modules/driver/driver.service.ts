@@ -42,11 +42,7 @@ export class DriverService {
     const db = admin.firestore()
     const drivers = await db.collection('drivers').where('email', '==', email).limit(1).get()
 
-    if (drivers.empty) {
-      return false
-    }
-
-    return true
+    return drivers.empty ? false : true
   }
 
   async createDriver(
