@@ -8,8 +8,6 @@ import { CreateOrderDto } from './dto/order.dto'
 
 @Injectable()
 export class OrderService {
-  //TODO make use of order entity
-
   async getOrders(order_ids: string[], client: ClientRequest): Promise<DocumentSnapshot[]> {
     const db = admin.firestore()
     const refs = order_ids.map((id) => db.doc(`clients/${client.id}/orders/${id}`))
@@ -23,12 +21,13 @@ export class OrderService {
     return orders.docs
   }
 
-  async getOrder(order_id: string, client_id: string) {
+  async getOrder(order_id: string, client_id: string): Promise<DocumentSnapshot> {
     const db = admin.firestore()
     const order = await db.collection('clients').doc(client_id).collection('orders').doc(order_id).get()
 
     const orderData = order.data()
 
+    // TODO Change below to append trip and driver data in controller using their individual services.
     if (orderData.trip_id) {
       //TODO replace with trip service
       const trip = await db.collection('clients').doc(client_id).collection('trips').doc(orderData.trip_id).get()
@@ -42,12 +41,7 @@ export class OrderService {
         })
       }
     }
-
-    return {
-      id: order.id,
-      client_id: client_id,
-      ...orderData
-    }
+    return order
   }
 
   async getOrdersForBranch(
