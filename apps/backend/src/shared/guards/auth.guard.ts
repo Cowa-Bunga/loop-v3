@@ -37,13 +37,12 @@ export class AuthGuard implements CanActivate {
   }
 
   validateAPIKey = async (apiKey: string, request: Request) => {
-    const clients = await this.clientService.getClientByKey(apiKey)
+    const client = await this.clientService.getClientByKey(apiKey)
 
-    if (clients.empty) {
+    if (!client.exists) {
       throw new UnauthorizedException('Invalid or missing API Key.')
     }
 
-    const client = clients.docs.pop()
     request['client'] = new ClientRequest(client)
   }
 
@@ -58,8 +57,8 @@ export class AuthGuard implements CanActivate {
     const client_id = payload.client.id
     const user_id = payload.user.id
 
-    const client = await this.clientService.getClientDoc(client_id)
-    const user = await this.userService.getUserDoc(user_id)
+    const client = await this.clientService.getClientByKey(client_id)
+    const user = await this.userService.getUserById(user_id)
 
     if (!client.exists || !user.exists) {
       throw new UnauthorizedException('Client or user does not exist. Please provide valid authentication credentials.')
@@ -71,7 +70,7 @@ export class AuthGuard implements CanActivate {
       )
     }
 
-    const userPermissions = await this.userService.getUserPermissionsDoc(user_id, client_id)
+    const userPermissions = await this.userService.getUserPermissions(user_id, client_id)
 
     request['client'] = new ClientRequest(client)
     request['user'] = new UserRequest(user, userPermissions)
