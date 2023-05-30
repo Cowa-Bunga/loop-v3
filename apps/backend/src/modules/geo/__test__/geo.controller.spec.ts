@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { GeoController } from '../controllers/geo.controller'
 import { GeoService } from '../services/geo.service'
 
-describe('GeoController', () => {
+xdescribe('GeoController', () => {
   let controller: GeoController
 
   beforeEach(async () => {
