@@ -12,7 +12,10 @@
     "lint": "npx nx lint",
     "e2e": "npx nx e2e frontend-e2e",
     "doc:frontend": "cd apps/frontend && npx @compodoc/compodoc -p tsconfig.json -s",
-    "doc:backend": "cd apps/backend && npx @compodoc/compodoc -p tsconfig.json -s"
+    "doc:backend": "cd apps/backend && npx @compodoc/compodoc -p tsconfig.json -s",
+    "load:frontend": "npx autocannon -c 100 -d 5 -p 10 l http://localhost:3000",
+    "load:backend": "npx autocannon -c 100 -d 5 -p 10 l http://localhost:3333",
+    "clinic:frontend": "npx clinic doctor --autocannon [ / --method GET http://localhost:3000 ] "
   },
   "dependencies": {
     "@deck.gl/core": "^8.9.7",
@@ -38,6 +41,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@nx-extend/gcp-functions": "^6.5.2",
     "@react-google-maps/api": "^2.18.1",
+    "@react-pdf/renderer": "^3.1.9",
     "@routingjs/osrm": "^0.1.0",
     "@routingjs/valhalla": "^0.1.0",
     "@sentry/nextjs": "^7.52.1",
@@ -55,6 +59,7 @@
     "jest-fetch-mock": "^3.0.3",
     "lodash": "^4.17.21",
     "mapbox-gl": "^2.14.1",
+    "mapbox-gl-controls": "^2.3.5",
     "maplibre-gl": "^2.4.0",
     "mui-phone-number": "^3.0.3",
     "nebula.gl": "^1.0.4",
@@ -62,6 +67,7 @@
     "next": "13.1.1",
     "next-auth": "^4.20.1",
     "pg": "^8.11.0",
+    "planby": "^1.1.4",
     "postgres": "^3.3.4",
     "react": "18.2.0",
     "react-dom": "^18.2.0",

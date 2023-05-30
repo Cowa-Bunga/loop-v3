@@ -26,22 +26,22 @@ export const MODEL_MENU = ({ client_id }) =>
         {
           id: 'all-orders',
           icon: LoopIcon,
-          title: 'Overview',
-          link: `/organisation/${client_id}/orders/view`,
+          title: 'All Orders',
+          link: `/company/${client_id}/orders/view`,
           permissions: []
         },
         {
           id: 'import',
           icon: ImportExportIcon,
           title: 'Import New',
-          link: `/organisation/${client_id}/reports`,
+          link: `/company/${client_id}/reports`,
           permissions: []
         },
         {
           id: 'trip-report',
           icon: AssessmentIcon,
           title: 'Trip Report',
-          link: `/organisation/${client_id}/fleet`,
+          link: `/company/${client_id}/fleet`,
           permissions: []
         }
       ]
@@ -54,24 +54,24 @@ export const MODEL_MENU = ({ client_id }) =>
       link: `/drivers/overview`,
       permissions: []
     },
-    {
-      id: 'messages',
-      icon: Person,
-      title: 'Message Centre',
-      permissions: []
-    },
+    // {
+    //   id: 'messages',
+    //   icon: Person,
+    //   title: 'Message Centre',
+    //   permissions: []
+    // },
     {
       id: 'reports',
       icon: PowerSettingsNewIcon,
       title: 'Reports',
-      link: `/organisation/${client_id}/reports`,
+      link: `/company/${client_id}/reports`,
       permissions: []
     },
     {
       id: 'routing',
       icon: LiveHelpIcon,
       title: 'Route Planning',
-      link: '/dashboard',
+      link: '/route/planning',
       permissions: []
     },
     {

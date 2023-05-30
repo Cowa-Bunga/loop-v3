@@ -1,12 +1,5 @@
 import { ICON_MAPPING, ASSETS } from '../shared/config'
-import {
-  IconLayer,
-  GeoJsonLayer,
-  ScenegraphLayer,
-  HexagonLayer,
-  ColumnLayer,
-  PolygonLayer
-} from 'deck.gl/typed'
+import { IconLayer, GeoJsonLayer, ScenegraphLayer, HexagonLayer, ColumnLayer, PolygonLayer } from 'deck.gl/typed'
 
 export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
   return [
@@ -95,23 +88,6 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
       getFillColor: (d) => d.color
     }),
 
-    new HexagonLayer({
-      id: 'hex-highlight',
-      data: [
-        { point: start, label: 'HUB', color: [100, 200, 100] },
-        { point: end, label: 'CUSTOMER x', color: [200, 100, 100] },
-        { point: driver, label: 'Driver x', color: [100, 200, 200] }
-      ],
-      radius: 10,
-      elevationScale: 100,
-      extruded: true,
-      opacity: 0.6,
-      coverage: 0.88,
-      lowerPercentile: 50,
-      getPosition: (d) => [d.point[0], d.point[1], 0],
-      getElevationWeight: (d) => 100
-    }),
-
     // route path
     new GeoJsonLayer({
       id: 'trip-path',
@@ -140,7 +116,7 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
       getFillColor: (d) => [6, 56, 99],
       // getLineColor: [80, 80, 80],
       getLineWidth: 1,
-      opacity: 0.01
+      opacity: 0.1
     }),
 
     new GeoJsonLayer({
@@ -155,7 +131,7 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
       getPointRadius: 100,
       getLineWidth: 2,
       getElevation: 30,
-      opacity: 0.01,
+      opacity: 0.1,
       pointType: 'circle'
     })
   ]

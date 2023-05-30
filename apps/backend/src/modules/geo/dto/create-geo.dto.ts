@@ -18,9 +18,9 @@ export class CreateGeoDto {
 
   start: Point
 
-  end: Point
+  waypoints: Point[]
 
-  waypoints: GeometryCollection
+  end: Point
 
   route: GeometryCollection
 

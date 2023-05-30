@@ -1,8 +1,5 @@
-# Build the docker image with `nx docker-build frontend`.
-# Run the container with `docker run -p 3000:3000 -t frontend`.
-# Tip: Modify "docker-build" options in project.json to change docker build args.
-
 FROM docker.io/node:lts-alpine
+
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache python3 g++ make
 
@@ -10,6 +7,7 @@ ENV PORT=3000
 ENV NODE_ENV=production
 ENV NX_DAEMON=true
 ENV SENTRY_ENABLED=true
+ENV NEXT_TELEMETRY_DISABLED=true
 
 ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
 ENV NEXT_PUBLIC_API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
@@ -33,7 +31,6 @@ RUN chown -R frontend:frontend .
 WORKDIR /apps/frontend
 
 RUN npm i -g next@13.1.1 nx
-RUN next telemetry disable
 RUN npm i --legacy-peer-deps
 
 EXPOSE 3000

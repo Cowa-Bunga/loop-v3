@@ -3,7 +3,7 @@ import { Edge } from 'reactflow'
 export const initialNodes = [
   {
     id: '1',
-    data: { label: 'Organisation' },
+    data: { label: 'Company' },
     position: { x: 400, y: 100 },
     visible: false,
     type: 'customTitle'

@@ -6,6 +6,7 @@ import { Actions } from './actions'
 import { createJobFormLocalePathBuilder } from '@locale/locale-utils'
 import { IForm } from '@pages/api/forms/[reference]/type'
 import { ui } from './style'
+import { memo } from 'react'
 
 const CreateJob = ({ handleClose }: IappCreateJobProps) => {
   const { t } = useTranslation()
@@ -24,26 +25,13 @@ const CreateJob = ({ handleClose }: IappCreateJobProps) => {
 
   const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
 
-  const { addEmptyParcel, updateParcel, updateFormData, getForms } = Actions(
-    state,
-    setState
-  )
+  const { addEmptyParcel, updateParcel, updateFormData, getForms } = Actions(state, setState)
 
   return (
-    <Modal
-      open
-      onClose={handleClose}
-      aria-labelledby={_t('aria.label')}
-      aria-describedby={_t('aria.description')}
-    >
+    <Modal open onClose={handleClose} aria-labelledby={_t('aria.label')} aria-describedby={_t('aria.description')}>
       <Box sx={ui.container}>
         {isLoading ? (
-          <Box
-            sx={ui.container}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Box sx={ui.container} display="flex" justifyContent="center" alignItems="center">
             <CircularProgress />
           </Box>
         ) : (

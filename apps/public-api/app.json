@@ -1,0 +1,10 @@
+{
+    "name": "loop-pro-public-api",
+    "options": {
+      "allow-unauthenticated": true,
+      "memory": "1024Mi",
+      "cpu": "1",
+      "port": 3333,
+      "http2": false
+    }
+  }

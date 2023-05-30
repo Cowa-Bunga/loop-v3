@@ -1,6 +1,10 @@
 const ui = {
+  root: {
+    backgroundColor: 'primary.main',
+    pt: 20
+  },
+
   card: {
-    mt: 20,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -9,8 +13,7 @@ const ui = {
 
   loginBg: {
     height: 'calc(100vh - 100px)',
-    backgroundImage:
-      'url(https://storage.googleapis.com/cb-dev-public-images/dos-icons/login_background.png)',
+    backgroundImage: 'url(/login_background.png)',
     backgroundSize: 'cover'
   },
 
