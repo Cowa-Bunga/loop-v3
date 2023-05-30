@@ -7,6 +7,12 @@ FROM docker.io/node:lts-alpine
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache python3 g++ make
 
+ENV SENTRY_ENABLED=true
+ENV NX_NON_NATIVE_HASHER=true
+ENV NODE_ENV=production
+# todo:
+ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
+
 WORKDIR /apps
 RUN addgroup --system public-api && \
   adduser --system -G public-api public-api

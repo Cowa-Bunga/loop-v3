@@ -7,6 +7,12 @@ FROM docker.io/node:lts-alpine
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache python3 g++ make
 
+ENV SENTRY_ENABLED=true
+ENV NX_NON_NATIVE_HASHER=true
+ENV NODE_ENV=production
+# todo:
+ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
+
 WORKDIR /apps
 RUN addgroup --system backend && \
   adduser --system -G backend backend
@@ -18,6 +24,7 @@ RUN chown -R backend:backend .
 
 WORKDIR /apps/backend
 RUN npm i -g nest nx
+# RUN npm i @nrwl/nx-linux-x64-gnu
 RUN npm -f install
 
 EXPOSE 3333
