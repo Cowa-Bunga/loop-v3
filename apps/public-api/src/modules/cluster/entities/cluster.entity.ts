@@ -1,9 +1,16 @@
-import { DocumentSnapshot } from '@google-cloud/firestore'
+import { ClusterOrder } from '../dto/cluster.dto' 
+
 
 export class Cluster {
   id: string
-  constructor(cluster: DocumentSnapshot) {
-    this.id = cluster.id
-  }
+  active: boolean
+  status: string
+  branch: { id: string } 
+  orders: ClusterOrder[]
 
+  constructor(args: any) {
+    this.id = args.id
+    this.active = args.active
+    this.status = args.status
+  }
 }

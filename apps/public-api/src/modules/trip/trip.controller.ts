@@ -4,7 +4,7 @@ import { Client } from '../../shared/decorators/client.decorator'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { TripService } from './trip.service'
 import { GetTripDto, CreateTripDto, AcceptAdhocTripDto } from './dto/trip.dto'
-import { ApiGetRequest, ApiGetOneRequest, ApiPostRequest } from '../../shared/decorators/api.decorator' // Import the decorators
+import { ApiGetRequest, ApiGetOneRequest, ApiPostRequest } from '../../shared/decorators/api.decorator'
 
 @ApiTags('Trips')
 @Controller('trip')
@@ -12,26 +12,48 @@ export class TripController {
   constructor(private readonly tripService: TripService) {}
 
   @Get(':trip_id')
-  @ApiGetOneRequest('trip', { operation_content: 'Get trip details by trip_id' }) // Apply the decorator
+  @ApiGetOneRequest('trip', { operation_content: 'Get trip details by trip_id' })
   async getTrip(@Param('trip_id') trip_id: string, @Client() client: ClientRequest) {
     const client_id = client.id
     const getTripDto: GetTripDto = { trip_id }
     return await this.tripService.getTrip(getTripDto, client_id)
   }
 
-  @Get()
-  @ApiGetRequest('trips', { operation_content: 'Get multiple trips by trip_ids' }) // Apply the decorator
+  @Get('trips')
+  @ApiGetRequest('trips', { operation_content: 'Get trips' })
   async getTrips(
-    @Query('trip_ids', ParseArrayPipe) trip_ids: string[],
-    @Client() client: ClientRequest
+    @Client() client: ClientRequest,
+    @Query('trip_ids', new ParseArrayPipe({ optional: true })) trip_ids?: string[],
   ) {
     const client_id = client.id
-    return await this.tripService.getTrips(trip_ids, client_id)
+  
+    if (trip_ids) {
+      return await this.tripService.getTripsByTripIds(trip_ids, client_id)
+    }
+  
+    throw new Error('Please provide trip_ids.')
   }
+  
+  @Get('branches')
+  @ApiGetRequest('branches', { operation_content: 'Get branches' })
+  async getBranches(
+    @Client() client: ClientRequest,
+    @Query('branch_ids', new ParseArrayPipe({ optional: true })) branch_ids?: string[],
+    @Query('statuses', new ParseArrayPipe({ optional: true })) statuses?: string[],
+  ) {
+    const client_id = client.id
+  
+    if (!branch_ids) {
+      throw new Error('Please provide branch_ids.')
+    }
+  
+    return await this.tripService.getTripsByBranchIds(branch_ids, client_id, statuses)
+  }
+  
 
   @Post('/create')
   @HttpCode(HttpStatus.CREATED)
-  @ApiPostRequest('trip', CreateTripDto, { operation_content: 'Create a new trip' }) // Apply the decorator
+  @ApiPostRequest('trip', CreateTripDto, { operation_content: 'Create a new trip' })
   async createTrip(@Body() createTripDto: CreateTripDto, @Client() client: ClientRequest) {
     const client_id = client.id
     return await this.tripService.createTrip(createTripDto, client_id)
@@ -39,7 +61,7 @@ export class TripController {
 
   @Post('accept-adhoc')
   @HttpCode(HttpStatus.CREATED)
-  @ApiPostRequest('trip', AcceptAdhocTripDto, { operation_content: 'Add an order to an active trip' }) // Apply the decorator
+  @ApiPostRequest('trip', AcceptAdhocTripDto, { operation_content: 'Add an order to an active trip' })
   async acceptAdhocTrip(@Body() acceptAdhocTrip: AcceptAdhocTripDto, @Client() client: ClientRequest) {
     const client_id = client
     return await this.acceptAdhocTrip(acceptAdhocTrip, client_id)

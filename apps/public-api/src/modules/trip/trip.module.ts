@@ -6,7 +6,7 @@ import { TripController } from './trip.controller'
 
 @Module({
   controllers: [TripController],
-  providers: [TripService]
-  // providers: [TripService, AcceptAdhocTripService]
+  providers: [TripService],
+  exports: [TripService]
 })
 export class TripModule {}

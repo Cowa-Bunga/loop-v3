@@ -61,6 +61,11 @@ export type ApiDocOptions = {
   created_response?: string
 }
 
+/**
+ * Combine's swagger decorators for a GET request that returns multiple objects.
+ * @param service The name of the service
+ * @param options Options to override default messages
+ */
 export function ApiGetRequest(service: string, options?: ApiDocOptions) {
   const content = new ApiDocument({ service, ...options })
   return applyDecorators(
@@ -70,6 +75,11 @@ export function ApiGetRequest(service: string, options?: ApiDocOptions) {
   )
 }
 
+/**
+ * Combine's swagger decorators for a GET request that returns a single object.
+ * @param service The name of the service
+ * @param options Options to override default messages
+ */
 export function ApiGetOneRequest(service: string, options?: ApiDocOptions) {
   const content = new ApiGetDocument({ service, ...options })
   return applyDecorators(
@@ -79,6 +89,12 @@ export function ApiGetOneRequest(service: string, options?: ApiDocOptions) {
   )
 }
 
+/**
+ * Combine's swagger decorators for a POST request.
+ * @param service The name of the service
+ * @param dto The request specific DTO
+ * @param options Options to override default messages
+ */
 export function ApiPostRequest(service: string, dto: Type<unknown>, options?: ApiDocOptions) {
   const content = new ApiPostDocument({ service, ...options })
 
