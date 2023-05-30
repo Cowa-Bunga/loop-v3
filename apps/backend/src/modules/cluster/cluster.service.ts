@@ -23,12 +23,18 @@ export class ClusterService {
     }
   }
 
-  async getClustersByBranch(client: ClientRequest, branch_id: string): Promise<Cluster[]> {
+  async getClustersByBranch(
+    client: ClientRequest,
+    branch_id: string
+  ): Promise<Cluster[]> {
     const clusters = await this.getActiveClusters(client.id, branch_id)
     const result = await Promise.all(
       clusters.map(async (cluster) => {
         const branch = await this.branchService.getBranch(client, branch_id)
-        const orders = await this.getOrdersInCluster(client.id, cluster.order_ids)
+        const orders = await this.getOrdersInCluster(
+          client.id,
+          cluster.order_ids
+        )
         return new Cluster(cluster, branch, orders)
       })
     )

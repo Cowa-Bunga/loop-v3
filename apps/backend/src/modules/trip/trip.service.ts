@@ -1,10 +1,12 @@
 import * as admin from 'firebase-admin'
+import {  DocumentData } from "firebase/firestore"
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common'
-import { CreateTripDto, GetTripDto, AcceptAdhocTripDto } from './dto/trip.dto'
+import { CreateTripDto, GetTripDto, AcceptAdhocTripDto, Trip } from './dto/trip.dto'
+
 
 @Injectable()
 export class TripService {
-  async getTrips(trip_ids: string[], client_id: string) {
+  async getTripsByTripIds(trip_ids: string[], client_id: string) {
     const db = admin.firestore()
     const refs = trip_ids.map((id) =>
       db.doc(`clients/${client_id}/trips/${id}`)
@@ -192,7 +194,40 @@ export class TripService {
       return { id: tripRef.id }
     })
   }
+
+  async getTripsByBranchIds(branchIds: string[], clientId: string, statuses: string[]): Promise<DocumentData[]> {
+    const db = admin.firestore()
+    const trips: DocumentData[] = []
+
+    for (const branchId of branchIds) {
+      const branchRef = db.doc(`clients/${clientId}/branches/${branchId}`)
+      const q = db.collection(`clients/${clientId}/trips`)
+        .where("branch", "==", branchRef)
+        .where("status", "in", statuses)
+      const querySnapshot = await q.get()
+  
+      querySnapshot.forEach((tripDoc) => {
+        const tripData = tripDoc.data()
+        trips.push({
+          id: tripDoc.id,
+          client_id: clientId,
+          ...tripData,
+        })
+      })
+    }
+  
+  
+  
+    return trips
+  }
+  
+  
+  
+  
+  
 }
+
+
 
 @Injectable()
 export class AcceptAdhocTripService {
@@ -394,7 +429,6 @@ export class AcceptAdhocTripService {
     const response = await fetch(uri, options)
 
     const result = await response.json()
-    console.log('result for dos silent notification', result)
     return result
   }
 }

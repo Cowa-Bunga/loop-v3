@@ -23,7 +23,6 @@ export class OrderController {
     const orders = orderDocs.map((order) => {
       return new Order(order)
     })
-    console.log(orders)
     return orders
   }
 

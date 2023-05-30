@@ -49,8 +49,7 @@ export class AuthGuard implements CanActivate {
    * @param request request object to append client to
    */
   validateAPIKey = async (apiKey: string, request: Request) => {
-    // Obtain the client from the database via api key.
-    const client = await this.clientService.getClientByKey(apiKey)
+    const client = await this.clientService.getClientById(apiKey)
 
     // Check if a client has been found for the given api key
     if (!client.exists) {

@@ -1,12 +1,12 @@
 import { Logger, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
+import { SwaggerModule, DocumentBuilder, SwaggerCustomOptions } from '@nestjs/swagger'
 import { AppModule } from './app.module'
 import * as admin from 'firebase-admin'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    cors: true
+    cors: true,
   })
   app.useGlobalPipes(new ValidationPipe())
 
@@ -20,13 +20,25 @@ async function bootstrap() {
     .setTitle('LOOP')
     .setDescription('OpenAPI spec.')
     .setVersion('3.1')
-    .addApiKey({ type: 'apiKey', name: 'x-api-key', in: 'header' }, 'x-api-key')
+    .addApiKey({
+      type: 'apiKey',
+      name: 'x-api-key',
+      in: 'header',
+    }) 
+    .addBearerAuth() 
     .build()
 
   const document = SwaggerModule.createDocument(app, config)
-  SwaggerModule.setup('api', app, document, {
-    customCssUrl: '/assets/swagger.css'
-  })
+
+  const swaggerOptions: SwaggerCustomOptions = {
+    customCssUrl: '/assets/swagger.css',
+    swaggerOptions: {
+      oauth2RedirectUrl: '/api/oauth2-redirect.html', 
+    },
+    customSiteTitle: 'LOOP API Documentation', 
+  }
+
+  SwaggerModule.setup('api', app, document, swaggerOptions)
 
   const port = process.env.PORT || 3333
   await app.listen(port)

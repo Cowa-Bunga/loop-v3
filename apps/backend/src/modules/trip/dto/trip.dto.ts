@@ -53,8 +53,7 @@ class Flow {
   @IsString()
   code: string
 }
-
-class Trip {
+export class Trip {
   @IsString()
   trip_no: string
 

@@ -126,7 +126,7 @@ export class ClusterBranch {
   }
 }
 
-class ClusterOrder {
+export class ClusterOrder {
   @ApiProperty()
   id: string
 
