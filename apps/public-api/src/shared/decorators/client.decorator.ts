@@ -1,8 +1,10 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common'
+import { ClientRequest } from '../entities/request.entity'
 
-export const Client = createParamDecorator(
-  (data: unknown, ctx: ExecutionContext) => {
-    const request = ctx.switchToHttp().getRequest()
-    return request.client
-  }
-)
+/**
+ * Custom decorator to access the Client from the request
+ */
+export const Client = createParamDecorator((data: unknown, ctx: ExecutionContext): ClientRequest => {
+  const request = ctx.switchToHttp().getRequest()
+  return request.client
+})
