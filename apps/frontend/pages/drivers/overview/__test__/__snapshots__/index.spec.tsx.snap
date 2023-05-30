@@ -984,10 +984,9 @@ exports[`Drivers should render successfully 1`] = `
                 aria-colcount="9"
                 aria-multiselectable="false"
                 aria-rowcount="4"
-                class="MuiDataGrid-root MuiDataGrid-autoHeight MuiDataGrid-root--densityComfortable MuiDataGrid-withBorderColor css-1usso8h-MuiDataGrid-root"
+                class="MuiDataGrid-root MuiDataGrid-autoHeight MuiDataGrid-root--densityComfortable MuiDataGrid-withBorderColor css-12u49z-MuiDataGrid-root"
                 role="grid"
               >
-                <div />
                 <div
                   class="MuiDataGrid-main css-204u17-MuiDataGrid-main"
                 >
@@ -1315,220 +1314,202 @@ exports[`Drivers should render successfully 1`] = `
                     </div>
                   </div>
                   <div
-                    style="flex: 0 0px; overflow: visible;"
+                    class="MuiDataGrid-virtualScroller css-axafay-MuiDataGrid-virtualScroller"
+                    style="overflow-x: hidden; overflow-y: hidden;"
                   >
                     <div
-                      class="MuiDataGrid-virtualScroller css-axafay-MuiDataGrid-virtualScroller"
-                      style="overflow-x: hidden; overflow-y: hidden;"
+                      class="MuiDataGrid-virtualScrollerContent css-1kwdphh-MuiDataGrid-virtualScrollerContent"
+                      style="width: auto; height: 201px; min-height: auto;"
                     >
                       <div
-                        class="MuiDataGrid-virtualScrollerContent css-1kwdphh-MuiDataGrid-virtualScrollerContent"
-                        style="width: auto; height: 201px; min-height: auto;"
+                        class="MuiDataGrid-virtualScrollerRenderZone css-s1v7zr-MuiDataGrid-virtualScrollerRenderZone"
+                        style="transform: translate3d(0px, 0px, 0px);"
                       >
                         <div
-                          class="MuiDataGrid-virtualScrollerRenderZone css-s1v7zr-MuiDataGrid-virtualScrollerRenderZone"
-                          style="transform: translate3d(0px, 0px, 0px);"
+                          aria-rowindex="2"
+                          aria-selected="false"
+                          class="MuiDataGrid-row"
+                          data-id="1"
+                          data-rowindex="0"
+                          role="row"
+                          style="max-height: 67px; min-height: 67px;"
                         >
                           <div
-                            aria-rowindex="2"
-                            aria-selected="false"
-                            class="MuiDataGrid-row"
-                            data-id="1"
-                            data-rowindex="0"
-                            role="row"
-                            style="max-height: 67px; min-height: 67px;"
+                            aria-colindex="1"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="0"
+                            data-field="col1"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
                           >
                             <div
-                              aria-colindex="1"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="0"
-                              data-field="col1"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
+                              class="MuiDataGrid-cellContent"
+                              title="ORDER001111"
                             >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="ORDER001111"
-                              >
-                                ORDER001111
-                              </div>
-                            </div>
-                            <div
-                              aria-colindex="2"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="1"
-                              data-field="col2"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
-                            >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="John Smith"
-                              >
-                                John Smith
-                              </div>
-                            </div>
-                            <div
-                              aria-colindex="3"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="2"
-                              data-field="col3"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
-                            >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="23/3/2023 14:21:33"
-                              >
-                                23/3/2023 14:21:33
-                              </div>
+                              ORDER001111
                             </div>
                           </div>
                           <div
-                            aria-rowindex="3"
-                            aria-selected="false"
-                            class="MuiDataGrid-row"
-                            data-id="2"
-                            data-rowindex="1"
-                            role="row"
-                            style="max-height: 67px; min-height: 67px;"
+                            aria-colindex="2"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="1"
+                            data-field="col2"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
                           >
                             <div
-                              aria-colindex="1"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="0"
-                              data-field="col1"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
+                              class="MuiDataGrid-cellContent"
+                              title="John Smith"
                             >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="ORDER001211"
-                              >
-                                ORDER001211
-                              </div>
-                            </div>
-                            <div
-                              aria-colindex="2"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="1"
-                              data-field="col2"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
-                            >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="Sally Rodger"
-                              >
-                                Sally Rodger
-                              </div>
-                            </div>
-                            <div
-                              aria-colindex="3"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="2"
-                              data-field="col3"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
-                            >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="23/3/2023 14:21:33"
-                              >
-                                23/3/2023 14:21:33
-                              </div>
+                              John Smith
                             </div>
                           </div>
                           <div
-                            aria-rowindex="4"
-                            aria-selected="false"
-                            class="MuiDataGrid-row MuiDataGrid-row--lastVisible"
-                            data-id="3"
-                            data-rowindex="2"
-                            role="row"
-                            style="max-height: 67px; min-height: 67px;"
+                            aria-colindex="3"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="2"
+                            data-field="col3"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
                           >
                             <div
-                              aria-colindex="1"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="0"
-                              data-field="col1"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
+                              class="MuiDataGrid-cellContent"
+                              title="23/3/2023 14:21:33"
                             >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="ORDER001113"
-                              >
-                                ORDER001113
-                              </div>
+                              23/3/2023 14:21:33
                             </div>
+                          </div>
+                        </div>
+                        <div
+                          aria-rowindex="3"
+                          aria-selected="false"
+                          class="MuiDataGrid-row"
+                          data-id="2"
+                          data-rowindex="1"
+                          role="row"
+                          style="max-height: 67px; min-height: 67px;"
+                        >
+                          <div
+                            aria-colindex="1"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="0"
+                            data-field="col1"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
+                          >
                             <div
-                              aria-colindex="2"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="1"
-                              data-field="col2"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
+                              class="MuiDataGrid-cellContent"
+                              title="ORDER001211"
                             >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="Robert Pixies"
-                              >
-                                Robert Pixies
-                              </div>
+                              ORDER001211
                             </div>
+                          </div>
+                          <div
+                            aria-colindex="2"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="1"
+                            data-field="col2"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
+                          >
                             <div
-                              aria-colindex="3"
-                              aria-colspan="1"
-                              class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
-                              data-colindex="2"
-                              data-field="col3"
-                              role="cell"
-                              style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
-                              tabindex="-1"
+                              class="MuiDataGrid-cellContent"
+                              title="Sally Rodger"
                             >
-                              <div
-                                class="MuiDataGrid-cellContent"
-                                title="23/3/2023 14:21:33"
-                              >
-                                23/3/2023 14:21:33
-                              </div>
+                              Sally Rodger
+                            </div>
+                          </div>
+                          <div
+                            aria-colindex="3"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="2"
+                            data-field="col3"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="MuiDataGrid-cellContent"
+                              title="23/3/2023 14:21:33"
+                            >
+                              23/3/2023 14:21:33
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          aria-rowindex="4"
+                          aria-selected="false"
+                          class="MuiDataGrid-row MuiDataGrid-row--lastVisible"
+                          data-id="3"
+                          data-rowindex="2"
+                          role="row"
+                          style="max-height: 67px; min-height: 67px;"
+                        >
+                          <div
+                            aria-colindex="1"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="0"
+                            data-field="col1"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="MuiDataGrid-cellContent"
+                              title="ORDER001113"
+                            >
+                              ORDER001113
+                            </div>
+                          </div>
+                          <div
+                            aria-colindex="2"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="1"
+                            data-field="col2"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="MuiDataGrid-cellContent"
+                              title="Robert Pixies"
+                            >
+                              Robert Pixies
+                            </div>
+                          </div>
+                          <div
+                            aria-colindex="3"
+                            aria-colspan="1"
+                            class="MuiDataGrid-cell MuiDataGrid-cell--textLeft MuiDataGrid-withBorderColor"
+                            data-colindex="2"
+                            data-field="col3"
+                            role="cell"
+                            style="min-width: 180px; max-width: 180px; min-height: 67px; max-height: 67px;"
+                            tabindex="-1"
+                          >
+                            <div
+                              class="MuiDataGrid-cellContent"
+                              title="23/3/2023 14:21:33"
+                            >
+                              23/3/2023 14:21:33
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="Mui-resizeTriggers"
-                  >
-                    <div
-                      class="expand-trigger"
-                    >
-                      <div
-                        style="width: 1px; height: 1px;"
-                      />
-                    </div>
-                    <div
-                      class="contract-trigger"
-                    />
                   </div>
                 </div>
               </div>

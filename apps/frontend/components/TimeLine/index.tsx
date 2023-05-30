@@ -16,7 +16,7 @@ import {
 } from 'planby'
 
 export const ProgramItem = ({ program, ...rest }) => {
-  const { styles, formatTime, set12HoursTimeFormat, isLive } = useProgram({ program, ...rest })
+  const { styles, formatTime, set12HoursTimeFormat, isLive } = useProgram({ isBaseTimeFormat: true, program, ...rest })
   const { data } = program
   const { image, title, since, till } = data
   const sinceTime = formatTime(since, set12HoursTimeFormat()).toLowerCase()

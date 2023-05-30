@@ -2,20 +2,20 @@ import { Injectable } from '@nestjs/common'
 import { Valhalla } from '@routingjs/valhalla'
 import * as admin from 'firebase-admin'
 
-const valhallaConfigOverrides = {
-  costing: false,
-  costing_options: {},
-  exclude_locations: [],
-  exclude_polygons: [],
-  sources: [],
-  targets: []
-  // shortest: true,
-  // exclude_unpaved: true,
-  // use_highways: true,
-  // use_living_streets: true,
-  // use_tolls: false,
-  // use_tracks: true
-}
+// const valhallaConfigOverrides = {
+//   costing: false,
+//   costing_options: {},
+//   exclude_locations: [],
+//   exclude_polygons: [],
+//   sources: [],
+//   targets: []
+//   // shortest: true,
+//   // exclude_unpaved: true,
+//   // use_highways: true,
+//   // use_living_streets: true,
+//   // use_tolls: false,
+//   // use_tracks: true
+// }
 
 // URL defaults to free but limited - http://valhalla1.openstreetmap.de
 // const valhalla = new Valhalla({ baseUrl: "http://localhost:8002" })
