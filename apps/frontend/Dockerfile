@@ -8,6 +8,7 @@ ENV NODE_ENV=production
 ENV NX_DAEMON=true
 ENV SENTRY_ENABLED=true
 ENV NEXT_TELEMETRY_DISABLED=true
+ENV NX_NON_NATIVE_HASHER=true
 
 ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
 ENV NEXT_PUBLIC_API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
