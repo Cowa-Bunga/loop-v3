@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
   }
 
   validateAPIKey = async (apiKey: string, request: Request) => {
-    const client = await this.clientService.getClientByKey(apiKey)
+    const client = await this.clientService.getClientById(apiKey)
 
     if (!client.exists) {
       throw new UnauthorizedException('Invalid or missing API Key.')
