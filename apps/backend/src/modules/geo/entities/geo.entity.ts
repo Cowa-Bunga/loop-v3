@@ -1,10 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Index,
-  PrimaryGeneratedColumn
-} from 'typeorm'
+import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn } from 'typeorm'
 import { Point, GeometryCollection } from 'geojson'
 
 @Entity({ name: 'geo' })
@@ -25,7 +19,7 @@ export class GeoEntity {
   public driver_id?: string
 
   @Column({ type: 'varchar', name: 'status' })
-  public status: string
+  public status?: string
 
   @CreateDateColumn({ type: 'timestamp', name: 'created', nullable: false })
   public created?: Date
@@ -37,7 +31,7 @@ export class GeoEntity {
   private events?: string[]
 
   @Column({ type: 'int', name: 'distance' })
-  public distance: number
+  public distance?: number
 
   @Index({ spatial: true })
   @Column({
@@ -47,7 +41,7 @@ export class GeoEntity {
     srid: 4326,
     nullable: true
   })
-  public start: Point
+  public start?: Point
 
   @Index({ spatial: true })
   @Column({
@@ -57,7 +51,7 @@ export class GeoEntity {
     srid: 4326,
     nullable: true
   })
-  public end: Point
+  public end?: Point
 
   @Column({
     type: 'geometry',
@@ -66,7 +60,7 @@ export class GeoEntity {
     srid: 4326,
     nullable: true
   })
-  public waypoints: GeometryCollection
+  public waypoints?: GeometryCollection
 
   @Column({
     type: 'geometry',
@@ -75,7 +69,7 @@ export class GeoEntity {
     srid: 4326,
     nullable: true
   })
-  public route: GeometryCollection
+  public route?: GeometryCollection
 
   @Column({
     type: 'geometry',
@@ -84,5 +78,5 @@ export class GeoEntity {
     srid: 4326,
     nullable: true
   })
-  public zones: GeometryCollection
+  public zones?: GeometryCollection
 }

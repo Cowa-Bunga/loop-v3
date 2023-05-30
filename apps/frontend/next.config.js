@@ -1,18 +1,16 @@
 const { withNx } = require('@nrwl/next/plugins/with-nx')
 const path = require('path')
+const { withSentryConfig } = require('@sentry/nextjs')
 
 const nextConfig = {
-  // output: 'standalone',
-  // typescript: {
-  //   ignoreBuildErrors: true
-  // },
-  // transpilePackages: ['i18n', 'auth', 'firebase', 'reactfire'],
   experimental: {
     outputFileTracingRoot: path.join(__dirname, '../../')
   },
+
   nx: {
     svgr: false
   },
+
   pageExtensions: ['page.tsx', 'page.ts']
 
   // async rewrites() {
@@ -20,11 +18,27 @@ const nextConfig = {
   //     fallback: [
   //       {
   //         source: '/api/:path*',
-  //         destination: 'http://localhost:3333/api/:path*'
+  //         destination: `${process.env.API_URL}/api/:path*`
   //       }
   //     ]
   //   }
   // }
 }
 
-module.exports = withNx(nextConfig)
+module.exports = withNx(
+  process.env.SENTRY_ENABLED
+    ? withSentryConfig(
+        {
+          ...nextConfig,
+          sentry: {
+            hideSourceMaps: process.env.NODE_ENV === 'production'
+          }
+        },
+        {
+          org: 'loop-platform-pty-ltd',
+          project: 'loop-pro-frontend',
+          silent: true
+        }
+      )
+    : nextConfig
+)

@@ -23,9 +23,7 @@ export function Toolbox({ onSetMode, onSetGeoJson }: MapGlToolboxProps) {
               tooltipTitle={dial.label}
               onClick={() => {
                 dial.mode && onSetMode(() => dial.mode)
-                dial.action &&
-                  actions[dial.action] &&
-                  actions[dial.action](dial)
+                dial.action && actions[dial.action] && actions[dial.action](dial)
               }}
             />
           ))}

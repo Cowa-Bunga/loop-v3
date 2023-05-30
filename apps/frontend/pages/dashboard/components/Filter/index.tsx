@@ -13,19 +13,17 @@ import {
   TextField,
   CircularProgress,
   Paper,
-  Fab
+  Fab,
+  Button
 } from '@mui/material'
 
 export default function DashboardFilter() {
   return (
     <Box sx={ui.container}>
-      <Paper sx={{ p: 2 }}>
+      {/* <Paper sx={{ p: 2 }}>
         {[1, 2, 3, 4].map((l) => (
           <>
-            <Box
-              key={l}
-              sx={{ position: 'relative', display: 'inline-flex', mx: 2 }}
-            >
+            <Box key={l} sx={{ position: 'relative', display: 'inline-flex', mx: 2 }}>
               <CircularProgress
                 color="info"
                 variant="determinate"
@@ -48,18 +46,23 @@ export default function DashboardFilter() {
                 }}
               >
                 <Fab color="primary" size="large" sx={{ fontColor: 'white' }}>
-                  <Typography variant="caption" component="div">{`${Math.round(
-                    l * 25
-                  )}%`}</Typography>
+                  <Typography variant="caption" component="div">{`${Math.round(l * 25)}%`}</Typography>
                 </Fab>
               </Box>
             </Box>
           </>
         ))}
+      </Paper> */}
+      <Paper>
+        <Button fullWidth color="primary">
+          HUBS/Regions
+        </Button>
       </Paper>
 
-      {['Hubs', 'Trips', 'Tasks', 'Zones'].map((v, i) => (
-        <Accordion square key={v}>
+      <br />
+
+      {['Trips', 'Tasks'].map((v, i) => (
+        <Accordion square key={v} expanded>
           <AccordionSummary expandIcon={<ExpandMore />}>
             <Box>
               <Fab size="small" color="primary">
@@ -67,9 +70,7 @@ export default function DashboardFilter() {
               </Fab>
             </Box>
             <Box>
-              <Typography
-                sx={{ lineHeight: '34px', ml: '20px', width: '100px' }}
-              >
+              <Typography sx={{ lineHeight: '34px', ml: '20px', width: '100px' }}>
                 <b>{v.toUpperCase()}</b>
               </Typography>
             </Box>
@@ -79,12 +80,7 @@ export default function DashboardFilter() {
               </IconButton>
             </Box>
             <Box sx={{ ml: 4, mr: '20px', mt: -0.5 }}>
-              <TextField
-                size="small"
-                variant="outlined"
-                placeholder="enter Task/Customer"
-                label="search"
-              />
+              <TextField size="small" variant="outlined" placeholder="enter Task/Customer" label="search" />
             </Box>
           </AccordionSummary>
           <AccordionDetails>

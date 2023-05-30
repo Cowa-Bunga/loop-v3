@@ -42,4 +42,4 @@ EXPOSE 3333
 
 RUN nx daemon --start
 
-CMD [ "npm", "run", "duo"]
+CMD [ "npm", "run", "all"]

@@ -18,7 +18,7 @@ RUN chown -R backend:backend .
 
 WORKDIR /apps/backend
 RUN npm i -g nest nx
-RUN npm --omit=dev -f install
+RUN npm -f install
 
 EXPOSE 3333
 EXPOSE 80

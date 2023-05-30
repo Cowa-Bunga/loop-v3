@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import Map from 'react-map-gl'
+import { Map, useMap } from 'react-map-gl'
 import maplibregl from 'maplibre-gl'
 import { DEFAULT_THEME, ASSETS } from '../shared/config'
 import { useEffect, useState, useMergeState } from '@hooks'
@@ -49,6 +49,25 @@ export default function MapGL() {
       })
     }
   }, [setState, state.load])
+
+  // const styles = [
+  //   {
+  //     label: 'Streets',
+  //     styleName: 'OSM Liberty',
+  //     styleUrl: 'https://maputnik.github.io/osm-liberty/style.json'
+  //   },
+  //   {
+  //     label: 'Streets Bright',
+  //     styleName: 'OSM Bright',
+  //     styleUrl: ' https://demotiles.maplibre.org/styles/osm-bright-gl-style/style.json'
+  //   },
+  //   {
+  //     label: 'terrain',
+  //     styleName: 'terrain',
+  //     //             'https://demotiles.maplibre.org/styles/osm-bright-gl-terrain/style.json'
+  //     styleUrl: 'https://demotiles.maplibre.org/style.json'
+  //   }
+  // ]
 
   const theme = DEFAULT_THEME
   const [mode, setMode] = useState(() => null)
@@ -119,7 +138,7 @@ export default function MapGL() {
         initialViewState={state.viewport}
         getCursor={toolbox.getCursor.bind(DeckGL)}
       >
-        <Map reuseMaps mapLib={maplibregl} mapStyle={ASSETS.MAP_STYLE} />
+        <Map reuseMaps mapLib={maplibregl} mapStyle={ASSETS.MAP_STYLE}></Map>
       </DeckGL>
 
       <Toolbox

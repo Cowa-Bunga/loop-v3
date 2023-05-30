@@ -152,7 +152,7 @@ exports[`Menu should render successfully 1`] = `
                                 />
                               </svg>
                             </span>
-                            Overview
+                            All Orders
                             <span
                               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                             />
@@ -242,32 +242,6 @@ exports[`Menu should render successfully 1`] = `
               </svg>
             </span>
             Drivers
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </li>
-          <li
-            class="MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-vrs6a6-MuiButtonBase-root-MuiMenuItem-root"
-            role="menuitem"
-            tabindex="-1"
-          >
-            <span
-              aria-hidden="true"
-              class="material-icons notranslate MuiIcon-root MuiIcon-fontSizeMedium css-kc5ij2-MuiIcon-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PersonIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                />
-              </svg>
-            </span>
-            Message Centre
             <span
               class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />

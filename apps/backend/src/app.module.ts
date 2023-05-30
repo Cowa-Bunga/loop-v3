@@ -9,7 +9,6 @@ import { GeoEntity } from './modules/geo/entities/geo.entity'
 // import { ThrottlerModule } from '@nestjs/throttler'
 // import { DevtoolsModule } from '@nestjs/devtools-integration'
 
-
 @Module({
   imports: [
     MainModule,
@@ -19,17 +18,15 @@ import { GeoEntity } from './modules/geo/entities/geo.entity'
       global: true
     }),
     TypeOrmModule.forRoot({
-      // TODO: move to envs
       type: 'postgres',
       host: process.env.POSTGRES_HOST || '35.241.202.202',
-      // port: 5432,
+      port: 5432,
       username: process.env.POSTGRES_USERNAME || 'loop-backend',
-      password:
-        process.env.POSTGRES_PASSWORD ||
-        'loop-service-postgres-user-lG#B}-O@<>gv^)Rg',
+      password: process.env.POSTGRES_PASSWORD || 'loop-service-postgres-user-lG#B}-O@<>gv^)Rg',
       database: 'loop-pro-geo',
-      entities: [GeoEntity]
-      // synchronize: process.env.NODE_ENV !== 'production'
+      entities: [GeoEntity],
+      // enable only when writing to a new db to create tables etc
+      synchronize: false
     })
     // ThrottlerModule.forRoot({
     //   ttl: 60,

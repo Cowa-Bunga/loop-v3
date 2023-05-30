@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { LayoutBase } from '@components'
+import { LayoutBase, TimeLine } from '@components'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 import CreateJob from './components/CreateJob'
@@ -8,70 +8,60 @@ import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
 import { useUserContext } from '@util/context/user'
-import DistanceChart from './components/Chart'
-import {
-  Box,
-  Card,
-  Drawer,
-  SpeedDial,
-  SpeedDialAction,
-  SpeedDialIcon
-} from '@mui/material'
+import DistanceChart from '../../components/charts/RadialChart'
+import { Box, Card, Drawer, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
 import {
   KeyboardDoubleArrowLeft,
   KeyboardDoubleArrowRight,
   TaskAltTwoTone,
-  Map as MapIcon,
-  Google as GoogleIcon,
-  Route as RouteIcon
+  CarRental,
+  KeyboardDoubleArrowUp
 } from '@mui/icons-material'
 
 const GMapGL = dynamic(() => import('../../components/maps/GMapGL'), {
   ssr: false
 })
 
-const MapGL = dynamic(() => import('../../components/maps/MapGL'), {
-  ssr: false
-})
-
 const Dashboard = () => {
   const user = useUserContext().state
-
   const [state, setState] = useMergeState({
     right: false,
-    left: false,
+    left: true,
     data: null,
     create: false,
-    routeView: true
+    timeline: true,
+    mapControls: true,
+    bottomDrawer: '0px'
   })
 
-  const { toggleLeft, toggleRight, toggleCreate, toggleMap } = Actions(
-    state,
-    setState
-  )
-
-  const MemFilter = memo(Filter)
+  const { toggleLeft, toggleRight, toggleBottom, toggleCreate } = Actions(state, setState)
 
   const dialActions = [
-    { icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate }
+    { icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate },
+    { icon: <CarRental />, name: 'Create Driver', action: toggleCreate }
   ]
 
-  const mapActions = [
-    {
-      icon: state.routeView ? <GoogleIcon /> : <RouteIcon />,
-      name: state.routeView ? 'Gmaps' : 'Routing View',
-      action: toggleMap
-    }
-  ]
+  const MemFilter = memo(Filter)
 
   return (
     <LayoutBase>
       <Drawer
-        sx={ui.leftDrawer}
-        anchor="left"
+        disableScrollLock
+        elevation={1}
+        keepMounted
+        hideBackdrop
+        anchor="bottom"
         variant="persistent"
-        open={state.left}
+        open={state.timeline}
+        sx={ui.bottomDrawer}
       >
+        <TimeLine height={state.bottomDrawer} />
+      </Drawer>
+      <Box sx={ui.bottomBox} onClick={toggleBottom}>
+        <KeyboardDoubleArrowUp sx={ui.bottomdBoxIcon} />
+      </Box>
+
+      <Drawer elevation={2} sx={ui.leftDrawer} anchor="left" variant="persistent" open={state.left}>
         <Box sx={ui.filter}>
           <Box sx={ui.closedBox} onClick={toggleLeft}>
             <KeyboardDoubleArrowLeft sx={ui.closedBoxIcon} />
@@ -87,22 +77,18 @@ const Dashboard = () => {
         <Card
           sx={{
             ml: state.left ? '560px' : '30px',
-            mr: state.right ? '440px' : '30px'
+            mr: state.right ? '440px' : '30px',
+            mb: state.bottomDrawer
           }}
         >
-          {state.routeView ? <MapGL /> : <GMapGL />}
+          <GMapGL />
         </Card>
         <Box sx={ui.openBoxR} onClick={toggleRight}>
           <KeyboardDoubleArrowLeft />
         </Box>
       </Box>
 
-      <Drawer
-        sx={ui.rightDrawer}
-        anchor="right"
-        variant="persistent"
-        open={state.right}
-      >
+      <Drawer elevation={2} sx={ui.rightDrawer} anchor="right" variant="persistent" open={state.right}>
         <Box sx={ui.filter}>
           <Box sx={ui.closedBoxIconR} onClick={toggleRight}>
             <KeyboardDoubleArrowRight sx={ui.closedBoxIcon} />
@@ -113,37 +99,9 @@ const Dashboard = () => {
         </Box>
       </Drawer>
 
-      <SpeedDial
-        ariaLabel="loop controls"
-        sx={ui.speedDial2}
-        icon={<SpeedDialIcon />}
-      >
+      <SpeedDial direction="right" ariaLabel="loop controls" sx={ui.speedDial2} icon={<SpeedDialIcon />}>
         {dialActions.map((dial) => (
-          <SpeedDialAction
-            key={dial.name}
-            icon={dial.icon}
-            tooltipTitle={dial.name}
-            onClick={dial.action}
-          />
-        ))}
-      </SpeedDial>
-
-      <SpeedDial
-        ariaLabel="map controls"
-        sx={{
-          ...ui.speedDial,
-          right: state.routeView ? 50 : 100,
-          bottom: state.routeView ? 16 : 20
-        }}
-        icon={<MapIcon />}
-      >
-        {mapActions.map((dial) => (
-          <SpeedDialAction
-            key={dial.name}
-            icon={dial.icon}
-            tooltipTitle={dial.name}
-            onClick={dial.action}
-          />
+          <SpeedDialAction key={dial.name} icon={dial.icon} tooltipTitle={dial.name} onClick={dial.action} />
         ))}
       </SpeedDial>
 

@@ -107,7 +107,7 @@ exports[`IntelTools should render successfully 1`] = `
                         <h4
                           class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
                         >
-                          Organisation
+                          Company
                         </h4>
                         <div
                           class="react-flow__handle react-flow__handle-bottom nodrag nopan source connectable connectablestart connectableend connectionindicator"
