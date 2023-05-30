@@ -24,7 +24,7 @@ export class HubController {
       throw new BadRequestException('Hub with that name already exists.')
     }
 
-    const hub = await this.hubService.createHub(createHubDto, client, user)
+    const hub = await this.hubService.createHub(client, user, createHubDto)
 
     return new Hub(hub)
   }

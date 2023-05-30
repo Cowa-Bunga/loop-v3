@@ -1,4 +1,5 @@
 import { DocumentSnapshot, DocumentReference } from '@google-cloud/firestore'
+
 export class ClientRequest {
   id: string
 
