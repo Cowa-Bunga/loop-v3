@@ -1,37 +1,70 @@
-import { RouteService } from '../services/route.service'
-import { ApiOperation, ApiTags, ApiSecurity } from '@nestjs/swagger'
+import { ApiOperation, ApiTags } from '@nestjs/swagger'
 import { DEFAULT } from '../../../assets/errors'
 import { Controller, Get, Post, Param, Request, UseInterceptors } from '@nestjs/common'
 import { ResilienceInterceptor, TimeoutStrategy, ResilienceFactory } from 'nestjs-resilience'
 import { ValhallaService } from '../services/valhalla.service'
+import { Point } from 'geojson'
+import { ValhallaCostingType } from '@routingjs/valhalla'
 
 @Controller('route')
 @ApiTags('Routing Service')
-@ApiSecurity('x-api-key')
 export class RouteController {
-  constructor(private readonly routeService: RouteService, readonly valhallaService: ValhallaService) {}
+  constructor(private readonly valhallaService: ValhallaService) {}
 
-  @Get()
+  @Post('trip/plan')
+  @ApiOperation({ summary: '∞ Get spatial route data for an array of locations' })
   @UseInterceptors(
     ResilienceInterceptor(
-      new TimeoutStrategy(60000),
+      new TimeoutStrategy(DEFAULT.API_TIMEOUT),
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
-  @ApiOperation({ summary: 'Get spatial route data' })
-  async loadRoute() {
-    return await this.valhallaService.valhalla()
+  async getRouteforLocations(@Param('locations') locations: Point[]) {
+    return await this.valhallaService.getRouteData(locations)
   }
 
-  @Post(':trip_id')
+  @Get('trip/:trip_id')
+  @ApiOperation({ summary: '∞ Dynamically get all spatial trip data by trip_id' })
   @UseInterceptors(
     ResilienceInterceptor(
-      new TimeoutStrategy(60000),
+      new TimeoutStrategy(DEFAULT.API_TIMEOUT),
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
-  @ApiOperation({ summary: 'Get all spatial trip data by trip_id' })
-  getRouteByTripId(@Param('order_id') trip_id: string, @Request() req) {
+  getRouteByTripId(@Param('trip_id') trip_id: string, @Request() req) {
     return this.valhallaService.getRouteByTripId(trip_id, req)
+  }
+
+  @Post('matrix')
+  @ApiOperation({ summary: '∞ Get a matrix calculation on a Point array' })
+  @UseInterceptors(
+    ResilienceInterceptor(
+      new TimeoutStrategy(DEFAULT.API_TIMEOUT),
+      ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
+    )
+  )
+  async matrix(@Param('locations') locations: Point[]) {
+    return await this.valhallaService.matrix(locations)
+  }
+
+  @Post('directions')
+  @ApiOperation({ summary: '∞ Get a matrix calculation on a Point array' })
+  @UseInterceptors(
+    ResilienceInterceptor(
+      new TimeoutStrategy(DEFAULT.API_TIMEOUT),
+      ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
+    )
+  )
+  async directions(@Param('locations') locations: Point[]) {
+    return await this.valhallaService.matrix(locations)
+  }
+
+  @Post('isochrone')
+  async isochrone(
+    @Param('locations') locations: Point[],
+    @Param('type') type: ValhallaCostingType,
+    @Param('distance') distance: [number, number]
+  ) {
+    return await this.valhallaService.isochrones(locations, type, distance)
   }
 }

@@ -7,8 +7,6 @@ import { ui } from './style'
 import { useUserContext } from '@util/context/user'
 import { Box, Card, Drawer, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
 import {
-  KeyboardDoubleArrowLeft,
-  KeyboardDoubleArrowRight,
   TaskAltTwoTone,
   CarRental,
   Map as MapIcon,
@@ -38,7 +36,7 @@ const RoutePlanning = () => {
     bottomDrawer: '0px'
   })
 
-  const { toggleLeft, toggleRight, toggleBottom, toggleCreate, toggleMap } = Actions(state, setState)
+  const { toggleBottom, toggleCreate, toggleMap } = Actions(state, setState)
 
   const dialActions = [
     { icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate },
@@ -64,58 +62,51 @@ const RoutePlanning = () => {
         variant="persistent"
         open={state.timeline}
         sx={ui.bottomDrawer}
+        PaperProps={{
+          padding: 0,
+          border: 0,
+          zIndex: 0
+        }}
       >
         <TimeLine key={`key-${state.bottomDrawer}`} height={state.bottomDrawer} />
       </Drawer>
+
       <Box sx={ui.bottomBox} onClick={toggleBottom}>
         <KeyboardDoubleArrowUp sx={ui.bottomdBoxIcon} />
       </Box>
 
-      <Drawer elevation={2} sx={ui.leftDrawer} anchor="left" variant="persistent" open={state.left}>
-        <Box sx={ui.filter}>
-          <Box sx={ui.closedBox} onClick={toggleLeft}>
-            <KeyboardDoubleArrowLeft sx={ui.closedBoxIcon} />
-          </Box>
-        </Box>
-      </Drawer>
-
       <Box sx={ui.map}>
-        <Box sx={ui.openBox} onClick={toggleLeft}>
-          <KeyboardDoubleArrowRight />
-        </Box>
-        <Card
-          sx={{
-            ml: state.left ? '560px' : '30px',
-            mr: state.right ? '440px' : '30px',
-            mb: state.bottomDrawer
-          }}
-        >
-          {state.routeView ? <MapGL /> : <GMapGL />}
-        </Card>
-        <Box sx={ui.openBoxR} onClick={toggleRight}>
-          <KeyboardDoubleArrowLeft />
-        </Box>
+        <Card sx={{ mb: state.bottomDrawer }}>{state.routeView ? <MapGL /> : <GMapGL />}</Card>
       </Box>
 
-      <Drawer elevation={2} sx={ui.rightDrawer} anchor="right" variant="persistent" open={state.right}>
-        <Box sx={ui.filter}>
-          <Box sx={ui.closedBoxIconR} onClick={toggleRight}>
-            <KeyboardDoubleArrowRight sx={ui.closedBoxIcon} />
-          </Box>
-          <br />
-        </Box>
-      </Drawer>
-
-      <SpeedDial direction="right" ariaLabel="loop controls" sx={ui.speedDial2} icon={<SpeedDialIcon />}>
+      <SpeedDial
+        FabProps={{ size: 'small' }}
+        direction="right"
+        ariaLabel="loop controls"
+        sx={ui.speedDial2}
+        icon={<SpeedDialIcon />}
+      >
         {dialActions.map((dial) => (
           <SpeedDialAction key={dial.name} icon={dial.icon} tooltipTitle={dial.name} onClick={dial.action} />
         ))}
       </SpeedDial>
 
       {state.mapControls && (
-        <SpeedDial direction="left" ariaLabel="map controls" sx={ui.speedDial} icon={<MapIcon />}>
+        <SpeedDial
+          FabProps={{ size: 'small' }}
+          direction="left"
+          ariaLabel="map controls"
+          sx={ui.speedDial}
+          icon={<MapIcon />}
+        >
           {mapActions.map((dial) => (
-            <SpeedDialAction key={dial.name} icon={dial.icon} tooltipTitle={dial.name} onClick={dial.action} />
+            <SpeedDialAction
+              FabProps={{ size: 'small' }}
+              key={dial.name}
+              icon={dial.icon}
+              tooltipTitle={dial.name}
+              onClick={dial.action}
+            />
           ))}
         </SpeedDial>
       )}

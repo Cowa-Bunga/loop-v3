@@ -30,7 +30,7 @@ export const MODE_GROUPS = [
   {
     label: 'View',
     icon: RemoveRedEye,
-    top: 200,
+    top: 170,
     modes: [
       { label: 'View', mode: ViewMode, content: RemoveRedEye },
       { label: 'Select', mode: ViewMode, content: SelectIcon }
@@ -39,7 +39,7 @@ export const MODE_GROUPS = [
   {
     label: 'Draw',
     icon: Edit,
-    top: 280,
+    top: 220,
     modes: [
       { label: 'Point', mode: DrawPointMode, content: DrawPointIcon },
       { label: 'Line', mode: DrawLineStringMode, content: DrawLineIcon },
@@ -59,7 +59,7 @@ export const MODE_GROUPS = [
   {
     label: 'Measure tools',
     icon: Straighten,
-    top: 360,
+    top: 270,
     modes: [
       { label: 'Distance', mode: MeasureDistanceMode, content: Straighten },
       { label: 'Angle', mode: MeasureAngleMode, content: SquareFoot },
@@ -69,7 +69,7 @@ export const MODE_GROUPS = [
   {
     label: 'Actions',
     icon: Handyman,
-    top: 440,
+    top: 320,
     modes: [
       { label: 'Clear All', mode: ViewMode, content: Delete, action: 'clearAll' },
       { label: 'Save', mode: ViewMode, content: Save }

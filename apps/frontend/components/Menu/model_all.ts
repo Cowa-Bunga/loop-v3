@@ -47,14 +47,14 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'fleet-drivers',
           icon: SensorOccupiedIcon,
           title: 'Drivers',
-          link: `/company/todo-id/driver/todo-driver-id/details`,
+          link: `/client/todo-id/driver/todo-driver-id/details`,
           permissions: []
         },
         {
           id: 'fleet-vehicle',
           icon: ElectricCarIcon,
           title: 'Vehicles',
-          link: `/company/todo-id/fleet/todo-vehicle-id`,
+          link: `/client/todo-id/fleet/todo-vehicle-id`,
           permissions: []
         }
       ]
@@ -69,21 +69,21 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'create-orders',
           icon: SendTimeExtensionIcon,
           title: 'Create Order',
-          link: `/company/${client_id}/orders/create`,
+          link: `/client/${client_id}/orders/create`,
           permissions: []
         },
         {
           id: 'orders-all',
           icon: GradingIcon,
           title: 'All Orders',
-          link: `/company/${client_id}/orders/view`,
+          link: `/client/${client_id}/orders/view`,
           permissions: []
         },
         {
           id: 'orders-import',
           icon: ImportExportIcon,
           title: 'Import Orders',
-          link: '/company/todo-id/orders/import',
+          link: '/client/todo-id/orders/import',
           permissions: []
         }
       ]
@@ -92,28 +92,28 @@ export const MODEL_MENU = ({ client_id }) =>
       id: 'reports',
       icon: AssessmentIcon,
       title: 'Reports',
-      link: '/company/todo-id/reports',
+      link: '/client/todo-id/reports',
       permissions: [],
       children: [
         {
           id: 'all-orders-report',
           icon: AssessmentIcon,
           title: 'All Orders',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         {
           id: 'trip-report',
           icon: AssessmentIcon,
           title: 'Trip',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         {
           id: 'logbook-report',
           icon: AssessmentIcon,
           title: 'Log Book',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         // lookerstudio reports
@@ -121,63 +121,63 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'looker-average-duration',
           icon: DatasetLinkedIcon,
           title: 'Average Durations',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-orders',
           icon: DatasetLinkedIcon,
           title: 'Orders Overview',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-delivery-times',
           icon: DatasetLinkedIcon,
           title: 'Delivery Times',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-sla-time-bands',
           icon: DatasetLinkedIcon,
           title: 'SLA Time Bands',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-distance-ranges',
           icon: DatasetLinkedIcon,
           title: 'Distance Ranges',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-driver-monitoring',
           icon: DatasetLinkedIcon,
           title: 'Driver Monitoring',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-driver-scheduling',
           icon: DatasetLinkedIcon,
           title: 'Driver Scheduling',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-locations',
           icon: DatasetLinkedIcon,
           title: 'Locations',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         },
         {
           id: 'looker-exceptions',
           icon: DatasetLinkedIcon,
           title: 'Exceptions',
-          link: '/company/todo-id/reports',
+          link: '/client/todo-id/reports',
           permissions: []
         }
       ]
@@ -193,35 +193,35 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'settings-billing',
           icon: AppSettingsAltIcon,
           title: 'Account',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         {
           id: 'settings-clients',
           icon: PersonPinIcon,
           title: 'Clients',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         {
           id: 'settings-integration',
           icon: ApiIcon,
           title: 'Integrations',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         {
           id: 'settings-optimisations',
           icon: IntegrationInstructionsIcon,
           title: 'Optimisations',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
         {
           id: 'settings-org',
           icon: BusinessIcon,
           title: 'Organisation',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         },
 
@@ -229,7 +229,7 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'settings-users',
           icon: GroupsIcon,
           title: 'Users',
-          link: '/company/todo-id/settings',
+          link: '/client/todo-id/settings',
           permissions: []
         }
       ]

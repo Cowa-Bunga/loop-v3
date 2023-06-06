@@ -14,6 +14,7 @@ import '@locale/config'
 import '../public/app.css'
 import 'reactflow/dist/style.css'
 import 'react-vis/dist/style.css'
+import 'gantt-task-react/dist/index.css'
 
 if (process.env.NODE_ENV === 'production') {
   console.info = console.log = console.warn = console.error = () => ''

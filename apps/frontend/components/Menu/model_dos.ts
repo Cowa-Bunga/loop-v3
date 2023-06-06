@@ -27,21 +27,21 @@ export const MODEL_MENU = ({ client_id }) =>
           id: 'all-orders',
           icon: LoopIcon,
           title: 'All Orders',
-          link: `/company/${client_id}/orders/view`,
+          link: `/client/${client_id}/orders/view`,
           permissions: []
         },
         {
           id: 'import',
           icon: ImportExportIcon,
           title: 'Import New',
-          link: `/company/${client_id}/reports`,
+          link: `/client/${client_id}/reports`,
           permissions: []
         },
         {
           id: 'trip-report',
           icon: AssessmentIcon,
           title: 'Trip Report',
-          link: `/company/${client_id}/fleet`,
+          link: `/client/${client_id}/fleet`,
           permissions: []
         }
       ]
@@ -64,7 +64,7 @@ export const MODEL_MENU = ({ client_id }) =>
       id: 'reports',
       icon: PowerSettingsNewIcon,
       title: 'Reports',
-      link: `/company/${client_id}/reports`,
+      link: `/client/${client_id}/reports`,
       permissions: []
     },
     {
