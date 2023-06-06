@@ -1,10 +1,11 @@
 # conceptual model
 # basis - generic relational model with flexibility and simplified nested structures
 # future proof for ERP / CRM / Tracking / Data Analysis and logging
+
 driver:
   - user
   - rating
-company:
+client:
   - billing:
     - could get api calls rates and usage from webhooks + api logger
   - events:
@@ -47,9 +48,13 @@ user:
   - permissions / role
   - preferences
   - settings
+
 auth: auth
+
 permissions: permissions / roles
+
 log: 
+
 api-log:
 
 # general system 
