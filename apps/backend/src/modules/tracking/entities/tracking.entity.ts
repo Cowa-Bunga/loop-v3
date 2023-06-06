@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn } from 'typeorm'
 import { Point } from 'geojson'
+import { CreateTrackingDto } from '../dto/create-tracking.dto'
 
 @Entity({ name: 'tracking' })
 export class TrackingEntity {
@@ -31,5 +32,5 @@ export class TrackingEntity {
   public location: Point
 
   @Column({ type: 'jsonb', name: 'payload', nullable: true })
-  public payload?: JSON
+  public payload?: CreateTrackingDto
 }

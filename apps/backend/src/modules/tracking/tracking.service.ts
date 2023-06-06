@@ -11,27 +11,33 @@ export class TrackingService {
     private readonly TrackingServiceDb: Repository<TrackingEntity>
   ) {}
 
-  async create(createTrackingDto: CreateTrackingDto) {
-    console.info('create', createTrackingDto)
+  async create(params: CreateTrackingDto) {
+    console.info('create', params)
     return await this.TrackingServiceDb.save({
-      trip_id: '',
-      driver_id: '',
+      trip_id: params.extras.trip_id,
+      driver_id: params.extras.driver_id,
       location: {
         type: 'Point',
-        coordinates: [createTrackingDto.coords.latitude, createTrackingDto.coords.longitude]
+        coordinates: [params.coords.latitude, params.coords.longitude]
       },
-      timestamp: '',
-      payload: {}
+      timestamp: params.timestamp,
+      payload: params
     })
   }
 
-  getDriverById(driver_id: string) {
+  async getDriverById(driver_id: string) {
     console.info('getDriverById', driver_id)
-    return `This action returns all tracking`
+    return await this.TrackingServiceDb.find({
+      where: { driver_id },
+      take: 1000
+    })
   }
 
-  getByTripId(trip_id: string) {
+  async getByTripId(trip_id: string) {
     console.info('getByTripId', trip_id)
-    return `This action returns a #${trip_id} tracking`
+    return await this.TrackingServiceDb.find({
+      where: { trip_id },
+      take: 1000
+    })
   }
 }
