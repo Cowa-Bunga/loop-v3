@@ -1,11 +1,17 @@
+const sidebarColor = '#F3F4F6'
+
 export const ui = {
   bottomDrawer: {
-    zIndex: 0,
-    '& *': { padding: 0, border: 0, zIndex: 0 }
+    zIndex: 0
+    // '& *': { padding: 0, border: 0, zIndex: 0 }
   },
 
-  leftDrawer: {},
-  rightDrawer: {},
+  leftDrawer: {
+    backgroundColor: sidebarColor
+  },
+  rightDrawer: {
+    backgroundColor: sidebarColor
+  },
 
   map: {
     height: 'calc(100vh-60px)',
@@ -16,7 +22,7 @@ export const ui = {
     position: 'fixed',
     height: '100vh',
     width: '30px',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: sidebarColor,
     top: 0,
     bottom: 0,
     left: 0,
@@ -30,7 +36,7 @@ export const ui = {
     position: 'fixed',
     height: '100vh',
     width: '30px',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: sidebarColor,
     top: 0,
     bottom: 0,
     right: 0,
@@ -78,19 +84,19 @@ export const ui = {
 
   filter: {
     pt: '60px',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: sidebarColor,
     color: 'black'
   },
 
   speedDial: {
     position: 'absolute',
     top: 120,
-    right: 40
+    right: 10
   },
 
   speedDial2: {
     position: 'absolute',
     top: 120,
-    left: 50
+    left: 10
   }
 }

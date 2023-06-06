@@ -10,6 +10,7 @@ export function Toolbox({ onSetMode, onSetGeoJson }: MapGlToolboxProps) {
     <>
       {MODE_GROUPS.map((modeGroup, i) => (
         <SpeedDial
+          FabProps={{ size: 'small' }}
           key={i}
           direction="left"
           ariaLabel="loop controls"
@@ -18,6 +19,7 @@ export function Toolbox({ onSetMode, onSetGeoJson }: MapGlToolboxProps) {
         >
           {modeGroup.modes.map((dial) => (
             <SpeedDialAction
+              FabProps={{ size: 'small' }}
               key={dial.label}
               icon={<dial.content />}
               tooltipTitle={dial.label}

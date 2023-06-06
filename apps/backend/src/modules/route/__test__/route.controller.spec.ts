@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { RouteController } from '../controllers/route.controller'
-import { RouteService } from '../services/route.service'
+import { RouteService } from '../services/index.service'
 
 xdescribe('RouteController', () => {
   let controller: RouteController

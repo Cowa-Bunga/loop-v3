@@ -1,6 +1,5 @@
 export const ui = {
   container: {
-    px: '24px',
     zIndex: 13,
     width: '100%',
     '& *': {
@@ -14,7 +13,9 @@ export const ui = {
   },
 
   programImage: {
-    width: '55px'
+    width: '30px',
+    height: '20px',
+    marginTop: '5px'
   },
 
   programContent: {
