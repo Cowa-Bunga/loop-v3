@@ -1,15 +1,11 @@
-import { Gantt, GanttDataType } from 'react-virtual-gantt'
+import { Gantt } from 'react-virtual-gantt'
 import { mock } from './mock'
 
 export default function TimelineGantt({ data }) {
   return (
     <div
       style={{
-        height: '300px',
-        '& *': {
-          background: 'black !important',
-          color: 'white !important'
-        }
+        height: '300px'
       }}
     >
       <Gantt>

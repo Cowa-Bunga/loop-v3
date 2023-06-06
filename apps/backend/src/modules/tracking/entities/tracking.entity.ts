@@ -7,7 +7,7 @@ export class TrackingEntity {
   private id?: number
 
   @Index()
-  @Column({ type: 'varchar', name: 'trip_id' })
+  @Column({ type: 'varchar', name: 'client_id' })
   public client_id: string
 
   @Index()

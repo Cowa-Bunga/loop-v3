@@ -65,7 +65,7 @@ export class GeoEntity {
   @Column({
     type: 'geometry',
     name: 'route',
-    spatialFeatureType: 'Path',
+    spatialFeatureType: 'LineString',
     srid: 4326,
     nullable: true
   })

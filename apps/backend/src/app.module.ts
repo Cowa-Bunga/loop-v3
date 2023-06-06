@@ -27,7 +27,7 @@ import { DevtoolsModule } from '@nestjs/devtools-integration'
       database: process.env.DATASOURCE_POSTGRES_GEO_DB,
       entities: [GeoEntity, TrackingEntity],
       // enable only when writing to a new db to create tables etc
-      synchronize: false
+      synchronize: true
     }),
     // ThrottlerModule.forRoot({
     //   ttl: 60,
