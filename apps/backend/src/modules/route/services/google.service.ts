@@ -6,23 +6,23 @@ const client = new Client({})
 
 @Injectable()
 export class GoogleRoutingService {
-  async directions({ origin, destination, mode, waypoints, optimize }) {
-    await client
-      .directions({
-        params: {
-          origin,
-          destination,
-          mode,
-          waypoints,
-          optimize
-        }
-      })
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .then((r: DirectionsResponse | any) => {
-        console.log(r.data.results[0].elevation)
-        return r.data.results[0].elevation
-      })
-  }
+  // async directions({ origin, destination, mode, waypoints, optimize }) {
+  //   await client
+  //     .directions({
+  //       params: {
+  //         origin,
+  //         destination,
+  //         mode,
+  //         waypoints,
+  //         optimize
+  //       }
+  //     })
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     .then((r: DirectionsResponse | any) => {
+  //       console.log(r.data.results[0].elevation)
+  //       return r.data.results[0].elevation
+  //     })
+  // }
 
   matrix() {
     //
