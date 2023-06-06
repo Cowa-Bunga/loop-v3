@@ -48,7 +48,7 @@ async function bootstrap() {
     } as SwaggerCustomOptions
   )
 
-  const port = process.env.PORT || 3001
+  const port = process.env.BACKEND_SERVER_PORT || 3333
   await app.listen(port)
   Logger.log(`🚀 Loop-pro: http://localhost:${port}/${globalPrefix}`)
 }

@@ -6,14 +6,16 @@ const client = new Client({})
 
 @Injectable()
 export class GoogleRoutingService {
-  async directions({ origin, destination, mode, waypoints, optimizeWaypoints }) {
+  async directions({ origin, destination, mode, waypoints, optimize }) {
     await client
       .directions({
-        origin,
-        destination,
-        mode,
-        waypoints,
-        optimizeWaypoints
+        params: {
+          origin,
+          destination,
+          mode,
+          waypoints,
+          optimize
+        }
       })
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .then((r: DirectionsResponse | any) => {
