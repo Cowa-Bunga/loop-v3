@@ -10,6 +10,8 @@ RUN apk add --no-cache python3 g++ make
 ENV SENTRY_ENABLED=true
 ENV NX_NON_NATIVE_HASHER=true
 ENV NODE_ENV=production
+ENV BACKEND_SERVER_PORT=3333
+
 # todo:
 ENV API_AUTH_URL=https://cb-authentication-api-ukxjb66ceq-ew.a.run.app
 
