@@ -8,16 +8,16 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger'
 export class TrackingController {
   constructor(private readonly trackingService: TrackingService) {}
 
-  @Get('getDriverById/:driver_id')
+  @Get('driver/:driver_id')
   @ApiOperation({ summary: '∞ Get locations by driver id' })
   getDriverById(@Param('driver_id') driver_id: string) {
-    return this.trackingService.getDriverById(driver_id)
+    return this.trackingService.getLocationsByDriverId(driver_id)
   }
 
-  @Get('getByTripId/:trip_id')
+  @Get('trip/:trip_id')
   @ApiOperation({ summary: '∞ Get locations by trip id' })
   getByTripId(@Param('trip_id') trip_id: string) {
-    return this.trackingService.getByTripId(trip_id)
+    return this.trackingService.getLocationsByTripId(trip_id)
   }
 
   @Post()
