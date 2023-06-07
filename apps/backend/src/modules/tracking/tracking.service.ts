@@ -13,7 +13,7 @@ export class TrackingService {
 
   async create(params: CreateTrackingDto) {
     console.info('create', params)
-    return await this.TrackingServiceDb.save({
+    await this.TrackingServiceDb.save({
       client_id: params.extras.client_id,
       trip_id: params.extras.trip_id,
       driver_id: params.extras.driver_id,
@@ -23,22 +23,60 @@ export class TrackingService {
       },
       timestamp: params.timestamp,
       payload: params
+    }).catch((err) => {
+      console.warn(err)
+      return { status: 'fail' }
     })
+
+    return { status: 'ok' }
   }
 
-  async getDriverById(driver_id: string) {
-    console.info('getDriverById', driver_id)
-    return await this.TrackingServiceDb.find({
+  async getLocationsByDriverId(driver_id: string) {
+    console.info('getLocationsByTripId', driver_id)
+    const res = await this.TrackingServiceDb.find({
       where: { driver_id },
+      select: {
+        trip_id: true,
+        client_id: true,
+        timestamp: true,
+        location: {
+          coordinates: true
+        }
+      },
+      order: {
+        trip_id: 'DESC',
+        timestamp: 'DESC'
+      },
       take: 1000
     })
+
+    return res.map((v) => ({
+      ...v,
+      location: v.location.coordinates
+    }))
   }
 
-  async getByTripId(trip_id: string) {
-    console.info('getByTripId', trip_id)
-    return await this.TrackingServiceDb.find({
+  async getLocationsByTripId(trip_id: string) {
+    console.info('getLocationsByTripId', trip_id)
+    const res = await this.TrackingServiceDb.find({
+      select: {
+        driver_id: true,
+        client_id: true,
+        timestamp: true,
+        location: {
+          coordinates: true
+        }
+      },
       where: { trip_id },
-      take: 1000
+      take: 1000,
+      order: {
+        timestamp: 'DESC'
+      }
     })
+
+    return res.map((v) => ({
+      ...v,
+      location: v.location.coordinates
+    }))
   }
 }
