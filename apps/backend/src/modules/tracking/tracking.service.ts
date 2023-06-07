@@ -14,6 +14,7 @@ export class TrackingService {
   async create(params: CreateTrackingDto) {
     console.info('create', params)
     return await this.TrackingServiceDb.save({
+      client_id: params.extras.client_id,
       trip_id: params.extras.trip_id,
       driver_id: params.extras.driver_id,
       location: {

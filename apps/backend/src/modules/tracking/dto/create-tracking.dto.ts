@@ -7,6 +7,7 @@ export class CreateTrackingDto {
   }
 
   extras: {
+    client_id: string
     trip_id: string
     driver_id: string
     trip_status?: string
