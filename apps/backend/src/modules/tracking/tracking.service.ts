@@ -12,7 +12,6 @@ export class TrackingService {
   ) {}
 
   async create(params: CreateTrackingDto) {
-    console.info('create', params)
     await this.TrackingServiceDb.save({
       client_id: params.extras.client_id,
       trip_id: params.extras.trip_id,
@@ -32,7 +31,6 @@ export class TrackingService {
   }
 
   async getLocationsByDriverId(driver_id: string) {
-    console.info('getLocationsByTripId', driver_id)
     const res = await this.TrackingServiceDb.find({
       where: { driver_id },
       select: {
@@ -57,7 +55,6 @@ export class TrackingService {
   }
 
   async getLocationsByTripId(trip_id: string) {
-    console.info('getLocationsByTripId', trip_id)
     const res = await this.TrackingServiceDb.find({
       select: {
         driver_id: true,

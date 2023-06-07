@@ -23,8 +23,8 @@ export class RouteController {
     return await this.valhallaService.getRouteData(locations)
   }
 
-  @Get('trip/:trip_id')
-  @ApiOperation({ summary: '∞ Dynamically get all spatial trip data by trip_id' })
+  @Get('trip-data/:trip_id')
+  @ApiOperation({ summary: '∞ Dynamically get stored geometries for a trip_id' })
   @UseInterceptors(
     ResilienceInterceptor(
       new TimeoutStrategy(DEFAULT.API_TIMEOUT),
@@ -48,7 +48,7 @@ export class RouteController {
   }
 
   @Post('directions')
-  @ApiOperation({ summary: '∞ Get a matrix calculation on a Point array' })
+  @ApiOperation({ summary: '∞ Get directions' })
   @UseInterceptors(
     ResilienceInterceptor(
       new TimeoutStrategy(DEFAULT.API_TIMEOUT),
@@ -60,6 +60,13 @@ export class RouteController {
   }
 
   @Post('isochrone')
+  @ApiOperation({ summary: '∞ Get a isochrone calculation on a Point' })
+  @UseInterceptors(
+    ResilienceInterceptor(
+      new TimeoutStrategy(DEFAULT.API_TIMEOUT),
+      ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
+    )
+  )
   async isochrone(
     @Param('locations') locations: Point[],
     @Param('type') type: ValhallaCostingType,
