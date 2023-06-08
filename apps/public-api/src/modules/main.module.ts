@@ -10,6 +10,8 @@ import { HubModule } from './hub/hub.module'
 import { BranchModule } from './branch/branch.module'
 import { DashboardModule } from './dashboard/dashboard.module'
 import { DriverModule } from './driver/driver.module'
+import { NotificationModule } from './notification/notification.module'
+import { TrackingModule } from './tracking/tracking.module'
 
 @Module({
   imports: [
@@ -21,7 +23,9 @@ import { DriverModule } from './driver/driver.module'
     HubModule,
     BranchModule,
     DashboardModule,
-    DriverModule
+    DriverModule,
+    NotificationModule,
+    TrackingModule
   ],
   providers: [
     {
