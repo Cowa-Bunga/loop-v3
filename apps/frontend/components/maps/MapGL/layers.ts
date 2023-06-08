@@ -1,16 +1,11 @@
 import { ICON_MAPPING, ASSETS } from '../shared/config'
-import { IconLayer, GeoJsonLayer, ScenegraphLayer, HexagonLayer, ColumnLayer, PolygonLayer } from 'deck.gl/typed'
+import { IconLayer, GeoJsonLayer, ScenegraphLayer, ColumnLayer, PolygonLayer } from 'deck.gl/typed'
 
 export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
   return [
     new ScenegraphLayer({
       id: 'driver',
-      data: [
-        {
-          coordinates: driver,
-          label: 'Driver: John Smith \n#8765789'
-        }
-      ],
+      data: [{ coordinates: driver, label: 'Driver: John Smith \n#8765789' }],
       pickable: true,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       scenegraph: ASSETS.OBJ_CAR as any,
@@ -23,7 +18,7 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
       _lighting: 'pbr',
       material: theme.material,
       onHover: ({ object, x, y }) => {
-        console.log('driver:hover')
+        console.info('driver:hover', object, x, y)
       }
     }),
 

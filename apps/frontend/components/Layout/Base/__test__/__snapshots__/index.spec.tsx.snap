@@ -7,7 +7,7 @@ exports[`LayoutBase should render successfully 1`] = `
       class="MuiBox-root css-i9gxme"
     >
       <header
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-o0v5hs-MuiPaper-root-MuiAppBar-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-tyohzp-MuiPaper-root-MuiAppBar-root"
       >
         <div
           class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"

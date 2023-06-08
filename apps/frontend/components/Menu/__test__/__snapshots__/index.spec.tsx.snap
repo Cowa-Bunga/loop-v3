@@ -25,7 +25,7 @@ exports[`Menu should render successfully 1`] = `
       tabindex="-1"
     >
       <div
-        class="MuiBox-root css-ug0kwg"
+        class="MuiBox-root css-akzf0c"
       >
         <ul
           class="MuiList-root MuiList-padding css-17osibc-MuiList-root"

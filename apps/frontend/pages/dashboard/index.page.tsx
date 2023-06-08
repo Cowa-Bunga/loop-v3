@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { LayoutBase, TimeLine } from '@components'
+import { LayoutBase } from '@components'
 import Filter from './components/Filter'
 import Drivers from './components/Drivers'
 import CreateJob from './components/CreateJob'
@@ -10,13 +10,7 @@ import { ui } from './style'
 import { useUserContext } from '@util/context/user'
 import DistanceChart from '../../components/charts/RadialChart'
 import { Box, Card, Drawer, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
-import {
-  KeyboardDoubleArrowLeft,
-  KeyboardDoubleArrowRight,
-  TaskAltTwoTone,
-  CarRental,
-  KeyboardDoubleArrowUp
-} from '@mui/icons-material'
+import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight, TaskAltTwoTone } from '@mui/icons-material'
 
 const GMapGL = dynamic(() => import('../../components/maps/GMapGL'), {
   ssr: false
@@ -34,28 +28,12 @@ const Dashboard = () => {
     bottomDrawer: '0px'
   })
 
-  const { toggleLeft, toggleRight, toggleBottom, toggleCreate } = Actions(state, setState)
+  const { toggleLeft, toggleRight, toggleCreate } = Actions(state, setState)
   const dialActions = [{ icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate }]
   const MemFilter = memo(Filter)
 
   return (
     <LayoutBase>
-      {/* <Drawer
-        disableScrollLock
-        elevation={1}
-        keepMounted
-        hideBackdrop
-        anchor="bottom"
-        variant="persistent"
-        open={state.timeline}
-        sx={ui.bottomDrawer}
-      >
-        <TimeLine data={false} />
-      </Drawer>
-      <Box sx={ui.bottomBox} onClick={toggleBottom}>
-        <KeyboardDoubleArrowUp sx={ui.bottomdBoxIcon} />
-      </Box> */}
-
       <Drawer elevation={2} sx={ui.leftDrawer} anchor="left" variant="persistent" open={state.left}>
         <Box sx={ui.filter}>
           <Box sx={ui.closedBox} onClick={toggleLeft}>

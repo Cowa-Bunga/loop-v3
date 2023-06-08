@@ -1,15 +1,5 @@
 import { ICON_MAPPING, ASSETS } from './config'
-import {
-  IconLayer,
-  GeoJsonLayer,
-  ScenegraphLayer,
-  HexagonLayer,
-  ColumnLayer,
-  PolygonLayer,
-  PathLayer,
-  TripsLayer
-} from 'deck.gl/typed'
-
+import { IconLayer, ScenegraphLayer, TripsLayer } from 'deck.gl/typed'
 import MOCK from './reme.json'
 
 const data = [
@@ -24,7 +14,7 @@ const data = [
 
 let base = 0
 
-export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
+export const layers = ({ theme }) => {
   console.warn('data', data)
 
   return [
@@ -54,7 +44,7 @@ export const layers = ({ driver, start, waypoints, end, trip, iso, theme }) => {
 
     new IconLayer({
       id: 'map-markers',
-      data: MOCK.map((v) => ({ ...v, label: v.name })),
+      data: MOCK.map((v) => ({ ...v, label: v.driver_id })),
       pickable: true,
       iconAtlas: ASSETS.ICON,
       iconMapping: ICON_MAPPING,

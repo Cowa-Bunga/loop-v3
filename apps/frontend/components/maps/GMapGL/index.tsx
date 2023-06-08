@@ -44,18 +44,18 @@ function Map() {
     return <div>...</div>
   }
 
-  const driver = [28.321779, -26.2290333]
+  // const driver = [28.321779, -26.2290333]
 
   // Deckgl
   const deckOverlay = new GoogleMapsOverlay({
     layers: layers({
-      driver,
-      theme: DEFAULT_THEME,
-      start: state.start,
-      end: state.end,
-      waypoints: state.waypoints,
-      trip: state.trip,
-      iso: state.iso
+      // driver,
+      theme: DEFAULT_THEME
+      // start: state.start,
+      // end: state.end,
+      // waypoints: state.waypoints,
+      // trip: state.trip,
+      // iso: state.iso
     })
   })
 
@@ -65,6 +65,7 @@ function Map() {
       center={{ lat: -34.0829499, lng: 18.8241262 }}
       zoom={14}
       tilt={45}
+      // TODO: connect to mui dark/light theme layer
       options={{ mapId: '373e37f72ff98909' || '713dad0b0aefa8cc' }}
       mapTypeId="satellite"
       onLoad={(map) => {

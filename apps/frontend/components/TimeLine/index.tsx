@@ -67,7 +67,8 @@ export const ProgramItem = ({ program, ...rest }) => {
 
 export default function TimeLine({ height }) {
   const { getEpgProps, getLayoutProps } = useEpg({
-    epg,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    epg: epg as any,
     channels,
     startDate: '2023-06-07T08:30:00',
     endDate: '2023-06-07T18:30:00',

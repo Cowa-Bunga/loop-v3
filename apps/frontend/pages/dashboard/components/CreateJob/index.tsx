@@ -6,7 +6,6 @@ import { Actions } from './actions'
 import { createJobFormLocalePathBuilder } from '@locale/locale-utils'
 import { IForm } from '@pages/api/forms/[reference]/type'
 import { ui } from './style'
-import { memo } from 'react'
 
 const CreateJob = ({ handleClose }: IappCreateJobProps) => {
   const { t } = useTranslation()
@@ -24,7 +23,6 @@ const CreateJob = ({ handleClose }: IappCreateJobProps) => {
   })
 
   const _t = (path: string) => t(createJobFormLocalePathBuilder(path))
-
   const { addEmptyParcel, updateParcel, updateFormData, getForms } = Actions(state, setState)
 
   return (
