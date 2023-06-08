@@ -20,7 +20,7 @@ import {
 export default function DashboardFilter() {
   return (
     <Box sx={ui.container}>
-      {/* <Paper sx={{ p: 2 }}>
+      <Paper sx={{ p: 2 }}>
         {[1, 2, 3, 4].map((l) => (
           <>
             <Box key={l} sx={{ position: 'relative', display: 'inline-flex', mx: 2 }}>
@@ -28,11 +28,10 @@ export default function DashboardFilter() {
                 color="info"
                 variant="determinate"
                 value={l * 25}
-                size={90}
+                size={60}
                 thickness={6}
                 title="Orders"
               />
-
               <Box
                 sx={{
                   top: 0,
@@ -45,24 +44,23 @@ export default function DashboardFilter() {
                   justifyContent: 'center'
                 }}
               >
-                <Fab color="primary" size="large" sx={{ fontColor: 'white' }}>
-                  <Typography variant="caption" component="div">{`${Math.round(l * 25)}%`}</Typography>
+                <Fab color="primary" size="medium" sx={{ fontColor: 'white' }}>
+                  <Typography style={{ fontSize: '10px' }} variant="caption" component="div">{`${Math.round(
+                    l * 25
+                  )}%`}</Typography>
                 </Fab>
               </Box>
+              <div style={{ fontSize: '10px', position: 'absolute', textAlign: 'center', top: -20, left: 0, right: 0 }}>
+                hub
+              </div>
+              <br />
             </Box>
           </>
         ))}
-      </Paper> */}
-      <Paper>
-        <Button fullWidth color="primary">
-          HUBS/Regions
-        </Button>
       </Paper>
 
-      <br />
-
-      {['Trips', 'Tasks'].map((v, i) => (
-        <Accordion square key={v} expanded>
+      {['Hubs', 'Regions', 'Trips', 'Tasks', 'Clusters', 'Zones'].map((v, i) => (
+        <Accordion square key={v} sx={{ p: 0 }}>
           <AccordionSummary expandIcon={<ExpandMore />}>
             <Box>
               <Fab size="small" color="primary">
@@ -74,11 +72,11 @@ export default function DashboardFilter() {
                 <b>{v.toUpperCase()}</b>
               </Typography>
             </Box>
-            <Box>
+            {/* <Box>
               <IconButton size="small">
                 <Tune />
               </IconButton>
-            </Box>
+            </Box> */}
             <Box sx={{ ml: 4, mr: '20px', mt: -0.5 }}>
               <TextField size="small" variant="outlined" placeholder="enter Task/Customer" label="search" />
             </Box>

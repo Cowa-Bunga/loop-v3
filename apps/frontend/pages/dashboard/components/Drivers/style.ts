@@ -1,7 +1,7 @@
 export const ui = {
   container: {
     textAlign: 'center',
-    width: '440px',
+    width: '400px',
     minHeight: '100vh'
   },
 

@@ -4,7 +4,9 @@ export const ui = {
     '& *': { padding: 0, border: 0, zIndex: 0 }
   },
 
-  leftDrawer: {},
+  leftDrawer: {
+    width: '400px'
+  },
   rightDrawer: {},
 
   map: {
@@ -16,7 +18,7 @@ export const ui = {
     position: 'fixed',
     height: '100vh',
     width: '30px',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: 'secondary.main',
     top: 0,
     bottom: 0,
     left: 0,
@@ -30,7 +32,7 @@ export const ui = {
     position: 'fixed',
     height: '100vh',
     width: '30px',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: 'secondary.main',
     top: 0,
     bottom: 0,
     right: 0,
@@ -78,7 +80,7 @@ export const ui = {
 
   filter: {
     pt: '60px',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: 'secondary.main',
     color: 'black'
   },
 

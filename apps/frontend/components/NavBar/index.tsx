@@ -10,29 +10,20 @@ export default function NavBar({ open, setOpen }) {
       <AppBar
         position="fixed"
         sx={{
-          backgroundColor: 'primary.main',
+          backgroundColor: 'primary.accent',
           zIndex: 10001
         }}
       >
         <Toolbar>
           {session && (
             <>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                onClick={() => setOpen(!open)}
-              >
+              <IconButton size="large" edge="start" color="inherit" onClick={() => setOpen(!open)}>
                 <Menu />
               </IconButton>
             </>
           )}
 
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: 'block', textAlign: 'center' }}
-          >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'block', textAlign: 'center' }}>
             <img
               alt="logo"
               style={{ marginTop: '5px', height: '20px' }}

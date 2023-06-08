@@ -18,5 +18,8 @@ body {
   mix-blend-mode: multiply;
 }
 
+nextjs-portal {
+  display: none;
+}
 
 

@@ -5,9 +5,8 @@ const ui = {
     maxHeight: '100vh',
     overflow: 'scroll',
     pt: '80px',
-    backgroundColor: 'primary.main',
-    backgroundImage:
-      'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
+    backgroundColor: 'primary.accent',
+    backgroundImage: 'url("https://www.loop.co.za/wp-content/uploads/2021/12/BGright.svg")',
     backgroundSize: 'cover',
     backgroundPosition: '0 0',
     backgroundAttachment: 'fixed',

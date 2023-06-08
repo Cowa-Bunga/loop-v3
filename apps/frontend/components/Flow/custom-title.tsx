@@ -12,21 +12,13 @@ const CustomNode = ({
     <Card
       sx={{
         p: 4,
-        backgroundColor: 'teal',
+        backgroundColor: 'primary.main',
         color: 'primary.contrastText'
       }}
     >
-      <Handle
-        type="target"
-        position={targetPosition}
-        isConnectable={isConnectable}
-      />
+      <Handle type="target" position={targetPosition} isConnectable={isConnectable} />
       <Typography variant="h4">{data?.label}</Typography>
-      <Handle
-        type="source"
-        position={sourcePosition}
-        isConnectable={isConnectable}
-      />
+      <Handle type="source" position={sourcePosition} isConnectable={isConnectable} />
     </Card>
   )
 }

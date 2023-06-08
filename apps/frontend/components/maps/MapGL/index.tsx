@@ -5,7 +5,7 @@ import { DEFAULT_THEME, ASSETS } from '../shared/config'
 import { useEffect, useState, useMergeState } from '@hooks'
 import DeckGL from '@deck.gl/react/typed'
 import { ui } from './style'
-import { layers } from './layers'
+import { layers } from '../shared/live_layers'
 import { EditableGeoJsonLayer } from 'nebula.gl'
 import { Toolbox } from '../shared/components/ToolBox'
 import { MapView } from 'deck.gl/typed'
@@ -27,8 +27,10 @@ export default function MapGL() {
       features: []
     },
     viewport: {
-      longitude: 28.321779,
-      latitude: -26.2290333,
+      // longitude: 28.321779,
+      // latitude: -26.2290333,
+      latitude: -34.0829499,
+      longitude: 18.8241262,
       zoom: 13,
       pitch: 45,
       bearing: 0
