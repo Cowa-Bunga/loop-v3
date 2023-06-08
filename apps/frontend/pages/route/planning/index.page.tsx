@@ -1,19 +1,10 @@
-// import { memo } from 'react'
-import { LayoutBase, TimeLine } from '@components'
 import dynamic from 'next/dynamic'
+import { LayoutBase, TimeLine } from '@components'
 import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
-// import { useUserContext } from '@util/context/user'
-import { Box, Card, Drawer, SpeedDial, SpeedDialAction } from '@mui/material'
-import {
-  // TaskAltTwoTone,
-  // CarRental,
-  Map as MapIcon,
-  Google as GoogleIcon,
-  Route as RouteIcon,
-  KeyboardDoubleArrowUp
-} from '@mui/icons-material'
+import { Box, Drawer, SpeedDial, SpeedDialAction } from '@mui/material'
+import { Map as MapIcon, Google as GoogleIcon, Route as RouteIcon, KeyboardDoubleArrowUp } from '@mui/icons-material'
 
 const GMapGL = dynamic(() => import('../../../components/maps/GMapGL'), {
   ssr: false
@@ -24,7 +15,6 @@ const MapGL = dynamic(() => import('../../../components/maps/MapGL'), {
 })
 
 const RoutePlanning = () => {
-  // const user = useUserContext().state
   const [state, setState] = useMergeState({
     right: false,
     left: false,
@@ -57,13 +47,7 @@ const RoutePlanning = () => {
         variant="persistent"
         open={state.timeline}
         sx={ui.bottomDrawer}
-        PaperProps={
-          {
-            padding: 0,
-            border: 0,
-            zIndex: 0
-          } as unknown
-        }
+        PaperProps={ui.drawerPaper as unknown}
       >
         <TimeLine key={`key-${state.bottomDrawer}`} height={state.bottomDrawer} />
       </Drawer>
@@ -72,9 +56,7 @@ const RoutePlanning = () => {
         <KeyboardDoubleArrowUp sx={ui.bottomdBoxIcon} />
       </Box>
 
-      <Box sx={ui.map}>
-        <Card sx={{ mb: state.bottomDrawer }}>{state.routeView ? <MapGL /> : <GMapGL />}</Card>
-      </Box>
+      <Box sx={{ ...ui.map, mb: state.bottomDrawer }}>{state.routeView ? <MapGL /> : <GMapGL mode="dark" />}</Box>
 
       {state.mapControls && (
         <SpeedDial

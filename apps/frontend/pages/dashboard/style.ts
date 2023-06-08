@@ -24,7 +24,7 @@ export const ui = {
     left: 0,
     pt: 'calc(50vh - 30px)',
     color: '#9DA3AE !important',
-    zIndex: 1201,
+    zIndex: 0,
     shadow: 4
   },
 
@@ -38,7 +38,7 @@ export const ui = {
     right: 0,
     pt: 'calc(50vh - 30px)',
     color: '#9DA3AE !important',
-    zIndex: 1201,
+    zIndex: 0,
     shadow: 4
   },
 
@@ -87,12 +87,7 @@ export const ui = {
   speedDial: {
     position: 'absolute',
     top: 120,
-    right: 40
-  },
-
-  speedDial2: {
-    position: 'absolute',
-    top: 120,
-    left: 50
+    left: 50,
+    background: 'primary.main'
   }
 }

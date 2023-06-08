@@ -9,7 +9,8 @@ export const ui = {
   },
 
   programBox: {
-    padding: '5px'
+    padding: '5px',
+    borderRadius: 0
   },
 
   programImage: {
@@ -20,7 +21,7 @@ export const ui = {
 
   programContent: {
     padding: '10px',
-    background:
-      'linear-gradient(25deg, rgba(106, 256, 199, 0.6) 0%, #063863 8%, #063863 74%, rgba(106, 256, 199, 0.6) 100%)'
+    background: 'yellow'
+    // 'linear-gradient(25deg, rgba(106, 256, 199, 0.6) 0%, #063863 8%, #063863 74%, rgba(106, 256, 199, 0.6) 100%)'
   }
 }

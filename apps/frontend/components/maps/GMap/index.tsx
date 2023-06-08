@@ -16,7 +16,7 @@ function Map() {
   const [height, setHeight] = useState(0)
 
   useEffect(() => {
-    setHeight(window.innerHeight - 60)
+    setHeight(window?.innerHeight - 60)
   }, [])
 
   const [, setMap] = useState(null)

@@ -7,7 +7,7 @@ import DeckGL from '@deck.gl/react/typed'
 import { ui } from './style'
 import { layers } from '../shared/live_layers'
 import { EditableGeoJsonLayer } from 'nebula.gl'
-import { Toolbox } from '../shared/components/ToolBox'
+import { Toolbox } from './components/ToolBox'
 import { MapView } from 'deck.gl/typed'
 import load from '../shared/load'
 
@@ -76,7 +76,7 @@ export default function MapGL() {
   // const driver = [state.viewport.latitude, state.viewport.longitude]
 
   if (state.load) {
-    return <div>loading</div>
+    return <div>...</div>
   }
 
   /* @ts-ignore */
@@ -98,13 +98,14 @@ export default function MapGL() {
     _subLayerProps: {
       geojson: {
         getFillColor: () => [116, 158, 199],
-        opacity: 0.4,
+        opacity: 0.2,
         selectable: true,
         billboard: true,
         pickable: true,
         pointType: 'circle+text',
         getText: (f: { properties: { name: string } }) => f.properties.name,
-        getTextSize: 12
+        getTextSize: 12,
+        getTextColor: [255, 255, 255]
       },
       guides: {
         getFillColor: (_guide: unknown) => [16, 58, 99]
