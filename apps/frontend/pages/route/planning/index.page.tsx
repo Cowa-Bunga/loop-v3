@@ -4,11 +4,11 @@ import dynamic from 'next/dynamic'
 import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
-import { useUserContext } from '@util/context/user'
-import { Box, Card, Drawer, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
+// import { useUserContext } from '@util/context/user'
+import { Box, Card, Drawer, SpeedDial, SpeedDialAction } from '@mui/material'
 import {
-  TaskAltTwoTone,
-  CarRental,
+  // TaskAltTwoTone,
+  // CarRental,
   Map as MapIcon,
   Google as GoogleIcon,
   Route as RouteIcon,
@@ -24,7 +24,7 @@ const MapGL = dynamic(() => import('../../../components/maps/MapGL'), {
 })
 
 const RoutePlanning = () => {
-  const user = useUserContext().state
+  // const user = useUserContext().state
   const [state, setState] = useMergeState({
     right: false,
     left: false,
@@ -57,11 +57,13 @@ const RoutePlanning = () => {
         variant="persistent"
         open={state.timeline}
         sx={ui.bottomDrawer}
-        PaperProps={{
-          padding: 0,
-          border: 0,
-          zIndex: 0
-        }}
+        PaperProps={
+          {
+            padding: 0,
+            border: 0,
+            zIndex: 0
+          } as unknown
+        }
       >
         <TimeLine key={`key-${state.bottomDrawer}`} height={state.bottomDrawer} />
       </Drawer>

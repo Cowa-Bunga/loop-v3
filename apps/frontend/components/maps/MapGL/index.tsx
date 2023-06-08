@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Map, useMap } from 'react-map-gl'
+import { Map } from 'react-map-gl'
 import maplibregl from 'maplibre-gl'
 import { DEFAULT_THEME, ASSETS } from '../shared/config'
 import { useEffect, useState, useMergeState } from '@hooks'
@@ -27,8 +27,6 @@ export default function MapGL() {
       features: []
     },
     viewport: {
-      // longitude: 28.321779,
-      // latitude: -26.2290333,
       latitude: -34.0829499,
       longitude: 18.8241262,
       zoom: 13,
@@ -74,7 +72,8 @@ export default function MapGL() {
   const theme = DEFAULT_THEME
   const [mode, setMode] = useState(() => null)
   const [modeConfig, setModeConfig] = useState({})
-  const driver = [28.321779, -26.2290333]
+  // mock
+  // const driver = [state.viewport.latitude, state.viewport.longitude]
 
   if (state.load) {
     return <div>loading</div>
@@ -116,13 +115,13 @@ export default function MapGL() {
   const comboLayers = [
     toolbox,
     ...layers({
-      driver,
-      theme,
-      start: state.start,
-      end: state.end,
-      waypoints: state.waypoints,
-      trip: state.trip,
-      iso: state.isochrone
+      // driver,
+      theme
+      // start: state.start,
+      // end: state.end,
+      // waypoints: state.waypoints,
+      // trip: state.trip,
+      // iso: state.isochrone
     })
   ]
 

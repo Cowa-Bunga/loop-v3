@@ -1,6 +1,4 @@
-import { GanttDataType } from 'react-virtual-gantt'
-
-export const mock: GanttDataType = [
+export const mock = [
   {
     key: 'task-1',
     title: 'South Africa',

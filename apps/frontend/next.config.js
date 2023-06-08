@@ -3,7 +3,6 @@ const path = require('path')
 const { withSentryConfig } = require('@sentry/nextjs')
 
 const nextConfig = {
-  debugger: false,
   experimental: {
     outputFileTracingRoot: path.join(__dirname, '../../')
   },
