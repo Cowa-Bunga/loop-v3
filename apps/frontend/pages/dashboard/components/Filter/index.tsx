@@ -24,7 +24,7 @@ import {
 export default function DashboardFilter() {
   return (
     <Box sx={ui.container}>
-      <Paper sx={{ p: 2 }}>
+      {/* <Paper sx={{ p: 2 }}>
         {[1, 2, 3, 4].map((l) => (
           <>
             <Box key={l} sx={{ position: 'relative', display: 'inline-flex', mx: 2 }}>
@@ -55,13 +55,13 @@ export default function DashboardFilter() {
                 </Fab>
               </Box>
               <div style={{ fontSize: '10px', position: 'absolute', textAlign: 'center', top: -20, left: 0, right: 0 }}>
-                hub
+                selected
               </div>
               <br />
             </Box>
           </>
         ))}
-      </Paper>
+      </Paper> */}
 
       {['Hubs', 'Regions', 'Trips', 'Tasks', 'Clusters', 'Zones'].map((v, i) => (
         <Accordion square key={v} sx={{ p: 0 }}>

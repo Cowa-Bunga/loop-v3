@@ -36,7 +36,7 @@ export const dark = {
 } as PaletteOptions
 
 export const theme = createTheme({
-  palette: dark,
+  palette: light,
 
   typography: {
     allVariants: {

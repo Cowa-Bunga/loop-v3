@@ -1,6 +1,7 @@
 import { Box } from '@mui/material'
 import { channels, epg } from './mock2'
 import { ui } from './style'
+import { memo } from 'react'
 import {
   useEpg,
   Epg,
@@ -27,7 +28,6 @@ const ChannelItem = ({ channel }: ChannelItemProps) => {
   return (
     <ChannelBox {...position}>
       <ChannelLogo
-        onClick={() => console.log('channel', channel)}
         src={logo}
         alt="Logo"
         style={{
@@ -70,10 +70,10 @@ export default function TimeLine({ height }) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     epg: epg as any,
     channels,
-    startDate: '2023-06-07T08:30:00',
-    endDate: '2023-06-07T18:30:00',
-    itemHeight: 65,
-    dayWidth: window?.innerWidth * 2
+    startDate: new Date(new Date().setHours(4, 0, 0)),
+    endDate: new Date(new Date().setHours(22, 0, 0)),
+    itemHeight: 50,
+    dayWidth: window?.innerWidth - 100
   })
 
   return (

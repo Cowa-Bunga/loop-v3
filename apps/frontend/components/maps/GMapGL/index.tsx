@@ -8,7 +8,7 @@ import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 import { ui } from './style'
 import load from '../shared/load'
 
-function Map() {
+function Map({ mode }) {
   const [state, setState] = useMergeState({
     load: true,
     route: null,
@@ -66,7 +66,7 @@ function Map() {
       zoom={14}
       tilt={45}
       // TODO: connect to mui dark/light theme layer
-      options={{ mapId: '373e37f72ff98909' || '713dad0b0aefa8cc' }}
+      options={{ mapId: mode == 'dark' ? '373e37f72ff98909' : '713dad0b0aefa8cc' }}
       mapTypeId="satellite"
       onLoad={(map) => {
         deckOverlay.setMap(map)

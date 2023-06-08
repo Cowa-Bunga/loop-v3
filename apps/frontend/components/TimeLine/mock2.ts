@@ -11,6 +11,6 @@ export const epg = MOCK.map((v) => ({
   id: v.timestamp,
   image: '/loop-log-icon.png',
   since: v.timestamp,
-  till: new Date(new Date(v.timestamp).getTime() + 1 * 60000),
+  till: new Date(new Date(v.timestamp).getTime() + 1000),
   title: v.location
 }))

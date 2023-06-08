@@ -23,9 +23,7 @@ const Dashboard = () => {
     left: true,
     data: null,
     create: false,
-    timeline: true,
-    mapControls: true,
-    bottomDrawer: '0px'
+    mapControls: true
   })
 
   const { toggleLeft, toggleRight, toggleCreate } = Actions(state, setState)
@@ -50,11 +48,10 @@ const Dashboard = () => {
         <Card
           sx={{
             ml: state.left ? '400px' : '30px',
-            mr: state.right ? '400px' : '30px',
-            mb: state.bottomDrawer
+            mr: state.right ? '400px' : '30px'
           }}
         >
-          <GMapGL />
+          <GMapGL mode="light" />
         </Card>
         <Box sx={ui.openBoxR} onClick={toggleRight}>
           <KeyboardDoubleArrowLeft />
@@ -72,7 +69,7 @@ const Dashboard = () => {
         </Box>
       </Drawer>
 
-      <SpeedDial direction="right" ariaLabel="loop controls" sx={ui.speedDial2} icon={<SpeedDialIcon />}>
+      <SpeedDial color="primary" direction="right" ariaLabel="loop controls" sx={ui.speedDial} icon={<SpeedDialIcon />}>
         {dialActions.map((dial) => (
           <SpeedDialAction key={dial.name} icon={dial.icon} tooltipTitle={dial.name} onClick={dial.action} />
         ))}

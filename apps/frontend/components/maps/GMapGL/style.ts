@@ -6,6 +6,6 @@ export const ui = {
 
   mapContainer: {
     width: '100%',
-    height: window?.innerHeight - 60
+    height: 'calc(100vh - 60px)'
   }
 }
