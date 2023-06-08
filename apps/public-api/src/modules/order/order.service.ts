@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { DocumentSnapshot } from '@google-cloud/firestore'
 import { ClientRequest } from '../../shared/entities/request.entity'
@@ -47,22 +47,10 @@ export class OrderService {
     const db = admin.firestore()
     const order = await db.collection('clients').doc(client.id).collection('orders').doc(order_id).get()
 
-    const orderData = order.data()
-
-    // TODO Change below to append trip and driver data in controller using their individual services.
-    if (orderData.trip_id) {
-      //TODO replace with trip service
-      const trip = await db.collection('clients').doc(client.id).collection('trips').doc(orderData.trip_id).get()
-
-      if (trip.data().driver) {
-        //TODO replace with driver service
-        const driver = await trip.data().driver.get()
-        Object.assign(orderData, {
-          driver_id: driver.id,
-          driver_name: driver.data().name
-        })
-      }
+    if (!order.exists) {
+      throw new NotFoundException(`Order with ID '${order}' not found.`)
     }
+
     return order
   }
 
