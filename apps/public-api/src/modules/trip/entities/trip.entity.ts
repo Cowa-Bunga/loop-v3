@@ -50,8 +50,12 @@ export class EssentialTrip {
     this.automatic_assignment = data.automatic_assignment
   }
 
-  setDriver(driver: Driver) {
+  setDriver(driver: Driver): void {
     this.driver = driver
+  }
+
+  containsOrder(order_id: string): boolean {
+    return this.orders.includes(order_id)
   }
 }
 

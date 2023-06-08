@@ -74,7 +74,11 @@ export class EssentialOrder {
 }
 
 export class Order extends EssentialOrder {
+  tracking_id: string
+
   constructor(order: DocumentSnapshot, cluster?: DocumentSnapshot) {
     super(order, cluster)
+    const data = order.data()
+    this.tracking_id = data.tracking_id
   }
 }

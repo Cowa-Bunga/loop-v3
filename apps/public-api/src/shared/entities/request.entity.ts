@@ -12,10 +12,13 @@ class ClientSettings {
 }
 export class ClientRequest {
   id: string
+  name: string
   settings: ClientSettings
 
   constructor(client: DocumentSnapshot) {
+    const data = client.data()
     this.id = client.id
+    this.name = data.name
     this.settings = new ClientSettings(client)
   }
 }

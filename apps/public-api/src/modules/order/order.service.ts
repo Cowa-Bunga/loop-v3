@@ -3,7 +3,8 @@ import * as admin from 'firebase-admin'
 import { DocumentSnapshot } from '@google-cloud/firestore'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { ORDER_STATUS } from './entities/order.enum'
-import { CreateOrderDto } from './dto/order.dto'
+import { CreateOrderDto, EditOrderDto } from './dto/order.dto'
+import { Transaction } from 'firebase-admin/firestore'
 
 @Injectable()
 export class OrderService {
@@ -101,5 +102,23 @@ export class OrderService {
     })
 
     return await orderRef.get()
+  }
+
+  async editOrder(
+    client: ClientRequest,
+    order_id: string,
+    editOrderDto: EditOrderDto,
+    transaction?: Transaction
+  ): Promise<DocumentSnapshot> {
+    const db = admin.firestore()
+    const orderRef = await db.collection('clients').doc(client.id).collection('orders').doc(order_id)
+
+    if (transaction) {
+      transaction.set(orderRef, { ...editOrderDto }, { merge: true })
+    } else {
+      await orderRef.set({ ...editOrderDto }, { merge: true })
+    }
+
+    return orderRef.get()
   }
 }

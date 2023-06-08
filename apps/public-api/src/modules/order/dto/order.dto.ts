@@ -148,3 +148,9 @@ export class CreateOrderDto {
   @ValidateNested()
   order: Order
 }
+
+export class EditOrderDto {
+  @IsString()
+  @IsOptional()
+  tracking_id?: string
+}

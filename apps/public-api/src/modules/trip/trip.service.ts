@@ -4,9 +4,14 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { CreateTripDto, AcceptAdhocTripDto } from './dto/trip.dto'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { DocumentSnapshot } from 'firebase-admin/firestore'
+import { DriverService } from '../driver/driver.service'
+import { Trip } from './entities/trip.entity'
+import { Driver } from '../driver/entities/driver.entity'
 
 @Injectable()
 export class TripService {
+  constructor(private readonly driverService: DriverService) {}
+
   async getTripsByTripIds(trip_ids: string[], client_id: string) {
     const db = admin.firestore()
     const refs = trip_ids.map((id) => db.doc(`clients/${client_id}/trips/${id}`))
@@ -53,14 +58,22 @@ export class TripService {
       throw new NotFoundException(`Trip with ID '${trip_id}' not found.`)
     }
 
-    // if (tripData.driver) {
-    //   const driverSnapshot = await tripData.driver.get()
-    //   Object.assign(tripData, {
-    //     driver_id: driverSnapshot.id,
-    //     driver_name: driverSnapshot.data().name
-    //   })
-    // }
+    return trip
+  }
 
+  /**
+   * Returns a trip and associated driver if exists
+   * @param client currently authenticated client
+   * @param trip_id id of trip to retrieve
+   * @returns Trip object
+   */
+  async getTripAndDriver(client: ClientRequest, trip_id: string): Promise<Trip> {
+    const tripDoc = await this.getTrip(client, trip_id)
+    const trip = new Trip(tripDoc)
+    if (tripDoc.data().driver) {
+      const driver = new Driver(await this.driverService.getDriverByRef(tripDoc.data().driver))
+      trip.setDriver(driver)
+    }
     return trip
   }
 
