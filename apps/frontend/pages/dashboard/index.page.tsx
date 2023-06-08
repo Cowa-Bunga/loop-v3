@@ -35,17 +35,12 @@ const Dashboard = () => {
   })
 
   const { toggleLeft, toggleRight, toggleBottom, toggleCreate } = Actions(state, setState)
-
-  const dialActions = [
-    { icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate },
-    { icon: <CarRental />, name: 'Create Driver', action: toggleCreate }
-  ]
-
+  const dialActions = [{ icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate }]
   const MemFilter = memo(Filter)
 
   return (
     <LayoutBase>
-      <Drawer
+      {/* <Drawer
         disableScrollLock
         elevation={1}
         keepMounted
@@ -55,11 +50,11 @@ const Dashboard = () => {
         open={state.timeline}
         sx={ui.bottomDrawer}
       >
-        <TimeLine height={state.bottomDrawer} />
+        <TimeLine data={false} />
       </Drawer>
       <Box sx={ui.bottomBox} onClick={toggleBottom}>
         <KeyboardDoubleArrowUp sx={ui.bottomdBoxIcon} />
-      </Box>
+      </Box> */}
 
       <Drawer elevation={2} sx={ui.leftDrawer} anchor="left" variant="persistent" open={state.left}>
         <Box sx={ui.filter}>
@@ -76,8 +71,8 @@ const Dashboard = () => {
         </Box>
         <Card
           sx={{
-            ml: state.left ? '560px' : '30px',
-            mr: state.right ? '440px' : '30px',
+            ml: state.left ? '400px' : '30px',
+            mr: state.right ? '400px' : '30px',
             mb: state.bottomDrawer
           }}
         >

@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { GoogleMapsOverlay } from '@deck.gl/google-maps/typed'
-import { layers } from './layers'
+// import { layers } from './layers'
+import { layers } from '../shared/live_layers'
 import { DEFAULT_THEME } from '../shared/config'
 import { useEffect, useMergeState } from '@hooks'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
@@ -40,7 +41,7 @@ function Map() {
   })
 
   if (state.load || !state.start) {
-    return <div>loading</div>
+    return <div>...</div>
   }
 
   const driver = [28.321779, -26.2290333]
@@ -61,10 +62,10 @@ function Map() {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={ui.mapContainer}
-      center={{ lat: state.start[1], lng: state.start[0] }}
-      zoom={13}
+      center={{ lat: -34.0829499, lng: 18.8241262 }}
+      zoom={14}
       tilt={45}
-      options={{ mapId: '713dad0b0aefa8cc' }}
+      options={{ mapId: '373e37f72ff98909' || '713dad0b0aefa8cc' }}
       mapTypeId="satellite"
       onLoad={(map) => {
         deckOverlay.setMap(map)

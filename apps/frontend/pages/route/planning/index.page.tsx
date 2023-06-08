@@ -36,12 +36,7 @@ const RoutePlanning = () => {
     bottomDrawer: '0px'
   })
 
-  const { toggleBottom, toggleCreate, toggleMap } = Actions(state, setState)
-
-  const dialActions = [
-    { icon: <TaskAltTwoTone />, name: 'Create Task', action: toggleCreate },
-    { icon: <CarRental />, name: 'Create Driver', action: toggleCreate }
-  ]
+  const { toggleBottom, toggleMap } = Actions(state, setState)
 
   const mapActions = [
     {
@@ -78,18 +73,6 @@ const RoutePlanning = () => {
       <Box sx={ui.map}>
         <Card sx={{ mb: state.bottomDrawer }}>{state.routeView ? <MapGL /> : <GMapGL />}</Card>
       </Box>
-
-      <SpeedDial
-        FabProps={{ size: 'small' }}
-        direction="right"
-        ariaLabel="loop controls"
-        sx={ui.speedDial2}
-        icon={<SpeedDialIcon />}
-      >
-        {dialActions.map((dial) => (
-          <SpeedDialAction key={dial.name} icon={dial.icon} tooltipTitle={dial.name} onClick={dial.action} />
-        ))}
-      </SpeedDial>
 
       {state.mapControls && (
         <SpeedDial

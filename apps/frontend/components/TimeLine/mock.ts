@@ -1,4 +1,4 @@
-export const channels = ['1', '4', '3'].map((v) => ({
+export const channels = ['reme'].map((v) => ({
   logo: `/driver${v}.jpg`,
   uuid: v
 }))

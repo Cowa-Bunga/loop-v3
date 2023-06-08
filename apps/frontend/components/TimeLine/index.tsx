@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { channels, epg } from './mock'
+import { channels, epg } from './mock2'
 import { ui } from './style'
 import {
   useEpg,
@@ -69,8 +69,8 @@ export default function TimeLine({ height }) {
   const { getEpgProps, getLayoutProps } = useEpg({
     epg,
     channels,
-    startDate: '2023-05-25T08:30:00',
-    endDate: '2023-05-25T18:30:00',
+    startDate: '2023-06-07T08:30:00',
+    endDate: '2023-06-07T18:30:00',
     itemHeight: 65,
     dayWidth: window?.innerWidth * 2
   })

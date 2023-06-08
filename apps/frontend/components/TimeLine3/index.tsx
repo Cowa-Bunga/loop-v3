@@ -6,7 +6,7 @@ export default function TimelineGantt({ data }) {
     <div style={{ height: '300px' }}>
       <Gantt>
         <Gantt.Controls />
-        <Gantt.Chart data={mock} style={{ background: 'red' }} />
+        <Gantt.Chart data={mock} />
       </Gantt>
     </div>
   )

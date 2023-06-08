@@ -1,9 +1,9 @@
 const ui = {
   container: {
-    width: '560px',
+    width: '400px',
     height: '100vh',
-    px: 2,
-    backgroundColor: '#F3F4F6'
+    px: 0,
+    backgroundColor: 'secondary.main'
   }
 }
 
