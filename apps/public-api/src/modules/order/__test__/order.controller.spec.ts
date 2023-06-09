@@ -7,14 +7,15 @@ jest.mock('../entities/order.entity', () => {
 import { Test, TestingModule } from '@nestjs/testing'
 import { OrderController } from '../order.controller'
 import { OrderService } from '../order.service'
-import { DocumentSnapshot } from '@google-cloud/firestore'
-import { MockOrder, MockClient, OrderData } from './data/order.data'
-import { ClientRequest } from '../../../shared/entities/request.entity'
+import { TestingUtils } from '../../../shared/utils/test.utils'
+import { generateOrder } from './data/order.data'
+import { Order } from '../entities/order.entity'
 
 describe('OrderController', () => {
   let orderController: OrderController
   let orderService: OrderService
-  const clientRequest = new ClientRequest(MockClient)
+  const order = generateOrder()
+  const db = new TestingUtils()
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -31,27 +32,38 @@ describe('OrderController', () => {
     expect(orderController).toBeDefined()
   })
 
-  describe('findAll', () => {
-    it('should call orderService getAllOrders and return an array of orders', async () => {
-      const result: DocumentSnapshot[] = [MockOrder]
-      mOrder.mockImplementation(() => OrderData)
-      jest.spyOn(orderService, 'getAllOrders').mockImplementation(async () => result)
-      jest.spyOn(orderService, 'getOrders')
+  describe('getOrders', () => {
+    const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+    mOrder.mockImplementation(() => order)
 
-      expect(await orderController.getOrders(clientRequest)).toMatchObject([OrderData])
+    it('should call orderService getAllOrders and return an array of orders', async () => {
+      jest.spyOn(orderService, 'getAllOrders').mockResolvedValue([orderDoc])
+      jest.spyOn(orderService, 'getOrders').mockResolvedValue([orderDoc])
+
+      expect(await orderController.getOrders(db.client)).toMatchObject([order])
       expect(orderService.getAllOrders).toHaveBeenCalled()
       expect(orderService.getOrders).not.toHaveBeenCalled()
     })
 
     it('should call orderService getOrders and return an array of orders', async () => {
-      const result: DocumentSnapshot[] = [MockOrder]
-      mOrder.mockImplementation(() => OrderData)
-      jest.spyOn(orderService, 'getAllOrders').mockImplementation(async () => result)
-      jest.spyOn(orderService, 'getOrders').mockImplementation(async () => result)
+      jest.spyOn(orderService, 'getAllOrders').mockResolvedValue([orderDoc])
+      jest.spyOn(orderService, 'getOrders').mockResolvedValue([orderDoc])
 
-      expect(await orderController.getOrders(clientRequest, ['order_id'])).toMatchObject([OrderData])
+      expect(await orderController.getOrders(db.client, ['order_id'])).toMatchObject([order])
       expect(orderService.getAllOrders).not.toHaveBeenCalled()
       expect(orderService.getOrders).toHaveBeenCalled()
+    })
+  })
+
+  describe('getOrder', () => {
+    const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+    mOrder.mockImplementation(() => order)
+
+    it('should call orderService getOrder and return an order', async () => {
+      jest.spyOn(orderService, 'getOrder').mockResolvedValue(orderDoc)
+
+      expect(await orderController.getOrder(db.client, order.id)).toMatchObject(order)
+      expect(orderService.getOrder).toHaveBeenCalled()
     })
   })
 })

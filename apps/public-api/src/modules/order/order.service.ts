@@ -47,9 +47,8 @@ export class OrderService {
   async getOrder(client: ClientRequest, order_id: string): Promise<DocumentSnapshot> {
     const db = admin.firestore()
     const order = await db.collection('clients').doc(client.id).collection('orders').doc(order_id).get()
-
     if (!order.exists) {
-      throw new NotFoundException(`Order with ID '${order}' not found.`)
+      throw new NotFoundException(`Order with ID '${order_id}' not found.`)
     }
 
     return order

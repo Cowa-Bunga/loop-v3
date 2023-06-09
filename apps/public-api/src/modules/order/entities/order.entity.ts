@@ -74,7 +74,7 @@ export class EssentialOrder {
 }
 
 export class Order extends EssentialOrder {
-  tracking_id: string
+  tracking_id?: string
 
   constructor(order: DocumentSnapshot, cluster?: DocumentSnapshot) {
     super(order, cluster)

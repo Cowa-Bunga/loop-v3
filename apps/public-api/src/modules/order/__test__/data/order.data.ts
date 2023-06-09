@@ -1,7 +1,5 @@
-import { DocumentSnapshot } from '@google-cloud/firestore'
-import test from 'firebase-functions-test'
 import { AbandonFlow, Customer, History, Order } from '../../entities/order.entity'
-import { ABANDON_FLOW_TYPE, ORDER_TYPE } from '../../entities/order.enum'
+import { ABANDON_FLOW_TYPE, ORDER_STATUS, ORDER_STATUS_DISPLAY, ORDER_TYPE } from '../../entities/order.enum'
 
 const CustomerData: Customer = {
   name: 'customer_name',
@@ -17,11 +15,12 @@ const HistoryData: History = {
 const AbandonFlowData: AbandonFlow = {
   type: ABANDON_FLOW_TYPE.DEFAULT
 }
-export const OrderData: Order = {
+
+const defaultOrder: Order = {
   id: 'order_id',
   order_no: 'order_no',
-  status: 'pending',
-  status_display: 'Pending',
+  status: ORDER_STATUS.PENDING,
+  status_display: ORDER_STATUS_DISPLAY[ORDER_STATUS.PENDING],
   type: ORDER_TYPE.ORDER,
   task_type: '',
   address: '1 test avenue, Rondebosch, Cape Town, 7945',
@@ -35,12 +34,7 @@ export const OrderData: Order = {
   reset: false
 }
 
-export const MockOrder: DocumentSnapshot = test().firestore.makeDocumentSnapshot(
-  { OrderData },
-  'clients/client_id/orders/order_id'
-)
-
-export const MockClient: DocumentSnapshot = test().firestore.makeDocumentSnapshot(
-  { id: 'client_id' },
-  'clients/client_id'
-)
+export const generateOrder = (): Order => {
+  const order: Order = { ...defaultOrder }
+  return order
+}
