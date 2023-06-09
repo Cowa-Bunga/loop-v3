@@ -12,15 +12,7 @@ import {
   ValidateNested
 } from 'class-validator'
 import { OrderBranch } from '../../branch/entities/branch.entity'
-
-export enum FlowTypes {
-  DEFAULT = 'default',
-  SOG = 'sog',
-  OTP = 'otp',
-  MULTI = 'multi',
-  img = 'img'
-}
-
+import { FLOW_TYPE } from '../entities/order.enum'
 class Customer {
   @IsString()
   name: string
@@ -57,10 +49,10 @@ class Parcel {
 }
 
 class Flow {
-  @IsEnum(FlowTypes)
-  type: FlowTypes = FlowTypes.DEFAULT
+  @IsEnum(FLOW_TYPE)
+  type: FLOW_TYPE = FLOW_TYPE.DEFAULT
 
-  @ValidateIf((o) => o.type === FlowTypes.OTP)
+  @ValidateIf((o) => o.type === FLOW_TYPE.OTP)
   @IsString()
   code?: string
 }
@@ -137,13 +129,8 @@ class Order {
 }
 
 export class CreateOrderDto {
-  @ValidateIf((o) => o.branch === undefined)
   @IsString()
-  @IsOptional()
-  branch_id?: string
-
-  @IsOptional()
-  branch?: OrderBranch
+  branch_id: string
 
   @ValidateNested()
   order: Order

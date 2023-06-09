@@ -5,6 +5,7 @@ import { ClientRequest } from '../../shared/entities/request.entity'
 import { ORDER_STATUS } from './entities/order.enum'
 import { CreateOrderDto, EditOrderDto } from './dto/order.dto'
 import { Transaction } from 'firebase-admin/firestore'
+import { Branch, OrderBranch } from '../branch/entities/branch.entity'
 
 @Injectable()
 export class OrderService {
@@ -80,8 +81,13 @@ export class OrderService {
    * @param createOrderDto details of order to be created
    * @returns DocumentSnapshot of created branch
    */
-  async createOrder(client: ClientRequest, createOrderDto: CreateOrderDto): Promise<DocumentSnapshot> {
-    const { order, branch } = createOrderDto
+  async createOrder(
+    client: ClientRequest,
+    createOrderDto: CreateOrderDto,
+    branch: Partial<OrderBranch>
+  ): Promise<DocumentSnapshot> {
+    // TODO Add getting of branch in controller
+    const { order } = createOrderDto
     const db = admin.firestore()
     const orderRef = await db.collection('clients').doc(client.id).collection('orders').doc()
 
@@ -103,6 +109,14 @@ export class OrderService {
     return await orderRef.get()
   }
 
+  /**
+   * Edits a specified order for a given client
+   * @param client currently authenticated client
+   * @param order_id id of order to be edited
+   * @param editOrderDto fields to be updated
+   * @param transaction optional transaction to be used for atomicity
+   * @returns the updated order DocumentSnapshot
+   */
   async editOrder(
     client: ClientRequest,
     order_id: string,

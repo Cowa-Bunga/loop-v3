@@ -1,6 +1,7 @@
 import { DocumentSnapshot } from '@google-cloud/firestore'
 import { Cluster } from '../../cluster/entities/cluster.entity'
-import { ABANDON_FLOW_TYPE, ORDER_TYPE, TASK_TYPE, ORDER_STATUS_DISPLAY } from './order.enum'
+import { FLOW_TYPE, ORDER_TYPE, TASK_TYPE, ORDER_STATUS_DISPLAY } from './order.enum'
+import { Location } from '../../../shared/entities/location.entity'
 
 export class Customer {
   name: string
@@ -24,7 +25,7 @@ export class History {
 }
 
 export class AbandonFlow {
-  type: ABANDON_FLOW_TYPE
+  type: FLOW_TYPE
 
   constructor(order: DocumentSnapshot) {
     const data = order.data().abandon_flow
@@ -75,10 +76,16 @@ export class EssentialOrder {
 
 export class Order extends EssentialOrder {
   tracking_id?: string
+  alcohol: boolean
+  assignable: boolean
+  location: Location
 
   constructor(order: DocumentSnapshot, cluster?: DocumentSnapshot) {
     super(order, cluster)
     const data = order.data()
     this.tracking_id = data.tracking_id
+    this.alcohol = data.alcohol || false
+    this.assignable = data.assignable || false
+    this.location = new Location(data.location.latitude, data.location.longitude)
   }
 }

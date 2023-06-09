@@ -8,9 +8,12 @@ export enum TASK_TYPE {
   COLLECTION = 'collection'
 }
 
-export enum ABANDON_FLOW_TYPE {
+export enum FLOW_TYPE {
   DEFAULT = 'default',
-  MULTI = 'multi'
+  SOG = 'sog',
+  OTP = 'otp',
+  MULTI = 'multi',
+  img = 'img'
 }
 
 export enum ORDER_STATUS {
@@ -25,7 +28,7 @@ export enum ORDER_STATUS {
   ABANDONED = 'abandoned',
   RETURNED = 'returned',
   CANCELLED = 'cancelled',
-  SYSTEM_TERMINATED = 'system_terminated',
+  SYSTEM_TERMINATED = 'system_terminated'
 }
 
 export const ORDER_STATUS_DISPLAY = {
@@ -40,5 +43,5 @@ export const ORDER_STATUS_DISPLAY = {
   [ORDER_STATUS.ABANDONED]: 'Abandoned',
   [ORDER_STATUS.RETURNED]: 'Returned',
   [ORDER_STATUS.CANCELLED]: 'Cancelled',
-  [ORDER_STATUS.SYSTEM_TERMINATED]: 'System Terminated',
+  [ORDER_STATUS.SYSTEM_TERMINATED]: 'System Terminated'
 }
