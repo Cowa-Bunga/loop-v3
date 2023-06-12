@@ -41,8 +41,8 @@ export class QueryController {
       ResilienceFactory.createFallbackStrategy(() => DEFAULT.TIMEOUT)
     )
   )
-  @ApiOperation({ summary: '∞ Get a summary of orders by location and date range' })
-  ordersByLocation(@Param('client_id') client_id: string) {
-    return this.queryService.ordersByLocation(client_id)
+  @ApiOperation({ summary: '∞ Get a summary of delivered orders by location' })
+  deliveredOrders(@Param('client_id') client_id: string) {
+    return this.queryService.deliveredOrders(client_id)
   }
 }

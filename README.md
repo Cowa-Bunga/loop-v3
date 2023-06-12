@@ -9,6 +9,7 @@
 > Run
 - `nx serve`
 - `npm run duo` (serve frontend + backend)
+- `npm run all` (serve frontend + backend) + public-api)
 
 ### Command sets
 - `nx serve {name}`

@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic'
-import { LayoutBase, TimeLine } from '@components'
+import { LayoutBase } from '@components'
 import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
-import { Box, Drawer, SpeedDial, SpeedDialAction } from '@mui/material'
-import { Map as MapIcon, Google as GoogleIcon, Route as RouteIcon, KeyboardDoubleArrowUp } from '@mui/icons-material'
+import { Box, FabProps, SpeedDial, SpeedDialAction } from '@mui/material'
+import { Map as MapIcon, Google as GoogleIcon, Route as RouteIcon } from '@mui/icons-material'
+import BasicTimeline from './components/Timeline'
+import BottomNav from './components/BottomNav'
 
 const GMapGL = dynamic(() => import('../../../components/maps/GMapGL'), {
   ssr: false
@@ -26,7 +28,7 @@ const RoutePlanning = () => {
     bottomDrawer: '0px'
   })
 
-  const { toggleBottom, toggleMap } = Actions(state, setState)
+  const { toggleMap } = Actions(state, setState)
 
   const mapActions = [
     {
@@ -38,37 +40,27 @@ const RoutePlanning = () => {
 
   return (
     <LayoutBase>
-      <Drawer
-        disableScrollLock
-        elevation={1}
-        keepMounted
-        hideBackdrop
-        anchor="bottom"
-        variant="persistent"
-        open={state.timeline}
-        sx={ui.bottomDrawer}
-        PaperProps={ui.drawerPaper as unknown}
-      >
-        <TimeLine key={`key-${state.bottomDrawer}`} height={state.bottomDrawer} />
-      </Drawer>
-
-      <Box sx={ui.bottomBox} onClick={toggleBottom}>
-        <KeyboardDoubleArrowUp sx={ui.bottomdBoxIcon} />
+      <Box sx={ui.timeline}>
+        <BasicTimeline />
       </Box>
 
       <Box sx={{ ...ui.map, mb: state.bottomDrawer }}>{state.routeView ? <MapGL /> : <GMapGL mode="dark" />}</Box>
 
+      <Box sx={ui.bottomNav}>
+        <BottomNav />
+      </Box>
+
       {state.mapControls && (
         <SpeedDial
-          FabProps={{ size: 'small' }}
+          FabProps={ui.sizeSmall as FabProps}
           direction="left"
           ariaLabel="map controls"
           sx={ui.speedDial}
-          icon={<MapIcon />}
+          icon={<MapIcon sx={ui.colorWhite} />}
         >
           {mapActions.map((dial) => (
             <SpeedDialAction
-              FabProps={{ size: 'small' }}
+              FabProps={ui.sizeSmall as FabProps}
               key={dial.name}
               icon={dial.icon}
               tooltipTitle={dial.name}

@@ -12,7 +12,7 @@ const CustomNode = ({
     <Card
       sx={{
         p: 4,
-        backgroundColor: 'primary.main',
+        backgroundColor: 'primary.background',
         color: 'primary.contrastText'
       }}
     >

@@ -9,8 +9,7 @@ const ui = {
 
   loginBg: {
     height: 'calc(100vh - 100px)',
-    backgroundImage:
-      'url(https://storage.googleapis.com/cb-dev-public-images/dos-icons/login_background.png)',
+    backgroundImage: 'url(https://storage.googleapis.com/cb-dev-public-images/dos-icons/login_background.png)',
     backgroundSize: 'cover'
   },
 

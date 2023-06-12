@@ -1,80 +1,43 @@
 import { memo } from 'react'
 import { GoogleMapsOverlay } from '@deck.gl/google-maps/typed'
-// import { layers } from './layers'
-import { layers } from '../shared/live_layers'
+import { layers } from '../shared/report_layer'
 import { DEFAULT_THEME } from '../shared/config'
-import { useEffect, useMergeState } from '@hooks'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+import { useMergeState } from '@hooks'
+import { GoogleMap, useJsApiLoader, TrafficLayer } from '@react-google-maps/api'
 import { ui } from './style'
-import load from '../shared/load'
 
 function Map({ mode }) {
-  const [state, setState] = useMergeState({
-    load: true,
-    route: null,
-    trip: null,
-    iso: null,
-    start: null,
-    end: null,
-    height: null
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any)
-
-  useEffect(() => {
-    if (state.load) {
-      setState({ load: false })
-      load([], (res) => {
-        setState({
-          load: false,
-          trip: res.route.routes,
-          iso: res.isochrones?.raw,
-          start: [res.start._longitude, res.start._latitude],
-          end: [res.end._longitude, res.end._latitude]
-        })
-      })
+  const [state] = useMergeState({
+    traffic: false,
+    viewport: {
+      lat: -30.5595,
+      lng: 22.9375
     }
-  }, [setState, state.load])
+  })
 
   const { isLoaded } = useJsApiLoader({
     id: 'loop-gmap-vector',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
   })
 
-  if (state.load || !state.start) {
-    return <div>...</div>
-  }
-
-  // const driver = [28.321779, -26.2290333]
-
-  // Deckgl
-  const deckOverlay = new GoogleMapsOverlay({
-    layers: layers({
-      // driver,
-      theme: DEFAULT_THEME
-      // start: state.start,
-      // end: state.end,
-      // waypoints: state.waypoints,
-      // trip: state.trip,
-      // iso: state.iso
-    })
+  const DeckGL = new GoogleMapsOverlay({
+    layers: layers({ theme: DEFAULT_THEME })
   })
 
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={ui.mapContainer}
-      center={{ lat: -34.0829499, lng: 18.8241262 }}
-      zoom={14}
+      center={state.viewport}
+      zoom={6}
       tilt={45}
-      // TODO: connect to mui dark/light theme layer
       options={{ mapId: mode == 'dark' ? '373e37f72ff98909' : '713dad0b0aefa8cc' }}
       mapTypeId="satellite"
       onLoad={(map) => {
-        deckOverlay.setMap(map)
+        DeckGL.setMap(map)
       }}
     >
-      {/* {waypoints.map((w) => (
-        <Marker key={w.label} position={center} />
-      ))} */}
+      {state.traffic && <TrafficLayer />}
+      {/* <Marker position={state.viewport} /> */}
     </GoogleMap>
   ) : null
 }

@@ -17,7 +17,7 @@ export default function NavBar({ open, setOpen }) {
         <Toolbar>
           {session && (
             <>
-              <IconButton size="large" edge="start" color="inherit" onClick={() => setOpen(!open)}>
+              <IconButton size="large" edge="start" sx={{ color: 'white' }} onClick={() => setOpen(!open)}>
                 <Menu />
               </IconButton>
             </>
@@ -32,7 +32,7 @@ export default function NavBar({ open, setOpen }) {
           </Typography>
 
           <IconButton
-            color="inherit"
+            sx={{ color: 'white' }}
             onClick={() =>
               !session
                 ? signIn()

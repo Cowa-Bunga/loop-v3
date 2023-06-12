@@ -16,17 +16,9 @@ const CustomNode = ({
         color: 'primary.contrastText'
       }}
     >
-      <Handle
-        type="target"
-        position={targetPosition}
-        isConnectable={isConnectable}
-      />
+      <Handle type="target" position={targetPosition} isConnectable={isConnectable} />
       {data?.label}
-      <Handle
-        type="source"
-        position={sourcePosition}
-        isConnectable={isConnectable}
-      />
+      <Handle type="source" position={sourcePosition} isConnectable={isConnectable} />
 
       <NodeToolbar isVisible={data.visible} position={data.position}>
         <Card sx={{ p: 2, width: '300px', textAlign: 'center' }}>
@@ -39,8 +31,6 @@ const CustomNode = ({
           </ButtonGroup>
         </Card>
       </NodeToolbar>
-
-      {/* <div style={{ padding: '10px 20px' }}>label</div> */}
     </Card>
   )
 }

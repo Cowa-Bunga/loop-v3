@@ -1,12 +1,10 @@
 export const ui = {
   bottomDrawer: {
-    zIndex: 0,
-    '& *': { padding: 0, border: 0, zIndex: 0 }
+    zIndex: 0
   },
 
-  leftDrawer: {
-    width: '400px'
-  },
+  leftDrawer: {},
+
   rightDrawer: {},
 
   map: {
@@ -18,12 +16,12 @@ export const ui = {
     position: 'fixed',
     height: '100vh',
     width: '30px',
-    backgroundColor: 'secondary.main',
+    backgroundColor: 'primary.background',
     top: 0,
     bottom: 0,
     left: 0,
     pt: 'calc(50vh - 30px)',
-    color: '#9DA3AE !important',
+    color: 'primary.contrastText',
     zIndex: 0,
     shadow: 4
   },
@@ -32,12 +30,12 @@ export const ui = {
     position: 'fixed',
     height: '100vh',
     width: '30px',
-    backgroundColor: 'secondary.main',
+    backgroundColor: 'primary.background',
     top: 0,
     bottom: 0,
     right: 0,
     pt: 'calc(50vh - 30px)',
-    color: '#9DA3AE !important',
+    color: 'primary.contrastText',
     zIndex: 0,
     shadow: 4
   },
@@ -69,7 +67,7 @@ export const ui = {
     right: 'calc(50vw - 20px)',
     height: '40px',
     width: '40px',
-    zIndex: 12000
+    zIndex: 1
   },
 
   bottomdBoxIcon: {
@@ -80,13 +78,13 @@ export const ui = {
 
   filter: {
     pt: '60px',
-    backgroundColor: 'secondary.main',
-    color: 'black'
+    backgroundColor: 'primary.background',
+    color: 'primary.contrastText'
   },
 
   speedDial: {
     position: 'absolute',
-    top: 120,
+    bottom: 50,
     left: 50,
     background: 'primary.main'
   }

@@ -22,7 +22,7 @@ exports[`Orders should render successfully 1`] = `
             />
           </div>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-zylse7-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1jfmqnk-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -45,10 +45,10 @@ exports[`Orders should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1abb3vo"
+      class="MuiBox-root css-sbhkcd"
     >
       <div
-        class="MuiBox-root css-2843h7"
+        class="MuiBox-root css-puda4d"
       >
         <div
           class="MuiBox-root css-0"
@@ -122,7 +122,7 @@ exports[`Orders should render successfully 1`] = `
               <path
                 class="rv-xy-plot__series rv-xy-plot__series--line "
                 d="M0,250L36.416666666666664,250L72.83333333333333,248.91304347826087L109.25,245.65217391304347L145.66666666666666,246.7391304347826L182.08333333333334,242.39130434782606L218.5,236.95652173913044L254.91666666666669,229.34782608695653L291.3333333333333,222.82608695652172L327.75,217.3913043478261L364.1666666666667,167.3913043478261L400.5833333333333,154.34782608695653L437,152.17391304347828L473.41666666666663,206.52173913043478L509.83333333333337,206.52173913043478L546.25,226.08695652173913L582.6666666666666,202.17391304347825L619.0833333333334,141.30434782608697L655.5,0L691.9166666666666,119.56521739130436L728.3333333333334,108.69565217391306L764.75,76.08695652173914L801.1666666666666,165.2173913043478L837.5833333333334,250L874,250L874,250L837.5833333333334,250L801.1666666666666,250L764.75,250L728.3333333333334,250L691.9166666666666,250L655.5,250L619.0833333333334,250L582.6666666666666,250L546.25,250L509.83333333333337,250L473.41666666666663,250L437,250L400.5833333333333,250L364.1666666666667,250L327.75,250L291.3333333333333,250L254.91666666666669,250L218.5,250L182.08333333333334,250L145.66666666666666,250L109.25,250L72.83333333333333,250L36.416666666666664,250L0,250Z"
-                style="opacity: 1; stroke: rgba(16,56,99,0.8); fill: rgba(16,56,99,0.8);"
+                style="opacity: 1; stroke: rgba(216,0,299,0.8); fill: rgba(216,0,299,0.8);"
                 transform="translate(40,10)"
               />
               <g

@@ -2,31 +2,28 @@
 import ui from './style'
 import { DataGrid } from '@mui/x-data-grid'
 import { tripColumns, tripRows } from './mock'
-import {
-  ExpandMore,
-  Add
-  //  Tune
-} from '@mui/icons-material'
+import { ExpandMore, Add, Tune } from '@mui/icons-material'
 import {
   Box,
   Accordion,
   AccordionDetails,
   Typography,
-  // IconButton,
+  IconButton,
   AccordionSummary,
   TextField,
-  CircularProgress,
-  Paper,
+  // CircularProgress,
+  // Paper,
   Fab
   // Button
 } from '@mui/material'
+// import { Fragment } from 'react'
 
 export default function DashboardFilter() {
   return (
     <Box sx={ui.container}>
-      {/* <Paper sx={{ p: 2 }}>
+      {/* <Paper sx={{ p: 2, pt: 5, background: 'primary.background' }}>
         {[1, 2, 3, 4].map((l) => (
-          <>
+          <Fragment key={l}>
             <Box key={l} sx={{ position: 'relative', display: 'inline-flex', mx: 2 }}>
               <CircularProgress
                 color="info"
@@ -45,7 +42,8 @@ export default function DashboardFilter() {
                   position: 'absolute',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  background: 'primary.background'
                 }}
               >
                 <Fab color="primary" size="medium" sx={{ fontColor: 'white' }}>
@@ -59,12 +57,13 @@ export default function DashboardFilter() {
               </div>
               <br />
             </Box>
-          </>
+          </Fragment>
         ))}
       </Paper> */}
 
-      {['Hubs', 'Regions', 'Trips', 'Tasks', 'Clusters', 'Zones'].map((v, i) => (
-        <Accordion square key={v} sx={{ p: 0 }}>
+      {/* deprecating mock code */}
+      {['Regions', 'Hubs', 'Trips', 'Tasks'].map((v, i) => (
+        <Accordion square key={v} sx={{ p: 0, backgroundColor: 'primary.background' }}>
           <AccordionSummary expandIcon={<ExpandMore />}>
             <Box>
               <Fab size="small" color="primary">
@@ -72,15 +71,15 @@ export default function DashboardFilter() {
               </Fab>
             </Box>
             <Box>
-              <Typography sx={{ lineHeight: '34px', ml: '20px', width: '100px' }}>
+              <Typography sx={{ fontSize: '14px', lineHeight: '34px', ml: '20px', width: '100px' }}>
                 <b>{v.toUpperCase()}</b>
               </Typography>
             </Box>
-            {/* <Box>
+            <Box>
               <IconButton size="small">
                 <Tune />
               </IconButton>
-            </Box> */}
+            </Box>
             <Box sx={{ ml: 4, mr: '20px', mt: -0.5 }}>
               <TextField size="small" variant="outlined" placeholder="enter Task/Customer" label="search" />
             </Box>

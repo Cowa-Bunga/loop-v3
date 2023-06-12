@@ -4,7 +4,5 @@ import { getFirestore } from 'firebase/firestore'
 export default function FirebaseWrapper({ children }) {
   const firestoreInstance = getFirestore(useFirebaseApp())
 
-  return (
-    <FirestoreProvider sdk={firestoreInstance}>{children}</FirestoreProvider>
-  )
+  return <FirestoreProvider sdk={firestoreInstance}>{children}</FirestoreProvider>
 }

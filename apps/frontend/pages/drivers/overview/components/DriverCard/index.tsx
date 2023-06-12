@@ -32,12 +32,8 @@ const data = [
 
 export default function DriverCard({ title }) {
   return (
-    <Card>
-      <CardHeader
-        sx={{ bgcolor: 'primary.main', color: 'primary.contrastText' }}
-        title={title}
-        titleTypographyProps={{ fontSize: '10px' }}
-      />
+    <Card sx={{ bgcolor: 'primary.background', color: 'primary.contrastText' }}>
+      <CardHeader title={title} titleTypographyProps={{ fontSize: '10px' }} />
       <CardContent>
         <Grid container>
           <Grid item xs={6}>
@@ -47,7 +43,7 @@ export default function DriverCard({ title }) {
                 stroke: 'transparent',
                 strokeLinejoin: 'round'
               }}
-              colorRange={['steelBlue', 'yellow', 'lightGreen', 'gold']}
+              colorRange={['skyblue', 'teal', 'purple', 'aquamarine']}
               width={200}
               height={200}
               data={data}
@@ -62,11 +58,7 @@ export default function DriverCard({ title }) {
           <Grid item xs={6}>
             <List>
               {data.map((v, i) => (
-                <ListItem
-                  key={i}
-                  disablePadding
-                  sx={{ height: '40px', m: 0, p: 0 }}
-                >
+                <ListItem key={i} disablePadding sx={{ height: '40px', m: 0, p: 0 }}>
                   <ListItemButton>
                     <ListItemText primary={v.label} />
                     <ListItemIcon>{v.angle}</ListItemIcon>

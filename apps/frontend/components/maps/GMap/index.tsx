@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useState } from 'react'
 import { Paper } from '@mui/material'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 
-function Map() {
+function Map({ mode }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
@@ -41,7 +41,7 @@ function Map() {
       <GoogleMap
         mapContainerStyle={{ width: '100%', height }}
         center={center}
-        zoom={12}
+        zoom={8}
         onLoad={onLoad}
         onUnmount={onUnmount}
       />

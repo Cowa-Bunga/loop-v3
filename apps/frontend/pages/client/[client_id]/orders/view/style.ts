@@ -1,7 +1,7 @@
-const ui = {
+export const ui = {
   container: {
-    p: 5
+    px: 5,
+    py: 5,
+    backgroundColor: 'secondary.background'
   }
 }
-
-export default ui

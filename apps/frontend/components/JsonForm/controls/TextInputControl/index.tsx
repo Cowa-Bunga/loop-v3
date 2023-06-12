@@ -1,17 +1,10 @@
-import React from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
-
 import { FormControl, TextField } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles } from '../styles'
 import { makeInputId } from '../../helpers'
 
-const TextInputControl = ({
-  data = '',
-  handleChange,
-  path,
-  ...rest
-}: ISelectControl) => {
+const TextInputControl = ({ data = '', handleChange, path, ...rest }: ISelectControl) => {
   return (
     <div id={makeInputId(rest.id)}>
       <FormControl fullWidth sx={formControlStyles}>

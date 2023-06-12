@@ -2,16 +2,7 @@ import { purple } from '@mui/material/colors'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
-import {
-  Card,
-  CardHeader,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Avatar,
-  IconButton,
-  Typography
-} from '@mui/material'
+import { Card, CardHeader, CardMedia, CardContent, CardActions, Avatar, IconButton, Typography } from '@mui/material'
 
 export default function Course() {
   return (
@@ -30,16 +21,10 @@ export default function Course() {
         title="Loop's ML and reporting"
         subheader="September 14, 2024"
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image={`/artificial-intelligence.jpg`}
-        alt="yip"
-      />
+      <CardMedia component="img" height="194" image={`/artificial-intelligence.jpg`} alt="yip" />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This course covers our ML and reporting tools, allowing you to get the
-          most out of your data.
+          This course covers our ML and reporting tools, allowing you to get the most out of your data.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

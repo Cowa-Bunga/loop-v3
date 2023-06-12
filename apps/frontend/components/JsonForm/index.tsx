@@ -19,12 +19,7 @@ import {
   TextInputControl,
   textInputControlTester
 } from './controls'
-import {
-  ChildGroupLayout,
-  childGroupTester,
-  GroupLayout,
-  groupTester
-} from './layouts'
+import { ChildGroupLayout, childGroupTester, GroupLayout, groupTester } from './layouts'
 
 interface IProps {
   schema: JsonSchema
@@ -64,7 +59,7 @@ export default function JsonForm({
       data={model}
       renderers={renderers}
       cells={materialCells}
-      onChange={({ data, errors }) => onChange(data)}
+      onChange={({ data }) => onChange(data)}
       validationMode={validationMode}
     />
   )

@@ -3,7 +3,7 @@
 exports[`Loader should render successfully 1`] = `
 <body>
   <div>
-    todo loading...
+    ...
   </div>
 </body>
 `;

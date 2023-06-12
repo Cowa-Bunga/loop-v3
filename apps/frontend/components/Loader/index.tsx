@@ -1,4 +1,4 @@
 // TODO:
-const Loader = () => <>todo loading...</>
+const Loader = () => <>...</>
 
 export default Loader

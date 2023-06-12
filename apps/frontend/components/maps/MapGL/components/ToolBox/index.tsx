@@ -1,4 +1,4 @@
-import { SpeedDial, SpeedDialAction } from '@mui/material'
+import { SpeedDial, SpeedDialAction, FabProps } from '@mui/material'
 import { ui } from './style'
 import { MODE_GROUPS } from './modes'
 import { Actions } from './actions'
@@ -10,16 +10,16 @@ export function Toolbox({ onSetMode, onSetGeoJson }: MapGlToolboxProps) {
     <>
       {MODE_GROUPS.map((modeGroup, i) => (
         <SpeedDial
-          FabProps={{ size: 'small' }}
+          FabProps={ui.small as FabProps}
           key={i}
           direction="left"
           ariaLabel="loop controls"
           sx={{ ...ui.speedDial, top: modeGroup.top }}
-          icon={<modeGroup.icon />}
+          icon={<modeGroup.icon sx={ui.white} />}
         >
           {modeGroup.modes.map((dial) => (
             <SpeedDialAction
-              FabProps={{ size: 'small' }}
+              FabProps={ui.small as FabProps}
               key={dial.label}
               icon={<dial.content />}
               tooltipTitle={dial.label}

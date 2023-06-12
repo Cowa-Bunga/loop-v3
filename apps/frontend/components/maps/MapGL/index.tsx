@@ -1,82 +1,78 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Map } from 'react-map-gl'
 import maplibregl from 'maplibre-gl'
 import { DEFAULT_THEME, ASSETS } from '../shared/config'
-import { useEffect, useState, useMergeState } from '@hooks'
+import { useState, useMergeState } from '@hooks'
 import DeckGL from '@deck.gl/react/typed'
-import { ui } from './style'
 import { layers } from '../shared/live_layers'
 import { EditableGeoJsonLayer } from 'nebula.gl'
 import { Toolbox } from './components/ToolBox'
-import { MapView } from 'deck.gl/typed'
-import load from '../shared/load'
+import { FlyToInterpolator, LinearInterpolator, MapView } from 'deck.gl/typed'
+import { ViewMode } from 'nebula.gl'
+import { ui } from './style'
+import QuickActions from './components/QuickActions'
 
 export default function MapGL() {
   const [state, setState] = useMergeState({
-    load: true,
+    rotate: false,
     mode: null,
-    start: [],
-    end: [],
-    waypoints: [],
-    isochrone: null,
-    trip: null,
-    route: null,
     selectedFeatureIndexes: [],
     geojson: {
       type: 'FeatureCollection',
       features: []
     },
     viewport: {
-      latitude: -34.0829499,
-      longitude: 18.8241262,
+      latitude: -34.0821499,
+      longitude: 18.851262,
       zoom: 13,
       pitch: 45,
       bearing: 0
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any)
 
-  useEffect(() => {
-    if (state.load) {
-      setState({ load: false })
-      load([], (res) => {
-        setState({
-          trip: res.route.routes,
-          isochrone: res.isochrones?.raw,
-          start: [res.start._longitude, res.start._latitude],
-          end: [res.end._longitude, res.end._latitude]
-        })
-      })
-    }
-  }, [setState, state.load])
-
-  // const styles = [
-  //   {
-  //     label: 'Streets',
-  //     styleName: 'OSM Liberty',
-  //     styleUrl: 'https://maputnik.github.io/osm-liberty/style.json'
-  //   },
-  //   {
-  //     label: 'Streets Bright',
-  //     styleName: 'OSM Bright',
-  //     styleUrl: ' https://demotiles.maplibre.org/styles/osm-bright-gl-style/style.json'
-  //   },
-  //   {
-  //     label: 'terrain',
-  //     styleName: 'terrain',
-  //     //             'https://demotiles.maplibre.org/styles/osm-bright-gl-terrain/style.json'
-  //     styleUrl: 'https://demotiles.maplibre.org/style.json'
-  //   }
-  // ]
-
   const theme = DEFAULT_THEME
-  const [mode, setMode] = useState(() => null)
+  const [mode, setMode] = useState(() => ViewMode)
   const [modeConfig, setModeConfig] = useState({})
-  // mock
-  // const driver = [state.viewport.latitude, state.viewport.longitude]
 
-  if (state.load) {
-    return <div>...</div>
+  const rotate = () => {
+    setState({
+      rotate: true,
+      viewport: {
+        ...state.viewport,
+        bearing: state.viewport.bearing + 120,
+        transitionDuration: 10000,
+        transitionInterpolator: new LinearInterpolator(['bearing']),
+        onTransitionEnd: state.rotate ? rotate : null
+      }
+    } as any)
+
+    setTimeout(() => {
+      setState({ rotate: false })
+    }, 10000)
+  }
+
+  const cities = {
+    TRIP: { loc: [-34.0751499, 18.844262], zoom: 13.8 },
+    DRIVER: { loc: [-34.0723511, 18.8273627], zoom: 19 },
+    RSA: { loc: [-30.5595, 22.9375], zoom: 4 },
+    JHB: { loc: [-26.195246, 28.034088], zoom: 12 },
+    CPT: { loc: [-33.918861, 18.4233], zoom: 12 },
+    DBN: { loc: [-29.883333, 31.049999], zoom: 12 }
+  }
+
+  const goto = (c) => {
+    setState({
+      rotate: false,
+      viewport: {
+        ...state.viewport,
+        latitude: cities[c].loc[0],
+        longitude: cities[c].loc[1],
+        zoom: cities[c].zoom,
+        transitionDuration: 5000,
+        transitionInterpolator: new FlyToInterpolator()
+      }
+    })
   }
 
   /* @ts-ignore */
@@ -108,40 +104,31 @@ export default function MapGL() {
         getTextColor: [255, 255, 255]
       },
       guides: {
-        getFillColor: (_guide: unknown) => [16, 58, 99]
+        getFillColor: (_guide: unknown) => [255, 255, 255],
+        getTextColor: () => [255, 255, 255]
       }
     }
   })
 
-  const comboLayers = [
-    toolbox,
-    ...layers({
-      // driver,
-      theme
-      // start: state.start,
-      // end: state.end,
-      // waypoints: state.waypoints,
-      // trip: state.trip,
-      // iso: state.isochrone
-    })
-  ]
-
+  const comboLayers = [toolbox, ...layers({ theme })]
   const mapView = new MapView({})
 
   return (
     <div style={ui.container}>
       <DeckGL
-        getTooltip={({ object }) => object?.label && object.label}
         views={[mapView]}
         // @ts-ignore
         layers={comboLayers}
         controller={{ doubleClickZoom: false }}
-        _animate
+        _animate={true}
         initialViewState={state.viewport}
         getCursor={toolbox.getCursor.bind(DeckGL)}
+        getTooltip={({ object }) => object?.label && object.label}
       >
         <Map reuseMaps mapLib={maplibregl} mapStyle={ASSETS.MAP_STYLE}></Map>
       </DeckGL>
+
+      <QuickActions data={cities} goto={goto} rotate={rotate} />
 
       <Toolbox
         mode={state.mode}
@@ -150,7 +137,8 @@ export default function MapGL() {
         onSetGeoJson={(obj: { updatedData: unknown }) => {
           setState({ geojson: obj.updatedData })
         }}
-        onSetMode={(mode) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onSetMode={(mode: any) => {
           setModeConfig({ modeConfig: null })
           setMode(mode)
         }}

@@ -1,4 +1,3 @@
-import React from 'react'
 import { withJsonFormsControlProps } from '@jsonforms/react'
 import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
@@ -9,12 +8,7 @@ import { formControlStyles, MenuProps } from '../styles'
 import { ISelectControl } from '../controls.interface'
 import { makeInputId } from '../../helpers'
 
-const DropdownControl = ({
-  data = '',
-  handleChange,
-  path,
-  ...rest
-}: ISelectControl) => {
+const DropdownControl = ({ data = '', handleChange, path, ...rest }: ISelectControl) => {
   const { t } = useTranslation()
   return (
     <div id={makeInputId(rest.id)}>

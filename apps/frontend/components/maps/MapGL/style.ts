@@ -1,7 +1,7 @@
 export const ui = {
-  container: { 
+  container: {
+    height: '100vh',
     maxHeight: '100vh',
-    overflow: 'hidden' 
-  },
-  
+    overflow: 'hidden'
+  }
 }
