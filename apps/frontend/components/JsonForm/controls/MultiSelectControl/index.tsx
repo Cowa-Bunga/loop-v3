@@ -4,21 +4,9 @@ import { ISelectControl } from '../controls.interface'
 import { formControlStyles, MenuProps } from '../styles'
 import { useEffect, useMergeState } from '@hooks'
 import { makeInputId } from '../../helpers'
-import {
-  Checkbox,
-  ListItemText,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Select
-} from '@mui/material'
+import { Checkbox, ListItemText, MenuItem, InputLabel, FormControl, Select } from '@mui/material'
 
-const MultiSelectControl = ({
-  data = [],
-  handleChange,
-  path,
-  ...rest
-}: ISelectControl) => {
+const MultiSelectControl = ({ data = [], handleChange, path, ...rest }: ISelectControl) => {
   const { t } = useTranslation()
 
   const [state, setState] = useMergeState({
@@ -46,9 +34,7 @@ const MultiSelectControl = ({
   }, [handleChange, path, state.selected])
 
   const renderTranslatedValue = (values: string[]) => {
-    return values
-      .map((value) => t(`${rest.uischema['i18n']}.${value}`))
-      .join(', ')
+    return values.map((value) => t(`${rest.uischema['i18n']}.${value}`)).join(', ')
   }
 
   return (

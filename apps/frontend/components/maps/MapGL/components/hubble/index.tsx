@@ -3,8 +3,9 @@ import DeckGL from '@deck.gl/react'
 import { useNextFrame, BasicControls, useDeckAdapter } from '@hubble.gl/react'
 import { LineLayer } from '@deck.gl/layers'
 import { DeckAnimation } from 'hubble.gl'
-import PopMotion from 'popmotion'
+// import PopMotion from 'popmotion'
 
+// WIP / TEST CODE
 const deckAnimation = new DeckAnimation({
   // Use applyLayerKeyframes to spread keyframe values onto layers by id.
   getLayers: (a) =>
@@ -38,8 +39,8 @@ const deckAnimation = new DeckAnimation({
         bearing: 0,
         pitch: 30
       }
-    ],
-    easings: PopMotion.easeInOut
+    ]
+    // easings: PopMotion.easeInOut
   }
 })
 
@@ -56,11 +57,11 @@ const resolution = {
 
 export default function Hubble() {
   const deckRef = useRef(null)
-  const deck = useMemo(() => deckRef.current && deckRef.current.deck, [deckRef.current])
+  const deck = useMemo(() => deckRef.current && deckRef.current.deck, [])
   const [busy, setBusy] = useState(false)
   const nextFrame = useNextFrame()
 
-  const { adapter, layers, cameraFrame, setCameraFrame } = useDeckAdapter(deckAnimation)
+  const { adapter, cameraFrame, setCameraFrame } = useDeckAdapter(deckAnimation)
 
   // todo: breakout
   return (

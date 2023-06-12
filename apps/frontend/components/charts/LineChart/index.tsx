@@ -34,7 +34,7 @@ export default function OrdersChart() {
     <Box>
       <XYPlot height={300} width={window?.innerWidth - 100} style={{ margin: '0 auto' }}>
         <HorizontalGridLines />
-        <AreaSeries data={data} color="rgba(16,56,99,0.8)" />
+        <AreaSeries data={data} color={'rgba(216,0,299,0.8)' || 'rgba(16,56,99,0.8)'} />
         <XAxis title="time" />
         <YAxis />
       </XYPlot>

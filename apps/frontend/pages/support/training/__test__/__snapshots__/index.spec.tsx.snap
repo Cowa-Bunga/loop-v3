@@ -22,7 +22,7 @@ exports[`Training should render successfully 1`] = `
             />
           </div>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-zylse7-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1jfmqnk-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -45,7 +45,7 @@ exports[`Training should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1abb3vo"
+      class="MuiBox-root css-sbhkcd"
     >
       <div
         class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"

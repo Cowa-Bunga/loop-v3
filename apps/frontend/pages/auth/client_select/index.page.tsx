@@ -18,13 +18,7 @@ import {
   Select,
   Typography
 } from '@mui/material'
-import {
-  useEffect,
-  useMergeState,
-  useRouter,
-  useSession,
-  useTranslation
-} from '@hooks'
+import { useEffect, useMergeState, useRouter, useSession, useTranslation } from '@hooks'
 
 const SignIn = () => {
   const router = useRouter()
@@ -50,21 +44,11 @@ const SignIn = () => {
 
     if (state.clientSelected) {
       updateUserContext({
-        client: state.clients.find(
-          (client) => client.client_id === state.client_id
-        )
+        client: state.clients.find((client) => client.client_id === state.client_id)
       })
       router.push('/dashboard')
     }
-  }, [
-    data,
-    router,
-    setState,
-    state,
-    state.clientSelected,
-    status,
-    updateUserContext
-  ])
+  }, [data, router, setState, state, state.clientSelected, status, updateUserContext])
 
   const { change, submit } = Actions(state, setState)
 
@@ -114,13 +98,7 @@ const SignIn = () => {
               {state.authenticating ? (
                 <LinearProgress />
               ) : (
-                <Button
-                  type="submit"
-                  fullWidth
-                  size="large"
-                  variant="outlined"
-                  sx={ui.btn}
-                >
+                <Button type="submit" fullWidth size="large" variant="outlined" sx={ui.btn}>
                   {_t('submit')}
                 </Button>
               )}

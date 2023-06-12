@@ -23,11 +23,14 @@ export class QueryService {
       )
       .then((data) => data[0].getQueryResults())
 
-  ordersByLocation = async (_client_id: string) =>
+  // test: mYPoEBMCCuqJ0DIZ7yfM
+  deliveredOrders = async (client_id: string) =>
     await new BigQuery()
       .createQueryJob(
-        // `SELECT * FROM 'cb-dev-298308.dev_analytics.test-delivered_orders' WHERE client_id=${client_id} LIMIT 1000`
-        `SELECT * FROM 'cb-dev-298308.dev_analytics.test-delivered_orders' LIMIT 1000`
+        'SELECT * FROM `cb-dev-298308.dev_analytics.test-delivered_orders` WHERE client_id="' +
+          client_id +
+          '" LIMIT 10000'
       )
       .then((data) => data[0].getQueryResults())
+      .catch((err) => console.warn(err))
 }

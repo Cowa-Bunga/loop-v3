@@ -18,17 +18,9 @@ const CustomNode = ({
         color: 'primary.contrastText'
       }}
     >
-      <Handle
-        type="target"
-        position={targetPosition}
-        isConnectable={isConnectable}
-      />
+      <Handle type="target" position={targetPosition} isConnectable={isConnectable} />
       {data?.label}
-      <Handle
-        type="source"
-        position={sourcePosition}
-        isConnectable={isConnectable}
-      />
+      <Handle type="source" position={sourcePosition} isConnectable={isConnectable} />
 
       <NodeToolbar isVisible={data.visible} position={data.position}>
         <Card sx={{ p: 2 }}>

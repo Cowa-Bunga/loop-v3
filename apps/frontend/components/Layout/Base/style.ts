@@ -1,6 +1,9 @@
 export const ui = {
   box: {
+    minHeight: '100vh',
     width: '100%',
-    mt: '60px'
+    pt: '60px',
+    backgroundColor: 'primary.background',
+    overflowY: 'hidden'
   }
 }

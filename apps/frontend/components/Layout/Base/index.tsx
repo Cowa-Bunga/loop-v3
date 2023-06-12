@@ -12,7 +12,7 @@ const LayoutBase = ({ children }) => {
     <>
       <NavBar open={state.open} setOpen={(open) => setState({ open })} />
       <MenuDrawer open={state.open} />
-      <Box sx={{ ...ui.box }}>{children}</Box>
+      <Box sx={ui.box}>{children}</Box>
     </>
   )
 }

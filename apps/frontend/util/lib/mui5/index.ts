@@ -11,13 +11,15 @@ export const light = {
   mode: 'light',
   primary: {
     main: PRIMARY_BLUE,
-    contrastText: '#FFF',
-    accent: PRIMARY_BLUE
+    contrastText: '#000',
+    accent: PRIMARY_BLUE,
+    background: '#FFF'
   },
   secondary: {
     main: '#F3F4F6',
-    contrastText: '#FFF',
-    accent: PRIMARY_BLUE
+    contrastText: '#000',
+    accent: PRIMARY_BLUE,
+    background: '#FFF'
   }
 } as PaletteOptions
 
@@ -26,12 +28,14 @@ export const dark = {
   primary: {
     main: '#1e1e1e',
     contrastText: '#FFF',
-    accent: PRIMARY_BLUE
+    accent: PRIMARY_BLUE,
+    background: PRIMARY_BLUE
   },
   secondary: {
     main: '#1e1e1e',
     contrastText: '#FFF',
-    accent: PRIMARY_BLUE
+    accent: PRIMARY_BLUE,
+    background: PRIMARY_BLUE
   }
 } as PaletteOptions
 

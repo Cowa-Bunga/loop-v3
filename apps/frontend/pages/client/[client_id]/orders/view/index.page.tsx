@@ -4,6 +4,7 @@ import { LayoutBase, TabPanel } from '@components'
 import { Tabs, Tab, Divider, Box, Typography } from '@mui/material'
 import { rows, columns } from './__test__/mock'
 import { LineChart } from '@components'
+import { ui } from './style'
 
 const Orders = () => {
   const [state, setState] = useMergeState({
@@ -16,7 +17,7 @@ const Orders = () => {
 
   return (
     <LayoutBase>
-      <Box sx={{ px: 5, py: 5 }}>
+      <Box sx={ui.container}>
         <Box>
           <Typography variant="h5">
             <b>Orders</b>

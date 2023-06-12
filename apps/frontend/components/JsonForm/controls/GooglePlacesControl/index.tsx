@@ -3,19 +3,11 @@ import { withJsonFormsControlProps } from '@jsonforms/react'
 import { FormControl } from '@mui/material'
 import { ISelectControl } from '../controls.interface'
 import { formControlStyles } from '../styles'
-import GooglePlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng
-} from 'react-google-places-autocomplete'
+import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete'
 import { useMergeState } from '@hooks'
 import { makeInputId } from '../../helpers'
 
-const GooglePlacesControl = ({
-  data = '',
-  handleChange,
-  path,
-  ...rest
-}: ISelectControl) => {
+const GooglePlacesControl = ({ data = '', handleChange, path, ...rest }: ISelectControl) => {
   const [state, setState] = useMergeState({
     address: data as string
   })

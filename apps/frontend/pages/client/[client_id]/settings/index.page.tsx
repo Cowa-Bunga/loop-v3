@@ -13,17 +13,10 @@ const Settings = () => {
       <br />
       <Container>
         <Card sx={{ p: 2 }}>
-          <Typography variant="h5">
-            Data driven dynamic json-schema form example
-          </Typography>
+          <Typography variant="h5">Data driven dynamic json-schema form example</Typography>
           <Divider />
           <br />
-          <JsonForm
-            schema={mock.schema}
-            ui={mock.ui}
-            model={model}
-            onChange={console.log}
-          />
+          <JsonForm schema={mock.schema} ui={mock.ui} model={model} onChange={console.log} />
         </Card>
       </Container>
     </LayoutBase>

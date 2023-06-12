@@ -8,11 +8,10 @@ import { useMergeState } from '@hooks'
 import { Actions } from './actions'
 import { ui } from './style'
 import { useUserContext } from '@util/context/user'
-import DistanceChart from '../../components/charts/RadialChart'
 import { Box, Card, Drawer, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material'
 import { KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight, TaskAltTwoTone } from '@mui/icons-material'
 
-const GMapGL = dynamic(() => import('../../components/maps/GMapGL'), {
+const GMapGL = dynamic(() => import('../../components/maps/GMap'), {
   ssr: false
 })
 
@@ -22,8 +21,7 @@ const Dashboard = () => {
     right: false,
     left: true,
     data: null,
-    create: false,
-    mapControls: true
+    create: false
   })
 
   const { toggleLeft, toggleRight, toggleCreate } = Actions(state, setState)
@@ -32,7 +30,17 @@ const Dashboard = () => {
 
   return (
     <LayoutBase>
-      <Drawer elevation={2} sx={ui.leftDrawer} anchor="left" variant="persistent" open={state.left}>
+      <Drawer
+        PaperProps={{
+          sx: {
+            backgroundColor: 'primary.background'
+          }
+        }}
+        elevation={2}
+        anchor="left"
+        variant="persistent"
+        open={state.left}
+      >
         <Box sx={ui.filter}>
           <Box sx={ui.closedBox} onClick={toggleLeft}>
             <KeyboardDoubleArrowLeft sx={ui.closedBoxIcon} />
@@ -63,8 +71,6 @@ const Dashboard = () => {
           <Box sx={ui.closedBoxIconR} onClick={toggleRight}>
             <KeyboardDoubleArrowRight sx={ui.closedBoxIcon} />
           </Box>
-          <DistanceChart />
-          <br />
           <Drivers hubs={user.hubs} />
         </Box>
       </Drawer>

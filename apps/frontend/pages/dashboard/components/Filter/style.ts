@@ -1,8 +1,8 @@
 const ui = {
   container: {
     width: '400px',
-    height: '100vh',
-    backgroundColor: 'secondary.main'
+    height: 'calc(100vh - 60px)',
+    backgroundColor: 'primary.background'
   }
 }
 

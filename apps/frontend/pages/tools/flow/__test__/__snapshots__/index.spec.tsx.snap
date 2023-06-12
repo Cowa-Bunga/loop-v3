@@ -22,7 +22,7 @@ exports[`IntelTools should render successfully 1`] = `
             />
           </div>
           <button
-            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-zylse7-MuiButtonBase-root-MuiIconButton-root"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1jfmqnk-MuiButtonBase-root-MuiIconButton-root"
             tabindex="0"
             type="button"
           >
@@ -45,7 +45,7 @@ exports[`IntelTools should render successfully 1`] = `
       </header>
     </div>
     <div
-      class="MuiBox-root css-1abb3vo"
+      class="MuiBox-root css-sbhkcd"
     >
       <div
         class="MuiBox-root css-0"
@@ -96,7 +96,7 @@ exports[`IntelTools should render successfully 1`] = `
                       tabindex="0"
                     >
                       <div
-                        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1d6vb52-MuiPaper-root-MuiCard-root"
+                        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-1g7v5kp-MuiPaper-root-MuiCard-root"
                       >
                         <div
                           class="react-flow__handle react-flow__handle-top nodrag nopan target connectable connectablestart connectableend connectionindicator"
