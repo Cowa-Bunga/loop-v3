@@ -3,14 +3,13 @@ import { OrderService } from '../order.service'
 import { TestingUtils } from '../../../shared/utils/test.utils'
 import * as admin from 'firebase-admin'
 import { Order } from '../entities/order.entity'
-import { generateOrder, createOrderDto, branch } from './data/order.data'
+import { order, createOrderDto, branch } from './data/order.data'
 import { NotFoundException } from '@nestjs/common'
 import { QueryDocumentSnapshot } from 'firebase-admin/firestore'
 admin.initializeApp()
 
 describe('OrderService', () => {
   let orderService: OrderService
-  const order = generateOrder()
   const db = new TestingUtils()
 
   jest.spyOn(admin.firestore(), 'collection').mockImplementation(db.collection as jest.Mock)

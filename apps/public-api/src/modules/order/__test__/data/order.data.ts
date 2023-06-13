@@ -24,7 +24,7 @@ const location: Location = {
   longitude: 18.420059
 }
 
-const order: Order = {
+export const order: Order = {
   id: 'order_id',
   order_no: 'order_no',
   alcohol: false,
@@ -45,12 +45,13 @@ const order: Order = {
   reset: false
 }
 
-export const generateOrder = (): Order => {
-  return order
+export const batchedOrder = {
+  ...order,
+  trip_id: 'trip_id'
 }
 
 export const createOrderDto: CreateOrderDto = {
-  order: generateOrder(),
+  order,
   branch_id: 'branch_id'
 }
 

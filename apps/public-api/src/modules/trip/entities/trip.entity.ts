@@ -60,7 +60,7 @@ export class EssentialTrip {
 }
 
 export class Trip extends EssentialTrip {
-  constructor(order: DocumentSnapshot, cluster?: DocumentSnapshot) {
-    super(order, cluster)
+  constructor(trip: DocumentSnapshot, driver?: DocumentSnapshot) {
+    super(trip, driver)
   }
 }

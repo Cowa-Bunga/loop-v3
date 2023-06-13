@@ -5,11 +5,17 @@ import { Client } from '../../shared/decorators/client.decorator'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { ApiGetOneRequest, ApiGetRequest } from '../../shared/decorators/api.decorator'
 import { Order } from './entities/order.entity'
+import { DriverService } from '../driver/driver.service'
+import { TripService } from '../trip/trip.service'
 
 @ApiTags('Orders')
 @Controller('order')
 export class OrderController {
-  constructor(private readonly orderService: OrderService) {}
+  constructor(
+    private readonly orderService: OrderService,
+    private readonly tripService: TripService,
+    private readonly driverService: DriverService
+  ) {}
 
   @ApiGetRequest('Order')
   @Get()
@@ -29,6 +35,23 @@ export class OrderController {
   @ApiGetOneRequest('Order')
   @Get(':order_id')
   async getOrder(@Client() client: ClientRequest, @Param('order_id') order_id: string) {
-    return new Order(await this.orderService.getOrder(client, order_id))
+    const orderDoc = await this.orderService.getOrder(client, order_id)
+    const order = new Order(orderDoc)
+
+    if (!orderDoc.data().trip_id) {
+      return order
+    }
+
+    const tripDoc = await this.tripService.getTrip(client, orderDoc.data().trip_id)
+
+    if (tripDoc.data().driver) {
+      const driverDoc = await this.driverService.getDriverByRef(tripDoc.data().driver)
+      Object.assign(order, {
+        driver_id: driverDoc.id,
+        driver_name: driverDoc.data().name
+      })
+    }
+
+    return order
   }
 }

@@ -5,7 +5,7 @@ import { ClientRequest } from '../../shared/entities/request.entity'
 import { ORDER_STATUS } from './entities/order.enum'
 import { CreateOrderDto, EditOrderDto } from './dto/order.dto'
 import { Transaction } from 'firebase-admin/firestore'
-import { Branch, OrderBranch } from '../branch/entities/branch.entity'
+import { OrderBranch } from '../branch/entities/branch.entity'
 
 @Injectable()
 export class OrderService {
