@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { TripController } from '../trip.controller'
 import { TripService } from '../trip.service'
+import { DriverService } from '../../driver/driver.service'
 
 describe('TripController', () => {
   let controller: TripController
@@ -8,7 +9,7 @@ describe('TripController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [TripController],
-      providers: [TripService]
+      providers: [TripService, DriverService]
     }).compile()
 
     controller = module.get<TripController>(TripController)
