@@ -7,10 +7,9 @@ import { EssentialHub } from '../hub/entities/hub.entity'
 import { OrderService } from '../order/order.service'
 import { DriverService } from '../driver/driver.service'
 import { EssentialDriver } from '../driver/entities/driver.entity'
-import { EssentialOrder } from '../order/entities/order.entity'
+import { Order } from '../order/entities/order.entity'
 import { TripService } from '../trip/trip.service'
 import { ClusterService } from '../cluster/cluster.service'
-
 
 @Injectable()
 export class DashboardService {
@@ -22,7 +21,6 @@ export class DashboardService {
     private tripService: TripService,
     private clusterService: ClusterService
   ) {}
-  
 
   async getAll(client: ClientRequest, user: UserRequest) {
     if (user.hub_refs.length === 0) {
@@ -34,40 +32,40 @@ export class DashboardService {
         const driverPromise = this.driverService.getDriversForHub(client, ref)
         const branchDocs = await this.branchService.getBranchesForHub(client, ref)
         const branches = branchDocs.map((doc) => new EssentialBranch(doc))
-        
 
         // Loop through all branch documents and retrieve orders and trips for branch
         const branchPromises = branches.map(async (branch) => {
           const orderDocs = await this.orderService.getOrdersForBranch(client, branch.id)
-          const orders = orderDocs.map((doc) => new EssentialOrder(doc))
+          const orders = orderDocs.map((doc) => new Order(doc))
           branch.setOrders(orders)
-          const trips = await this.tripService.getTripsByBranchIds(
-            [branch.id],
-            client.id,
-            ["pending", "accepted", "arrived_at_collection_point", "started", "in_progress"]
-          )
+          const trips = await this.tripService.getTripsByBranchIds([branch.id], client.id, [
+            'pending',
+            'accepted',
+            'arrived_at_collection_point',
+            'started',
+            'in_progress'
+          ])
 
           const clusters = await this.clusterService.getClustersByBranch(client, branch.id)
 
-          
-          return { branch, trips, clusters}
+          return { branch, trips, clusters }
         })
 
         const [hubDoc, driverDocs, branchData] = await Promise.all([
           hubPromise,
           driverPromise,
-          Promise.all(branchPromises),
+          Promise.all(branchPromises)
         ])
-  
+
         const drivers = driverDocs.map((doc) => new EssentialDriver(doc))
         const hub = new EssentialHub(hubDoc)
-  
+
         return {
           ...hub,
           branches: branchData.map(({ branch }) => branch),
           drivers,
           trips: branchData.flatMap(({ trips }) => trips),
-          clusters: branchData.flatMap(({ clusters }) => clusters),
+          clusters: branchData.flatMap(({ clusters }) => clusters)
         }
       })
     )
