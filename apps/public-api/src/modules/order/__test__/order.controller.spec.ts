@@ -1,14 +1,8 @@
-const mOrder = jest.fn()
-jest.mock('../entities/order.entity', () => {
-  return {
-    Order: mOrder
-  }
-})
 import { Test, TestingModule } from '@nestjs/testing'
 import { OrderController } from '../order.controller'
 import { OrderService } from '../order.service'
 import { TestingUtils } from '../../../shared/utils/test.utils'
-import { order, batchedOrder } from './data/order.data'
+import { orderData, batchedOrder } from './data/order.data'
 import { Order } from '../entities/order.entity'
 import { TripModule } from '../../trip/trip.module'
 import { DriverModule } from '../../driver/driver.module'
@@ -41,9 +35,8 @@ describe('OrderController', () => {
   })
 
   describe('getOrders', () => {
-    const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
-    mOrder.mockImplementation(() => order)
-
+    const orderDoc = db.generateDocumentSnapshot(orderData, `clients/${db.client.id}/orders/${orderData.id}`)
+    const order = new Order(orderDoc)
     it('should call orderService getAllOrders and return an array of orders', async () => {
       jest.spyOn(orderService, 'getAllOrders').mockResolvedValue([orderDoc])
       jest.spyOn(orderService, 'getOrders').mockResolvedValue([orderDoc])
@@ -64,9 +57,10 @@ describe('OrderController', () => {
   })
 
   describe('getOrder', () => {
+    const orderDoc = db.generateDocumentSnapshot(orderData, `clients/${db.client.id}/orders/${orderData.id}`)
+
     it('should call orderService getOrder and return an order not associated to a trip', async () => {
-      const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
-      mOrder.mockImplementation(() => order)
+      const order = new Order(orderDoc)
       jest.spyOn(orderService, 'getOrder').mockResolvedValue(orderDoc)
       jest.spyOn(tripService, 'getTrip')
       jest.spyOn(driverService, 'getDriverByRef')
@@ -78,17 +72,14 @@ describe('OrderController', () => {
     })
 
     it('should call orderService getOrder and return an order associated to a trip, but no driver', async () => {
-      const orderDoc = db.generateDocumentSnapshot<Order>(
-        batchedOrder,
-        `clients/${db.client.id}/orders/${batchedOrder.id}`
-      )
-
+      const orderDoc = db.generateDocumentSnapshot(batchedOrder, `clients/${db.client.id}/orders/${batchedOrder.id}`)
+      const order = new Order(orderDoc)
       const tripDoc = db.generateDocumentSnapshot(
         { id: 'trip_id' },
         `clients/${db.client.id}/orders/${batchedOrder.id}`
       )
 
-      mOrder.mockImplementation(() => order)
+      // mOrder.mockImplementation(() => order)
       jest.spyOn(orderService, 'getOrder').mockResolvedValue(orderDoc)
       jest.spyOn(tripService, 'getTrip').mockResolvedValue(tripDoc)
       jest.spyOn(driverService, 'getDriverByRef')
@@ -100,11 +91,8 @@ describe('OrderController', () => {
     })
 
     it('should call orderService getOrder and return an order associated to a trip and driver', async () => {
-      const orderDoc = db.generateDocumentSnapshot<Order>(
-        batchedOrder,
-        `clients/${db.client.id}/orders/${batchedOrder.id}`
-      )
-
+      const orderDoc = db.generateDocumentSnapshot(batchedOrder, `clients/${db.client.id}/orders/${batchedOrder.id}`)
+      const order = new Order(orderDoc)
       const tripDoc = db.generateDocumentSnapshot(
         { id: 'trip_id', driver: 'driver_ref' },
         `clients/${db.client.id}/trips/trip_id`
@@ -115,7 +103,6 @@ describe('OrderController', () => {
         `clients/${db.client.id}/drivers/driver_id`
       )
 
-      mOrder.mockImplementation(() => order)
       jest.spyOn(orderService, 'getOrder').mockResolvedValue(orderDoc)
       jest.spyOn(tripService, 'getTrip').mockResolvedValue(tripDoc)
       jest.spyOn(driverService, 'getDriverByRef').mockResolvedValue(driverDoc)

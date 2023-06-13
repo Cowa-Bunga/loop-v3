@@ -2,14 +2,14 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { OrderService } from '../order.service'
 import { TestingUtils } from '../../../shared/utils/test.utils'
 import * as admin from 'firebase-admin'
-import { Order } from '../entities/order.entity'
-import { order, createOrderDto, branch } from './data/order.data'
+import { orderData, createOrderDto, branch } from './data/order.data'
 import { NotFoundException } from '@nestjs/common'
 import { QueryDocumentSnapshot } from 'firebase-admin/firestore'
 admin.initializeApp()
 
 describe('OrderService', () => {
   let orderService: OrderService
+  const order = orderData
   const db = new TestingUtils()
 
   jest.spyOn(admin.firestore(), 'collection').mockImplementation(db.collection as jest.Mock)
@@ -37,7 +37,7 @@ describe('OrderService', () => {
 
   describe('Get Orders', () => {
     it('should return a list of orders for given order_ids', async () => {
-      const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
 
       db.getAll.mockImplementationOnce(() => [orderDoc])
 
@@ -49,7 +49,7 @@ describe('OrderService', () => {
   describe('Get All Orders', () => {
     it('should return a list of orders associated with client.', async () => {
       const date = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
-      const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
       const querySnapshot = db.generateQuerySnapshot([orderDoc] as QueryDocumentSnapshot[])
       db.get.mockImplementationOnce(() => querySnapshot)
 
@@ -63,7 +63,7 @@ describe('OrderService', () => {
 
   describe('Get Order', () => {
     it('should return the order for given order id', async () => {
-      const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
       db.get.mockImplementationOnce(() => orderDoc)
 
       expect(await orderService.getOrder(db.client, order.id)).toEqual(orderDoc)
@@ -93,7 +93,7 @@ describe('OrderService', () => {
   describe('Get Orders For Branch', () => {
     it('should return the created order.', async () => {
       const date = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000)
-      const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
 
       const querySnapshot = db.generateQuerySnapshot([orderDoc] as QueryDocumentSnapshot[])
       db.get.mockImplementationOnce(() => querySnapshot)
@@ -110,7 +110,7 @@ describe('OrderService', () => {
 
   describe('Create Order', () => {
     it('should create a new order', async () => {
-      const orderDoc = db.generateDocumentSnapshot<Order>(order, `clients/${db.client.id}/orders/${order.id}`)
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
       db.get.mockImplementationOnce(() => orderDoc)
 
       expect(await orderService.createOrder(db.client, createOrderDto, branch)).toEqual(orderDoc)

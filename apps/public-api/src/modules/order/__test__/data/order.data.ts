@@ -1,7 +1,7 @@
 import { Location } from '../../../../shared/entities/location.entity'
-import { Branch, OrderBranch } from '../../../branch/entities/branch.entity'
+import { OrderBranch } from '../../../branch/entities/branch.entity'
 import { CreateOrderDto } from '../../dto/order.dto'
-import { AbandonFlow, Customer, History, Order } from '../../entities/order.entity'
+import { AbandonFlow, Customer, History } from '../../entities/order.entity'
 import { FLOW_TYPE, ORDER_STATUS, ORDER_STATUS_DISPLAY, ORDER_TYPE } from '../../entities/order.enum'
 
 const customer: Customer = {
@@ -24,19 +24,16 @@ const location: Location = {
   longitude: 18.420059
 }
 
-export const order: Order = {
+export const essentialOrderData = {
   id: 'order_id',
   order_no: 'order_no',
-  alcohol: false,
-  assignable: false,
-  location: location,
   status: ORDER_STATUS.PENDING,
   status_display: ORDER_STATUS_DISPLAY[ORDER_STATUS.PENDING],
   type: ORDER_TYPE.ORDER,
   task_type: '',
   address: '1 test avenue, Rondebosch, Cape Town, 7945',
   customer: customer,
-  time_place: new Date(Date.now()),
+  created_at: new Date(Date.now()),
   delivery_time: new Date(Date.now()),
   collection_time: new Date(Date.now()),
   history: [history],
@@ -45,13 +42,20 @@ export const order: Order = {
   reset: false
 }
 
+export const orderData = {
+  ...essentialOrderData,
+  alcohol: false,
+  assignable: false,
+  location: location
+}
+
 export const batchedOrder = {
-  ...order,
+  ...orderData,
   trip_id: 'trip_id'
 }
 
 export const createOrderDto: CreateOrderDto = {
-  order,
+  order: orderData,
   branch_id: 'branch_id'
 }
 

@@ -42,7 +42,7 @@ export class EssentialOrder {
   task_type: TASK_TYPE | ''
   address: string
   customer: Customer
-  time_place: Date
+  time_placed: Date
   delivery_time: Date
   collection_time: Date
   history: History[]
@@ -61,7 +61,7 @@ export class EssentialOrder {
     this.task_type = data.task_type
     this.address = data.address
     this.customer = new Customer(order)
-    this.time_place = data.created_at.toDate()
+    this.time_placed = data.created_at.toDate()
     this.delivery_time = data.delivery_time.toDate()
     this.collection_time = data.collection_time.toDate()
     this.history = data.history.map((history) => {
