@@ -1,6 +1,6 @@
 import { Location } from '../../../../shared/entities/location.entity'
 import { OrderBranch } from '../../../branch/entities/branch.entity'
-import { CreateOrderDto } from '../../dto/order.dto'
+import { CreateOrderDto, EditOrderDto } from '../../dto/order.dto'
 import { AbandonFlow, Customer, History } from '../../entities/order.entity'
 import { FLOW_TYPE, ORDER_STATUS, ORDER_STATUS_DISPLAY, ORDER_TYPE } from '../../entities/order.enum'
 
@@ -57,6 +57,10 @@ export const batchedOrder = {
 export const createOrderDto: CreateOrderDto = {
   order: orderData,
   branch_id: 'branch_id'
+}
+
+export const editOrderDto: EditOrderDto = {
+  tracking_id: 'tracking_id'
 }
 
 export const branch: Partial<OrderBranch> = {

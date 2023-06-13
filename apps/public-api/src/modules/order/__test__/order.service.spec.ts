@@ -2,9 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { OrderService } from '../order.service'
 import { TestingUtils } from '../../../shared/utils/test.utils'
 import * as admin from 'firebase-admin'
-import { orderData, createOrderDto, branch } from './data/order.data'
+import { orderData, createOrderDto, branch, editOrderDto } from './data/order.data'
 import { NotFoundException } from '@nestjs/common'
-import { QueryDocumentSnapshot } from 'firebase-admin/firestore'
+import { QueryDocumentSnapshot, Transaction } from 'firebase-admin/firestore'
 admin.initializeApp()
 
 describe('OrderService', () => {
@@ -119,6 +119,31 @@ describe('OrderService', () => {
       expect(db.doc).toHaveBeenNthCalledWith(1, db.client.id)
       expect(db.doc).toHaveBeenCalledTimes(2)
       expect(db.set).toHaveBeenCalled()
+    })
+  })
+
+  describe('Edit Order', () => {
+    it('should edit an order', async () => {
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
+      db.get.mockImplementationOnce(() => orderDoc)
+
+      expect(await orderService.editOrder(db.client, order.id, editOrderDto)).toEqual(orderDoc)
+      expect(db.collection).toHaveBeenNthCalledWith(1, 'clients')
+      expect(db.collection).toHaveBeenNthCalledWith(2, 'orders')
+      expect(db.doc).toHaveBeenNthCalledWith(1, db.client.id)
+      expect(db.doc).toHaveBeenNthCalledWith(2, order.id)
+      expect(db.set).toHaveBeenCalledWith({ ...editOrderDto }, { merge: true })
+    })
+
+    it('should edit an order using transaction', async () => {
+      const orderDoc = db.generateDocumentSnapshot(order, `clients/${db.client.id}/orders/${order.id}`)
+      db.get.mockImplementationOnce(() => orderDoc)
+      expect(await orderService.editOrder(db.client, order.id, editOrderDto, db.transaction)).toEqual(orderDoc)
+      expect(db.collection).toHaveBeenNthCalledWith(1, 'clients')
+      expect(db.collection).toHaveBeenNthCalledWith(2, 'orders')
+      expect(db.doc).toHaveBeenNthCalledWith(1, db.client.id)
+      expect(db.doc).toHaveBeenNthCalledWith(2, order.id)
+      expect(db.transaction.set).toHaveBeenCalledWith(db.doc(), { ...editOrderDto }, { merge: true })
     })
   })
 })

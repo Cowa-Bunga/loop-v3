@@ -1,8 +1,16 @@
 import test from 'firebase-functions-test'
 import { jest } from '@jest/globals'
-import { QueryDocumentSnapshot, QuerySnapshot, DocumentSnapshot } from 'firebase-admin/firestore'
+import { QueryDocumentSnapshot, QuerySnapshot, DocumentSnapshot, Transaction } from 'firebase-admin/firestore'
 import { ClientRequest, UserRequest } from '../entities/request.entity'
 
+class FirebaseTransaction {
+  get = jest.fn()
+  getAll = jest.fn()
+  set = jest.fn()
+  create = jest.fn()
+  update = jest.fn()
+  delete = jest.fn()
+}
 export class FirebaseTestingUtils {
   collection = jest.fn()
   where = jest.fn()
@@ -11,6 +19,8 @@ export class FirebaseTestingUtils {
   getAll = jest.fn()
   set = jest.fn()
   update = jest.fn()
+  transaction: Transaction
+
   constructor() {
     this.where.mockReturnValue({
       where: this.where,
@@ -29,6 +39,8 @@ export class FirebaseTestingUtils {
       where: this.where,
       get: this.get
     })
+
+    this.transaction = new FirebaseTransaction() as Transaction
   }
 }
 export class TestingUtils extends FirebaseTestingUtils {
