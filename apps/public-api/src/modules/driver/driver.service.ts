@@ -88,4 +88,13 @@ export class DriverService {
 
     return await driverRef.get()
   }
+
+  /**
+   * Returns a Driver for a given driver DocumentReference
+   * @param driver_ref driver to retrieve
+   * @returns DocumentSnapshot of driver
+   */
+  async getDriverByRef(driver_ref: DocumentReference): Promise<DocumentSnapshot> {
+    return await driver_ref.get()
+  }
 }

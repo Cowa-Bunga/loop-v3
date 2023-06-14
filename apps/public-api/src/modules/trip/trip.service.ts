@@ -1,16 +1,20 @@
 import * as admin from 'firebase-admin'
-import {  DocumentData } from "firebase/firestore"
+import { DocumentData } from 'firebase/firestore'
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common'
-import { CreateTripDto, GetTripDto, AcceptAdhocTripDto, Trip } from './dto/trip.dto'
-
+import { CreateTripDto, AcceptAdhocTripDto } from './dto/trip.dto'
+import { ClientRequest } from '../../shared/entities/request.entity'
+import { DocumentSnapshot } from 'firebase-admin/firestore'
+import { DriverService } from '../driver/driver.service'
+import { Trip } from './entities/trip.entity'
+import { Driver } from '../driver/entities/driver.entity'
 
 @Injectable()
 export class TripService {
+  constructor(private readonly driverService: DriverService) {}
+
   async getTripsByTripIds(trip_ids: string[], client_id: string) {
     const db = admin.firestore()
-    const refs = trip_ids.map((id) =>
-      db.doc(`clients/${client_id}/trips/${id}`)
-    )
+    const refs = trip_ids.map((id) => db.doc(`clients/${client_id}/trips/${id}`))
 
     const snapshot = await db.getAll(...refs)
     const trips = []
@@ -21,7 +25,7 @@ export class TripService {
         trips.push({
           id: doc.id,
           client_id: client_id,
-          ...doc.data(),
+          ...doc.data()
         })
       } else {
         invalidTripIds.push(trip_ids[index])
@@ -30,83 +34,64 @@ export class TripService {
 
     const result = {
       trips,
-      message: '',
+      message: ''
     }
 
     if (invalidTripIds.length > 0) {
-      result.message = `No trips found for the following trip IDs: ${invalidTripIds.join(
-        ', '
-      )}.`
+      result.message = `No trips found for the following trip IDs: ${invalidTripIds.join(', ')}.`
     }
 
     return result
   }
 
-  async getTrip(getTripDto: GetTripDto, client_id: string) {
-    const { trip_id } = getTripDto
-
+  /**
+   * Returns an trip for a given trip id
+   * @param client currently authenticated client
+   * @param trip id of trip to retrieve
+   * @returns Trip DocumentSnapshot
+   */
+  async getTrip(client: ClientRequest, trip_id: string): Promise<DocumentSnapshot> {
     const db = admin.firestore()
-    const tripRef = db
-      .collection('clients')
-      .doc(client_id)
-      .collection('trips')
-      .doc(trip_id)
+    const trip = await db.collection('clients').doc(client.id).collection('trips').doc(trip_id).get()
 
-    const tripSnapshot = await tripRef.get()
-
-    if (!tripSnapshot.exists) {
+    if (!trip.exists) {
       throw new NotFoundException(`Trip with ID '${trip_id}' not found.`)
     }
 
-    const tripData = tripSnapshot.data()
+    return trip
+  }
 
-    if (tripData.driver) {
-      const driverSnapshot = await tripData.driver.get()
-      Object.assign(tripData, {
-        driver_id: driverSnapshot.id,
-        driver_name: driverSnapshot.data().name,
-      })
+  /**
+   * Returns a trip and associated driver if exists
+   * @param client currently authenticated client
+   * @param trip_id id of trip to retrieve
+   * @returns Trip object
+   */
+  async getTripAndDriver(client: ClientRequest, trip_id: string): Promise<Trip> {
+    const tripDoc = await this.getTrip(client, trip_id)
+    const trip = new Trip(tripDoc)
+    if (tripDoc.data().driver) {
+      const driver = new Driver(await this.driverService.getDriverByRef(tripDoc.data().driver))
+      trip.setDriver(driver)
     }
-
-    return {
-      id: tripSnapshot.id,
-      ...tripData,
-      client_id: client_id,
-    }
+    return trip
   }
 
   async createTrip(createTripDto: CreateTripDto, client_id: string): Promise<any> {
-    const {
-      branch_id,
-      order_ids,
-      vehicle_type,
-      compute_route,
-      automatic_assignment,
-    } = createTripDto
+    const { branch_id, order_ids, vehicle_type, compute_route, automatic_assignment } = createTripDto
 
     const db = admin.firestore()
-    const refs = order_ids.map((id) =>
-      db.doc(`clients/${client_id}/orders/${id}`)
-    )
-    const tripRef = db
-      .collection('clients')
-      .doc(client_id)
-      .collection('trips')
-      .doc()
-    const branchRef = db
-      .collection('clients')
-      .doc(client_id)
-      .collection('branches')
-      .doc(branch_id)
+    const refs = order_ids.map((id) => db.doc(`clients/${client_id}/orders/${id}`))
+    const tripRef = db.collection('clients').doc(client_id).collection('trips').doc()
+    const branchRef = db.collection('clients').doc(client_id).collection('branches').doc(branch_id)
     const clientRef = db.collection('clients').doc(client_id)
 
     await db.runTransaction(async (transaction) => {
-      const [clientSnapshot, branchSnapshot, ordersSnapshot] =
-        await Promise.all([
-          transaction.get(clientRef),
-          transaction.get(branchRef),
-          transaction.getAll(...refs),
-        ])
+      const [clientSnapshot, branchSnapshot, ordersSnapshot] = await Promise.all([
+        transaction.get(clientRef),
+        transaction.get(branchRef),
+        transaction.getAll(...refs)
+      ])
 
       const clientData = clientSnapshot.data()
 
@@ -127,28 +112,19 @@ export class TripService {
         const orderData = orderSnapshot.data()
 
         if (!orderSnapshot.exists) {
-          throw new BadRequestException(
-            `Order ${orderSnapshot.id}, to be batched does not exist`
-          )
+          throw new BadRequestException(`Order ${orderSnapshot.id}, to be batched does not exist`)
         }
 
         if (orderData.branch.id !== branch_id) {
-          throw new BadRequestException(
-            `Order ${orderSnapshot.id}, doesn't belong to the same branch`
-          )
+          throw new BadRequestException(`Order ${orderSnapshot.id}, doesn't belong to the same branch`)
         }
 
         if (orderData.status !== 'pending') {
-          throw new BadRequestException(
-            `Order ${orderSnapshot.id}, has been allocated already`
-          )
+          throw new BadRequestException(`Order ${orderSnapshot.id}, has been allocated already`)
         }
 
         // Add the service type route for certain clients based on their client_type
-        if (
-          updatedServiceTypeRoute === undefined &&
-          clientData.client_type === 'LOGISTICS'
-        ) {
+        if (updatedServiceTypeRoute === undefined && clientData.client_type === 'LOGISTICS') {
           updatedServiceTypeRoute = true
         }
 
@@ -167,8 +143,8 @@ export class TripService {
           trip_id: tripRef.id,
           history: admin.firestore.FieldValue.arrayUnion({
             status: 'batched',
-            timestamp: admin.firestore.Timestamp.now(),
-          }),
+            timestamp: admin.firestore.Timestamp.now()
+          })
         }
 
         transaction.update(orderSnapshot.ref, orderUpdate)
@@ -182,11 +158,11 @@ export class TripService {
         service_type_route: updatedServiceTypeRoute,
         history: admin.firestore.FieldValue.arrayUnion({
           status: 'pending',
-          timestamp: admin.firestore.Timestamp.now(),
+          timestamp: admin.firestore.Timestamp.now()
         }),
         branch: db.doc(`/clients/${client_id}/branches/${branch_id}`),
         orders: order_ids,
-        created_at: admin.firestore.FieldValue.serverTimestamp(),
+        created_at: admin.firestore.FieldValue.serverTimestamp()
       }
 
       transaction.set(tripRef, tripData)
@@ -201,47 +177,32 @@ export class TripService {
 
     for (const branchId of branchIds) {
       const branchRef = db.doc(`clients/${clientId}/branches/${branchId}`)
-      const q = db.collection(`clients/${clientId}/trips`)
-        .where("branch", "==", branchRef)
-        .where("status", "in", statuses)
+      const q = db
+        .collection(`clients/${clientId}/trips`)
+        .where('branch', '==', branchRef)
+        .where('status', 'in', statuses)
       const querySnapshot = await q.get()
-  
+
       querySnapshot.forEach((tripDoc) => {
         const tripData = tripDoc.data()
         trips.push({
           id: tripDoc.id,
           client_id: clientId,
-          ...tripData,
+          ...tripData
         })
       })
     }
-  
-  
-  
+
     return trips
   }
-  
-  
-  
-  
-  
 }
-
-
 
 @Injectable()
 export class AcceptAdhocTripService {
-  async acceptAdhocTrip(
-    { driver_id, trip_id, order_id }: AcceptAdhocTripDto,
-    client_id: string
-  ) {
+  async acceptAdhocTrip({ driver_id, trip_id, order_id }: AcceptAdhocTripDto, client_id: string) {
     const db = admin.firestore()
     const driverRef = db.collection('drivers').doc(driver_id)
-    const orderRef = db
-      .collection('clients')
-      .doc(client_id)
-      .collection('orders')
-      .doc(order_id)
+    const orderRef = db.collection('clients').doc(client_id).collection('orders').doc(order_id)
     const tripRef = db.collection('clients').doc(client_id).collection('trips').doc(trip_id)
     const deliveryList: string[] = []
     const collectionList: string[] = []
@@ -250,7 +211,7 @@ export class AcceptAdhocTripService {
       const [tripSnapshot, driverSnapshot, adhocOrderSnapshot] = await Promise.all([
         transaction.get(tripRef),
         transaction.get(driverRef),
-        transaction.get(orderRef),
+        transaction.get(orderRef)
       ])
 
       const trip = tripSnapshot.data()
@@ -283,11 +244,7 @@ export class AcceptAdhocTripService {
       const { task_type_trip } = await this.isTaskTypeTrip(client_id, trip_id)
       if (task_type_trip) {
         // This is a task type trip.
-        if (
-          adhocOrder.task_type == undefined ||
-          adhocOrder.task_type == null ||
-          adhocOrder.task_type == ''
-        ) {
+        if (adhocOrder.task_type == undefined || adhocOrder.task_type == null || adhocOrder.task_type == '') {
           throw new Error('order is not a task')
         } else if (!['delivery', 'collection'].includes(adhocOrder.task_type)) {
           throw new Error('order is not of task type delivery or collection')
@@ -337,11 +294,11 @@ export class AcceptAdhocTripService {
 
       transaction
         .update(driverRef, {
-          active_trip: { client_id, trip_id },
+          active_trip: { client_id, trip_id }
         })
         .update(orderRef, {
           trip_id: trip_id,
-          status: 'batched',
+          status: 'batched'
         })
 
       await this.dosSilentNotifyActiveDriver(client_id, trip_id, driver_id, order_id)
@@ -368,7 +325,7 @@ export class AcceptAdhocTripService {
       return {
         id: doc.id,
         ...doc.data(),
-        client_id,
+        client_id
       }
     })
     return orders
@@ -377,12 +334,7 @@ export class AcceptAdhocTripService {
   async isTaskTypeTrip(client_id: string, trip_id: string): Promise<any> {
     const db = admin.firestore()
 
-    const trip = await db
-      .collection('clients')
-      .doc(client_id)
-      .collection('trips')
-      .doc(trip_id)
-      .get()
+    const trip = await db.collection('clients').doc(client_id).collection('trips').doc(trip_id).get()
 
     if (!trip.exists) {
       throw new Error('trip does not exist 2')
@@ -401,7 +353,7 @@ export class AcceptAdhocTripService {
     }
 
     return {
-      task_type_trip: task_type_trip,
+      task_type_trip: task_type_trip
     }
   }
 
@@ -416,14 +368,14 @@ export class AcceptAdhocTripService {
     const options = {
       method: 'POST',
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }),
       body: JSON.stringify({
         client_id,
         trip_id,
         driver_id,
-        order_id,
-      }),
+        order_id
+      })
     }
 
     const response = await fetch(uri, options)

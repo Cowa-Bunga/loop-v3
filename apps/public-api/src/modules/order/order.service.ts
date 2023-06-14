@@ -1,9 +1,11 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import * as admin from 'firebase-admin'
 import { DocumentSnapshot } from '@google-cloud/firestore'
 import { ClientRequest } from '../../shared/entities/request.entity'
 import { ORDER_STATUS } from './entities/order.enum'
-import { CreateOrderDto } from './dto/order.dto'
+import { CreateOrderDto, EditOrderDto } from './dto/order.dto'
+import { Transaction } from 'firebase-admin/firestore'
+import { OrderBranch } from '../branch/entities/branch.entity'
 
 @Injectable()
 export class OrderService {
@@ -46,23 +48,10 @@ export class OrderService {
   async getOrder(client: ClientRequest, order_id: string): Promise<DocumentSnapshot> {
     const db = admin.firestore()
     const order = await db.collection('clients').doc(client.id).collection('orders').doc(order_id).get()
-
-    const orderData = order.data()
-
-    // TODO Change below to append trip and driver data in controller using their individual services.
-    if (orderData.trip_id) {
-      //TODO replace with trip service
-      const trip = await db.collection('clients').doc(client.id).collection('trips').doc(orderData.trip_id).get()
-
-      if (trip.data().driver) {
-        //TODO replace with driver service
-        const driver = await trip.data().driver.get()
-        Object.assign(orderData, {
-          driver_id: driver.id,
-          driver_name: driver.data().name
-        })
-      }
+    if (!order.exists) {
+      throw new NotFoundException(`Order with ID '${order_id}' not found.`)
     }
+
     return order
   }
 
@@ -92,8 +81,13 @@ export class OrderService {
    * @param createOrderDto details of order to be created
    * @returns DocumentSnapshot of created branch
    */
-  async createOrder(client: ClientRequest, createOrderDto: CreateOrderDto): Promise<DocumentSnapshot> {
-    const { order, branch } = createOrderDto
+  async createOrder(
+    client: ClientRequest,
+    createOrderDto: CreateOrderDto,
+    branch: Partial<OrderBranch>
+  ): Promise<DocumentSnapshot> {
+    // TODO Add getting of branch in controller
+    const { order } = createOrderDto
     const db = admin.firestore()
     const orderRef = await db.collection('clients').doc(client.id).collection('orders').doc()
 
@@ -113,5 +107,31 @@ export class OrderService {
     })
 
     return await orderRef.get()
+  }
+
+  /**
+   * Edits a specified order for a given client
+   * @param client currently authenticated client
+   * @param order_id id of order to be edited
+   * @param editOrderDto fields to be updated
+   * @param transaction optional transaction to be used for atomicity
+   * @returns the updated order DocumentSnapshot
+   */
+  async editOrder(
+    client: ClientRequest,
+    order_id: string,
+    editOrderDto: EditOrderDto,
+    transaction?: Transaction
+  ): Promise<DocumentSnapshot> {
+    const db = admin.firestore()
+    const orderRef = await db.collection('clients').doc(client.id).collection('orders').doc(order_id)
+
+    if (transaction) {
+      transaction.set(orderRef, { ...editOrderDto }, { merge: true })
+    } else {
+      await orderRef.set({ ...editOrderDto }, { merge: true })
+    }
+
+    return orderRef.get()
   }
 }
